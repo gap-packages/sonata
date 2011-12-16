@@ -2,11 +2,16 @@
 ##
 #W  grptfms.gi             Near-ring Library                   Christof N"obauer
 ##
-#H  @(#)$Id: grptfms.gi,v 1.12 2011-06-17 08:48:13 stein Exp $
+#H  @(#)$Id: grptfms.gi,v 1.13 2011-11-23 20:01:17 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: grptfms.gi,v $
+##  Revision 1.13  2011-11-23 20:01:17  stein
+##  New methods for Zero for elements of a nearring.
+##  New methods for multiplying a nearring element with an integer (These should
+##  be integrated into GAP in a future release and then removed from nr.gi).
+##
 ##  Revision 1.12  2011-06-17 08:48:13  stein
 ##  changed order of methods for GroupElementRepOfNearRingElement
 ##
@@ -44,7 +49,7 @@
 ##
 
 grptfms_gi:=
-  "@(#)$Id: grptfms.gi,v 1.12 2011-06-17 08:48:13 stein Exp $";
+  "@(#)$Id: grptfms.gi,v 1.13 2011-11-23 20:01:17 stein Exp $";
 
 #############################################################################
 ##
@@ -87,7 +92,6 @@ end);
 InstallOtherMethod(\+, "for IsEndoGeneralMapping", IsIdenticalObj,
   [IsGeneralMapping, IsGeneralMapping], 0,
 function(m, n)
-  local mntrans;
 
   if Source(n) <> Source(m) then
     TryNextMethod();
@@ -95,6 +99,43 @@ function(m, n)
 
   return MappingByFunction(Source(m),Source(m), g->(g^m)*(g^n));
 end);
+
+#############################################################################
+##
+#M  Zero	For NR elements		
+##
+
+InstallOtherMethod(
+	ZeroMutable,
+	"for IsTransformationRepOfEndo",
+	true,
+	[IsTransformationRepOfEndo and IsEndoGeneralMapping],
+	0,
+  function ( m ) 
+  local en, o, mntrans;
+
+  en := EnumeratorSorted(Source(m));
+  o := Position( en, en[1]^0 ); 
+  mntrans := Transformation(List([1 .. Length(en)], i-> o) );
+
+  return EndoMappingByTransformation(Source(m),FamilyObj(m), mntrans);
+end );
+
+## the following conflicts with GAP's method Zero for homomorphisms
+#InstallOtherMethod(
+#	ZeroMutable,
+#	"for IsEndoGeneralMapping",
+#	true,
+#	[IsGeneralMapping], 0,
+#  function(m)
+#  local en, o; 
+#
+#    en := Source(m);
+#    o := Identity( en );
+#   
+#    return MappingByFunction(Source(m),Source(m), g-> o );
+#  end );
+
 
 ###############################################################################
 ##
