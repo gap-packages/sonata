@@ -158,6 +158,7 @@ function (G)
   NR := TransformationNearRingByAdditiveGenerators ( G, additiveGenerators );
   
   SetPolynomialNearRingFlag( NR, true );
+  SetOne( NR, IdentityMapping(G) );
     
   return NR;
 end);
@@ -352,7 +353,8 @@ function (G)
 ## NR.additiveGroup.abstractGenerators := abstrGens;  
 
   SetEndomorphismNearRingFlag( NR, true );
-    
+  SetOne( NR, IdentityMapping(G) );
+   
   return NR;
 end);
 
@@ -384,7 +386,8 @@ function (G)
 ## NR.additiveGroup.abstractGenerators := abstrGens;  
 
   SetEndomorphismNearRingFlag( NR, true );
-    
+  SetOne( NR, IdentityMapping(G) );
+   
   return NR;
 end);
 
@@ -443,6 +446,7 @@ function (G)
 ## NR.additiveGroup.abstractGenerators := abstrGens;  
 
   SetAutomorphismNearRingFlag( NR, true );
+  SetOne( NR, IdentityMapping(G) );
     
   return NR;
 end);
@@ -503,7 +507,8 @@ function (G)
 ## NR.additiveGroup.abstractGenerators := abstrGens;  
 
   SetInnerAutomorphismNearRingFlag( NR, true );
-    
+  SetOne( NR, IdentityMapping(G) );
+   
   return NR;
 end);
   
@@ -572,7 +577,8 @@ function (G)
   NR := TransformationNearRingByAdditiveGenerators (G, GeneratorList);
 
   SetInnerAutomorphismNearRingByCommutatorsFlag( NR, true );
-    
+  SetOne( NR, IdentityMapping(G) );
+   
   return NR;
 
 
@@ -736,6 +742,7 @@ function (G, endos)
    SetGroupReduct(NR, additiveGroup);
 
    SetCentralizerNearRingFlag( NR, true );
+   SetOne( NR, IdentityMapping(G) );
 
    return NR;
 end);

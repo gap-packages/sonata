@@ -1,12 +1,18 @@
-################################################################################
+##############################################################################
 ##
 #W  nr.gi             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: nr.gi,v 1.7 2003/04/04 10:25:30 juergen Exp $
+#H  @(#)$Id: nr.gi,v 1.9 2007-07-19 22:19:07 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: nr.gi,v $
+##  Revision 1.9  2007-07-19 22:19:07  stein
+##  added a new method for One for TransformationNearRings
+##
+##  Revision 1.8  2007/05/09 22:44:14  stein
+##  added functions Zero, Representative, IsNearRingUnit, NearRingUnits
+##
 ##  Revision 1.7  2003/04/04 10:25:30  juergen
 ##  final revision 2.1: erhard and juergen
 ##
@@ -14,7 +20,7 @@
 ##  eliminated InParent
 ##
 ##  Revision 1.5  2002/01/17 18:25:52  juergen
-##  two versions of IsultiplicationRespectingHomomorphism - both with errors
+##  two versions of IsMultiplicationRespectingHomomorphism - both with errors
 ##  code cleaned
 ##
 ##  Revision 1.4  2002/01/03 14:12:33  juergen
@@ -32,7 +38,7 @@
 ##
 
 nr_gi:=
-  "@(#)$Id: nr.gi,v 1.7 2003/04/04 10:25:30 juergen Exp $";
+  "@(#)$Id: nr.gi,v 1.9 2007-07-19 22:19:07 stein Exp $";
 
 #############################################################################
 ##
@@ -48,6 +54,8 @@ InstallMethod(
 );
 
 ### DIESE METHODE MUSS UNBEDINGT WIEDER ENTFERNT WERDEN!
+### NOW NECESSARY SO THAT OUR METHODS FOR ZERO AND ONE ARE NOT USED FOR
+### SOME GAP-RINGS OR FIELDS
 InstallMethod(
 	IsLDistributive,
 	"NRs",
@@ -86,9 +94,113 @@ InstallOtherMethod(
 
 #############################################################################
 ##
+#M  Zero			Return the Zero of the nearring
+##
+
+InstallMethod(
+	Zero,
+	"generic method for nearrings",
+	true,
+	[IsNearRing],
+	0,
+  function ( nr )    
+
+    if IsAdditiveGroup( nr ) and IsLDistributive( nr ) then
+	TryNextMethod();
+    fi;
+
+    return NearRingElementByGroupRep( nr!.elementsInfo,
+					Identity(GroupReduct(nr)) );
+  end );
+
+#############################################################################
+##
 #M  One			Return the One of the nearring
 
 # install as OtherMethod, the near ring need not have a 1
+
+InstallOtherMethod(
+	One,
+	"generic method for transformation nearrings given by generators",
+	true,
+	[IsTransformationNearRing],
+	0,
+  function ( nr )
+
+  local nrgens, 		# near-ring generators of nr
+        G,			# group where nr acts on
+   	gens,
+        GN,  			# subgroup G*N of G
+	GNE,
+        one, found, xone,
+        xnrgens,
+  	x, y;
+	
+#Print( "generic method for transformation nearrings given by generators \n" );
+
+##JE eigentlich gehoert hier die Prioritaet fuer die entsprechenden Methoden
+##   bei Ringen und Koerpern erhoeht
+    if IsAdditiveGroup( nr ) and IsLDistributive( nr ) then
+	TryNextMethod();
+    fi;
+ 
+  nrgens := GeneratorsOfNearRing( nr );
+  G := Gamma( nr );
+  if ForAny( nrgens, IsBijective ) then
+    return IdentityMapping( G );
+  fi;
+  gens := GeneratorsOfGroup( G );
+
+## compute G*N
+
+  GN := Subgroup( G, Concatenation( List( nrgens, n ->
+						List( gens, x -> x^n ) ) ) );
+  GNE := Union( List( nrgens, n -> Image( n, GN ) ) );
+  while ForAny( GNE, x -> not x in GN ) do
+#Print( "closure again for GNE \n" );
+    GN := ClosureSubgroupNC( GN, GNE );
+    GNE := Union( List( nrgens, n -> Image( n, GN ) ) );
+  od;
+
+  xone := [];
+  for x in AsSSortedList(G) do
+    xnrgens := List( nrgens, n -> x^n );
+    found := false;
+    for y in Enumerator(GN) do
+      if ForAll( [1..Length(nrgens)], k -> y^nrgens[k] = xnrgens[k] ) then
+        if found then
+## there is no one in nr
+#Print( "too many solutions for x,y = ", [x,y], "\n" );
+          return fail;
+        else
+## the value for one on x has been found
+#Print( " found y = ", y, "\n" );
+          found := true;
+          Add( xone, y ); 
+        fi;
+      fi;
+    od;   
+ 
+    if not found then
+## there is no one in nr
+#Print( "no solution found for x =", x, "\n" );
+      return fail;
+    fi;
+  od;    
+
+  one := EndoMappingByTransformation( G, EndoMappingFamily( G ),
+	Transformation( List( xone, x -> Position( AsSSortedList(G), x ) ) ) );
+
+## it still remains to check whether one is an element of nr
+
+  if not one in nr then
+#Print( "one is not contained \n" );
+    return fail;
+  fi;   
+
+  return one;
+  end );
+
 
 InstallOtherMethod(
 	One,
@@ -107,6 +219,116 @@ InstallOtherMethod(
 			ForAll( nr, e -> e*i = e )
 		);
   end );
+
+#############################################################################
+##
+#M  Representative( <R> ) . . . . . . . . . . . . one element of a near-ring
+##
+InstallMethod( Representative,
+    "for a near-ring with generators",
+    true,
+    [ IsNearRing and HasGeneratorsOfNearRing ], 0,
+    RepresentativeFromGenerators( GeneratorsOfNearRing ) );
+
+#############################################################################
+##
+#M  IsUnit( <R>, <r> )  . . . . . . . . . . . .  test if an element is a unit
+##
+## ACTUALLY THE GAP-FUNCTION IsUnit SHOULD BE DECLARED FOR NEAR-RINGS 
+## INSTEAD OF RINGS IN ring.gd AND IsNearRingUnit SHOULD BE RENAMED IsUnit
+## SAME FOR NearRingUnits
+##
+InstallMethod( IsNearRingUnit,
+    "for a near-ring with known units",
+    IsCollsElms,
+    [ IsNearRing and HasNearRingUnits, IsNearRingElement ], 0,
+    function ( R, r )
+    return r in NearRingUnits( R );
+    end );
+
+InstallMethod( IsNearRingUnit,
+    "for a transformation near-ring with identity mapping",
+    IsCollsElms,
+    [ IsTransformationNearRingRep, IsNearRingElement ], 0,
+    function ( R, r )
+    local one, G;
+
+    one:= One( R );
+    G := Gamma( R );
+    if one <> IdentityMapping( G ) or not IsFinite( G ) then
+      TryNextMethod();
+    else
+# units are bijective functions
+      return IsInjective( r );
+    fi;
+    end );
+
+InstallMethod( IsNearRingUnit,
+    "default",
+    IsCollsElms,
+    [ IsNearRing, IsNearRingElement ], 0,
+    function ( R, r )
+    local one;
+
+    one:= One( R );
+    if one = fail then
+      return false;
+    else
+# simply try to find the inverse
+      return r <> Zero( R ) and First( Enumerator(R), i -> i*r = one ) <> fail;
+    fi;
+    end );
+
+
+#############################################################################
+##
+#M  Units( <R> )  . . . . . . . . . . . . . . . . . . . units of a near-ring
+##
+
+InstallMethod( NearRingUnits,
+    "for a transformation near-ring with identity mapping",
+    true,
+    [ IsTransformationNearRingRep ], 0,
+    function ( R )
+    local one,
+	  G,
+          units,
+          elm;
+
+    one := One( R );
+    G := Gamma( R );
+    if one <> IdentityMapping( G ) or not IsFinite( G ) then
+      TryNextMethod();
+    fi;
+
+    units:= GroupByGenerators( [], one );
+    for elm in Enumerator( R ) do
+      if IsNearRingUnit( R, elm ) and not elm in units then
+        units:= ClosureGroupDefault( units, elm );
+      fi;
+    od;
+    return units;
+    end );
+
+InstallMethod( NearRingUnits,
+    "for a (finite) near-ring",
+    true,
+    [ IsNearRing ], 0,
+    function ( R )
+    local one,
+          units,
+          elm;
+
+    one := One( R );
+
+    if one = fail then
+      return [];
+    else
+      return Filtered( R, n -> ForAny( R, m -> m * n = one ) );
+    fi;
+
+  end );
+
 
 #############################################################################
 ##
@@ -917,6 +1139,9 @@ InstallMethod(
 #############################################################################
 ##
 #M  IsNearRingWithOne
+##
+## AS OF NOW, 18.7.2007, NO NEAR-RING IN SONATA IS GENERATED AS IsNearRingWithOne
+## WE SIMPLY IGNORE THIS CATEGORY
 ##
 
 #InstallImmediateMethod(

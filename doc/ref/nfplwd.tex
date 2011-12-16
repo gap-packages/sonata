@@ -249,22 +249,22 @@ conditions (1) to (3).
 \beginexample
     gap> C9 := CyclicGroup( 9 );;
     gap> psi := GroupHomomorphismByFunction( C9, C9, x -> x^3 );;
-    gap> Image( psi );  
+    gap> Image( psi );
     Group([ f2, <identity> of ... ])
     gap> Image( psi ) = Kernel( psi );
     true
-    gap> a := GroupHomomorphismByFunction( C9, C9, x -> x^4 );;         
+    gap> a := GroupHomomorphismByFunction( C9, C9, x -> x^4 );;
     gap> phi := Group( a );;
     gap> Size( phi );
     3
     gap> orbs := Orbits( phi, C9 );
-    [ [ <identity> of ... ], [ f1, f1*f2, f1*f2^2 ], [ f2 ], 
-      [ f1^2, f1^2*f2^2, f1^2*f2 ], [ f2^2 ] ]
+    [ [ <identity> of ... ], [ f2 ], [ f2^2 ], [ f1, f1*f2, f1*f2^2 ],
+      [ f1^2, f1^2*f2^2, f1^2*f2 ] ]
     gap> # choose reps from the orbits outside of Image( psi )
-    gap> reps := [orbs[2][1], orbs[4][1]];
+    gap> reps := [orbs[4][1], orbs[5][1]];
     [ f1, f1^2 ]
     gap> n := WdNearRing( C9, psi, phi, reps );
-    ExplicitMultiplicationNearRing ( <pc group of size 9 with 
+    ExplicitMultiplicationNearRing ( <pc group of size 9 with
     2 generators> , multiplication )
 \endexample
 

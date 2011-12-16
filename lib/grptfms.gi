@@ -2,11 +2,21 @@
 ##
 #W  grptfms.gi             Near-ring Library                   Christof N"obauer
 ##
-#H  @(#)$Id: grptfms.gi,v 1.8 2004/02/26 16:22:43 juergen Exp $
+#H  @(#)$Id: grptfms.gi,v 1.11 2008-11-13 14:17:16 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: grptfms.gi,v $
+##  Revision 1.11  2008-11-13 14:17:16  stein
+##  Restricted the Enumerator - Method to IsTransformationNearRing
+##  Replaced IsNearRingEnumerator by IsTransformationNearRingEnumerator
+##
+##  Revision 1.10  2007/07/19 22:40:33  stein
+##  removed reference to IsNearRingWithOne
+##
+##  Revision 1.9  2007/05/09 21:26:16  stein
+##  put the full TransformationNearRing into IsNearRingWithOne
+##
 ##  Revision 1.8  2004/02/26 16:22:43  juergen
 ##  new filter for Random method
 ##
@@ -31,7 +41,7 @@
 ##
 
 grptfms_gi:=
-  "@(#)$Id: grptfms.gi,v 1.8 2004/02/26 16:22:43 juergen Exp $";
+  "@(#)$Id: grptfms.gi,v 1.11 2008-11-13 14:17:16 stein Exp $";
 
 #############################################################################
 ##
@@ -239,9 +249,8 @@ InstallMethod(
     TfmNR!.elementsInfo := group;
 
     SetGamma( TfmNR, group );
-
+    SetOne( TfmNR, IdentityMapping( group ) );
     SetGroupReduct( TfmNR, SizeFoldDirectProduct( group ) );
-
     SetIsFullTransformationNearRing( TfmNR, true );
 
     return TfmNR;
@@ -350,32 +359,40 @@ InstallMethod(
 
 #############################################################################
 ##
-#M  Enumerator		For nearrings with known additive group
+#M  Enumerator		For transformation nearrings
 
 InstallMethod(
 	Enumerator,
 	true,
-	[ IsNearRing ],
+	[ IsTransformationNearRing ],
 	0,
   function( nr )
     return Objectify( NewType( FamilyObj( nr ), 
-			IsList and IsNearRingEnumerator ),
+			IsList and IsTransformationNearRingEnumerator ),
            rec( groupReduct := GroupReduct(nr),
 		elementsInfo := nr!.elementsInfo ) 
 	);
   end );
 
+#####################################################################
+##
+#M  Length			for nearring enumerators
+
 InstallMethod(
 	Length,
 	true,
-	[ IsList and IsNearRingEnumerator ],
+	[ IsList and IsTransformationNearRingEnumerator ],
 	0,
     e -> Size( e!.groupReduct ) );
+
+#####################################################################
+##
+#M  \[\]			for nearring enumerators
 
 InstallMethod(
 	\[\],
 	true,
-	[ IsList and IsNearRingEnumerator, IsPosInt ],
+	[ IsList and IsTransformationNearRingEnumerator, IsPosInt ],
 	0,
   function( e, pos )
   local groupElement, group;
@@ -385,10 +402,14 @@ InstallMethod(
     return NearRingElementByGroupRep( e!.elementsInfo, groupElement );
   end );
 
+#####################################################################
+##
+#M  Position			for nearring enumerators
+
 InstallMethod(
 	Position,
 	true,
-	[ IsList and IsNearRingEnumerator, IsGroupGeneralMapping, IsZeroCyc ],
+	[ IsList and IsTransformationNearRingEnumerator, IsGroupGeneralMapping, IsZeroCyc ],
 	0,
   function( e, nrelm, zero )
   local groupElement;
@@ -397,10 +418,14 @@ InstallMethod(
     return Position( e!.groupReduct, groupElement, zero );
   end );
 
+#####################################################################
+##
+#M  ViewObj			for nearring enumerators
+#
 InstallMethod(
 	ViewObj,
 	true,
-	[ IsNearRingEnumerator ],
+	[ IsTransformationNearRingEnumerator ],
 	0,
   function( G )
     Print( "<enumerator of near ring>" );
@@ -791,7 +816,7 @@ InstallMethod(
 
 InstallMethod(
 	MatrixNearRing,
-	"ala K. Smith",
+	"a la K. Smith",
 	true,
 	[IsGroup and IsNGroup, IsInt and IsPosRat],
 	0,

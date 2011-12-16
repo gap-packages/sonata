@@ -232,11 +232,11 @@ InstallMethod(
 
 ##############################################################################
 ##
-#M  IsTame			for N-groups
+#M  IsTameNGroup			for N-groups
 ##
 
 InstallMethod(
-	IsTame,
+	IsTameNGroup,
 	"default",
 	true,
 	[IsGroup and IsNGroup],
@@ -257,11 +257,11 @@ InstallMethod(
 
 ##############################################################################
 ##
-#M  Is2Tame			for N-groups
+#M  Is2TameNGroup			for N-groups
 ##
 
 InstallMethod(
-	Is2Tame,
+	Is2TameNGroup,
 	"default",
 	true,
 	[IsGroup and IsNGroup],
@@ -290,11 +290,11 @@ InstallMethod(
 
 ##############################################################################
 ##
-#M  Is3Tame			for N-groups
+#M  Is3TameNGroup			for N-groups
 ##
 
 InstallMethod(
-	Is3Tame,
+	Is3TameNGroup,
 	"default",
 	true,
 	[IsGroup and IsNGroup],
@@ -640,7 +640,8 @@ InstallMethod(
   function( R )
   local NR;
     NR := Parent( R );
-    if IsNearRingWithOne(Parent(R)) then
+#    if IsNearRingWithOne(Parent(R)) then
+    if One(Parent(R)) <> fail then
 	return true;
     else
 	TryNextMethod();

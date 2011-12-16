@@ -1,12 +1,15 @@
-################################################################################
+##############################################################################
 ##
 #W  nr.gd             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: nr.gd,v 1.3 2002/01/17 18:25:52 juergen Exp $
+#H  @(#)$Id: nr.gd,v 1.4 2007-05-09 22:45:31 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: nr.gd,v $
+##  Revision 1.4  2007-05-09 22:45:31  stein
+##  added functions IsNearRingUnit, NearRingUnits
+##
 ##  Revision 1.3  2002/01/17 18:25:52  juergen
 ##  two versions of IsultiplicationRespectingHomomorphism - both with errors
 ##  code cleaned
@@ -23,7 +26,7 @@
 ##		new attribute NRRowEndos
 
 nr_gd:=
-  "@(#)$Id: nr.gd,v 1.3 2002/01/17 18:25:52 juergen Exp $";
+  "@(#)$Id: nr.gd,v 1.4 2007-05-09 22:45:31 stein Exp $";
 
 
 #############################################################################
@@ -50,6 +53,23 @@ DeclareOperation( "NearRingElementByGroupRep", [IsObject,IsMultiplicativeElement
 ##						TfmNR
 
 DeclareOperation( "AsTransformationNearRing", [IsNearRing] );
+
+#############################################################################
+##
+#A  NearRingUnits( <R> )
+##
+##  `Units' returns the group of units of the near-ring <R>.
+##  This may either be returned as a list or as a group.
+##
+##  An element $r$ is called a *unit* of a near-ring $R$, if $r$ has an
+##  inverse in $R$.
+##  It is easy to see that the set of units forms a multiplicative group.
+##
+##NECESSARY BECAUSE 'Units' IS DECLARED ONLY FOR RINGS IN THE GAP-FILE RING.GD
+##SHOULD EVENTUALLY BE CHANGED TO NEARRINGS THERE  
+##
+DeclareAttribute( "NearRingUnits", IsNearRing );
+DeclareOperation( "IsNearRingUnit", [ IsNearRing, IsNearRingElement ] );
 
 ############################################################################
 ##
