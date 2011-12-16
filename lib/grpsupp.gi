@@ -674,7 +674,7 @@ InstallMethod(
        for p in primes do
           n := 1;
           while 
-              
+              MOD( Exponent(G), p^(n+1) ) = 0 and
               MOD( product, p ^ (n+1) ) = 0 and 
               ( Size( InnerAutomorphismNearRing(
 			DirectProduct( G, CyclicGroup( p^(n+1) ) )

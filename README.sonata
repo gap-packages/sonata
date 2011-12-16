@@ -25,17 +25,13 @@ email: sonata@algebra.uni-linz.ac.at
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Main changes from SONATA 2.3 to SONATA 2.4
+Main changes from SONATA 2.4 to SONATA 2.5
 ------------------------------------------
 
-(1) Implemented new method for One for TransformationNearRings 
-(cf. Binder, et.al. 2000)
+(1) Added test files in the subdirectory tst for automated testing of the
+SONATA installation.
 
-(2) Added functions IsNearRingUnit, NearRingUnits for handling the
-multiplicative groups of nearrings.
+(2) Removed the function xor.
 
-(3) Specialized the method for Enumerator to be applied only to
-TransformationNearRings
+(3) Added new upper bound for the computation of the Scott length of a group.
 
-(4) Renamed IsTame to IsTameNGroup to avoid collision of names with 
-another package
