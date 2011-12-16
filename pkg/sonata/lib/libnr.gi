@@ -2,7 +2,7 @@
 ##
 #W  libnr.gi             library near-rings                   Christof N"obauer
 ##
-#H  @(#)$Id: libnr.gi,v 1.14 2003/07/03 09:23:23 juergen Exp $
+#H  @(#)$Id: libnr.gi,v 1.15 2007-07-19 22:43:43 stein Exp $
 ##
 #Y  Copyright (C)
 ##
@@ -10,7 +10,7 @@
 ##  13.01.00  N!.multiplication ersetzt, PM
 ##
 libnr_gi:=
-  "@(#)$Id: libnr.gi,v 1.14 2003/07/03 09:23:23 juergen Exp $";
+  "@(#)$Id: libnr.gi,v 1.15 2007-07-19 22:43:43 stein Exp $";
 
 ##############################################################################
 ##
@@ -352,6 +352,7 @@ AllLibraryNearRingsWithOne := function( group )
 	[15,1] ,   [ 2618 ]    ];
 
   if Size( group ) < 16 and IdTWGroup( group ) <> [12,3] then
+##PM: has to be changed to obtain near-rings in category IsNearRingWithOne 
     return AllLibraryNearRings( group ){position_list[ Position( position_list, IdTWGroup( group ) ) + 1 ]};
   else
     if NumberLibraryNearRingsWithOne( group ) = 0 then return []; fi;
@@ -604,6 +605,7 @@ InstallMethod(
              "on the group ", group, ".\n" );
       return;
     else
+##PM: has to be changed to obtain near-rings in category IsNearRingWithOne 
       return AllLibraryNearRingsWithOne( group )[ num ];
     fi;
   fi;
@@ -755,6 +757,7 @@ InstallMethod(
   end;
 
   # put the nearring together
+##PM: has to be changed to obtain near-rings in category IsNearRingWithOne 
   NR  := ExplicitMultiplicationNearRingNC( group, mul );
 
   SetLibraryNearRingFlag( NR, true );

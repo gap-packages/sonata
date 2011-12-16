@@ -1,0 +1,41 @@
+      README file for the `sonata' GAP4 package
+
+To install SONATA, unpack the archive inside the `pkg' subdirectory of
+your GAP 4 installation. It creates a subdirectory called `sonata'.
+
+Then start GAP and load SONATA with the command
+
+LoadPackage("sonata");
+
+In addition to the standard GAP help, we have produced a tutorial for 
+SONATA, which can be found in the subdirectory doc/tut/ of the sonata 
+package.
+
+E-mail us if  there are any questions,  remarks,  suggestions. Also, we
+would like to hear about applications of this package.
+
+Erhard Aichinger
+Franz Binder
+Jürgen Ecker
+Peter Mayr
+Christof Nöbauer
+
+email: sonata@algebra.uni-linz.ac.at
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Main changes from SONATA 2.3 to SONATA 2.4
+------------------------------------------
+
+(1) Implemented new method for One for TransformationNearRings 
+(cf. Binder, et.al. 2000)
+
+(2) Added functions IsNearRingUnit, NearRingUnits for handling the
+multiplicative groups of nearrings.
+
+(3) Specialized the method for Enumerator to be applied only to
+TransformationNearRings
+
+(4) Renamed IsTame to IsTameNGroup to avoid collision of names with 
+another package

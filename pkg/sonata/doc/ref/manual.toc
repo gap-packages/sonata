@@ -1,3 +1,4 @@
+\chapcontents {\tocstrut }{Copyright notice}{1}
 \chapcontents {\tocstrut }{The authors}{1}
 \chapcontents {\tocstrut }{Preface}{1}
 \chapcontents {1}{Supportive functions for groups}{1}
@@ -34,9 +35,10 @@
 \seccontents {2.17}{Constructing subnearrings} {8}
 \seccontents {2.18}{Intersection of nearrings} {8}
 \seccontents {2.19}{Identity of a nearring} {9}
-\seccontents {2.20}{Distributivity in a nearring} {10}
-\seccontents {2.21}{Elements of a nearring with special properties} {10}
-\seccontents {2.22}{Special properties of a nearring} {12}
+\seccontents {2.20}{Units of a nearring} {10}
+\seccontents {2.21}{Distributivity in a nearring} {10}
+\seccontents {2.22}{Elements of a nearring with special properties} {11}
+\seccontents {2.23}{Special properties of a nearring} {12}
 \chapcontents {3}{The nearring library}{1}
 \seccontents {3.1}{Extracting nearrings from the library} {1}
 \seccontents {3.2}{Identifying nearrings} {2}
@@ -95,3 +97,4 @@
 \seccontents {11.2}{Properties of a design} {2}
 \seccontents {11.3}{Working with the points and blocks of a design} {4}
 \chapcontents {\appno {1}}{Bibliography}{1}
+\chapcontents {\appno {2}}{Index}{1}

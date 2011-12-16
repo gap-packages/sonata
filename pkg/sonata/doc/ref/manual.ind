@@ -1,0 +1,333 @@
+\letter {}
+  /, 6--7
+  =, 6--6
+\letter A
+  accessing nearring elements, \indexit{2--4}
+  accessing the information about a nearring stored in the library, \indexit{3--2}
+  `ActionOfNearRingOnNGroup', 8--4
+  `AllExceptionalNearFields', 10--2
+  `AllLibraryNearRings', 3--1
+  `AllLibraryNearRingsWithOne', 3--1
+  `AsEndoMapping', 4--1
+  `AsExplicitMultiplicationNearRing', 5--5
+  `AsGroupGeneralMappingByImages', 4--2
+  `AsGroupReductElement', 2--4
+  `AsList', near ring ideals, 6--5
+    \sub near rings, 2--5
+  `AsNearRingElement', 2--4
+  `AsPermGroup', 1--7
+  `AsSortedList', near ring ideals, 6--5
+    \sub near rings, 2--5
+  `AsTransformationNearRing', 5--5
+  `AutomorphismNearRing', 5--3
+  `Automorphisms', 1--3
+    \sub near rings, 2--7
+\letter B
+  `BlockIntersectionNumbers', 11--4
+  `BlockIntersectionNumbersK', 11--4
+  `BlocksIncidentPoints', 11--5
+  `BlocksOfDesign', 11--3
+\letter C
+  `CentralizerNearRing', 5--3
+  `ClosureNearRingIdeal', 6--6
+  `ClosureNearRingLeftIdeal', 6--6
+  `ClosureNearRingRightIdeal', 6--6
+  commutators, \indexit{6--7}
+  comparision of ideals, \indexit{6--6}
+  `CompatibleFunctionNearRing', 5--3
+  `CongruenceNoetherianQuotient', for nearrings of polynomial functions, 5--6
+  `Congruence\-Noetherian\-Quotient\-For\-Inner\-Automorphism\-Near\-Rings ', for inner automorphism nearrings, 5--6
+  `ConstantEndoMapping', 4--2
+  constructing a design, \indexit{11--1}
+  constructing subnearrings, \indexit{2--8}
+  constructing transformation nearrings, \indexit{5--1}
+  construction of n-groups, \indexit{8--1}
+  construction of nearring ideals, \indexit{6--1}
+  construction of nearrings, \indexit{2--2}
+  coset representatives, \indexit{1--6}
+\letter D
+  defining a nearring multiplication, \indexit{2--1}
+  defining endo mappings, \indexit{4--1}
+  `DegreeOfIrredFpfRep2', 9--3
+  `DegreeOfIrredFpfRep3', 9--3
+  `DegreeOfIrredFpfRep4', 9--3
+  `DegreeOfIrredFpfRepCyclic', 9--2
+  `DegreeOfIrredFpfRepMetacyclic', 9--2
+  `DesignFromFerreroPair', 11--2
+  `DesignFromIncidenceMat', 11--1
+  `DesignFromPlanarNearRing', 11--1
+  `DesignFromPointsAndBlocks', 11--1
+  `DesignFromWdNearRing', 11--2
+  `DesignParameter', 11--3
+  `DicksonNearFields', 10--1
+  dickson nearfields, \indexit{10--1}
+  dickson numbers, \indexit{10--1}
+  `DirectProductNearRing', 2--3
+  direct products of nearrings, \indexit{2--3}
+  `DistributiveElements', 2--10
+  distributivity in a nearring, \indexit{2--10}
+  `Distributors', 2--10
+\letter E
+  elements of a nearring with special properties, \indexit{2--11}
+  `EndoMappingByFunction', 4--1
+  `EndoMappingByPositionList ', 4--1
+  `EndomorphismNearRing', 5--2
+  `Endomorphisms', 1--3
+    \sub near rings, 2--7
+  `Enumerator', near ring ideals, 6--5
+    \sub near rings, 2--5
+  `ExceptionalNearFields', 10--2
+  exceptional nearfields, \indexit{10--2}
+  `ExplicitMultiplicationNearRing', 2--2
+  `ExplicitMultiplicationNearRingNC', 2--2
+  extracting nearrings from the library, \indexit{3--1}
+\letter F
+  `FactorNearRing', 6--7
+  factor nearrings, \indexit{6--7}
+  fixed-point-free automorphism groups, \indexit{9--6}
+  fixed-point-free automorphism groups and frobenius groups, \indexit{9--1}
+  fixed-point-free representations, \indexit{9--2}
+  `FpfAutomorphismGroups2', 9--8
+  `FpfAutomorphismGroups3', 9--8
+  `FpfAutomorphismGroups4', 9--9
+  `FpfAutomorphismGroupsCyclic', 9--6
+  `FpfAutomorphismGroupsMaxSize', 9--1
+  `FpfAutomorphismGroupsMetacyclic', 9--7
+  `FpfRepresentations2', 9--4
+  `FpfRepresentations3', 9--5
+  `FpfRepresentations4', 9--6
+  `FpfRepresentationsCyclic', 9--3
+  `FpfRepresentationsMetacyclic', 9--4
+  `FrobeniusGroup', 9--1
+  functions for n-groups, \indexit{8--3}
+\letter G
+  `Gamma', 5--5
+  `GeneratorsOfNearRing', 2--6
+  `GeneratorsOfNearRingIdeal', 6--4
+  generators of nearring ideals, \indexit{6--4}
+  `GeneratorsOfNearRingLeftIdeal', 6--4
+  `GeneratorsOfNearRingRightIdeal', 6--5
+  `GraphicIdealLattice', 7--1
+  `GraphOfMapping', 4--4
+  group automorphisms, \indexit{1--3}
+  group endomorphisms, \indexit{1--3}
+  `GroupReduct', 2--7
+    \sub near ring ideals, 6--6
+  group reducts of ideals, \indexit{6--6}
+\letter I
+  ideals of n-groups, \indexit{8--4}
+  `IdempotentElements', 2--11
+  identifying nearrings, \indexit{3--2}
+  `Identity', 2--9
+  `IdentityEndoMapping', 4--2
+  identity of a nearring, \indexit{2--9}
+  `IdLibraryNearRing', 3--2
+  `IdLibraryNearRingWithOne', 3--2
+  `IdTWGroup', 1--1
+  in, 6--5
+  `IncidenceMat', 11--3
+  `InnerAutomorphismNearRing', 5--3
+  `InnerAutomorphisms', 1--4
+  inner automorphisms of a group, \indexit{1--4}
+  `Intersection', 6--6
+    \sub for nearring ideals, 6--6
+    \sub for nearrings, 2--8
+  intersection of nearrings, \indexit{2--8}
+  invariant subgroups, \indexit{1--5}
+  `InvariantSubNearRings', 2--8
+  invariant subnearrings, \indexit{2--8}
+  `Is1AffineComplete', 5--3
+  `Is2TameNGroup', 8--5
+  `Is3TameNGroup', 8--5
+  `IsAbelianNearRing', 2--12
+  `IsAbstractAffineNearRing', 2--12
+  `IsBooleanNearRing', 2--12
+  `IsCharacteristicInParent', 1--5
+  `IsCharacteristicSubgroup', 1--5
+  `IsCircularDesign', 11--4
+  `IsCommutative', 2--13
+  `IsCompatible', 8--5
+  `IsCompatibleEndoMapping', 5--3
+  `IsConstantEndoMapping', 4--3
+  `IsDgNearRing', 2--13
+  `IsDistributiveEndoMapping', 4--3
+  `IsDistributiveNearRing', 2--11
+  `IsEndoMapping', 4--2
+  `IsExplicitMultiplicationNearRing', 2--2
+  `IsFpfAutomorphismGroup', 9--1
+  `IsFpfRepresentation', 9--2
+  `IsFullinvariant', 1--5
+  `IsFullinvariantInParent', 1--5
+  `IsFullTransformationNearRing', 5--2
+  `IsIdentityEndoMapping', 4--3
+  `IsIntegralNearRing', 2--14
+  `IsInvariantUnderMaps', 1--5
+  `IsIsomorphicGroup', 1--4
+  `IsIsomorphicNearRing', 2--7
+  `IsLibraryNearRing', 3--2
+  islibrarynearring, \indexit{3--2}
+  `IsMaximalNearRingIdeal', 6--4
+  `IsMonogenic', 8--5
+  `IsN0SimpleNGroup', 8--5
+  `IsNearField', 2--14
+  `IsNearRing', 2--2
+  `IsNearRingIdeal', 6--3
+  `IsNearRingLeftIdeal', 6--3
+  `IsNearRingMultiplication', 2--1
+  `IsNearRingRightIdeal', 6--3
+  `IsNearRingUnit', 2--10
+  `IsNearRingWithOne', 2--9
+  `IsNGroup', 8--3
+  `IsNIdeal', 8--5
+  `IsNilNearRing', 2--13
+  `IsNilpotentFreeNearRing', 2--13
+  `IsNilpotentNearRing', 2--13
+  `IsNRI', 6--3
+  `IsNSubgroup', 8--4
+  isomorphic groups, \indexit{1--4}
+  isomorphic nearrings, \indexit{2--7}
+  `IsPairOfDicksonNumbers', 10--1
+  `IsPlanarNearRing', 2--15
+  `IsPointIncidentBlock', 11--4
+  `IsPrimeNearRing', 2--14
+  `IsPrimeNearRingIdeal', 6--4
+  `IsQuasiregularNearRing', 2--14
+  `IsRegularNearRing', 2--14
+  `IsSimpleNearRing', 6--7
+  `IsSimpleNGroup', 8--5
+  `IsStronglyMonogenic', 8--5
+  `IsSubgroupNearRingLeftIdeal', 6--3
+  `IsSubgroupNearRingRightIdeal', 6--4
+  `IsTameNGroup', 8--5
+  `IsWdNearRing', 2--15
+\letter L
+  `LibraryNearRing', 3--1
+  `LibraryNearRingInfo', 3--2
+  `LibraryNearRingWithOne', 3--1
+  `LocalInterpolationNearRing', 5--4
+\letter M
+  `MapNearRing', 5--2
+  membership of an ideal, \indexit{6--5}
+  modified symbols for the operation tables, \indexit{2--4}
+\letter N
+  n-subgroups, \indexit{8--4}
+  n0-subgroups, \indexit{8--4}
+  `N0Subgroups', 8--4
+  near-ring ideal elements, \indexit{6--5}
+  `NearRingActingOnNGroup', 8--3
+  nearring automorphisms, \indexit{2--7}
+  `NearRingCommutator', 6--7
+  nearring elements, \indexit{2--5}
+  nearring endomorphisms, \indexit{2--7}
+  nearring generators, \indexit{2--6}
+  `NearRingIdealByGenerators', 6--1
+  `NearRingIdealBySubgroupNC', 6--2
+  `NearRingIdeals', 6--2
+  `NearRingLeftIdealByGenerators', 6--1
+  `NearRingLeftIdealBySubgroupNC', 6--2
+  `NearRingLeftIdeals', 6--2
+  `NearRingMultiplicationByOperationTable', 2--1
+  nearring radicals, \indexit{8--6}
+  `NearRingRightIdealByGenerators', 6--1
+  `NearRingRightIdealBySubgroupNC', 6--2
+  `NearRingRightIdeals', 6--3
+  nearrings of transformations, \indexit{5--2}
+  `NearRingUnits', 2--10
+  `NGroup', 8--1
+  `NGroupByApplication', 8--2
+  `NGroupByNearRingMultiplication', 8--1
+  `NGroupByRightIdealFactor', 8--2
+  nicer ways to print a mapping, \indexit{4--4}
+  `NIdeal', 8--4
+  `NIdeals', 8--4
+  `NilpotencyClass', 1--6
+  nilpotency class, \indexit{1--6}
+  `NilpotentElements', 2--11
+  `NoetherianQuotient', 8--5
+    \sub for transformation nearrings, 5--5
+  noetherian quotients, \indexit{8--5}
+  noetherian quotients for transformation nearrings, \indexit{5--5}
+  `Nontrivial\-Representatives\-Mod\-Normal\-Subgroup', 1--6
+  normal subgroups generated by a single element, \indexit{1--4}
+  `NSubgroup', 8--4
+  `NSubgroups', 8--4
+  `NumberLibraryNearRings', 3--1
+  `NumberLibraryNearRingsWithOne', 3--1
+  `NumberOfDicksonNearFields', 10--2
+  `NuRadical', 8--6
+  `NuRadicals', 8--6
+\letter O
+  `One', 2--9
+  `OneGeneratedNormalSubgroups', 1--4
+  operations for endo mappings, \indexit{4--3}
+  operations with ideals, \indexit{6--6}
+  operation tables for groups, \indexit{1--2}
+  operation tables for nearrings, \indexit{2--3}
+  operation tables of n-groups, \indexit{8--2}
+  `OrbitRepresentativesForPlanarNearRing', 10--3
+  other useful functions for groups, \indexit{1--7}
+\letter P
+  `PlanarNearRing', 10--3
+  planar nearrings, \indexit{10--3}
+  `PointsIncidentBlocks', 11--4
+  `PointsOfDesign', 11--2
+  `PolynomialNearRing', 5--2
+  predefined groups, \indexit{1--1}
+  `PrintAsTerm', 4--4
+  `PrintIncidenceMat', 11--3
+  `PrintTable', 1--2
+    \sub for N-groups, 8--2
+    \sub near rings, 2--3
+  properties of a design, \indexit{11--2}
+  properties of endo mappings, \indexit{4--3}
+\letter Q
+  `QuasiregularElements', 2--12
+\letter R
+  `Random', near ring element, 2--6
+    \sub near ring ideal element, 6--5
+  random ideal elements, \indexit{6--5}
+  random nearring elements, \indexit{2--6}
+  `RegularElements', 2--12
+  `RepresentativesModNormalSubgroup', 1--6
+  `RestrictedEndomorphismNearRing', 5--4
+\letter S
+  `ScottLength', 1--6
+  scott length, \indexit{1--6}
+  `SetSymbols', 2--4
+  `SetSymbolsSupervised', 2--4
+  simple nearrings, \indexit{6--7}
+  `Size', near ring ideals, 6--6
+    \sub near rings, 2--6
+  size of a nearring, \indexit{2--6}
+  size of ideals, \indexit{6--6}
+  special ideal properties, \indexit{6--4}
+  special properties of a nearring, \indexit{2--12}
+  special properties of n-groups, \indexit{8--5}
+  `Subgroups', 1--4
+  subgroups, \indexit{1--2}
+  subgroups of a group, \indexit{1--4}
+  `SubNearRingBySubgroupNC', 2--8
+  `SubNearRings', 2--7
+  subnearrings, \indexit{2--7}
+  `Symbols', 2--4
+\letter T
+  testing for ideal properties, \indexit{6--3}
+  the additive group of a nearring, \indexit{2--7}
+  the group a transformation nearring acts on, \indexit{5--5}
+  `TransformationNearRing', 5--2
+  `Transformation\-Near\-Ring\-By\-Additive\-Generators', 5--1
+  `TransformationNearRingByGenerators', 5--1
+  transformation nearrings and other nearrings, \indexit{5--5}
+  `TWGroup', 1--1
+  `TypeOfNGroup', 8--5
+\letter U
+  units of a nearring, \indexit{2--10}
+\letter W
+  `WdNearRing', 10--4
+  weakly divisible nearrings, \indexit{10--4}
+  working with the points and blocks of a design, \indexit{11--4}
+\letter Z
+  `ZeroSymmetricCompatibleFunctionNearRing', 5--3
+  `ZeroSymmetricElements', 2--11
+  zerosymmetric mappings, \indexit{5--7}
+  `ZeroSymmetricPart', for transformation nearrings, 5--7

@@ -1,5 +1,6 @@
-\makelabel {sonata:chapter The authors}{2}
-\makelabel {sonata:chapter Preface}{3}
+\makelabel {sonata:chapter Copyright notice}{2}
+\makelabel {sonata:chapter The authors}{3}
+\makelabel {sonata:chapter Preface}{4}
 \makelabel {sonata:chapter Supportive functions for groups}{1}
 \makelabel {sonata:Predefined groups}{1.1}
 \makelabel {sonata:TWGroup}{1.1}
@@ -20,7 +21,7 @@
 \makelabel {sonata:OneGeneratedNormalSubgroups}{1.8}
 \makelabel {sonata:Invariant subgroups}{1.9}
 \makelabel {sonata:IsInvariantUnderMaps}{1.9}
-\makelabel {sonata:IsCharacteristic}{1.9}
+\makelabel {sonata:IsCharacteristicSubgroup}{1.9}
 \makelabel {sonata:IsCharacteristicInParent}{1.9}
 \makelabel {sonata:IsFullinvariant}{1.9}
 \makelabel {sonata:IsFullinvariantInParent}{1.9}
@@ -81,33 +82,37 @@
 \makelabel {sonata:Intersection!for nearrings}{2.18}
 \makelabel {sonata:Identity of a nearring}{2.19}
 \makelabel {sonata:Identity}{2.19}
+\makelabel {sonata:One}{2.19}
 \makelabel {sonata:IsNearRingWithOne}{2.19}
-\makelabel {sonata:Distributivity in a nearring}{2.20}
-\makelabel {sonata:Distributors}{2.20}
-\makelabel {sonata:DistributiveElements}{2.20}
-\makelabel {sonata:IsDistributiveNearRing}{2.20}
-\makelabel {sonata:Elements of a nearring with special properties}{2.21}
-\makelabel {sonata:ZeroSymmetricElements}{2.21}
-\makelabel {sonata:IdempotentElements}{2.21}
-\makelabel {sonata:NilpotentElements}{2.21}
-\makelabel {sonata:QuasiregularElements}{2.21}
-\makelabel {sonata:RegularElements}{2.21}
-\makelabel {sonata:Special properties of a nearring}{2.22}
-\makelabel {sonata:IsAbelianNearRing}{2.22}
-\makelabel {sonata:IsAbstractAffineNearRing}{2.22}
-\makelabel {sonata:IsBooleanNearRing}{2.22}
-\makelabel {sonata:IsNilNearRing}{2.22}
-\makelabel {sonata:IsNilpotentNearRing}{2.22}
-\makelabel {sonata:IsNilpotentFreeNearRing}{2.22}
-\makelabel {sonata:IsCommutative}{2.22}
-\makelabel {sonata:IsDgNearRing}{2.22}
-\makelabel {sonata:IsIntegralNearRing}{2.22}
-\makelabel {sonata:IsPrimeNearRing}{2.22}
-\makelabel {sonata:IsQuasiregularNearRing}{2.22}
-\makelabel {sonata:IsRegularNearRing}{2.22}
-\makelabel {sonata:IsNearField}{2.22}
-\makelabel {sonata:IsPlanarNearRing}{2.22}
-\makelabel {sonata:IsWdNearRing}{2.22}
+\makelabel {sonata:Units of a nearring}{2.20}
+\makelabel {sonata:IsNearRingUnit}{2.20}
+\makelabel {sonata:NearRingUnits}{2.20}
+\makelabel {sonata:Distributivity in a nearring}{2.21}
+\makelabel {sonata:Distributors}{2.21}
+\makelabel {sonata:DistributiveElements}{2.21}
+\makelabel {sonata:IsDistributiveNearRing}{2.21}
+\makelabel {sonata:Elements of a nearring with special properties}{2.22}
+\makelabel {sonata:ZeroSymmetricElements}{2.22}
+\makelabel {sonata:IdempotentElements}{2.22}
+\makelabel {sonata:NilpotentElements}{2.22}
+\makelabel {sonata:QuasiregularElements}{2.22}
+\makelabel {sonata:RegularElements}{2.22}
+\makelabel {sonata:Special properties of a nearring}{2.23}
+\makelabel {sonata:IsAbelianNearRing}{2.23}
+\makelabel {sonata:IsAbstractAffineNearRing}{2.23}
+\makelabel {sonata:IsBooleanNearRing}{2.23}
+\makelabel {sonata:IsNilNearRing}{2.23}
+\makelabel {sonata:IsNilpotentNearRing}{2.23}
+\makelabel {sonata:IsNilpotentFreeNearRing}{2.23}
+\makelabel {sonata:IsCommutative}{2.23}
+\makelabel {sonata:IsDgNearRing}{2.23}
+\makelabel {sonata:IsIntegralNearRing}{2.23}
+\makelabel {sonata:IsPrimeNearRing}{2.23}
+\makelabel {sonata:IsQuasiregularNearRing}{2.23}
+\makelabel {sonata:IsRegularNearRing}{2.23}
+\makelabel {sonata:IsNearField}{2.23}
+\makelabel {sonata:IsPlanarNearRing}{2.23}
+\makelabel {sonata:IsWdNearRing}{2.23}
 \makelabel {sonata:chapter The nearring library}{3}
 \makelabel {sonata:Extracting nearrings from the library}{3.1}
 \makelabel {sonata:LibraryNearRing}{3.1}
@@ -250,9 +255,9 @@
 \makelabel {sonata:IsN0SimpleNGroup}{8.6}
 \makelabel {sonata:Special properties of N-groups}{8.7}
 \makelabel {sonata:IsCompatible}{8.7}
-\makelabel {sonata:IsTame}{8.7}
-\makelabel {sonata:Is2Tame}{8.7}
-\makelabel {sonata:Is3Tame}{8.7}
+\makelabel {sonata:IsTameNGroup}{8.7}
+\makelabel {sonata:Is2TameNGroup}{8.7}
+\makelabel {sonata:Is3TameNGroup}{8.7}
 \makelabel {sonata:IsMonogenic}{8.7}
 \makelabel {sonata:IsStronglyMonogenic}{8.7}
 \makelabel {sonata:TypeOfNGroup}{8.7}

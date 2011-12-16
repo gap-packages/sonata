@@ -21,7 +21,7 @@ DeclareAttribute( "OneGeneratedNormalSubgroups", IsGroup );
 ## subgroup of <G>.
 ##
 
-DeclareOperation( "IsCharacteristic", [IsGroup, IsGroup] );
+#DeclareOperation( "IsCharacteristic", [IsGroup, IsGroup] );
 
 #####################################################################
 ##

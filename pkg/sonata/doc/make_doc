@@ -6,24 +6,28 @@
 
 echo "TeXing documentation:ref"
 # TeX the manual and build its bibliography
+# CAVEAT: For version 2.4 manualindex did not produce a proper file manual.mst
+# for the reference-manual, hence no index. Copying manual.mst for the
+# tutorial-manual into the directory ref/ did the trick.
 (cd ref;tex manual;bibtex manual\
-tex manual; ../../../doc/manualindex manual\
+tex manual; ../../doc/manualindex manual\
 tex manual;pdftex manual;pdftex manual)
 
 echo "TeXing documentation:tut"
 (cd tut;tex manual;bibtex manual\
-tex manual; ../../../doc/manualindex manual\
+tex manual; ../../doc/manualindex manual\
 tex manual;pdftex manual;pdftex manual)
 
 # The HTML version of the manual
 mkdir -p ../htm
 mkdir -p ../htm/ref
 mkdir -p ../htm/tut
-echo "Creating HTML documentation"
+echo "Creating HTML documentation:ref"
 (cd ref;../convert.pl -t -c -n SONATA . ../../htm/ref)
 (cd ../htm/ref;for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done; rm -f tmp)
 
 #(cd ref;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA . ../../htm/ref)
+echo "Creating HTML documentation:tut"
 (cd tut;../convert.pl -t -c -n SONATA-tutorial . ../../htm/tut)
 (cd ../htm/tut;for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done; rm -f tmp)
 #(cd tut;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA-tutorial . ../../htm/tut)

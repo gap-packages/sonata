@@ -17,7 +17,7 @@
 \indexentry {OneGeneratedNormalSubgroups@`OneGeneratedNormalSubgroups'}{1--4}
 \indexentry {Invariant subgroups|indexit}{1--5}
 \indexentry {IsInvariantUnderMaps@`IsInvariantUnderMaps'}{1--5}
-\indexentry {IsCharacteristic@`IsCharacteristic'}{1--5}
+\indexentry {IsCharacteristicSubgroup@`IsCharacteristicSubgroup'}{1--5}
 \indexentry {IsCharacteristicInParent@`IsCharacteristicInParent'}{1--5}
 \indexentry {IsFullinvariant@`IsFullinvariant'}{1--5}
 \indexentry {IsFullinvariantInParent@`IsFullinvariantInParent'}{1--5}
@@ -77,33 +77,37 @@
 \indexentry {Intersection@`Intersection'!for nearrings}{2--8}
 \indexentry {Identity of a nearring|indexit}{2--9}
 \indexentry {Identity@`Identity'}{2--9}
+\indexentry {One@`One'}{2--9}
 \indexentry {IsNearRingWithOne@`IsNearRingWithOne'}{2--9}
+\indexentry {Units of a nearring|indexit}{2--10}
+\indexentry {IsNearRingUnit@`IsNearRingUnit'}{2--10}
+\indexentry {NearRingUnits@`NearRingUnits'}{2--10}
 \indexentry {Distributivity in a nearring|indexit}{2--10}
 \indexentry {Distributors@`Distributors'}{2--10}
 \indexentry {DistributiveElements@`DistributiveElements'}{2--10}
-\indexentry {IsDistributiveNearRing@`IsDistributiveNearRing'}{2--10}
-\indexentry {Elements of a nearring with special properties|indexit}{2--10}
-\indexentry {ZeroSymmetricElements@`ZeroSymmetricElements'}{2--10}
+\indexentry {IsDistributiveNearRing@`IsDistributiveNearRing'}{2--11}
+\indexentry {Elements of a nearring with special properties|indexit}{2--11}
+\indexentry {ZeroSymmetricElements@`ZeroSymmetricElements'}{2--11}
 \indexentry {IdempotentElements@`IdempotentElements'}{2--11}
 \indexentry {NilpotentElements@`NilpotentElements'}{2--11}
-\indexentry {QuasiregularElements@`QuasiregularElements'}{2--11}
-\indexentry {RegularElements@`RegularElements'}{2--11}
+\indexentry {QuasiregularElements@`QuasiregularElements'}{2--12}
+\indexentry {RegularElements@`RegularElements'}{2--12}
 \indexentry {Special properties of a nearring|indexit}{2--12}
 \indexentry {IsAbelianNearRing@`IsAbelianNearRing'}{2--12}
 \indexentry {IsAbstractAffineNearRing@`IsAbstractAffineNearRing'}{2--12}
 \indexentry {IsBooleanNearRing@`IsBooleanNearRing'}{2--12}
-\indexentry {IsNilNearRing@`IsNilNearRing'}{2--12}
-\indexentry {IsNilpotentNearRing@`IsNilpotentNearRing'}{2--12}
+\indexentry {IsNilNearRing@`IsNilNearRing'}{2--13}
+\indexentry {IsNilpotentNearRing@`IsNilpotentNearRing'}{2--13}
 \indexentry {IsNilpotentFreeNearRing@`IsNilpotentFreeNearRing'}{2--13}
 \indexentry {IsCommutative@`IsCommutative'}{2--13}
 \indexentry {IsDgNearRing@`IsDgNearRing'}{2--13}
-\indexentry {IsIntegralNearRing@`IsIntegralNearRing'}{2--13}
-\indexentry {IsPrimeNearRing@`IsPrimeNearRing'}{2--13}
+\indexentry {IsIntegralNearRing@`IsIntegralNearRing'}{2--14}
+\indexentry {IsPrimeNearRing@`IsPrimeNearRing'}{2--14}
 \indexentry {IsQuasiregularNearRing@`IsQuasiregularNearRing'}{2--14}
 \indexentry {IsRegularNearRing@`IsRegularNearRing'}{2--14}
 \indexentry {IsNearField@`IsNearField'}{2--14}
-\indexentry {IsPlanarNearRing@`IsPlanarNearRing'}{2--14}
-\indexentry {IsWdNearRing@`IsWdNearRing'}{2--14}
+\indexentry {IsPlanarNearRing@`IsPlanarNearRing'}{2--15}
+\indexentry {IsWdNearRing@`IsWdNearRing'}{2--15}
 \indexentry {Extracting nearrings from the library|indexit}{3--1}
 \indexentry {LibraryNearRing@`LibraryNearRing'}{3--1}
 \indexentry {NumberLibraryNearRings@`NumberLibraryNearRings'}{3--1}
@@ -240,9 +244,9 @@
 \indexentry {IsN0SimpleNGroup@`IsN0SimpleNGroup'}{8--5}
 \indexentry {Special properties of N-groups|indexit}{8--5}
 \indexentry {IsCompatible@`IsCompatible'}{8--5}
-\indexentry {IsTame@`IsTame'}{8--5}
-\indexentry {Is2Tame@`Is2Tame'}{8--5}
-\indexentry {Is3Tame@`Is3Tame'}{8--5}
+\indexentry {IsTameNGroup@`IsTameNGroup'}{8--5}
+\indexentry {Is2TameNGroup@`Is2TameNGroup'}{8--5}
+\indexentry {Is3TameNGroup@`Is3TameNGroup'}{8--5}
 \indexentry {IsMonogenic@`IsMonogenic'}{8--5}
 \indexentry {IsStronglyMonogenic@`IsStronglyMonogenic'}{8--5}
 \indexentry {TypeOfNGroup@`TypeOfNGroup'}{8--5}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{CFF02}
+\begin{thebibliography}{W{\accent127 a}h87}
 
 \bibitem[CFF02]{Ferrero:Nearrings}
 Celestina Cotti~Ferrero and Giovanni Ferrero.
@@ -26,5 +26,10 @@ G{\accent127 u}nter Pilz.
 A.~D. Thomas and G.~V. Wood.
 \newblock {\em Group tables}.
 \newblock Shiva Publishing Ltd., Nantwich, 1980.
+
+\bibitem[W{\accent127 a}h87]{Waehling:Fastkoerper}
+Heinz W{\accent127 a}hling.
+\newblock {\em Theorie der Fastk{\accent127 o}rper}.
+\newblock Thales Verlag, Essen, 1987.
 
 \end{thebibliography}

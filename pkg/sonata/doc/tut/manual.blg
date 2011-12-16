@@ -1,45 +1,45 @@
-This is BibTeX, Version 0.99c (Web2C 7.3.7)
+This is BibTeX, Version 0.99c (Web2C 7.5.4)
 The top-level auxiliary file: manual.aux
 The style file: alpha.bst
 Database file #1: ../ref/sonata.bib
-You've used 5 entries,
+You've used 6 entries,
             2543 wiz_defined-function locations,
-            597 strings with 5252 characters,
-and the built_in function-call counts, 1530 in all, are:
-= -- 135
-> -- 62
-< -- 4
-+ -- 18
-- -- 18
-* -- 93
-:= -- 270
-add.period$ -- 15
-call.type$ -- 5
-change.case$ -- 23
-chr.to.int$ -- 5
-cite$ -- 5
-duplicate$ -- 79
-empty$ -- 127
-format.name$ -- 26
-if$ -- 309
+            604 strings with 5376 characters,
+and the built_in function-call counts, 1800 in all, are:
+= -- 159
+> -- 70
+< -- 5
++ -- 20
+- -- 20
+* -- 107
+:= -- 314
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 27
+chr.to.int$ -- 6
+cite$ -- 6
+duplicate$ -- 95
+empty$ -- 152
+format.name$ -- 30
+if$ -- 365
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 10
-newline$ -- 28
-num.names$ -- 15
-pop$ -- 38
+missing$ -- 12
+newline$ -- 33
+num.names$ -- 18
+pop$ -- 46
 preamble$ -- 1
-purify$ -- 32
+purify$ -- 38
 quote$ -- 0
-skip$ -- 54
+skip$ -- 65
 stack$ -- 0
-substring$ -- 35
-swap$ -- 7
-text.length$ -- 4
-text.prefix$ -- 3
+substring$ -- 42
+swap$ -- 8
+text.length$ -- 5
+text.prefix$ -- 4
 top$ -- 0
-type$ -- 20
+type$ -- 24
 warning$ -- 0
-while$ -- 12
+while$ -- 14
 width$ -- 7
-write$ -- 69
+write$ -- 82

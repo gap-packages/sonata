@@ -42,11 +42,11 @@ Subtitle := "System of nearrings and their applications",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "2.3",
+Version := "2.4",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 # 
-Date := "05/03/2004",
+Date := "20/11/2008",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
@@ -58,7 +58,7 @@ Date := "05/03/2004",
 # 
 ArchiveURL := 
 #          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-1.5",
-	   "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.3/sonata-2.3",
+	   "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.4/sonata-2.4",
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
 ##  Currently recognized formats are:
@@ -139,10 +139,9 @@ Persons := [
     Email         := "erhard.aichinger@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~erhard/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra, Stochastik und\n",
-		       "wissensbasierte mathematische Systeme\n",
+                       "Institut für Algebra\n",
 		       "Johannes Kepler Universität Linz\n",
-                       "4020 Linz\n",
+                       "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
     Institution   := "Johannes Kepler Universität Linz"
@@ -155,10 +154,9 @@ Persons := [
     Email         := "franz.binder@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~xbx/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra, Stochastik und\n",
-		       "wissensbasierte mathematische Systeme\n",
+                       "Institut für Algebra\n",
 		       "Johannes Kepler Universität Linz\n",
-                       "4020 Linz\n",
+                       "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
     Institution   := "Johannes Kepler Universität Linz"
@@ -171,10 +169,9 @@ Persons := [
     Email         := "juergen.ecker@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~juergen/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra, Stochastik und\n",
-		       "wissensbasierte mathematische Systeme\n",
+                       "Institut für Algebra\n",
 		       "Johannes Kepler Universität Linz\n",
-                       "4020 Linz\n",
+                       "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
     Institution   := "Johannes Kepler Universität Linz"
@@ -187,10 +184,9 @@ Persons := [
     Email         := "peter.mayr@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~stein/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra, Stochastik und\n",
-		       "wissensbasierte mathematische Systeme\n",
+                       "Institut für Algebra\n",
 		       "Johannes Kepler Universität Linz\n",
-                       "4020 Linz\n",
+                       "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
     Institution   := "Johannes Kepler Universität Linz"
@@ -201,12 +197,11 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := false,
     Email         := "christof.noebauer@algebra.uni-linz.ac.at",
-    WWWHome       := "http://www.algebra.uni-linz.ac.at/~noebsi/",
+    WWWHome       := "http://www.algebra.uni-linz.ac.at/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra, Stochastik und\n",
-		       "wissensbasierte mathematische Systeme\n",
+                       "Institut für Algebra",
 		       "Johannes Kepler Universität Linz\n",
-                       "4020 Linz\n",
+                       "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
     Institution   := "Johannes Kepler Universität Linz"
@@ -246,10 +241,10 @@ AcceptDate := "04/2003",
 #
 README_URL := 
 #  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/README.example",
-  "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.3/README.sonata",
+  "http://www.algebra.uni-linz.ac.at/Sonata/README.sonata",
 PackageInfoURL := 
 #  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/PackageInfo.g",
-  "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.3/PackageInfo.g",
+  "http://www.algebra.uni-linz.ac.at/Sonata/PackageInfo.g",
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
@@ -306,7 +301,7 @@ PackageDoc := [
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
 #  Archive := 
 #      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-1.5.zoo",
-#      "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.3/sonatadoc-2.3.tar.gz",
+#      "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.4/sonatadoc-2.4.tar.gz",
 #  ArchiveURLSubset := ["doc", "htm"],
   ArchiveURLSubset := ["doc/ref","htm/ref"],
   HTMLStart := "htm/ref/chapters.htm",
@@ -327,7 +322,7 @@ PackageDoc := [
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
 #  Archive := 
 #      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-1.5.zoo",
-#      "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.3/sonatatut-2.3.tar.gz",
+#      "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.4/sonatatut-2.4.tar.gz",
 #  ArchiveURLSubset := ["doc", "htm"],
   ArchiveURLSubset := ["doc/tut","htm/tut"],
   HTMLStart := "htm/tut/chapters.htm",

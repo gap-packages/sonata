@@ -50,23 +50,23 @@ DeclareProperty( "IsCompatible", IsGroup );
 
 ##############################################################################
 ##
-#P  IsTame( <NGroup> )
+#P  IsTameNGroup( <NGroup> )
 
-DeclareProperty( "IsTame", IsDomain );
-
-##############################################################################
-##
-#P  Is2Tame( <NGroup> )
-##
-
-DeclareProperty( "Is2Tame", IsGroup );
+DeclareProperty( "IsTameNGroup", IsDomain );
 
 ##############################################################################
 ##
-#P  Is3Tame( <NGroup> )
+#P  Is2TameNGroup( <NGroup> )
 ##
 
-DeclareProperty( "Is3Tame", IsGroup );
+DeclareProperty( "Is2TameNGroup", IsGroup );
+
+##############################################################################
+##
+#P  Is3TameNGroup( <NGroup> )
+##
+
+DeclareProperty( "Is3TameNGroup", IsGroup );
 
 ##############################################################################
 ##

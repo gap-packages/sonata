@@ -2,11 +2,14 @@
 ##
 #W  grptfms.gd             Near-ring Library                   Christof N"obauer
 ##
-#H  @(#)$Id: grptfms.gd,v 1.7 2002/01/18 07:20:50 erhard Exp $
+#H  @(#)$Id: grptfms.gd,v 1.8 2008-11-13 14:18:17 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: grptfms.gd,v $
+##  Revision 1.8  2008-11-13 14:18:17  stein
+##  Replaced IsNearRingEnumerator by IsTransformationNearRingEnumerator
+##
 ##  Revision 1.7  2002/01/18 07:20:50  erhard
 ##  I have added the function GraphOfMapping.
 ##
@@ -31,7 +34,7 @@
 ##
 
 grptfms_gd:=
-  "@(#)$Id: grptfms.gd,v 1.7 2002/01/18 07:20:50 erhard Exp $";
+  "@(#)$Id: grptfms.gd,v 1.8 2008-11-13 14:18:17 stein Exp $";
 
 DeclareOperation( "GroupGeneralMappingByGroupElement",
 	[IsGroup,IsMultiplicativeElementWithInverse] ); 
@@ -199,9 +202,9 @@ DeclareProperty( "IsIdentityMapping", IsGroupGeneralMapping );
 
 #############################################################################
 ##
-#R  IsNearRingEnumerator	For nearrings with known additive group
+#R  IsTransformationNearRingEnumerator	For nearrings with known additive group
 
-DeclareRepresentation( "IsNearRingEnumerator",
+DeclareRepresentation( "IsTransformationNearRingEnumerator",
 			IsAttributeStoringRep,
 			["additiveGroup", "elementsFam"] );
 

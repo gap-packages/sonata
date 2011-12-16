@@ -1,5 +1,6 @@
 sonata/init.g
 sonata/read.g
+sonata/README.sonata
 sonata/PackageInfo.g
 sonata/doc/gapmacro.tex
 sonata/doc/ref/fpf.tex
@@ -108,7 +109,6 @@ sonata/lib/fpf.gi
 sonata/lib/nfplwd.gd
 sonata/lib/random.gd
 sonata/lib/design.gi
-sonata/lib/.directory
 sonata/lib/nrid.gi
 sonata/lib/ngroups.gi
 sonata/lib/libnr.gd
