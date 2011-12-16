@@ -21,8 +21,8 @@
 <li> <A HREF="CHAP006.htm#SECT014">Factor nearrings</a>
 </ol><p>
 <p>
-For an introduction to nearring ideals we suggest citePilz:Nearrings,
-citemeldrum85:NATLWG, and citeClay:Nearrings.
+For an introduction to nearring ideals we suggest <a href="biblio.htm#Pilz:Nearrings"><[>Pilz:Nearrings</cite></a>],
+<a href="biblio.htm#meldrum85:NATLWG"><[>meldrum85:NATLWG</cite></a>], and <a href="biblio.htm#Clay:Nearrings"><[>Clay:Nearrings</cite></a>].
 <p>
 Ideals of nearrings can either be left, right or twosided ideals. However,
 all of them are called ideals. Mathematicians tend to use the expression
@@ -52,21 +52,21 @@ of the group reduct of the nearring which is an ideal. Finally
 <code>NearRingLeftIdeals</code>, <code>NearRingRightIdeals</code> and <code>NearRingIdeals</code>
 compute lists of all (left / right) ideals of a nearring.
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.1"></a>
 <li><code>NearRingIdealByGenerators( </code><var>nr</var><code>, </code><var>gens</var><code> )</code>
 <p>
 The function <code>NearRingIdealByGenerators</code> takes as arguments a nearring <var>nr</var>
 and a list <var>gens</var> of arbitrarily many elements of <var>nr</var>. It returns the
 smallest ideal of <var>nr</var> containing all elements of <var>gens</var>.
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.2"></a>
 <li><code>NearRingLeftIdealByGenerators( </code><var>nr</var><code>, </code><var>gens</var><code> )</code>
 <p>
 The function <code>NearRingLeftIdealByGenerators</code> takes as arguments a nearring <var>nr</var>
 and a list <var>gens</var> of arbitrarily many elements of <var>nr</var>. It returns the
 smallest left ideal of <var>nr</var> containing all elements of <var>gens</var>.
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.3"></a>
 <li><code>NearRingRightIdealByGenerators( </code><var>nr</var><code>, </code><var>gens</var><code> )</code>
 <p>
 The function <code>NearRingRightIdealByGenerators</code> takes as arguments a nearring
@@ -92,29 +92,29 @@ smallest right ideal of <var>nr</var> containing all elements of <var>gens</var>
     false
 </pre>
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.4"></a>
 <li><code>NearRingIdealBySubgroupNC( </code><var>nr</var><code>, </code><var>S</var><code> )</code>
 <p>
 From a nearring <var>nr</var> and a subgroup <var>S</var> of the group reduct of <var>nr</var>,
 <code>NearRingIdealBySubgroupNC</code> constructs a (<font face="Gill Sans,Helvetica,Arial">GAP</font>--) ideal of <var>nr</var>. It is
 assumed (and hence not checked) that <var>S</var> is an ideal of <var>nr</var>. See Section
-<a href="CHAP006.htm#SECT002">IsSubgroupNearRingLeftIdeal</a> for information how to check this.
+<a href="CHAP006.htm#SSEC002.5">IsSubgroupNearRingLeftIdeal</a> for information how to check this.
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.5"></a>
 <li><code>NearRingLeftIdealBySubgroupNC( </code><var>nr</var><code>, </code><var>S</var><code> )</code>
 <p>
 From a nearring <var>nr</var> and a subgroup <var>S</var> of the group reduct of <var>nr</var>,
 <code>NearRingLeftIdealBySubgroupNC</code> constructs a (<font face="Gill Sans,Helvetica,Arial">GAP</font>--) left ideal of <var>nr</var>. It
 is assumed (and hence not checked) that <var>S</var> is a left ideal of <var>nr</var>. See
-Section <a href="CHAP006.htm#SECT002">IsSubgroupNearRingLeftIdeal</a> for information how to check this.
+Section <a href="CHAP006.htm#SSEC002.5">IsSubgroupNearRingLeftIdeal</a> for information how to check this.
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.6"></a>
 <li><code>NearRingRightIdealBySubgroupNC( </code><var>nr</var><code>, </code><var>S</var><code> )</code>
 <p>
 From a nearring <var>nr</var> and a subgroup <var>S</var> of the group reduct of <var>nr</var>,
 <code>NearRingRightIdealBySubgroupNC</code> constructs a (<font face="Gill Sans,Helvetica,Arial">GAP</font>--) right ideal of <var>nr</var>.
 It is assumed (and hence not checked) that <var>S</var> is a right ideal of <var>nr</var>.
-See Section <a href="CHAP006.htm#SECT002">IsSubgroupNearRingRightIdeal</a> for information how to check this.
+See Section <a href="CHAP006.htm#SSEC002.6">IsSubgroupNearRingRightIdeal</a> for information how to check this.
 <p>
 <pre>
     gap&gt; a := GroupReduct( n );                                          
@@ -132,7 +132,7 @@ See Section <a href="CHAP006.htm#SECT002">IsSubgroupNearRingRightIdeal</a> for i
       &lt; nearring right ideal &gt; ]
 </pre>
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.7"></a>
 <li><code>NearRingIdeals( </code><var>nr</var><code> )</code>
 <p>
 <code>NearRingIdeals</code>  computes all ideals of the nearring <var>nr</var>. The return value
@@ -140,12 +140,12 @@ is a list of ideals of <var>nr</var>
 <p>
 For one-sided ideals the functions
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.8"></a>
 <li><code>NearRingLeftIdeals( </code><var>nr</var><code> )</code>
 <p>
 and
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.9"></a>
 <li><code>NearRingRightIdeals( </code><var>nr</var><code> )</code>
 <p>
 can be used.
@@ -154,36 +154,36 @@ can be used.
     gap&gt; NearRingIdeals( n );
     [ &lt; nearring ideal &gt;, &lt; nearring ideal &gt;, &lt; nearring ideal &gt; ]
     gap&gt; NearRingRightIdeals( n );
-    [ &lt; nearring left ideal &gt;, &lt; nearring left ideal &gt;, 
-      &lt; nearring left ideal &gt; ]
-    gap&gt; NearRingLeftIdeals( n );
     [ &lt; nearring right ideal &gt;, &lt; nearring right ideal &gt;, 
-      &lt; nearring right ideal &gt;, &lt; nearring right ideal &gt; ]
+      &lt; nearring right ideal &gt; ]
+    gap&gt; NearRingLeftIdeals( n );
+    [ &lt; nearring left ideal &gt;, &lt; nearring left ideal &gt;, &lt; nearring left ideal &gt;, 
+      &lt; nearring left ideal &gt; ]
 </pre>
 <p>
 <p>
 <h2><a name="SECT002">6.2 Testing for ideal properties</a></h2>
 <p><p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.1"></a>
 <li><code>IsNRI( </code><var>obj</var><code> )</code>
 <p>
 <code>IsNRI</code> returns <code>true</code> if the object <var>obj</var> is a left ideal, a right ideal or
 an ideal of a nearring. (Such an object may be considered as a (one or
 twosided) <font face="Gill Sans,Helvetica,Arial">GAP</font> -- nearring ideal.)
 <p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.2"></a>
 <li><code>IsNearRingLeftIdeal( </code><var>I</var><code> )</code>
 <p>
 The function <code>IsNearRingLeftIdeal</code> can be applied to any <code>NRI</code>.
 It returns <code>true</code> if <var>I</var> is a left ideal in its parent nearring.
 <p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.3"></a>
 <li><code>IsNearRingRightIdeal( </code><var>I</var><code> )</code>
 <p>
 The function <code>IsNearRingRightIdeal</code> can be applied to any <code>NRI</code>.
 It returns <code>true</code> if <var>I</var> is a right ideal in its parent nearring.
 <p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.4"></a>
 <li><code>IsNearRingIdeal( </code><var>I</var><code> )</code>
 <p>
 The function <code>IsNearRingIdeal</code> can be applied to any <code>NRI</code>.
@@ -206,12 +206,12 @@ It returns <code>true</code> if <var>I</var> is an ideal in its parent nearring.
     &lt; nearring ideal &gt;
 </pre>
 <p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.5"></a>
 <li><code>IsSubgroupNearRingLeftIdeal( </code><var>nr</var><code>, </code><var>S</var><code> )</code>
 <p>
-Let <var>(N,+,.)</var> be a nearring. A subgroup <var>S</var> of the group <var>(N,+)</var> is a
-<strong>left ideal</strong> of <var>N</var> if for all <var>a</var>, <var>b</var> in <var>N</var> and  <var>s</var> in <var>S</var>:\
-<var>a.(b+s)-a.b</var> in <var>S</var>. 
+Let (<i>N</i>,+,&#183;) be a nearring. A subgroup <i>S</i> of the group (<i>N</i>,+) is a
+<strong>left ideal</strong> of <i>N</i> if for all <i>a</i>, <i>b</i> in <i>N</i> and  <i>s</i> in <i>S</i>:\
+<i>a</i>&#183;(<i>b</i>+<i>s</i>)<font face="symbol">-</font><i>a</i>&#183;<i>b</i> in <i>S</i>. 
 <code>IsSubgroupNearRingLeftIdeal</code> takes as arguments a nearring <var>nr</var> and a subgroup
 <var>S</var> of the group reduct of <var>nr</var> and returns <code>true</code> if <var>S</var> is a nearring
 ideal of <var>nr</var> and <code>false</code> otherwise.
@@ -219,14 +219,14 @@ ideal of <var>nr</var> and <code>false</code> otherwise.
 <strong>Note</strong>, that if <code>IsSubgroupNearRingLeftIdeal</code> returns <code>true</code> this means that
 <var>S</var> is a left ideal only in the mathematical sense, not in <font face="Gill Sans,Helvetica,Arial">GAP</font>--sense (it is
 a group, not a left ideal). You can use <code>NearRingLeftIdealBySubgroupNC</code> (see
-Section <a href="CHAP006.htm#SECT001">NearRingLeftIdealBySubgroupNC</a>) to construct the corresponding left
+Section <a href="CHAP006.htm#SSEC001.5">NearRingLeftIdealBySubgroupNC</a>) to construct the corresponding left
 ideal.
 <p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.6"></a>
 <li><code>IsSubgroupNearRingRightIdeal( </code><var>nr</var><code>, </code><var>S</var><code> )</code>
 <p>
-Let <var>(N,+,.)</var> be a nearring. A subgroup <var>S</var> of the group <var>(N,+)</var> is a
-<strong>right ideal</strong> of <var>N</var> if <var>S.N subseteqS</var>.
+Let (<i>N</i>,+,&#183;) be a nearring. A subgroup <i>S</i> of the group (<i>N</i>,+) is a
+<strong>right ideal</strong> of <i>N</i> if <i>S</i>&#183;<i>N</i>  <font face="symbol">Í</font> <i>S</i>.
 <code>IsSubgroupNearRingRightIdeal</code> takes as arguments a nearring <var>nr</var> and a
 subgroup <var>S</var> of the group reduct of <var>nr</var> and returns <code>true</code> if <var>S</var> is a
 right ideal of <var>nr</var> and <code>false</code> otherwise.
@@ -235,7 +235,7 @@ right ideal of <var>nr</var> and <code>false</code> otherwise.
 <var>S</var> is a right ideal only in the mathematical sense, not in <font face="Gill Sans,Helvetica,Arial">GAP</font>--sense (it
 is a group, not a right ideal). You can use
 <code>NearRingRightIdealBySubgroupNC</code> (see Section
-<a href="CHAP006.htm#SECT001">NearRingRightIdealBySubgroupNC</a>) to construct the corresponding right ideal.
+<a href="CHAP006.htm#SSEC001.6">NearRingRightIdealBySubgroupNC</a>) to construct the corresponding right ideal.
 <p>
 <pre>
     gap&gt; n := LibraryNearRing( GTW6_2, 39 );                    
@@ -252,12 +252,12 @@ is a group, not a right ideal). You can use
 <p>
 <h2><a name="SECT003">6.3 Special ideal properties</a></h2>
 <p><p>
-<a name = "SECT003"></a>
+<a name = "SSEC003.1"></a>
 <li><code>IsPrimeNearRingIdeal( </code><var>I</var><code> )</code>
 <p>
-An ideal <var>I</var> of a nearring <var>N</var> is <strong>prime</strong> if for any two ideals <var>J</var> and <var>K</var>
-of <var>N</var> whenever <var>J.K</var> is contained in <var>I</var> then at least one of them is
-contained in <var>I</var>.
+An ideal <i>I</i> of a nearring <i>N</i> is <strong>prime</strong> if for any two ideals <i>J</i> and <i>K</i>
+of <i>N</i> whenever <i>J</i>&#183;<i>K</i> is contained in <i>I</i> then at least one of them is
+contained in <i>I</i>.
 <code>IsPrimeNearRingIdeal</code> returns <code>true</code> if <var>I</var> is a prime ideal in its parent
 nearring and <code>false</code> otherwise.
 <p>
@@ -268,11 +268,11 @@ nearring and <code>false</code> otherwise.
     [ &lt; nearring ideal of size 9 &gt;, &lt; nearring ideal of size 27 &gt; ]
 </pre>
 <p>
-<a name = "SECT003"></a>
+<a name = "SSEC003.2"></a>
 <li><code>IsMaximalNearRingIdeal( </code><var>I</var><code> )</code>
 <p>
-A proper ideal <var>I</var> of a nearring <var>N</var> is <strong>maximal</strong> if there is no
-proper ideal containing <var>I</var> properly.
+A proper ideal <i>I</i> of a nearring <i>N</i> is <strong>maximal</strong> if there is no
+proper ideal containing <i>I</i> properly.
 <code>IsMaximalNearRingIdeal( </code><var>I</var><code> ) returns `true</code> if <var>I</var> is a
 maximal ideal in its parent nearring and <code>false</code> otherwise.
 <p>
@@ -286,21 +286,21 @@ maximal ideal in its parent nearring and <code>false</code> otherwise.
 <p>
 <h2><a name="SECT004">6.4 Generators of nearring ideals</a></h2>
 <p><p>
-<a name = "SECT004"></a>
+<a name = "SSEC004.1"></a>
 <li><code>GeneratorsOfNearRingIdeal( </code><var>I</var><code> )</code>
 <p>
 For an <code>NRI</code> <var>I</var> the function <code>GeneratorsOfNearRingIdeal</code>
 returns a set of elements of the parent nearring of <var>I</var> that generates <var>I</var>
 as an ideal.
 <p>
-<a name = "SECT004"></a>
+<a name = "SSEC004.2"></a>
 <li><code>GeneratorsOfNearRingLeftIdeal( </code><var>I</var><code> )</code>
 <p>
 For an <code>NRI</code> <var>I</var> the function <code>GeneratorsOfNearRingLeftIdeal</code>
 returns a set of elements of the parent nearring of <var>I</var> that generates <var>I</var>
 as a left ideal.
 <p>
-<a name = "SECT004"></a>
+<a name = "SSEC004.3"></a>
 <li><code>GeneratorsOfNearRingRightIdeal( </code><var>I</var><code> )</code>
 <p>
 For an <code>NRI</code> <var>I</var> the function <code>GeneratorsOfNearRingRightIdeal</code>
@@ -310,18 +310,18 @@ as a right ideal.
 <p>
 <h2><a name="SECT005">6.5 Near-ring ideal elements</a></h2>
 <p><p>
-<a name = "SECT005"></a>
+<a name = "SSEC005.1"></a>
 <li><code>AsList( </code><var>I</var><code> )</code>
 <p>
 The function <code>AsList</code> computes the elements of the (left / right) ideal <var>I</var>.
 It returns the elements as a list.
 <p>
-<a name = "SECT005"></a>
+<a name = "SSEC005.2"></a>
 <li><code>AsSortedList( </code><var>I</var><code> )</code>
 <p>
 does essentially the same, but returns a set of elements.
 <p>
-<a name = "SECT005"></a>
+<a name = "SSEC005.3"></a>
 <li><code>Enumerator( </code><var>I</var><code> )</code>
 <p>
 does essentially the same as <code>AsList</code>, but returns an enumerator for the
@@ -347,7 +347,7 @@ elements of <var>nr</var>.
 <p>
 <h2><a name="SECT006">6.6 Random ideal elements</a></h2>
 <p><p>
-<a name = "SECT006"></a>
+<a name = "SSEC006.1"></a>
 <li><code>Random( </code><var>I</var><code> )</code>
 <p>
 <code>Random</code> returns a random element of the (left / right) ideal <var>I</var>.
@@ -360,9 +360,9 @@ elements of <var>nr</var>.
 <p>
 <h2><a name="SECT007">6.7 Membership of an ideal</a></h2>
 <p><p>
-For a (left / right) ideal <var>I</var> of a nearring <var>N</var> and an element <var>n</var> of <var>N</var>
+For a (left / right) ideal <var>I</var> of a nearring <i>N</i> and an element <var>n</var> of <i>N</i>
 <p>
-<a name = "SECT007"></a>
+<a name = "SSEC007.1"></a>
 <li><code></code><var>n</var><code> in </code><var>I</var><code></code>
 <p>
 tests whether <var>n</var> is an element of <var>I</var>.
@@ -377,7 +377,7 @@ tests whether <var>n</var> is an element of <var>I</var>.
 <p>
 <h2><a name="SECT008">6.8 Size of ideals</a></h2>
 <p><p>
-<a name = "SECT008"></a>
+<a name = "SSEC008.1"></a>
 <li><code>Size( </code><var>I</var><code> )</code>
 <p>
 <code>Size</code> returns the number of elements of the (left / right) ideal <var>I</var>.
@@ -385,7 +385,7 @@ tests whether <var>n</var> is an element of <var>I</var>.
 <p>
 <h2><a name="SECT009">6.9 Group reducts of ideals</a></h2>
 <p><p>
-<a name = "SECT009"></a>
+<a name = "SSEC009.1"></a>
 <li><code>GroupReduct( </code><var>I</var><code> )</code>
 <p>
 <code>GroupReduct</code> returns the group reduct of the (left / right) ideal <var>I</var>.
@@ -393,7 +393,7 @@ tests whether <var>n</var> is an element of <var>I</var>.
 <p>
 <h2><a name="SECT010">6.10 Comparision of ideals</a></h2>
 <p><p>
-<a name = "SECT010"></a>
+<a name = "SSEC010.1"></a>
 <li><code></code><var>I</var><code> = </code><var>J</var><code></code>
 <p>
 If <var>I</var> and <var>J</var> are (left / right) ideals of the same nearring and consist of
@@ -407,42 +407,42 @@ and <strong>join</strong> in the lattice. <font face="Gill Sans,Helvetica,Arial"
 <code>ClosureNearRingLeftIdeal</code>, <code>ClosureNearRingRightIdeal</code> and
 <code>ClosureNearRingLeftIdeal</code> for this purpose.
 <p>
-<a name = "SECT011"></a>
+<a name = "SSEC011.1"></a>
 <li><code>Intersection( </code><var>ideallist</var><code> )</code>
 <p>
 computes the intersection of the (left / right) ideals in the list <var>ideallist</var>.
 All of the (left / right) ideals in <var>ideallist</var> must be (left / right) ideals
 of the same nearring.
 <p>
-<a name = "SECT011"></a>
+<a name = "SSEC011.2"></a>
 <li><code>Intersection( </code><var>I1</var><code>, ..., </code><var>In</var><code> )</code>
 <p>
 computes the intersection of the (left / right) ideals <var>I1</var>, ..., <var>In</var>.
 <p>
 In both cases the result is again a (left / right) ideal.
 <p>
-<a name = "SECT011"></a>
+<a name = "SSEC011.3"></a>
 <li><code>ClosureNearRingLeftIdeal( </code><var>L1</var><code>, </code><var>L2</var><code> )</code>
 <p>
 The function <code>ClosureNearRingLeftIdeal</code> computes the left ideal <var>L1</var> + <var>L2</var>
-of the nearRing <var>N</var> if both <var>L1</var> and <var>L2</var> are (left) ideals of <var>N</var>.
+of the nearRing <i>N</i> if both <var>L1</var> and <var>L2</var> are (left) ideals of <i>N</i>.
 <p>
-<a name = "SECT011"></a>
+<a name = "SSEC011.4"></a>
 <li><code>ClosureNearRingRightIdeal( </code><var>R1</var><code>, </code><var>R2</var><code> )</code>
 <p>
 The function <code>ClosureNearRingRightIdeal</code> computes the right ideal <var>L1</var> + <var>L2</var>
-of the nearring <var>N</var> if both <var>R1</var> and <var>R2</var> are (right) ideals of <var>N</var>.
+of the nearring <i>N</i> if both <var>R1</var> and <var>R2</var> are (right) ideals of <i>N</i>.
 <p>
-<a name = "SECT011"></a>
+<a name = "SSEC011.5"></a>
 <li><code>ClosureNearRingIdeal( </code><var>I1</var><code>, </code><var>I2</var><code> )</code>
 <p>
 The function <code>ClosureNearRingIdeal</code> computes the ideal <var>L1</var> + <var>L2</var>
-of the nearring <var>N</var> if both <var>I1</var> and <var>I2</var> are ideals of <var>N</var>.
+of the nearring <i>N</i> if both <var>I1</var> and <var>I2</var> are ideals of <i>N</i>.
 <p>
 <p>
 <h2><a name="SECT012">6.12 Commutators</a></h2>
 <p><p>
-<a name = "SECT012"></a>
+<a name = "SSEC012.1"></a>
 <li><code>NearRingCommutator( </code><var>I</var><code>, </code><var>J</var><code> )</code>
 <p>
 The function <code>NearRingCommutator</code> returns the commutator of the two
@@ -476,7 +476,7 @@ over the action of the commutator operator on a group.
 <p>
 <h2><a name="SECT013">6.13 Simple nearrings</a></h2>
 <p><p>
-<a name = "SECT013"></a>
+<a name = "SSEC013.1"></a>
 <li><code>IsSimpleNearRing( </code><var>nr</var><code> )</code>
 <p>
 The function <code>IsSimpleNearRing</code> returns <code>true</code> if the nearring <var>nr</var> has
@@ -493,14 +493,14 @@ no proper (two-sided) ideals.
 <p>
 <h2><a name="SECT014">6.14 Factor nearrings</a></h2>
 <p><p>
-<a name = "SECT014"></a>
+<a name = "SSEC014.1"></a>
 <li><code>FactorNearRing( </code><var>nr</var><code>, </code><var>I</var><code> )</code>
 <p>
 For a nearring <var>nr</var> and an ideal <var>I</var> of the nearring <var>nr</var> the function
 <code>FactorNearRing</code> returns the factor nearring of <var>nr</var> modulo the ideal <var>I</var>.
 Alternatively,
 <p>
-<a name = "SECT014"></a>
+<a name = "SSEC014.2"></a>
 <li><code></code><var>nr</var><code> / </code><var>I</var><code></code>
 <p>
 can be used and has the same effect.
@@ -532,5 +532,5 @@ for such nearrings can be applied to the factor nearring.
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP005.htm">Previous</a>] [<a href ="CHAP007.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>November 2008
+<address>SONATA manual<br>Oktober 2011
 </address></body></html>

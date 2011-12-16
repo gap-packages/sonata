@@ -19,16 +19,16 @@ for these nearrings are applicable to <code>LibraryNearRing</code>s.
 <p>
 <h2><a name="SECT001">3.1 Extracting nearrings from the library</a></h2>
 <p><p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.1"></a>
 <li><code>LibraryNearRing( </code><var>G</var><code>, </code><var>num</var><code> )</code>
 <p>
 <code>LibraryNearRing</code> retrieves a nearring from the nearrings library files. 
-<var>G</var> must be a group of order <var>le15</var>. <var>num</var> must be an integer which 
+<var>G</var> must be a group of order  <font face="symbol">£</font> 15. <var>num</var> must be an integer which 
 indicates the number of the class of nearrings on the specified group. 
 <p>
-(<var>Remark:</var> due to the large number of nearrings on <var>D<sub>12</sub></var>, make sure 
+(<var>Remark:</var> due to the large number of nearrings on <i>D</i><sub>12</sub>, make sure 
 that you have enough main memory - say at least 32 MB - available if you want 
-to get a library nearring on <var>D<sub>12</sub></var>).
+to get a library nearring on <i>D</i><sub>12</sub>).
 <p>
 If <var>G</var> is given as a <code>TWGroup</code>, then a nearring is returned whose group reduct
 is <strong>equal to</strong> <var>G</var>. Otherwise the result is a nearring whose group reduct is 
@@ -36,10 +36,10 @@ is <strong>equal to</strong> <var>G</var>. Otherwise the result is a nearring wh
 <p>
 The number of nearrings definable on a certain group <var>G</var> can be accessed via
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.2"></a>
 <li><code>NumberLibraryNearRings( </code><var>G</var><code> )</code>
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.3"></a>
 <li><code>AllLibraryNearRings( </code><var>G</var><code> )</code>
 <p>
 returns a list of all nearrings (in the library) that have the group <var>G</var> as
@@ -58,22 +58,22 @@ group reduct.
     LibraryNearRing(14/2, 1234)
 </pre>
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.4"></a>
 <li><code>LibraryNearRingWithOne( </code><var>G</var><code>, </code><var>num</var><code> )</code>
 <p>
 <code>LibraryNearRingWithOne</code> retrieves a nearring from the nearrings library
 files. 
-<var>G</var> must be one of the predefined groups of order <var>le31</var>.  
+<var>G</var> must be one of the predefined groups of order  <font face="symbol">£</font> 31.  
 <var>num</var> must be an integer which indicates the number of the class of 
 nearrings with identity on the specified group. 
 <p>
 The number of nearrings with identity definable on a certain group <var>G</var>
 can be accessed via
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.5"></a>
 <li><code>NumberLibraryNearRingsWithOne( </code><var>G</var><code> )</code>
 <p>
-<a name = "SECT001"></a>
+<a name = "SSEC001.6"></a>
 <li><code>AllLibraryNearRingsWithOne( </code><var>G</var><code> )</code>
 <p>
 returns a list of all nearrings with identity (in the library) that have
@@ -93,11 +93,11 @@ the group <var>G</var> as group reduct.
 <p>
 <h2><a name="SECT002">3.2 Identifying nearrings</a></h2>
 <p><p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.1"></a>
 <li><code>IdLibraryNearRing( </code><var>nr</var><code> )</code>
 <p>
-The function <code>IdLibraryNearRing</code> returns a pair [<var>G</var>, <var>n</var>] such that the
-nearring <var>nr</var> is isomorphic to the <var>n</var>th library nearring on the group <var>G</var>.
+The function <code>IdLibraryNearRing</code> returns a pair [<i>G</i>, <i>n</i>] such that the
+nearring <var>nr</var> is isomorphic to the <i>n</i>th library nearring on the group <i>G</i>.
 <p>
 <pre>
     gap&gt; p := PolynomialNearRing( GTW4_2 );
@@ -113,12 +113,12 @@ nearring <var>nr</var> is isomorphic to the <var>n</var>th library nearring on t
     [ 9/2, 220 ]
 </pre>
 <p>
-<a name = "SECT002"></a>
+<a name = "SSEC002.2"></a>
 <li><code>IdLibraryNearRingWithOne( </code><var>nr</var><code> )</code>
 <p>
-The function <code>IdLibraryNearRingWithOne</code> returns a pair [<var>G</var>, <var>n</var>] such
-that the nearring <var>nr</var> is isomorphic to the <var>n</var>th library nearring with
-identity on the group <var>G</var>. This function can only be applied to nearrings
+The function <code>IdLibraryNearRingWithOne</code> returns a pair [<i>G</i>, <i>n</i>] such
+that the nearring <var>nr</var> is isomorphic to the <i>n</i>th library nearring with
+identity on the group <i>G</i>. This function can only be applied to nearrings
 which have an identity.
 <p>
 <pre>
@@ -133,7 +133,7 @@ which have an identity.
 <p>
 <h2><a name="SECT003">3.3 IsLibraryNearRing</a></h2>
 <p><p>
-<a name = "SECT003"></a>
+<a name = "SSEC003.1"></a>
 <li><code>IsLibraryNearRing( </code><var>nr</var><code> )</code>
 <p>
 The function <code>IsLibraryNearRing</code> returns <code>true</code> if the nearring <var>nr</var> has been
@@ -147,7 +147,7 @@ read from the nearring library and <code>false</code> otherwise.
 <p>
 <h2><a name="SECT004">3.4 Accessing the information about a nearring stored in the library</a></h2>
 <p><p>
-<a name = "SECT004"></a>
+<a name = "SSEC004.1"></a>
 <li><code>LibraryNearRingInfo( </code><var>group</var><code>, </code><var>list</var><code>, </code><var>string</var><code> )</code>
 <p>
 This function provides information about the specified library nearrings
@@ -155,11 +155,11 @@ in a way similar to how nearrings are presented in the appendix of
 [Pil??].
 The parameter <var>group</var> specifies a predefined group; valid
 names are exactly those which are also valid for the function
-<code>LibraryNearrings</code> (cf. Section <a href="CHAP003.htm#SECT001">LibraryNearRing</a>). 
+<code>LibraryNearrings</code> (cf. Section <a href="CHAP003.htm#SSEC001.1">LibraryNearRing</a>). 
 <p>
 The parameter <var>list</var> must be a non-empty list of integers defining the 
 classes of nearrings to be printed. Naturally, these integers must all fit 
-into the ranges described in Section <a href="CHAP003.htm#SECT001">LibraryNearRing</a> for the according
+into the ranges described in Section <a href="CHAP003.htm#SSEC001.1">LibraryNearRing</a> for the according
 groups.
 <p>
 The third parameter <var>string</var> is optional. <var>string</var> must be a string
@@ -195,17 +195,17 @@ minimal. According to each specified character, the following is added:
 <p>
 <code>LibraryNearRingInfo( GTW3_1, [ 3 ], "lmivsea" )</code> will print all
 available information about the third class of nearrings on the group
-<var>Z<sub>3</sub></var>.
+<i>Z</i><sub>3</sub>.
 <p>
 <code>LibraryNearRingInfo( GTW4_1, [ 1..12 ] )</code> will provide a minimal output
-for all classes of nearrings on <var>Z<sub>4</sub></var>.
+for all classes of nearrings on <i>Z</i><sub>4</sub>.
 <p>
 <code>LibraryNearRingInfo( GTW6_2, [ 5, 18, 21 ], "mi" )</code> will print
 the minimal information plus the multiplication tables plus the ideals for
-the classes 5, 18, and 21 of nearrings on the group <var>S<sub>3</sub></var>.
+the classes 5, 18, and 21 of nearrings on the group <i>S</i><sub>3</sub>.
 <p>
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Previous</a>] [<a href ="CHAP004.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>November 2008
+<address>SONATA manual<br>Oktober 2011
 </address></body></html>

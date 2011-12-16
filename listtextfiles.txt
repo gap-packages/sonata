@@ -94,6 +94,10 @@ sonata/htm/tut/CHAP008.htm
 sonata/htm/tut/indxT.htm
 sonata/htm/tut/CHAP004.htm
 sonata/htm/tut/indxI.htm
+sonata/tst/nr.tst
+sonata/tst/ideals.tst
+sonata/tst/tfms.tst
+sonata/tst/fpf.tst
 sonata/lib/grpsupp.gi
 sonata/lib/genlatt.gd
 sonata/lib/grpend.gd
@@ -109,6 +113,7 @@ sonata/lib/fpf.gi
 sonata/lib/nfplwd.gd
 sonata/lib/random.gd
 sonata/lib/design.gi
+sonata/lib/.directory
 sonata/lib/nrid.gi
 sonata/lib/ngroups.gi
 sonata/lib/libnr.gd

@@ -2,11 +2,14 @@
 ##
 #W  grptfms.gi             Near-ring Library                   Christof N"obauer
 ##
-#H  @(#)$Id: grptfms.gi,v 1.11 2008-11-13 14:17:16 stein Exp $
+#H  @(#)$Id: grptfms.gi,v 1.12 2011-06-17 08:48:13 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: grptfms.gi,v $
+##  Revision 1.12  2011-06-17 08:48:13  stein
+##  changed order of methods for GroupElementRepOfNearRingElement
+##
 ##  Revision 1.11  2008-11-13 14:17:16  stein
 ##  Restricted the Enumerator - Method to IsTransformationNearRing
 ##  Replaced IsNearRingEnumerator by IsTransformationNearRingEnumerator
@@ -41,7 +44,7 @@
 ##
 
 grptfms_gi:=
-  "@(#)$Id: grptfms.gi,v 1.11 2008-11-13 14:17:16 stein Exp $";
+  "@(#)$Id: grptfms.gi,v 1.12 2011-06-17 08:48:13 stein Exp $";
 
 #############################################################################
 ##
@@ -173,6 +176,31 @@ InstallMethod(
 
 InstallMethod(
 	GroupElementRepOfNearRingElement,
+	"mapping -> group element",
+	true,
+	[IsMapping],
+	0,
+  function ( t )
+
+  local dpElement,    # the element of the direct product to be returned
+	DP,	      # a direct product of groups
+	elms,	      # elements of the group the transformation acts on
+	vec;	      # the transformation as a vector
+
+    DP := SizeFoldDirectProduct( Source( t ) );
+    elms := AsSSortedList( Source( t ) );
+    dpElement := Identity( DP );
+    vec := List( elms, x -> Position( elms, ImageElm( t, x ) ) );
+
+    dpElement := Product( [1..Length(vec)],
+			i -> Image (Embedding (DP, i), elms[ vec[i] ])
+		 );
+
+    return dpElement;
+  end );
+
+InstallMethod(
+	GroupElementRepOfNearRingElement,
 	"GroupGeneralMappingTrafoRep -> group element",
 	true,
 	[IsGroupGeneralMapping and IsTransformationRepOfEndo],
@@ -198,30 +226,6 @@ InstallMethod(
     return dpElement;
   end );
 
-InstallMethod(
-	GroupElementRepOfNearRingElement,
-	"mapping -> group element",
-	true,
-	[IsMapping],
-	0,
-  function ( t )
-
-  local dpElement,    # the element of the direct product to be returned
-	DP,	      # a direct product of groups
-	elms,	      # elements of the group the transformation acts on
-	vec;	      # the transformation as a vector
-
-    DP := SizeFoldDirectProduct( Source( t ) );
-    elms := AsSSortedList( Source( t ) );
-    dpElement := Identity( DP );
-    vec := List( elms, x -> Position( elms, ImageElm( t, x ) ) );
-
-    dpElement := Product( [1..Length(vec)],
-			i -> Image (Embedding (DP, i), elms[ vec[i] ])
-		 );
-
-    return dpElement;
-  end );
 
 #############################################################################
 ##

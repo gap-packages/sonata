@@ -1,3 +1,4 @@
+sonata/.directory
 sonata/nri/nri24_9.nr
 sonata/nri/nri23_1.nr
 sonata/nri/nri25_2.nr
@@ -26,6 +27,7 @@ sonata/nri/nri27_4.nr
 sonata/nri/nri16_5.nr
 sonata/nri/nri16_3.nr
 sonata/nri/nri28_1.nr
+sonata/nri/.directory
 sonata/nri/nri27_1.nr
 sonata/nri/nri30_1.nr
 sonata/nri/nri16_7.nr
@@ -53,6 +55,7 @@ sonata/grp/g14.def
 sonata/grp/g6.def
 sonata/grp/g30.def
 sonata/grp/g4.def
+sonata/grp/.directory
 sonata/grp/g21.def
 sonata/grp/g16.def
 sonata/grp/g10.def
@@ -64,6 +67,7 @@ sonata/grp/g8.def
 sonata/grp/g32.def
 sonata/grp/g28.def
 sonata/doc/make_doc
+sonata/doc/.directory
 sonata/doc/convert.pl
 sonata/doc/ref/manual.ind
 sonata/doc/ref/manual.pdf
@@ -71,6 +75,7 @@ sonata/doc/ref/manual.log
 sonata/doc/ref/manual.ilg
 sonata/doc/ref/manual.toc
 sonata/doc/ref/manual.bbl
+sonata/doc/ref/.directory
 sonata/doc/ref/manual.blg
 sonata/doc/ref/manual.mst
 sonata/doc/ref/manual.aux
@@ -82,6 +87,7 @@ sonata/doc/tut/manual.log
 sonata/doc/tut/manual.ilg
 sonata/doc/tut/manual.toc
 sonata/doc/tut/manual.bbl
+sonata/doc/tut/.directory
 sonata/doc/tut/manual.blg
 sonata/doc/tut/manual.mst
 sonata/doc/tut/manual.aux
@@ -101,6 +107,7 @@ sonata/nr/nr8_5.nr
 sonata/nr/nr10_2.nr
 sonata/nr/nr_2-7.nr
 sonata/nr/nr12_3.4.nr
+sonata/nr/.directory
 sonata/nr/nr9_1.nr
 sonata/nr/nr12_3.9.nr
 sonata/nr/nr12_3.nr

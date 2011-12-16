@@ -187,9 +187,9 @@ InstallMethod(
     fi;
   end );
 
-BindGlobal( "xor", function ( a, b )
-	return ( ( a and ( not b ) ) or ( ( not a ) and b ) );
-end );
+#BindGlobal( "xor", function ( a, b )
+#	return ( ( a and ( not b ) ) or ( ( not a ) and b ) );
+#end );
 
 InstallMethod(
 	\=,
@@ -199,8 +199,9 @@ InstallMethod(
 		IsNRI and HasIsNearRingLeftIdeal],
 	100,
   function ( i, j )
-    if xor( IsNearRingLeftIdeal(i), IsNearRingLeftIdeal(j) )
-	then
+#    if xor( IsNearRingLeftIdeal(i), IsNearRingLeftIdeal(j) )
+    if IsNearRingLeftIdeal(i) <> IsNearRingLeftIdeal(j)
+		then
 		return false;
     else
 	TryNextMethod();
@@ -215,7 +216,8 @@ InstallMethod(
 		IsNRI and HasIsNearRingRightIdeal],
 	100,
   function ( i, j )
-    if xor( IsNearRingRightIdeal(i), IsNearRingRightIdeal(j) )
+#    if xor( IsNearRingRightIdeal(i), IsNearRingRightIdeal(j) )
+    if IsNearRingRightIdeal(i) <> IsNearRingRightIdeal(j)
 	then
 		return false;
     else
@@ -231,7 +233,8 @@ InstallMethod(
 		IsNRI and HasIsNearRingIdeal],
 	100,
   function ( i, j )
-    if xor( IsNearRingIdeal(i), IsNearRingIdeal(j) )
+#    if xor( IsNearRingIdeal(i), IsNearRingIdeal(j) )
+    if IsNearRingIdeal(i) <> IsNearRingIdeal(j)
 	then
 		return false;
     else
