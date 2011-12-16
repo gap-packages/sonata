@@ -1,0 +1,46 @@
+%
+\Chapter{Graphic ideal lattices (X-GAP only)}
+%
+
+If you run SONATA under XGAP it is possible to study ideal lattices of
+nearrings graphically.
+
+\>GraphicIdealLattice( <nr>, <string> )
+
+The function `GraphicIdealLattice' computes one- and two-sided
+nearring ideals and uses XGAP's graphic capabilities to draw the ideal
+lattice of the nearring <nr>. The string <string> determines, which
+ideals are shown:
+
+If <string> contains the letter `l', left ideals are shown, if
+<string> contains the letter `r', right ideals are shown, and if
+<string> contains the letter `i', two-sided ideals are shown.  Any
+combination of these letters is possible.
+
+Right ideals of the nearring are represented by squares, left ideals
+by diamonds and two-sided ideals by circles. It is possible, that
+two-sided ideals are shown as right or left ideals, if the two-sided
+ideal property has not yet been tested.
+
+Left clicking on an ideal allows one to select the ideal and determine
+more information about the ideal. Choosing `Ideal type' from the
+`Ideals'-menu determines, whether the selected ideal is two-sided (in
+which case its shape changes to a circle immediately). On a right
+click on an ideal a window opens showing more information about the
+ideal, such as its size and the isomorphism class of the factor
+nearring by the ideal (if it is two-sided). The information is
+computed and displayed as soon as you click on the corresponding entry
+in the window. Finally clicking on `Export ideal to GAP' makes the
+ideal the last output of XGAP's main window, where you may then go on
+working with it.
+
+It is also possible to select several ideals at the same time pressing
+the Ctrl-key while left clicking on the ideals. When several ideals
+are selected it is possible to compute their sums and intersection
+from the corresponding `Ideals'-menu entries. The result of the
+computation is then indicated by green color.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -1,0 +1,207 @@
+%
+\Chapter{Groups}
+%
+
+SONATA adds some functions for groups. To use the functions provided by
+SONATA, one has to load it into GAP:
+\beginexample
+    gap> LoadPackage( "sonata" );
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\Section{Thomas' and Wood's catalogue of small groups}
+
+
+        Most of the nonabelian groups (even small ones) do not have a
+        popular name (as $S_3$ or $A_4$). We like to give unique names to
+        the groups we are working with. The book ``Group Tables'' by
+        Thomas and Wood classifies all groups up to order 32. In this book
+        every group has a name of the form `m/n', where `m' is the order of
+        the group and `n' the number of the particular group of order `m'.
+        The cyclic groups have the name `m/1'. Then come the abelian groups,
+        finally the non-abelian ones. To find out the name of a given group
+        in their book we use `IdTWGroup'. 
+\beginexample
+    gap> G := DihedralGroup( 8 );     
+    <pc group of size 8 with 3 generators>
+    gap> IdTWGroup( G );
+    [ 8, 4 ]
+\endexample
+        If we want to refer to the group with the name `8/4' directly we
+        say
+\beginexample
+    gap> H := TWGroup( 8, 4 );
+    8/4
+\endexample
+        Groups which are obtained in this way always come as a group of
+        permutations. We can have a look at the elements of <H> if we ask
+        for <H> as a list.
+\beginexample
+    gap> AsList( H );
+    [ (), (2,4), (1,2)(3,4), (1,2,3,4), (1,3), (1,3)(2,4), (1,4,3,2), 
+      (1,4)(2,3) ]
+\endexample
+        Clearly, <G> and <H> are not equal but they are isomorphic. If we want
+        to know what the isomorphism between the two looks like, we use
+        `IsomorphismGroups'. Note, that a homomorphism is determined by the
+        images of the generators. 
+\beginexample
+    gap> IsomorphismGroups(G,H);
+    [ f1, f2, f3 ] -> [ (2,4), (1,2,3,4), (1,3)(2,4) ]
+\endexample
+        How many nonisomorphic groups are there of order <n>? Up to order
+        1000 the function `NumberSmallGroups' gives the answer. As a shortcut
+        for `TWGroup( 32, 46 )' we may also type `GTW32_46'.
+\beginexample
+    gap> NumberSmallGroups( 32 );
+    51
+    gap> GTW32_46;
+    32/46
+    gap> GTW32_46 = TWGroup( 32, 46 );
+    true
+\endexample
+        Now we find all nonabelian groups with trivial centre of order at most
+        32. We use `GroupList', a list of all groups up to order 32 and filter
+        out the nonabelian ones with trivial center.
+\beginexample
+    gap> Filtered( GroupList, g -> not IsAbelian( g ) and
+    >                              Size(Centre( g ))=1 );
+    [ 6/2, 10/2, 12/4, 14/2, 18/4, 18/5, 20/5, 21/2, 22/2, 24/12, 26/2, 
+      30/4 ]
+\endexample
+        This was the first time that we have used a function as an argument.
+        The second argument of the function `Filtered' is a function
+        (`g -> not ...'), which returns for every `g' the boolean value `true'
+        if `g' is not abelian and the size of its centre is 1, and `false'
+        otherwise. This is the easiest way to write a function.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\Section{Subgroups}
+    
+
+        The function `Subgroups' returns a list of all subgroups of a group.
+        We can use this function and the `Filtered' command to determine all
+        characteristic subgroups of the dihedral group of order 16.
+\beginexample
+    gap> D16 := DihedralGroup( 16 );
+    <pc group of size 16 with 4 generators>
+    gap> S := Subgroups( D16 );
+    [ Group([  ]), Group([ f4 ]), Group([ f1 ]), Group([ f1*f3 ]), 
+      Group([ f1*f4 ]), Group([ f1*f3*f4 ]), Group([ f1*f2 ]), 
+      Group([ f1*f2*f3 ]), Group([ f1*f2*f4 ]),
+      Group([ f1*f2*f3*f4 ]), Group([ f4, f3 ]), Group([ f4, f1 ]),
+      Group([ f1*f3, f4 ]), Group([ f4, f1*f2 ]),
+      Group([ f1*f2*f3, f4 ]), Group([ f4, f3, f1 ]), 
+      Group([ f4, f3, f2 ]), Group([ f4, f3, f1*f2 ]),
+      Group([ f4, f3, f1, f2 ]) ]
+    gap> C := Filtered( S, G -> IsCharacteristicInParent( G ) );
+    [ Group([  ]), Group([ f4 ]), Group([ f4, f3 ]), Group([ f4, f3, f2 ]),
+      Group([ f4, f3, f1, f2 ]) ]
+\endexample
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\Section{Group endomorphisms}
+
+
+        Everybody knows that every automorphism of the symmetric group $S_3$
+        (= `GTW6_2') fixes a point (besides the identity of the group). But,
+        are there endomorphisms which fix nothing but the identity? We are
+        going to simply try it out. On our way we will find out that all
+        automorphisms of $S_3$ are inner automorphisms.
+\beginexample
+    gap> G := GTW6_2;
+    6/2
+    gap> Automorphisms( G );
+    [ [ (1,2), (1,2,3) ] -> [ (2,3), (1,2,3) ], 
+      [ (2,3), (1,3,2) ] -> [ (1,2), (1,2,3) ], 
+      [ (2,3), (1,3,2) ] -> [ (1,3), (1,2,3) ], 
+      [ (2,3), (1,3,2) ] -> [ (2,3), (1,3,2) ], 
+      [ (2,3), (1,3,2) ] -> [ (1,2), (1,3,2) ], 
+      [ (2,3), (1,3,2) ] -> [ (2,3), (1,2,3) ] ]
+    gap> Endos := Endomorphisms( G );
+    [ [ (2,3), (1,3,2) ] -> [ (), () ], [ (2,3), (1,3,2) ] -> [ (2,3), () ],
+      [ (2,3), (1,3,2) ] -> [ (1,2), () ], 
+      [ (2,3), (1,3,2) ] -> [ (1,3), () ], 
+      [ (1,2), (1,2,3) ] -> [ (2,3), (1,2,3) ], 
+      [ (2,3), (1,3,2) ] -> [ (1,2), (1,2,3) ], 
+      [ (2,3), (1,3,2) ] -> [ (1,3), (1,2,3) ], 
+      [ (2,3), (1,3,2) ] -> [ (2,3), (1,3,2) ], 
+      [ (2,3), (1,3,2) ] -> [ (1,2), (1,3,2) ], 
+      [ (2,3), (1,3,2) ] -> [ (2,3), (1,2,3) ] ]
+\endexample
+        Now it is time for real programming, but don't worry, it is all very
+        simple. We write a function which decides whether an endomorphism
+        fixes a point besides the identity or not (in the latter case we
+        call the endomorphism *fixed-point-free*).
+\beginexample
+    gap> IsFixedpointfree := function( endo )
+    >local group;
+    >  group := Source( endo ); # the domain of endo
+    >  return ForAll( group, x -> (x <> x^endo) or (x = Identity(group)) );
+    >  #                           x is not fixed or x is the identity
+    >end;
+    function ( endo ) ... end
+\endexample
+        This paragraph says that `IsFixedpointfree' is a function that takes
+        one argument (called `endo'). Now we create a local variable `group' to
+        store the group on which the endomorphism acts (in our example this
+        will always be $S_3$, but maybe we want to use this function for
+        other groups, too). Local means that {\GAP} may forget this variable
+        as soon as it has computed what we want (and it will forget it
+        instantly afterwards). Now we store the domain of `endo' in the
+        variable `group'. The next line already returns the result. It returns
+        `true' if for all elements `x' of `group' either `x' is not fixed
+        by `endo' or `x' is the identity of the group. This line is a
+        one-to-one translation of the logical statement that `endo' is
+        fixed-point-free.
+
+        The result is a function which can be applied to any endomorphism, now.
+        For example we can ask if the fourth endomorphism in the list `E' is
+        fixed-point-free.
+\beginexample
+    gap> e := Endos[4];
+    [ (2,3), (1,3,2) ] -> [ (1,3), () ]
+    gap> IsFixedpointfree( e );
+    false
+\endexample
+        Now we filter out the fixed-point-free endomorphisms.
+\beginexample
+    gap> Filtered( Endos, IsFixedpointfree );
+    [ [ (2,3), (1,3,2) ] -> [ (), () ] ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\Section{Finding a set of generators}
+
+
+        It is well known that for any finite p-group $G$ the factor $G/\Phi(G)$
+        modulo the Frattini subgroup $\Phi(G)$ has order $p^{\delta(G)}$, where
+        $\delta(G)$ is the minimal number of generators of $G$. Moreover
+        the representatives of the residue classes modulo $\Phi(G)$ form a
+        set of generators. So a generating set for a $p$-group
+        could  be obtained in the following way. We choose the group 16/11 (a
+        semidirect product of the cyclic group of order 8 with the cyclic
+        group of order 2).
+\beginexample
+    gap> G := GTW16_11;                                     
+    16/11
+    gap> F := FrattiniSubgroup( G );
+    Group([ ( 1, 4,11,14)( 2, 7,10,16)( 3, 8,15, 9)( 5,12, 6,13) ])
+    gap> NontrivialRepresentativesModNormalSubgroup( G, F );
+    [ ( 1, 2, 4, 7,11,10,14,16)( 3, 6, 8,13,15, 5, 9,12), 
+      ( 1, 3)( 2, 5)( 4, 8)( 6,10)( 7,12)( 9,14)(11,15)(13,16), 
+      ( 1, 5,14,13,11, 6, 4,12)( 2, 8,16, 3,10, 9, 7,15) ]
+    gap> H := Group( last );
+    Group([ ( 1, 2, 4, 7,11,10,14,16)( 3, 6, 8,13,15, 5, 9,12), 
+      ( 1, 3)( 2, 5)( 4, 8)( 6,10)( 7,12)( 9,14)(11,15)(13,16), 
+      ( 1, 5,14,13,11, 6, 4,12)( 2, 8,16, 3,10, 9, 7,15) ])
+    gap> G = H;  # test
+    true
+\endexample
+        The variable `last' in the this example refers to the last result,
+        i.e. in this case the list of representatives.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "manual"
+%%% End: 

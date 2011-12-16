@@ -1,0 +1,103 @@
+\Chapter{General lattices}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Constructing general lattices}
+
+
+\>GeneralLattice( <coll>, <geq>, <string> )
+
+The function `GeneralLattice' constructs a lattice from a list of elements of
+the lattice <coll>, an operation <geq>, which decides whether an element is
+greater or equal than another and a string which is used when the lattice is
+printed. It is assumed that whenever an element $i$ occurs after an element
+$j$ in <coll> then $j$ is not smaller than $i$ whith respect to <geq>.
+
+As an example
+
+`GeneralLattice( Subgroups( GTW6_2 ), IsSubgroup, "subgroup" )'
+
+will return the lattice of subgroups of the group $6/2$.
+
+`GeneralLattice( NormalSubgroups( GTW6_2 ), IsSubgroup, "normal subgroup" )'
+
+will return the lattice of normal subgroups of the group $6/2$.
+
+`GeneralLattice( NearRingIdeals( LibraryNearRing( GTW6_2, 3 ) ), IsSubset, "ideal" )'
+
+will return the ideal lattice of the library nearring number 3 on the group
+$6/2$.
+
+\beginexample
+    gap> GeneralLattice( Subgroups( GTW6_2 ), IsSubgroup, "subgroup" );
+    GeneralLattice( 6 subgroups )
+    gap> GeneralLattice( NormalSubgroups( GTW6_2 ), IsSubgroup,             
+    >       "normal subgroup" );
+    GeneralLattice( 3 normal subgroups )
+    gap> GeneralLattice( NearRingIdeals( LibraryNearRing( GTW6_2, 3 ) ),    
+    >       IsSubset, "ideal" );
+    GeneralLattice( 2 ideals )
+\endexample
+
+Once a general lattice is generated its elements are represented by their
+position in the list <coll>. This list can be accessed via `AsList' or
+`AsSortedList'.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Comparing lattice elements}
+
+
+\>Less( <L>, <i>, <j> )
+
+The function `Less' checks whether the <i>-th element of the lattice <L>
+is smaller than the <j>-th element and returns the according boolean value
+`true' or `false'.
+
+\>SubCoverOfJI( <L>, <i> )
+
+\>Join( <L>, <i>, <j> )
+
+\>Meet( <L>, <i>, <j> )
+
+\>IsJoinIrreducible( <L>, <i> )
+
+\>JoinIrreducibles( <L> )
+
+\beginexample
+    gap> n := LibraryNearRing( GTW8_4, 3 );
+    LibraryNearRing(8/4, 3)
+    gap> i := NearRingIdeals( n );
+    [ NearRingIdeal(...), NearRingIdeal(...), NearRingIdeal(...), 
+      NearRingIdeal(...), NearRingIdeal(...), NearRingIdeal(...) ]
+    gap> l := GeneralLattice( i, IsSubset, "ideal" );
+    GeneralLattice( 6 ideals )
+    gap> JoinIrreducibles( l );
+    [ 2, 3, 4, 5 ]
+    gap> i{last};
+    [ NearRingIdeal(...), NearRingIdeal(...), NearRingIdeal(...), 
+      NearRingIdeal(...) ]
+    gap> List(last, Size);
+    [ 2, 4, 4, 4 ]
+\endexample
+
+\>IsCoveringPair( <L>, <pair> )
+
+\>IsSC1Group( <G> )
+
+\>IsProjectivePairOfPairs( <L>, <pair1>, <pair2> )
+
+\>AlphaBar( <G> )
+
+.
+
+
+
+
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
