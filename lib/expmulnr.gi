@@ -2,7 +2,7 @@
 ##
 #W  expmulnrnr.gi             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: expmulnr.gi,v 1.6 2003/03/28 13:09:42 juergen Exp $
+#H  @(#)$Id: expmulnr.gi,v 1.7 2011-11-23 20:01:17 stein Exp $
 ##
 
 
@@ -11,7 +11,7 @@
 
 
 expmulnrnr_gi:=
-  "@(#)$Id: expmulnr.gi,v 1.6 2003/03/28 13:09:42 juergen Exp $";
+  "@(#)$Id: expmulnr.gi,v 1.7 2011-11-23 20:01:17 stein Exp $";
 
 #############################################################################
 ##
@@ -397,6 +397,21 @@ InstallOtherMethod(
   function ( a )
     return NearRingElementByGroupRep( FamilyObj(a), a![1]^(-1) );
   end );
+
+#############################################################################
+##
+#M  Zero				For EMNR elements
+
+InstallOtherMethod(
+	ZeroMutable,
+	"EMNRElementDefaultRep",
+	true,
+	[IsExplicitMultiplicationNearRingElementDefaultRep],
+	0,
+  function ( a )
+    return NearRingElementByGroupRep( FamilyObj(a), One(a![1]) );
+  end );
+
 
 #############################################################################
 ##

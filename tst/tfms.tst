@@ -103,7 +103,7 @@ gap> Size (m); # may take a few moments
 20736
 gap> IsCommutative ( m );
 false
-gap> G := GTW6_2;;
+gap> G := SymmetricGroup(3);;
 gap> endos := Endomorphisms ( G );;
 gap> Endo := TransformationNearRingByAdditiveGenerators ( G, endos );
 < transformation nearring with 10 generators >

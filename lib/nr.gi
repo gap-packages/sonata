@@ -2,11 +2,16 @@
 ##
 #W  nr.gi             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: nr.gi,v 1.9 2007-07-19 22:19:07 stein Exp $
+#H  @(#)$Id: nr.gi,v 1.10 2011-11-23 20:01:17 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: nr.gi,v $
+##  Revision 1.10  2011-11-23 20:01:17  stein
+##  New methods for Zero for elements of a nearring.
+##  New methods for multiplying a nearring element with an integer (These should
+##  be integrated into GAP in a future release and then removed from nr.gi).
+##
 ##  Revision 1.9  2007-07-19 22:19:07  stein
 ##  added a new method for One for TransformationNearRings
 ##
@@ -38,7 +43,7 @@
 ##
 
 nr_gi:=
-  "@(#)$Id: nr.gi,v 1.9 2007-07-19 22:19:07 stein Exp $";
+  "@(#)$Id: nr.gi,v 1.10 2011-11-23 20:01:17 stein Exp $";
 
 #############################################################################
 ##
@@ -92,9 +97,10 @@ InstallOtherMethod(
     return a + (-b);
   end );
 
+
 #############################################################################
 ##
-#M  Zero			Return the Zero of the nearring
+#M  Zero		Return the Zero of the nearring
 ##
 
 InstallMethod(
@@ -1311,26 +1317,44 @@ InstallMethod(
 ##
 #M  \*			integer * nearring element
 
-InstallMethod(
-	\*,
-	true,
-	[IsInt, IsNearRingElement],
-	0,
-  function( n, e )
-  local prod, i;
-    prod := e - e;
-    if n < 0 then
-      for i in [1..-n] do
-	prod := prod - e;
-      od;
-    else
-      for i in [1..n] do
-	prod := prod + e;
-      od;
-    fi;
+#InstallMethod(
+#	\*,
+#	true,
+#	[IsInt, IsNearRingElement],
+#	0,
+#  function( n, e )
+#  local prod, i;
+#    prod := e - e;
+#    if n < 0 then
+#      for i in [1..-n] do
+#	prod := prod - e;
+#      od;
+#    else
+#      for i in [1..n] do
+#	prod := prod + e;
+#      od;
+#    fi;
+#
+#    return prod;
+#  end );
+#
+## Peter: The following methods for \* should eventually be included in GAP (see arith.gi)
+## and removed from Sonata: 
 
-    return prod;
-  end );
+InstallOtherMethod( \*,
+    "positive integer * additive element",
+    [ IsPosInt, IsNearAdditiveElement ],
+    PROD_INT_OBJ );
+
+InstallOtherMethod( \*,
+    "zero integer * additive element with zero",
+    [ IsInt and IsZeroCyc, IsNearAdditiveElementWithZero ], SUM_FLAGS,
+    PROD_INT_OBJ );
+
+InstallOtherMethod( \*,
+    "negative integer * additive element with inverse",
+    [ IsInt and IsNegRat, IsNearAdditiveElementWithInverse ],
+    PROD_INT_OBJ );
 
 #############################################################################
 ##

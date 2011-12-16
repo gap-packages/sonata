@@ -25,13 +25,16 @@ email: sonata@algebra.uni-linz.ac.at
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Main changes from SONATA 2.4 to SONATA 2.5
+Main changes from SONATA 2.4 to SONATA 2.5.1
 ------------------------------------------
 
 (1) Added test files in the subdirectory tst for automated testing of the
-SONATA installation.
+SONATA installation (output is formatted for GAP 4.5)
 
 (2) Removed the function xor.
 
 (3) Added new upper bound for the computation of the Scott length of a group.
 
+(4) Added new methods for Zero for near-ring elements.
+
+(5) Changed the method for computing multiples of near-ring elements.

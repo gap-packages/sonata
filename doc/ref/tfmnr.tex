@@ -65,18 +65,19 @@ construct this nearring. The only difference between
 `Trans\-formation\-NearRing\-By\-Additive\-Generators' is much faster.
 
 \beginexample
-    gap> endos := Endomorphisms ( GTW6_2 );
-    [ [ (1,2), (1,2,3) ] -> [ (), () ], [ (1,2), (1,2,3) ] -> [ (2,3), () ],
-      [ (1,2), (1,2,3) ] -> [ (1,3), () ], [ (1,2), (1,2,3) ] -> [ (1,2), () ],
-      [ (1,2), (1,2,3) ] -> [ (2,3), (1,2,3) ],
-      [ (1,2), (1,2,3) ] -> [ (2,3), (1,3,2) ],
-      [ (1,2), (1,2,3) ] -> [ (1,2), (1,3,2) ],
-      [ (1,2), (1,2,3) ] -> [ (1,2), (1,2,3) ],
-      [ (1,2), (1,2,3) ] -> [ (1,3), (1,2,3) ],
-      [ (1,2), (1,2,3) ] -> [ (1,3), (1,3,2) ] ]
-    gap> Endo := TransformationNearRingByAdditiveGenerators ( GTW6_2, endos );
+    gap> G := SymmetricGroup(3);;
+    gap> endos := Endomorphisms ( G );
+    [ [ (1,2,3), (1,2) ] -> [ (), () ], [ (1,2,3), (1,2) ] -> [ (), (2,3) ], 
+      [ (1,2,3), (1,2) ] -> [ (), (1,2) ], [ (1,2,3), (1,2) ] -> [ (), (1,3) ], 
+      [ (1,2,3), (1,2) ] -> [ (1,2,3), (2,3) ], 
+      [ (1,2,3), (1,2) ] -> [ (1,3,2), (2,3) ], 
+      [ (1,2,3), (1,2) ] -> [ (1,3,2), (1,2) ], 
+      [ (1,2,3), (1,2) ] -> [ (1,2,3), (1,2) ], 
+      [ (1,2,3), (1,2) ] -> [ (1,2,3), (1,3) ], 
+      [ (1,2,3), (1,2) ] -> [ (1,3,2), (1,3) ] ]
+    gap> Endo := TransformationNearRingByAdditiveGenerators ( G, endos );
     < transformation nearring with 10 generators >
-    gap> Size ( Endo );
+    gap> Size( Endo );
     54
 \endexample
 
