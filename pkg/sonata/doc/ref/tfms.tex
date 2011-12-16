@@ -1,0 +1,284 @@
+%
+\Chapter{Arbitrary functions on groups: EndoMappings}
+%
+
+An *endomapping* is a mapping with equal source and range, say $G$,
+where $G$ is a group. An endomapping  on $G$ then acts on $G$ by
+*transforming* each element of $G$ into (precisely one) element of $G$.
+Endomappings are special cases of Mappings.
+
+Endomappings are created by the constructor functions 
+`EndoMappingByPositionList', `EndoMappingByFunction', `IdentityEndoMapping',
+`ConstantEndoMapping', and are represented as mappings.
+The functions described in
+this section can be found in the file `grptfms.g?'. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Defining endo mappings}
+
+
+\>EndoMappingByPositionList ( <G>, <list> )
+
+The constructor function `EndoMappingByPositionList' returns the 
+the endomapping that maps the i-th element of the group (in the
+ordering given by AsSortedList)
+to the i-th element of list.
+
+\beginexample
+    gap> G := GTW4_2;
+    4/2
+    gap> t1 := EndoMappingByPositionList ( G, [1, 2, 4, 4] );
+    <mapping: 4/2 -> 4/2 >
+\endexample
+
+\>EndoMappingByFunction( <G>, <fun> )
+
+The constructor function `EndoMappingByFunction' returns the
+function <fun> that maps elements of the group <G> into <G> as an
+endomapping.
+
+\beginexample
+    gap> t2 := EndoMappingByFunction ( GTW8_2, g -> g^-1 );
+    <mapping: 8/2 -> 8/2 >
+    gap> IsGroupHomomorphism ( t2 );
+    true
+    gap> t3 := EndoMappingByFunction ( GTW6_2, g -> g^-1 );
+    <mapping: 6/2 -> 6/2 >
+    gap> IsGroupHomomorphism ( t3 );
+    false
+\endexample
+
+`EndoMappings' and `GroupGeneralMappings' are different
+kinds of objects in {\GAP}: `GroupGeneralMappings' model homomorphisms between
+two different groups, whereas `EndoMappings' model nonlinear functions
+on one group.
+However, `GroupGeneralMappings' can be transformed into
+`Endomappings' if they have equal source and range.
+
+\>AsEndoMapping( <map> )
+
+The constructor function `AsEndoMapping' returns the mapping <map> 
+as an endomapping.
+
+\beginexample
+    gap> G1 := Group ((1,2,3), (1, 2));
+    Group([ (1,2,3), (1,2) ])
+    gap> G2 := Group ((2,3,4), (2, 3));
+    Group([ (2,3,4), (2,3) ])
+    gap> f1 := IsomorphismGroups ( G1, G2 );
+    [ (1,2,3), (1,2) ] -> [ (2,3,4), (2,3) ]
+    gap> f2 := IsomorphismGroups ( G2, G1 );
+    [ (2,3,4), (2,3) ] -> [ (1,2,3), (1,2) ]
+    gap> AsEndoMapping ( CompositionMapping ( f1, f2 ) );
+    <mapping: Group( [ (2,3,4), (2,3) ] ) -> Group( [ (2,3,4), (2,3)
+    ] ) >
+\endexample
+
+`EndoMappings' and `GroupGeneralMappings' are two completely different
+kinds of objects in {\GAP}, but they can be transformed into one
+another.
+
+\>AsGroupGeneralMappingByImages( <endomap> )
+
+`AsGroupGeneralMappingByImages' returns the
+`GroupGeneralMappingByImages' that acts on the group the same way as
+the endomapping <endomap>. It only makes sense to use this function
+for endomappings that are group endomorphisms.
+
+\beginexample
+    gap> m := IdentityEndoMapping ( GTW6_2 );
+    <mapping: 6/2 -> 6/2 >
+    gap> AsGroupGeneralMappingByImages ( m );
+    [ (1,2), (1,2,3) ] -> [ (1,2), (1,2,3) ]
+\endexample
+
+\>IsEndoMapping( <obj> )
+
+`IsEndoMapping' returns `true' if the object <obj> is an endomapping
+and `false' otherwise.
+
+\beginexample
+    gap> IsEndoMapping ( InnerAutomorphisms ( GTW6_2 ) [3] );
+    true
+\endexample
+
+\>IdentityEndoMapping( <G> )
+
+`IdentitEndoMapping' is the counterpart to the {\GAP} standard
+library function `IdentityMapping'. It returns the identity
+transformation on the group <G>.
+
+\beginexample
+    gap> AsList ( UnderlyingRelation ( IdentityEndoMapping ( Group ((1,2,3,4)) ) ) );
+    [ Tuple( [ (), () ] ), Tuple( [ (1,2,3,4), (1,2,3,4) ] ), 
+      Tuple( [ (1,3)(2,4), (1,3)(2,4) ] ), Tuple( [ (1,4,3,2), (1,4,3,2) ] ) 
+     ]
+\endexample
+
+\>ConstantEndoMapping( <G>, <g> )
+
+`ConstantEndoMapping' returns the endomapping on the group <G>
+which maps everything to the group element <g> of <G>.
+
+\beginexample
+    gap> C3 := CyclicGroup (3);
+    <pc group of size 3 with 1 generators>
+    gap> m := ConstantEndoMapping (C3, AsSortedList (C3) [2]);
+    MappingByFunction( <pc group of size 3 with 
+    1 generators>, <pc group of size 3 with 
+    1 generators>, function( x ) ... end )
+    gap> List (AsList (C3), x -> Image (m, x));
+    [ f1, f1, f1 ]
+\endexample
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Properties of endo mappings}
+
+
+\>IsIdentityEndoMapping( <endomap> )
+
+`IsIdentityEndoMapping' returns `true' if <endomap> is the identity
+function on a group.
+
+\beginexample
+    gap> IsIdentityEndoMapping (EndoMappingByFunction ( 
+    > AlternatingGroup ( [1..5] ), x -> x^31));
+    true
+\endexample
+
+\>IsConstantEndoMapping( <endomap> )
+
+`IsConstantEndoMapping' returns `true' if the endomapping
+<endomap> is constant and `false' otherwise.
+
+\beginexample
+    gap> C3 := CyclicGroup ( 3 );
+    <pc group of size 3 with 1 generators>
+    gap> IsConstantEndoMapping ( EndoMappingByFunction ( C3,  x -> x^3 ));
+    true
+\endexample
+
+\>IsDistributiveEndoMapping( <endomap> )
+
+A mapping $t$ on an (additively written) group $G$ is called
+*distributive* if for all elements $x$ and $y$ in $G$:\
+$t(x+y) = t(x) + t(y)$.
+The function `IsDistributiveEndoMapping' returns the according
+boolean value `true' or `false'.
+
+\beginexample
+    gap> G := Group ( (1,2,3), (1,2) );
+    Group([ (1,2,3), (1,2) ])
+    gap> IsDistributiveEndoMapping ( EndoMappingByFunction ( G, x -> x^3));
+    false
+    gap> IsDistributiveEndoMapping ( EndoMappingByFunction ( G, x -> x^7));
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Operations for endo mappings}
+
+
+While the composition operator `\*' is applicable to mappings and
+transformations, the operation `+' (pointwise addition of the images) can
+only be applied to transformations.
+
+The product operator `\*' returns the transformation which is obtained 
+from the transformations <t1> and <t2> by composition of <t1> and <t2>
+(i.e. performing <t2> *after* <t1>).
+
+\beginexample
+    gap> t1 := ConstantEndoMapping ( GTW2_1, ());
+    MappingByFunction( 2/1, 2/1, function( x ) ... end )
+    gap> t2 := ConstantEndoMapping (GTW2_1, (1, 2));
+    MappingByFunction( 2/1, 2/1, function( x ) ... end )
+    gap> List ( AsList ( GTW2_1 ), x -> Image ( t1 * t2, x ));
+    [ (1,2), (1,2) ]
+\endexample
+
+The add operator `+' returns the endomapping which is obtained 
+from the endomappings <t1> and <t2> by pointwise addition 
+of <t1> and <t2>. (Note that in this context addition means that
+for every place $x$ in the source of <t1> and <t2>,   
+{\GAP} performs the  operation `p\ \*\ q', where
+`p' is the image of <t1> at $x$ and `q' is the image of <t2> at $x$.) 
+
+The subtract operator `-' returns the endomapping which is 
+obtained from the endomappings <t1> and <t2> by pointwise 
+subtraction of <t1> and <t2>. (Note that in this context subtraction 
+means performing the {\GAP} operation `p\ \*\ q\^{}(-1)',
+where
+`p' is the image of <t1> at a place $x$ and `q' is the image of <t2> at $x$.) 
+
+\beginexample
+    gap> G := SymmetricGroup ( 3 );
+    Sym( [ 1 .. 3 ] )
+    gap> invertingOnG := EndoMappingByFunction ( G, x -> x^-1 );
+    <mapping: SymmetricGroup( [ 1 .. 3 ] ) -> SymmetricGroup(
+    [ 1 .. 3 ] ) >
+    gap> identityOnG := IdentityEndoMapping (G);
+    <mapping: SymmetricGroup( [ 1 .. 3 ] ) -> SymmetricGroup(
+    [ 1 .. 3 ] ) >
+    gap> AsSortedList ( G );
+    [ (), (2,3), (1,2), (1,2,3), (1,3,2), (1,3) ]
+    gap> List ( AsSortedList (G), 
+    >              x -> Image ( identityOnG * invertingOnG, x ));
+    [ (), (2,3), (1,2), (1,3,2), (1,2,3), (1,3) ]
+    gap> List ( AsSortedList (G),
+    >              x -> Image ( identityOnG + invertingOnG, x ));
+    [ (), (), (), (), (), () ]
+    gap> IsIdentityEndoMapping ( - invertingOnG );
+    true
+    gap> - invertingOnG = identityOnG;
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Nicer ways to print a mapping}
+
+
+\> GraphOfMapping( <mapping> )
+
+`GraphOfMapping' returns the set of all pairs (x,m(x)), where
+x lies in the source of the mapping. In particular, it returns
+List (Source (m), x -> [x, Image (m, x)]);
+
+\beginexample
+    gap> G := SymmetricGroup ( 3 );
+    Sym( [ 1 .. 3 ] )
+    gap> m := ConstantEndoMapping (G, (1,2,3)) + IdentityEndoMapping( G );
+    MappingByFunction( Sym( [ 1 .. 3 ] ), Sym( [ 1 .. 3 ] ), function( g ) ... end )
+    gap> PrintArray( GraphOfMapping( m ) );
+    [ [       (),  (1,2,3) ],
+      [    (2,3),    (1,3) ],
+      [    (1,2),    (2,3) ],
+      [  (1,2,3),  (1,3,2) ],
+      [  (1,3,2),       () ],
+      [    (1,3),    (1,2) ] ]
+\endexample
+
+\> PrintAsTerm( <mapping> )
+
+If <mapping> is a polynomial function on its source then `PrintAsTerm'
+prints a polynomial that induces the mapping <mapping>.
+\beginexample
+    gap> G := SymmetricGroup ( 3 );
+    Sym( [ 1 .. 3 ] )
+    gap> p := Random( PolynomialNearRing( G ) );
+    <mapping: SymmetricGroup( [ 1 .. 3 ] ) -> SymmetricGroup( [ 1 .. 3 ] ) >
+    gap> PrintAsTerm( p );
+    g1 - x - 2 * g1 - g2 - x - g1 - g2 + g1 - x - 2 * g1 - 
+    g2 - x - g1 - g2 - 3 * x + g1
+    gap> GeneratorsOfGroup( g );
+    [ (1,2,3), (1,2) ]
+\endexample
+
+The expressions `g1' and `g2' stand for the first and secong generator 
+of the group <G> respectively. The result is not necessarily a 
+polynomial of minimal length.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

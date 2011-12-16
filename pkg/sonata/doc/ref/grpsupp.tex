@@ -1,0 +1,422 @@
+%
+\Chapter{Supportive functions for groups}
+%
+
+In order to support nearring calculations, a few functions for groups had to 
+be added to the standard {\GAP} group library functions. 
+
+The functions described here can be found in the source files
+`grpend.g?' and `grpsupp.g?'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Predefined groups}
+
+
+All groups of order $2$ to $32$ are predefined. They can be accessed
+by variables of the kind `GTW<o>\_{<n>}' where <o> defines the order
+of the group and <n> the number of the group of order <o> as they
+appear in \cite{thomaswood80:GT} . For example, `GTW16\_6' defines the
+group of Thomas -- Wood type $16/6$, which is actually $D_4 \times
+C_2$.
+
+Alternatively, these groups can be accessed via the function
+
+\>TWGroup( <o>, <n> )
+
+with <o> and <n> as above. In addition, all these groups are stored in the
+list {\tt GroupList}.
+
+Conversely, for any group <G> of order at most 32,
+
+\>IdTWGroup( <G> )
+
+returns a pair `[<o>,<n>]', meaning that <G> is isomorphic to the group
+$o/n$.
+
+\beginexample
+    gap> G := GTW6_2;               
+    6/2
+    gap> H := TWGroup( 4, 2 );
+    4/2
+    gap> D := DirectProduct( G, H );
+    Group([ (1,2), (1,2,3), (4,5), (6,7) ])
+    gap> IdTWGroup( D );
+    [ 24, 4 ]
+    gap> GroupList;
+    [ 2/1, 3/1, 4/1, 4/2, 5/1, 6/1, 6/2, 7/1, 8/1, 8/2, 8/3, 8/4, 8/5, 
+      9/1, 9/2, 10/1, 10/2, 11/1, 12/1, 12/2, 12/3, 12/4, 12/5, 13/1, 
+      14/1, 14/2, 15/1, 16/1, 16/2, 16/3, 16/4, 16/5, 16/6, 16/7, 16/8, 
+      16/9, 16/10, 16/11, 16/12, 16/13, 16/14, 17/1, 18/1, 18/2, 18/3, 
+      18/4, 18/5, 19/1, 20/1, 20/2, 20/3, 20/4, 20/5, 21/1, 21/2, 22/1, 
+      22/2, 23/1, 24/1, 24/2, 24/3, 24/4, 24/5, 24/6, 24/7, 24/8, 24/9, 
+      24/10, 24/11, 24/12, 24/13, 24/14, 24/15, 25/1, 25/2, 26/1, 26/2, 
+      27/1, 27/2, 27/3, 27/4, 27/5, 28/1, 28/2, 28/3, 28/4, 29/1, 30/1, 
+      30/2, 30/3, 30/4, 31/1, 32/1, 32/2, 32/3, 32/4, 32/5, 32/6, 32/7, 
+      32/8, 32/9, 32/10, 32/11, 32/12, 32/13, 32/14, 32/15, 32/16, 32/17, 
+      32/18, 32/19, 32/20, 32/21, 32/22, 32/23, 32/24, 32/25, 32/26, 
+      32/27, 32/28, 32/29, 32/30, 32/31, 32/32, 32/33, 32/34, 32/35, 
+      32/36, 32/37, 32/38, 32/39, 32/40, 32/41, 32/42, 32/43, 32/44, 
+      32/45, 32/46, 32/47, 32/48, 32/49, 32/50, 32/51 ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Operation tables for groups}
+
+
+\>PrintTable( <G> )
+
+`PrintTable' prints the Cayley table of the group <G>.
+
+\beginexample
+    gap> G := GTW4_2;
+    4/2
+    gap> PrintTable( G );
+    Let:
+    g0 := ()
+    g1 := (3,4)
+    g2 := (1,2)
+    g3 := (1,2)(3,4)
+
+      *  | g0 g1 g2 g3 
+     ------------------
+      g0 | g0 g1 g2 g3 
+      g1 | g1 g0 g3 g2 
+      g2 | g2 g3 g0 g1 
+      g3 | g3 g2 g1 g0 
+
+\endexample
+
+Sometimes different symbols for the elements in the would make the table
+look nicer. For the group $4/2$ ($\Z_2 \times \Z_2$) one could choose
+the canonical form as pairs of zeros and ones.
+
+\beginexample
+    gap> G := GTW4_2;
+    4/2
+    gap> SetSymbols( G, ["(0,0)","(1,0)","(0,1)","(1,1)"] );
+    gap> PrintTable( G );
+    Let:
+    (0,0) := ()
+    (1,0) := (3,4)
+    (0,1) := (1,2)
+    (1,1) := (1,2)(3,4)
+
+          *  | (0,0)  (1,0)  (0,1)  (1,1)  
+      -----------------------------------
+      (0,0)  | (0,0)  (1,0)  (0,1)  (1,1)  
+      (1,0)  | (1,0)  (0,0)  (1,1)  (0,1)  
+      (0,1)  | (0,1)  (1,1)  (0,0)  (1,0)  
+      (1,1)  | (1,1)  (0,1)  (1,0)  (0,0)  
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Group endomorphisms}
+
+
+\>Endomorphisms( <G> )
+
+`Endomorphisms' computes all the endomorphisms of the group <G>. 
+This function is most essential for computing the nearrings on a group.
+The endomorphisms are returned as a list of group homomorphisms. So all
+functions for mappings and homomorphisms are applicable.
+
+\beginexample
+    gap> G := TWGroup( 4, 2 );
+    4/2
+    gap> Endomorphisms( G );
+    [ [ (3,4), (1,2) ] -> [ (), () ], [ (3,4), (1,2) ] -> [ (3,4), () ],
+      [ (3,4), (1,2) ] -> [ (1,2), () ], 
+      [ (3,4), (1,2) ] -> [ (1,2)(3,4), () ], 
+      [ (3,4), (1,2) ] -> [ (), (3,4) ], 
+      [ (3,4), (1,2) ] -> [ (), (1,2) ], 
+      [ (3,4), (1,2) ] -> [ (), (1,2)(3,4) ], 
+      [ (3,4), (1,2) ] -> [ (3,4), (3,4) ], 
+      [ (3,4), (1,2) ] -> [ (1,2), (1,2) ], 
+      [ (3,4), (1,2) ] -> [ (1,2)(3,4), (1,2)(3,4) ], 
+      [ (1,2), (3,4) ] -> [ (3,4), (1,2) ], 
+      [ (3,4), (1,2) ] -> [ (1,2)(3,4), (3,4) ], 
+      [ (3,4), (1,2) ] -> [ (3,4), (1,2) ], 
+      [ (3,4), (1,2) ] -> [ (1,2)(3,4), (1,2) ], 
+      [ (3,4), (1,2) ] -> [ (3,4), (1,2)(3,4) ], 
+      [ (3,4), (1,2) ] -> [ (1,2), (1,2)(3,4) ] ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Group automorphisms}
+
+
+\>Automorphisms( <G> )
+
+`Automorphisms' computes all the automorphisms of the group <G>. 
+The automorphisms are returned as a list of group homomorphisms. So all
+functions for mappings and homomorphisms are applicable.
+
+\beginexample
+    gap> Automorphisms( GTW4_2 );
+    [ IdentityMapping( 4/2 ), [ (1,2), (3,4) ] -> [ (1,2)(3,4), (3,4) ],
+      [ (1,2), (3,4) ] -> [ (3,4), (1,2) ], 
+      [ (3,4), (1,2) ] -> [ (1,2), (1,2)(3,4) ], 
+      [ (3,4), (1,2) ] -> [ (1,2)(3,4), (3,4) ], 
+      [ (3,4), (1,2) ] -> [ (1,2)(3,4), (1,2) ] ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Inner automorphisms of a group}
+
+
+\>InnerAutomorphisms( <G> )
+
+`InnerAutomorphisms' computes all the inner automorphisms of the group 
+<G>. 
+The inner automorphisms are returned as a list of group homomorphisms. So all
+functions for mappings and homomorphisms are applicable.
+
+\beginexample
+    gap> InnerAutomorphisms( AlternatingGroup( 4 ) );
+    [ ^(), ^(2,3,4), ^(2,4,3), ^(1,2)(3,4), ^(1,2,3), ^(1,2,4), 
+      ^(1,3,2), ^(1,3,4), ^(1,3)(2,4), ^(1,4,2), ^(1,4,3), ^(1,4)(2,3) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Isomorphic groups}
+
+
+\>IsIsomorphicGroup( <G>, <H> )
+
+`IsIsomorphicGroup' determines if the groups <G> and <H> are 
+isomorphic. If they are isomorphic, an isomorphism between these two groups
+can be found with `IsomorphismGroups'.
+
+\beginexample
+    gap> IsIsomorphicGroup( SymmetricGroup( 4 ), GTW24_12 );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Subgroups of a group}
+
+
+\>Subgroups( <G> )
+
+`Subgroups' returns a list of all subgroups of the group <G>, if there
+are only finitely many subgroups.
+
+\beginexample
+    gap> Subgroups( TWGroup( 8, 4 ) );
+    [ Group(()), Group([ (1,3)(2,4) ]), Group([ (2,4) ]), 
+      Group([ (1,3) ]), Group([ (1,2)(3,4) ]), Group([ (1,4)(2,3) ]), 
+      Group([ (2,4), (1,3) ]), Group([ (1,2)(3,4), (1,3)(2,4) ]), 
+      Group([ (1,3)(2,4), (1,2,3,4) ]), Group([ (1,2,3,4), (2,4) ]) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Normal subgroups generated by a single element}
+
+
+\>OneGeneratedNormalSubgroups( <G> )
+
+`OneGeneratedSubgroups' returns a list of all normal subgroups of the group 
+<G> which are generated by one element.
+
+\beginexample
+    gap> OneGeneratedNormalSubgroups( GTW12_4 );
+    [ Group(()), Group([ (1,3)(2,4), (1,4)(2,3) ]), 
+      Group([ (2,3,4), (1,4,3) ]), Group([ (2,4,3), (1,3,4) ]) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Invariant subgroups}
+
+
+\>IsInvariantUnderMaps( <G>, <U>, <maps> )
+
+For a list of mappings, <maps> on the group <G> and
+a subgroup <U> of <G>, `IsInvariantUnderMaps' returns the truth 
+value of ``<U> is invariant under all mappings in <maps>''. In the following
+example this function is used to compute all fully invariant subgroups of
+the dihedral group of order 12.
+
+\beginexample
+    gap> D12 := DihedralGroup( 12 );                                        
+    <pc group of size 12 with 3 generators>
+    gap> s := Subgroups( D12 );
+    [ Group([  ]), Group([ f1 ]), Group([ f1*f3^2 ]), Group([ f1*f3 ]), 
+      Group([ f2*f3 ]), Group([ f1*f2 ]), Group([ f1*f2*f3^2 ]), 
+      Group([ f1*f2*f3 ]), Group([ f3 ]), Group([ f1, f2*f3 ]), 
+      Group([ f1*f3^2, f2*f3 ]), Group([ f1*f3, f2*f3 ]), 
+      Group([ f3, f1 ]), Group([ f3, f2 ]), Group([ f3, f1*f2 ]), 
+      Group([ f3, f1, f2 ]) ]
+    gap> e := Endomorphisms( D12 );;                                        
+    gap> f := Filtered( s, sg -> IsInvariantUnderMaps( D12, sg, e ) );
+    [ Group([  ]), Group([ f3 ]), Group([ f3, f1, f2 ]) ]
+\endexample
+
+\>IsCharacteristic( <G>, <U> )
+
+A subgroup <U> of the group <G> is *characteristic* if it is invariant under
+all automorphisms on <G>. For a subgroup <U> of the group <G>,
+`IsCharacteristic' returns the truth value of ``<U> is a characteristic
+subgroup of <G>''. If the group <U> is defined as the subgroup of a group
+<G> then the function call
+
+\>IsCharacteristicInParent( <U> )
+
+has the same result.
+
+\beginexample
+    gap> IsCharacteristicInParent( Centre( GTW16_11 ) );
+    true
+\endexample
+
+\>IsFullinvariant( <G>, <U> )
+
+A subgroup <U> of the group <G> is *fully invariant* if it is invariant under
+all endomorphisms on <G>. 
+For a subgroup <U> of the group <G>, `IsFullinvariant' returns the
+truth value of ``<U> is a fully invariant subgroup of <G>''.
+
+\beginexample
+    gap> G := GTW6_2;
+    6/2
+    gap> S := Subgroup( G, [(1,2)] );                                
+    Group([ (1,2) ])
+    gap> IsFullinvariant( G, S );
+    false
+\endexample
+
+If the group <U> is defined as the subgroup of a group <G> then the function
+call
+
+\>IsFullinvariantInParent( <U> )
+
+has the same result.
+
+\beginexample
+    gap> IsFullinvariantInParent( Centre( GTW16_11 ) );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Coset representatives}
+
+
+\>RepresentativesModNormalSubgroup( <G>, <N> )
+
+If <G> is a group and <N> is a normal subgroup of <G> then the function
+`RepresentativesModNormalSubgroup' returns a set of representatives for
+the congruence classes modulo the normal subgroup <N>, i.e. a set of elements
+of <G> with exactly one element from each cogruence class modulo <N>.
+
+\beginexample
+    gap> G := DihedralGroup( 16 );
+    <pc group of size 16 with 4 generators>
+    gap> C := Centre( G );
+    Group([ f4 ])
+    gap> RepresentativesModNormalSubgroup( G, C );
+    [ <identity> of ..., f1, f2, f3, f2*f3, f1*f2*f4, f1*f3*f4, 
+      f1*f2*f3*f4 ]
+\endexample
+
+\>NontrivialRepresentativesModNormalSubgroup( <G>, <N> )
+
+This function behaves as `RepresentativesModNormalSubgroup' but it excludes
+the representative for the congruence class which contains the neutral element
+of the group.
+
+\beginexample
+    gap> G := DihedralGroup( 16 );
+    <pc group of size 16 with 4 generators>
+    gap> C := Centre( G );
+    Group([ f4 ])
+    gap> NontrivialRepresentativesModNormalSubgroup( G, C );
+    [ f1, f2, f3, f2*f3, f1*f2*f4, f1*f3*f4, f1*f2*f3*f4 ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Nilpotency class}
+
+
+\>NilpotencyClass( <G> )
+
+If <G> is a nilpotent group then the function `NilpotencyClass' returns the 
+nilpotency class of <G> and `fail' otherwise.
+
+\beginexample
+    gap> NilpotencyClass( SymmetricGroup( 7 ) );
+    fail
+    gap> NilpotencyClass( GTW32_47 );
+    3
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Scott length}
+
+
+\>ScottLength( <G> )
+
+The function `ScottLength' retuns the Scott-length of the group <G>.
+For a definition of the Scott-length of a group and an idea for an
+algorithm for the general case see \cite{scott69:TAOPMOAGATSOCPPGI}.
+In the case of a class 2 nilpotent finite group <G> a faster algorithm
+described in \cite{ecker98:OTNOPFONGOC2} is used.
+
+\beginexample
+    gap> ScottLength( GTW6_2 );    
+    2
+    gap> ScottLength( GTW16_11 );
+    4
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Other useful functions for groups}
+
+
+\>AsPermGroup( <G> )
+
+For a group <G>, `AsPermGroup' returns a permutation group that is isomorphic
+to <G>. In the case of a permutation group this is the group itself.
+
+\beginexample
+    gap> D24 := DihedralGroup( 24 );
+    <pc group of size 24 with 4 generators>
+    gap> D24p := AsPermGroup( D24 );
+    <permutation group with 4 generators>
+    gap> IsomorphismGroups( D24, D24p );
+    [ f1, f2, f3, f4 ] -> 
+    [ ( 1,19)( 2,21)( 3,20)( 4,24)( 5,23)( 6,22)( 7,13)( 8,15)( 9,14)
+        (10,18)(11,17)(12,16), ( 1,12, 6, 9, 3,11, 5, 8, 2,10, 4, 7)
+        (13,24,18,21,15,23,17,20,14,22,16,19), 
+      ( 1, 6, 3, 5, 2, 4)( 7,12, 9,11, 8,10)(13,18,15,17,14,16)
+        (19,24,21,23,20,22), ( 1, 3, 2)( 4, 6, 5)( 7, 9, 8)(10,12,11)
+        (13,15,14)(16,18,17)(19,21,20)(22,24,23) ]
+    gap> C12 := CyclicGroup( 12 );  
+    <pc group of size 12 with 3 generators>
+    gap> AsPermGroup( C12 );
+    Group([ ( 1, 7, 4,10, 2, 8, 5,11, 3, 9, 6,12), 
+      ( 1, 4, 2, 5, 3, 6)( 7,10, 8,11, 9,12), 
+      ( 1, 2, 3)( 4, 5, 6)( 7, 8, 9)(10,11,12) ])
+\endexample
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

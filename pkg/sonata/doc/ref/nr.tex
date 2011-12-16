@@ -1,0 +1,990 @@
+%
+\Chapter{Nearrings}
+%
+
+A *(left) nearring* is a nonempty set $N$ together with two binary 
+operations on $N$, $+$ and $.$ s.t. $(N,+)$ is a group, $(N,.)$ is 
+a semigroup, and $.$ is left distributive over $+$, i.e. 
+$\forall n_1,n_2,n_3 \in N:\ n_1.(n_2+n_3) = n_1.n_2 + n_1.n_3$.
+
+For more information we suggest \cite{Pilz:Nearrings},
+\cite{meldrum85:NATLWG}, and \cite{Clay:Nearrings}.
+
+
+The functions described in this section can be found in the source files
+`nr.g?' and `nrconstr.g?'.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Defining a nearring multiplication}
+
+
+\>IsNearRingMultiplication( <G>, <mul>, [<lcs>] )
+
+The arguments of the function `Is\-Nr\-Mul\-ti\-pli\-ca\-tion' are a 
+group <G>, a {\GAP}-function <mul> which has two arguments `x' and `y' which
+must both be elements of the group <G> and returns an element `z' of <G> s.t.
+<mul> defines a  binary operation on {\it G}. As an optional third parameter
+`Is\-Nr\-Mul\-ti\-pli\-ca\-tion' accepts a list of control strings <lcs>.
+
+`IsNearRingMultiplication' returns `true' (`false') if <mul> is (is not) a nearring
+multiplication on <G> i.e. it checks whether it is well-defined, associative
+and left distributive over the group operation of <G>. The list <lcs> may
+contain one or more of the strings ` "closed" ', ` "ass" ' and ` "rdistr" '
+in which case the according property is not tested. In this case it is
+assumed that the user has checked it. This feature should only be used in cases
+where it would take too long to check certain laws element by element and the
+user is absolutely sure about the correctness.
+
+\beginexample
+    gap> G := TWGroup( 24, 6 );
+    24/6
+    gap> mul_l := function ( x, y ) return y; end;
+    function ( x, y ) ... end
+    gap> IsNearRingMultiplication( G, mul_l );
+    true
+    gap> mul_r := function ( x, y ) return x; end;
+    function ( x, y ) ... end
+    gap> IsNearRingMultiplication( G, mul_r );          
+    #I  specified multiplication is not left distributive.
+    false
+    gap> IsNearRingMultiplication( G, mul_r, ["closed","ldistr"] );
+    true
+\endexample
+
+\>NearRingMultiplicationByOperationTable( <G>, <table>, <elmlist> )
+
+The function `NearRingMultiplicationByOperationTable' returns the nearring
+multiplication on the group <G> which is defined by the multiplication table
+<table>. Rather than group elements the entries of <table> are the positions
+of the group element in the list <elmlist> (the first element in
+<elmlist> is 1, the second is 2, a.s.o.). Usually the neutral element of the
+group will be the first.
+
+`IsNearRingMultiplication' can be used to check whether the resulting multiplication
+is indeed a nearring multiplication on <G>.
+
+\beginexample
+    gap> G := CyclicGroup( 4 );            
+    <pc group of size 4 with 2 generators>
+    gap> GeneratorsOfGroup( G );
+    [ f1, f2 ]
+    gap> a := last[1];
+    f1
+    gap> Order( a );
+    4
+    gap> # a generates G indeed
+    gap> elmlist := List( [0..3], x -> a^x );
+    [ <identity> of ..., f1, f2, f1*f2 ]
+    gap> # Let:  1 := identity of ..., 2 := f1, 3 := f2, 4 := f1*f2
+    gap> # Consider the following multiplication table on G:
+    gap> OT := [[1, 1, 1, 1],
+    > [1, 4, 3, 2],                                                   
+    > [1, 1, 1, 1],
+    > [1, 2, 3, 4]];;
+        gap> mul := NearRingMultiplicationByOperationTable( G, OT, elmlist );
+    function ( x, y ) ... end
+    gap> IsNearRingMultiplication( G, mul );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Construction of nearrings}
+
+
+\>ExplicitMultiplicationNearRing( <G>, <mul> )
+
+The constructor function `ExplicitMultiplicationNearRing' returns the nearring 
+defined by the group <G> and the nearring multiplication <mul>.
+(For a detailed explanation of <mul> see Section "IsNearRingMultiplication".)
+
+`ExplicitMultiplicationNearRing' calls
+`Is\-Near\-Ring\-Mul\-ti\-pli\-ca\-tion' in order to make sure that
+<mul> is really a nearring multiplication. If the nearring
+multiplication should not be checked,
+
+\>ExplicitMultiplicationNearRingNC( <G>, <mul> )
+
+may be called.
+
+\beginexample
+    gap> n := ExplicitMultiplicationNearRing( GTW18_3, mul_l );
+    ExplicitMultiplicationNearRing ( 18/3 , multiplication )
+    gap> n = ExplicitMultiplicationNearRingNC( GTW18_3, mul_l );
+    true
+\endexample
+
+\>IsNearRing( <obj> )
+
+`IsNearRing' returns `true' if the object <obj> is a nearring 
+and `false' otherwise. 
+
+\beginexample
+    gap> n := ExplicitMultiplicationNearRingNC( GTW18_3, mul_l );
+    ExplicitMultiplicationNearRing ( 18/3 , multiplication )
+    gap> IsNearRing( n );                                       
+    true
+    gap> IsNearRing( GroupReduct( n ) );
+    false
+\endexample
+
+\>IsExplicitMultiplicationNearRing( <obj> )
+
+`IsExplicitMultiplicationNearRing' returns `true', if the object <obj> is
+a nearring defined by a group and a multiplication as with
+"ExplicitMultiplicationNearRing".
+
+\beginexample
+    gap> IsExplicitMultiplicationNearRing( n );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Direct products of nearrings}
+
+
+\>DirectProductNearRing( <nr1>, <nr2> )
+
+Given two nearrings <nr1> and <nr2>, the function `DirectProductNearRing'
+constructs the direct product of these.
+
+\beginexample
+    gap> n := ExplicitMultiplicationNearRingNC( GTW18_3, mul_l );
+    ExplicitMultiplicationNearRing ( 18/3 , multiplication )
+    gap> zero_mul := function ( x, y ) return (); end;
+    function ( x, y ) ... end
+    gap> z := ExplicitMultiplicationNearRingNC( GTW12_3, zero_mul );
+    ExplicitMultiplicationNearRing ( 12/3 , multiplication )
+    gap> d := DirectProductNearRing( n, z );
+    DirectProductNearRing( ExplicitMultiplicationNearRing ( 18/3 , multi\
+    plication ), ExplicitMultiplicationNearRing ( 12/3 , multiplication \
+    ) )
+    gap> IsExplicitMultiplicationNearRing( d );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Operation tables for nearrings}
+
+
+\>PrintTable( <nr> )!{near rings}
+
+`PrintTable' prints the additive and multiplicative Cayley tables of the 
+nearring <nr>. This function works the same way as for groups.
+
+\beginexample
+    gap> n := ExplicitMultiplicationNearRingNC( CyclicGroup( 3 ), mul_l );
+    ExplicitMultiplicationNearRing ( <pc group of size 3 with 
+    1 generators> , multiplication )
+    gap> SetSymbols( n, ["0","1","2"] );
+    gap> PrintTable( n );               
+    Let:
+    0 := (<identity> of ...)
+    1 := (f1)
+    2 := (f1^2)
+
+      +  | 0  1  2  
+      ------------
+      0  | 0  1  2  
+      1  | 1  2  0  
+      2  | 2  0  1  
+
+      *  | 0  1  2  
+      ------------
+      0  | 0  1  2  
+      1  | 0  1  2  
+      2  | 0  1  2  
+\endexample
+
+Optionally, `PrintTable' can be used in the form `PrintTable( <nr>, <mode> )', 
+where <mode> is a string. If the letter `e' is contained in this string, the 
+definitions of the symbols used are printed, if the letter `a' is contained 
+in the string, the addition table is printed, and if the letter `m' is contained
+in the string, the multiplication table of the nearring is printed. Every 
+combination of these three letters in any order is possible.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Modified symbols for the operation tables}
+
+
+\>SetSymbols( <nr>, <symblist> )
+\>SetSymbolsSupervised( <nr>, <symblist> )
+
+The function `SetSymbols' and `SetSymbolsSupervised' allow you to define a
+list <symblist> of strings to be used when printing the operation tables of
+the nearring. `SetSymbols' simply sets the set of strings to the given value.
+`SetSymbolsSupervised' checks, if there are more symbols than the nearring has
+elements. In this case the superfluous strings are ignored. If there are less
+symbols than the nearring has elements, `SetSymbolsSupervised' ``invents''
+unique names for the rest of the elements. In any case a warning is printed.
+If there are repetitions or holes in the list <symblist> an error is signaled.
+
+\>Symbols( <nr> )
+
+allows you to look at the set of symbols, which are currently in use.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW3_1, 4 );
+    LibraryNearRing(3/1, 4)
+    gap> Symbols( n );
+    [ "n0", "n1", "n2" ]
+    gap> SetSymbolsSupervised( n,
+            ["apple", "banana", "coconut", "donut", "potato"] );
+    Warning: too many symbols ...ignoring the last 2 symbols
+    gap> PrintTable( n, "m" );
+
+            *  | apple    banana   coconut  
+      ------------------------------------
+      apple    | apple    apple    apple    
+      banana   | apple    banana   coconut  
+      coconut  | apple    banana   coconut  
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Accessing nearring elements}
+
+
+The elements of a nearring are different from those of its group reduct.
+In order to make group elements and nearring elements distinguishable for the
+user, nearring elements are printed with an extra pair of parentheses.
+The two functions `AsGroupReductElement' and `AsNearRingElement' can be
+used to switch between these two representations.
+
+\>AsNearRingElement( <nr>, <grpelm> )
+
+returns the representation as a nearring element of an element <grpelm> of the
+group reduct of the nearring <nr>.
+
+\>AsGroupReductElement( <nrelm> )
+
+returns the representation as an element of the group reduct of the nearring
+of the nearring element <nrelm>.
+
+\beginexample
+    gap> mul_l := function ( x, y ) return y; end;              
+    function ( x, y ) ... end
+    gap> n := ExplicitMultiplicationNearRingNC( GTW6_2, mul_l );
+    ExplicitMultiplicationNearRing ( 6/2 , multiplication )
+    gap> AsList( n );
+    [ (()), ((2,3)), ((1,2)), ((1,2,3)), ((1,3,2)), ((1,3)) ]
+    gap> e := AsNearRingElement( n, (2,3) );
+    ((2,3))
+    gap> e in n;
+    true
+    gap> f := AsNearRingElement( n, (1,3) );
+    ((1,3))
+    gap> e + f;
+    ((1,3,2))
+    gap> e * f;
+    ((1,3))
+    gap> p := AsGroupReductElement( e );                      
+    (2,3)
+    gap> IsPerm( p );
+    true
+    gap> p + p;
+    Error no method found for operation SUM with 2 arguments at
+    Error( "no method found for operation ", NAME_FUNC( operation ), 
+     " with 2 arguments" );
+    Entering break read-eval-print loop, you can 'quit;' to quit to outer l\
+    oop,
+    or you can return to continue
+    brk> 
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Nearring elements}
+
+
+There are three different ways to ask for the elements of a nearring.
+
+\>AsList( <nr> )!{near rings}
+
+The function `AsList' computes the elements of the nearring <nr>. It returns
+the elements as a list.
+
+\>AsSortedList( <nr> )!{near rings}
+
+does essentially the same, but returns a set of elements.
+
+\>Enumerator( <nr> )!{near rings}
+
+does essentially the same as `AsList', but returns an enumerator for the
+elements of <nr>. An enumerator is an object that is capable of enumerating
+the elements the nearring one by one. This is especially important if the
+nearring is very big and not every element can be stored.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW6_2, 39 );                    
+    LibraryNearRing(6/2, 39)
+    gap> e := Enumerator( n );                                  
+    <enumerator of near ring>
+    gap> e[1];
+    (())
+    gap> x := AsNearRingElement( n, (1,2,3) );
+    ((1,2,3))
+    gap> Position( e, x );
+    2
+    gap> Length(e);
+    6
+    gap> l := AsList( n );                                           
+    [ (()), ((2,3)), ((1,2)), ((1,2,3)), ((1,3,2)), ((1,3)) ]
+    gap> e[3] = l[3];
+    false
+    gap> AsSortedList( n );                                     
+    [ (()), ((2,3)), ((1,2)), ((1,2,3)), ((1,3,2)), ((1,3)) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Random nearring elements}
+
+
+\>Random( <nr> )!{near ring element}
+
+`Random' returns a random element of the nearring <nr>.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW6_2, 39 );                    
+    LibraryNearRing(6/2, 39)
+    gap> Random(n);
+    ((1,3))
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Nearring generators}
+
+
+\>GeneratorsOfNearRing( <nr> )
+
+The function `GeneratorsOfNearRing' returns a set of (not necessarily
+additive) generators of the nearring <nr>.
+
+\beginexample
+    gap> n := ExplicitMultiplicationNearRingNC( GTW8_4, mul_l );
+    ExplicitMultiplicationNearRing ( 8/4 , multiplication )
+    gap> GeneratorsOfNearRing( n );
+    [ ((1,2,3,4)), ((2,4)) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Size of a nearring}
+
+
+\>Size( <nr> )!{near rings}
+
+`Size' returns the number of elements in the nearring <nr>.
+
+\beginexample
+    gap> n := LibraryNearRingWithOne( GTW24_3, 8 );
+    LibraryNearRingWithOne(24/3, 8)
+    gap> Size(n);
+    24
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{The additive group of a nearring}
+
+
+\>GroupReduct( <nr> )
+
+The function `GroupReduct' returns the nearring <nr> as a
+(multiplicative) group.
+
+\beginexample
+    gap> GroupReduct( LibraryNearRingWithOne( GTW24_3, 8 ) );
+    24/3
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Nearring endomorphisms} 
+
+
+\>Endomorphisms( <nr> )!{near rings}
+
+`Endomorphisms' computes all the endomorphisms of the nearring <nr>. 
+The endomorphisms are returned as a list of transformations. In fact, the
+returned list contains those endomorphisms of the group reduct of <nr>
+which are also nearring endomorphisms.
+
+\beginexample
+    gap> Endomorphisms ( LibraryNearRing( GTW12_4, 4 ) ) ;
+    [ [ (1,2,4), (2,3,4) ] -> [ (), () ], 
+      [ (1,2,4), (2,3,4) ] -> [ (1,2,4), (2,3,4) ] ]
+    gap> Length( Endomorphisms( GTW12_4 ) );
+    33
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Nearring automorphisms} 
+
+
+\>Automorphisms( <nr> )!{near rings}
+
+`Automorphisms' computes all the automorphisms of the nearring <nr>. 
+The automorphisms are returned as a list of transformations. In fact, the
+returned list contains those automorphisms of the group reduct of <nr>
+which are also nearring automorphisms.
+
+\beginexample
+    gap> Automorphisms( LibraryNearRing( GTW12_4, 4 ) );
+    [ IdentityMapping( 12/4 ) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Isomorphic nearrings}
+
+
+\>IsIsomorphicNearRing( <nr1>, <nr2> )
+
+The function `IsIsomorphicNearRing' returns `true' if the two nearrings
+<nr1> and <nr2> are isomorphic and `false' otherwise.
+
+\beginexample
+    gap> IsIsomorphicNearRing( MapNearRing( GTW2_1 ),                       
+    > LibraryNearRingWithOne( GTW4_2, 5 ) );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Subnearrings}
+
+
+\>SubNearRings( <nr> )
+
+The function `SubNearRings' computes all subnearrings of the nearring 
+<nr>. The function returns a list of nearrings representing the 
+according subnearrings.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> SubNearRings( n );
+    [ ExplicitMultiplicationNearRing ( Group(()) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3) ]) , multiplication ),
+      ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ),
+      ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3), (1,3)(2,4) 
+         ]) , multiplication ), ExplicitMultiplicationNearRing ( Group(
+        [ (1,4)(2,3), (1,3)(2,4), (1,2)(3,4), (2,3,4) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (1,2,4) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (1,3,2) ]) , multiplication ) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Invariant subnearrings}
+
+
+\>InvariantSubNearRings( <nr> )
+
+A subnearring $(M,+,.)$ of a nearring $(N,+,.)$ is called an 
+*invariant subnearring* if both, $M . N$ and $N . M$ are subsets of $M$.
+
+The function `InvariantSubNearRings'  computes all invariant 
+subnearrings of the nearring <nr>.
+The function returns a list of nearrings representing the according 
+invariant subnearrings.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> i := InvariantSubNearRings( n );
+    [ ExplicitMultiplicationNearRing ( Group(()) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ),
+      ExplicitMultiplicationNearRing ( Group(
+        [ (1,4)(2,3), (1,3)(2,4), (1,2)(3,4), (2,3,4) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Constructing subnearrings}
+
+
+\>SubNearRingBySubgroupNC( <nr>, <S> )
+
+For a subgroup <S> of the group reduct of the nearring which is closed
+under the multiplication of <nr> the function
+`SubNearRingBySubgroupNC' returns the subnearRing of <nr>, which is
+induced by this subgroup. The <nr>-invariance is not explicitely
+tested.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> S := Subgroup( GTW12_4, [ (1,2)(3,4) ] );
+    Group([ (1,2)(3,4) ])
+    gap> sn := SubNearRingBySubgroupNC( n, S );
+    ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication )
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Intersection of nearrings}
+
+
+\>Intersection( <listofnrs> )!{for nearrings}
+
+computes the intersection of the nearrings in the list <listofnrs>.
+All of the nearrings in <listofnrs> must be subnearrings of a common
+supernearring.
+
+\beginexample
+    gap> n := LibraryNearRingWithOne( GTW27_4, 5 );              
+    LibraryNearRingWithOne(27/4, 5)
+    gap> si := Filtered( SubNearRings( n ), s -> Identity( n ) in s );
+    [ ExplicitMultiplicationNearRing ( Group(
+        [ ( 1,23,14)( 2,13, 6)( 3,27,22)( 4,18, 9)( 5,20,12)( 7,16,26)
+            ( 8,25,17)(10,21,19)(11,24,15) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group(
+        [ ( 1,26,27)( 2,19,20)( 3,14,16)( 4,24,25)( 5, 6,21)( 7,22,23)
+            ( 8, 9,11)(10,12,13)(15,17,18), 
+          ( 1,22,16)( 2,12,21)( 3,26,23)( 4,17,11)( 5,19,13)( 6,20,10)
+            ( 7,14,27)( 8,24,18)( 9,25,15) ]) , multiplication ), 
+      ExplicitMultiplicationNearRing ( Group(
+        [ ( 1, 6,15)( 2, 9, 7)( 3,13,25)( 4,14,10)( 5,18,27)( 8,23,20)
+            (11,22,19)(12,24,16)(17,26,21), 
+          ( 1, 5,17)( 2, 8,22)( 3,12, 4)( 6,18,26)( 7,20,11)( 9,23,19)
+            (10,25,16)(13,24,14)(15,27,21), 
+          ( 1, 2, 4)( 3, 6,11)( 5, 9,16)( 7,13,17)( 8,14,21)(10,18,22)
+            (12,15,23)(19,24,26)(20,25,27) ]) , multiplication ) ]
+    gap> Intersection( si );
+    ExplicitMultiplicationNearRing ( Group(
+    [ ( 1,23,14)( 2,13, 6)( 3,27,22)( 4,18, 9)( 5,20,12)( 7,16,26)
+        ( 8,25,17)(10,21,19)(11,24,15) ]) , multiplication )
+    gap> Size( last );
+    3
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Identity of a nearring}
+
+
+\>Identity( <nr> )
+
+The function `Identity' returns the identity of the multiplicative semigroup
+of the nearring <nr> if it exists and `fail' otherwise.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> Identity( n );
+    fail
+    gap> n := LibraryNearRingWithOne( GTW24_4, 8 ); 
+    LibraryNearRingWithOne(24/4, 8)
+    gap> Identity( n );
+    ((1,2,3,4,5,6)(7,8))
+\endexample
+
+\>IsNearRingWithOne( <nr> )
+
+The function `IsNearRingWithOne' returns `true' if the nearring was
+constructed as a nearring with one and `false' otherwise. To decide
+whether a nearring has an identity use `Identity(<nr>)=true'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );             
+    LibraryNearRing(12/4, 8)
+    gap> IsNearRingWithOne( n );
+    false
+    gap> n := LibraryNearRingWithOne( GTW24_4, 8 ); 
+    LibraryNearRingWithOne(24/4, 8)
+    gap> Identity( n );
+    ((1,2,3,4,5,6)(7,8))
+    gap> IsNearRingWithOne( n );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Distributivity in a nearring}
+
+
+\>Distributors( <nr> )
+
+An element $x$ of a nearring $(N,+,.)$ is called a {\bf distributor}
+if $x = (n_1 + n_2 ) . n_3 - (n_1 . n_3 + n_2 . n_3 )$ for some elements
+$n_1, n_2, n_3$ of $N$.
+
+The function `Distributors' returns a list containing the distributors 
+of the nearring <nr>. 
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );             
+    LibraryNearRing(12/4, 8)
+    gap> IsNearRingWithOne( n );
+    false
+    gap> Distributors( n );
+    [ (()), ((2,3,4)), ((2,4,3)), ((1,2)(3,4)), ((1,2,3)), ((1,2,4)), 
+      ((1,3,2)), ((1,3,4)), ((1,3)(2,4)), ((1,4,2)), ((1,4,3)), 
+      ((1,4)(2,3)) ]
+\endexample
+
+\>DistributiveElements( <nr> )
+
+An element $d$ of a left nearring $(N,+,.)$ is called a 
+*distributive element* if it is also right distributive over all elements,
+i.e. $\forall n_1, n_2 \in N:\ (n_1 + n_2 ).d = n_1.d + n_2.d$. 
+
+The function `DistributiveElements' returns a list containing the 
+distributive elements of the nearring <nr>. 
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> DistributiveElements( n );
+    [ (()) ]
+\endexample
+
+\>IsDistributiveNearRing( <nr> )
+
+A left nearring $N$ is called *distributive nearring* if its
+multiplication is also right distributive.
+
+The function `IsDistributiveNearRing' simply checks if all elements
+are distributive and returns the according boolean value 
+`true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsDistributiveNearRing( n );
+    false
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Elements of a nearring with special properties}
+
+
+\>ZeroSymmetricElements( <nr> )
+
+Let $(N,+,.)$ be a left nearring and denote by $0$ the neutral element 
+of $(N,+)$. 
+An element $n$ of $N$ is called a *zero-symmetric element* if $0.n = 0$. 
+
+*Remark:* note that in a *left* nearring $n.0 = 0$ is true for all elements
+$n$.
+
+The function `ZeroSymmetricElements' returns a list containing the 
+zero-symmetric elements of the nearring <nr>. 
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> ZeroSymmetricElements( n );
+    [ (()), ((2,3,4)), ((2,4,3)), ((1,2)(3,4)), ((1,2,3)), ((1,2,4)), 
+      ((1,3,2)), ((1,3,4)), ((1,3)(2,4)), ((1,4,2)), ((1,4,3)), 
+      ((1,4)(2,3)) ]
+\endexample
+
+\>IdempotentElements( <nr> )
+
+The function `IdempotentElements' returns a list containing the 
+idempotent elements of the multiplicative semigroup of the nearring <nr>. 
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IdempotentElements( n );
+    [ (()), ((1,4)(2,3)) ]
+\endexample
+
+\>NilpotentElements( <nr> )
+
+Let $(N,+,.)$ be a nearring with zero $0$. An element $n$ of $N$ is 
+called *nilpotent* if there is a positive integer $k$ such that
+$n^k = 0$.
+
+The function `NilpotentElements' returns a list of sublists of length 
+$2$ where the first entry is a nilpotent element $n$ and the second
+entry is the smallest $k$ such that $n^k = 0$.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> NilpotentElements( n );
+    [ [ (()), 1 ], [ ((2,3,4)), 2 ], [ ((2,4,3)), 2 ], 
+      [ ((1,2)(3,4)), 2 ], [ ((1,2,3)), 2 ], [ ((1,2,4)), 2 ], 
+      [ ((1,3,2)), 2 ], [ ((1,3,4)), 2 ], [ ((1,4,2)), 2 ], 
+      [ ((1,4,3)), 2 ] ]
+\endexample
+
+\>QuasiregularElements( <nr> )
+
+Let $(N,+,.)$ be a left nearring. For an element $z \in N$, 
+denote the right ideal generated by the set $\{n - z.n | n \in N\}$
+by $L_z$.
+An element $z$ of $N$ is called *quasiregular* if $z \in L_z$.
+
+The function `QuasiregularElements' returns a list of all 
+quasiregular elements of a nearring <nr>.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> QuasiregularElements( n );
+    [ (()), ((2,3,4)), ((2,4,3)), ((1,2)(3,4)), ((1,2,3)), ((1,2,4)), 
+      ((1,3,2)), ((1,3,4)), ((1,3)(2,4)), ((1,4,2)), ((1,4,3)) ]
+\endexample
+
+\>RegularElements( <nr> )
+
+Let $(N,+,.)$ be a nearring. An element $n$ of $N$ is called *regular* if
+there is an element $x$ such that $n. x. n = n$.
+
+The function `RegularElements' returns a list of all regular elements of a
+nearring <nr>.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> RegularElements( n );
+    [ (()), ((1,3)(2,4)), ((1,4)(2,3)) ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Special properties of a nearring}
+
+
+\>IsAbelianNearRing( <nr> )
+
+A nearring is called *abelian* if its group reduct is abelian.
+
+The function `IsAbelianNearRing' returns the according boolean value
+`true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsAbelianNearRing( n );
+    false
+\endexample
+
+\>IsAbstractAffineNearRing( <nr> )
+
+A left nearring $N$ is called *abstract affine* if its group reduct is
+abelian and its zero-symmetric elements are exactly its distributive
+elements.
+
+The function `IsAbstractAffineNearRing' returns the according boolean 
+value `true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsAbstractAffineNearRing( n );
+    false
+\endexample
+
+\>IsBooleanNearRing( <nr> )
+
+A left nearring $N$ is called *boolean* if all its elements are
+idempotent with respect to multiplication.
+
+The function `IsBooleanNearRing' simply checks if all elements
+are idempotent and returns the according boolean value 
+`true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsBooleanNearRing( n );
+    false
+\endexample
+
+\>IsNilNearRing( <nr> )
+
+A nearring $N$ is called *nil* if all its elements are nilpotent.
+
+The function `IsNilNearRing' checks if all elements are nilpotent and returns
+the according boolean value `true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsNilNearRing( n );
+    false
+\endexample
+
+\>IsNilpotentNearRing( <nr> )
+
+A nearring $N$ is called *nilpotent* if there is a positive integer
+$k$, s.t. $N^k = \{0\}$.
+
+The function `IsNilpotentNearRing' tests if
+the nearring <nr> is nilpotent and returns the according boolean value 
+`true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsNilpotentNearRing( n );
+    false
+\endexample
+
+\>IsNilpotentFreeNearRing( <nr> )
+
+A nearring $N$ is called *nilpotent free* if its only nilpotent
+element is $0$.
+
+The function `IsNilpotentFreeNearRing' checks if 
+$0$ is the only nilpotent and returns the according boolean value 
+`true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsNilpotentFreeNearRing( n );
+    false
+\endexample
+
+\>IsCommutative( <nr> )
+
+A nearring $(N,+,.)$ is called *commutative* if its multiplicative semigroup
+is commutative.
+
+The function `IsCommutative' returns the according value `true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsCommutative( n );
+    false
+\endexample
+
+\>IsDgNearRing( <nr> )
+
+A nearring $(N,+,.)$ is called *distributively generated (d.g.)* if 
+$(N,+)$ is generated additively by the distributive elements of the
+nearring.
+
+The function `IsDgNearRing' returns the according value `true' or `false'
+for a nearring <nr>.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsDgNearRing( n );
+    false
+\endexample
+
+\>IsIntegralNearRing( <nr> )
+
+A nearring $(N,+,.)$ with zero element $0$ is called *integral* if 
+it has no zero divisors, i.e. the condition $\forall n_1,n_2:\ 
+n_1 . n_2 = 0 \Rightarrow n_1 = 0 \lor n_2 = 0$ holds.
+
+The function `IsIntegralNearRing' returns 
+the according value `true' or `false' for a nearring <nr>.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsIntegralNearRing( n );
+    false
+\endexample
+
+\>IsPrimeNearRing( <nr> )
+
+A nearring $(N,+,.)$ with zero element $0$ is called *prime* if 
+the ideal $\{ 0 \}$ is a prime ideal.
+
+The function `IsPrimeNearRing' checks if <nr> is a prime nearring
+by using the condition <for all non-zero ideals> $I,J:\ I . J \ne 
+\{ 0 \}$ and returns the according value `true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsPrimeNearRing( n );
+    true
+\endexample
+
+\>IsQuasiregularNearRing( <nr> )
+
+A nearring $N$ is called *quasiregular* if all its elements are
+quasiregular.
+
+The function `IsQuasiregularNearRing' simply checks if all elements
+of the nearring <nr> are quasiregular and returns the according 
+boolean value `true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsQuasiregularNearRing( n );
+    false
+\endexample
+
+\>IsRegularNearRing( <nr> )
+
+A nearring $N$ is called *regular* if all its elements are regular.
+
+The function `IsRegularNearRing' simply checks if all elements
+of the nearring <nr> are regular and returns the according 
+boolean value `true' or `false'.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW12_4, 8 );            
+    LibraryNearRing(12/4, 8)
+    gap> IsRegularNearRing( n );
+    false
+\endexample
+
+\>IsNearField( <nr> )
+
+Let $(N,+,.)$ be a nearring with zero $0$ and denote by $N^\*$ 
+the set $N - \{0\}$. N is a *nearfield* if $(N,+,.)$ has an identity and
+$(N^\*,.)$ is a group.
+
+The function `IsNearField' tests if <nr> has an identity and 
+if every non-zero element has a multiplicative inverse and returns
+the according value `true' or `false'.
+
+\beginexample
+     gap> n := LibraryNearRing( GTW12_4, 8 );
+     LibraryNearRing(12/4, 8)
+     gap> IsNearField( n );                        
+     false    
+\endexample
+
+\>IsPlanarNearRing( <nr> )
+
+Let $(N,+,\cdot)$ be a left nearring. For $a,b \in N$ we define $a \equiv b$
+iff $a\cdot n = b\cdot n$ for all $n\in N$. If $a \equiv b$, then $a$ and $b$
+are called *equivalent multipliers*.
+A nearring $N$ is called *planar* if $| N/_{\equiv} | \ge 3$ and if 
+for any two non-equivalent multipliers $a$ and $b$ in $N$, for any $c\in N$, 
+the equation $a\cdot x = b\cdot x + c$ has a unique solution.
+
+The function `IsPlanarNearRing' returns the according value `true' or
+`false' for a nearring <nr>.
+
+\beginexample
+     gap> n := LibraryNearRing( GTW9_2, 90 );
+     LibraryNearRing(9/2, 90)
+     gap> IsPlanarNearRing( n );     
+     true
+\endexample
+
+\>IsWdNearRing( <nr> )
+
+A left nearring $(N,+,\cdot)$ is called *weakly divisible* if 
+$\forall a,b\in N \exists x\in N : a\cdot x=b$ or $b\cdot x=a$. 
+
+The function `IsWdNearRing' returns the according value <true> or <false> 
+for the nearring <nr>.
+
+\beginexample
+     gap> nr := LibraryNearRing( GTW9_1, 185 );
+     LibraryNearRing(9/1, 185)
+     gap> IsWdNearRing( nr );
+     true
+\endexample
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+
+
+
+
+

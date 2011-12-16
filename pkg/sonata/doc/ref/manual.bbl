@@ -1,0 +1,66 @@
+\begin{thebibliography}{W{\accent127 a}h87}
+
+\bibitem[AEN00]{aichingereckernoebauer00:TUOCINT}
+E.~Aichinger, J.~Ecker, and C.~N{\accent127 o}bauer.
+\newblock The use of computers in near-ring theory.
+\newblock In {\em Nearrings And Nearfields (Stellenbosch, 1997)}, pages 35--41.
+  Kluwer Academic Publishing, Dordrecht, the Netherlands, 2000.
+
+\bibitem[Aic00]{aichingerea00:CWN}
+E.~Aichinger.
+\newblock {F}. {B}inder, {J}. {E}cker, {P}. {M}ayr, and {C}. {N}{\accent127
+  o}bauer. {A}lgorithms for near rings of non-linear transformations.
+\newblock In {\em Proceedings of the ISSAC 2000}, pages 23--29, St.~Andrews,
+  Scotland, 2000.
+
+\bibitem[Cla92]{Clay:Nearrings}
+James~R. Clay.
+\newblock {\em Nearrings. Geneses and Applications}.
+\newblock Oxford University Press, Oxford, New York, Tokyo, 1992.
+
+\bibitem[Eck98]{ecker98:OTNOPFONGOC2}
+J{\"u}rgen Ecker.
+\newblock On the number of polynomial functions on nilpotent groups of class 2.
+\newblock In {\em Contributions to general algebra, 10 (Klagenfurt, 1997)},
+  pages 133--137. Heyn, Klagenfurt, 1998.
+
+\bibitem[May00]{Mayr:Representations}
+P.~Mayr.
+\newblock Fixed-point-free representations over fields of prime characteristic.
+\newblock Reports of the Mathematical Institutes 554, Johannes Kepler
+  University Linz, 2000.
+
+\bibitem[Mel85]{meldrum85:NATLWG}
+J.~D.~P. Meldrum.
+\newblock {\em Near-rings and their links with groups}.
+\newblock Pitman (Advanced Publishing Program), Boston, Mass., 1985.
+
+\bibitem[Pil83]{Pilz:Nearrings}
+G{\accent127 u}nter Pilz.
+\newblock {\em Near-Rings. The Theory and its Applications}, volume~23 of {\em
+  North-Holland Mathematics Studies}.
+\newblock North-Holland Publishing Company, Amsterdam, New York, Oxford,
+  revised edition, 1983.
+
+\bibitem[Sco69]{scott69:TAOPMOAGATSOCPPGI}
+S.~D. Scott.
+\newblock The arithmetic of polynomial maps over a group and the structure of
+  certain permutational polynomial groups. {I}.
+\newblock {\em Monatsh. Math.}, 73:250--267, 1969.
+
+\bibitem[TW80]{thomaswood80:GT}
+A.~D. Thomas and G.~V. Wood.
+\newblock {\em Group tables}.
+\newblock Shiva Publishing Ltd., Nantwich, 1980.
+
+\bibitem[W{\accent127 a}h87]{Waehling:Fastkoerper}
+Heinz W{\accent127 a}hling.
+\newblock {\em Theorie der Fastk{\accent127 o}rper}.
+\newblock Thales Verlag, Essen, 1987.
+
+\bibitem[Wol67]{Wolf:Spaces}
+Joseph~Albert Wolf.
+\newblock {\em Spaces of Constant Curvature}.
+\newblock McGraw-Hill, New York, 1967.
+
+\end{thebibliography}

@@ -1,0 +1,45 @@
+This is BibTeX, Version 0.99c (Web2C 7.3.7)
+The top-level auxiliary file: manual.aux
+The style file: alpha.bst
+Database file #1: ../ref/sonata.bib
+You've used 5 entries,
+            2543 wiz_defined-function locations,
+            597 strings with 5252 characters,
+and the built_in function-call counts, 1530 in all, are:
+= -- 135
+> -- 62
+< -- 4
++ -- 18
+- -- 18
+* -- 93
+:= -- 270
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 23
+chr.to.int$ -- 5
+cite$ -- 5
+duplicate$ -- 79
+empty$ -- 127
+format.name$ -- 26
+if$ -- 309
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 10
+newline$ -- 28
+num.names$ -- 15
+pop$ -- 38
+preamble$ -- 1
+purify$ -- 32
+quote$ -- 0
+skip$ -- 54
+stack$ -- 0
+substring$ -- 35
+swap$ -- 7
+text.length$ -- 4
+text.prefix$ -- 3
+top$ -- 0
+type$ -- 20
+warning$ -- 0
+while$ -- 12
+width$ -- 7
+write$ -- 69

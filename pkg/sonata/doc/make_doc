@@ -1,0 +1,32 @@
+#!/bin/sh
+#########################################################################
+##
+#W  make_doc        make SONATA Package documentation     Alexander Hulpke
+##
+
+echo "TeXing documentation:ref"
+# TeX the manual and build its bibliography
+(cd ref;tex manual;bibtex manual\
+tex manual; ../../../doc/manualindex manual\
+tex manual;pdftex manual;pdftex manual)
+
+echo "TeXing documentation:tut"
+(cd tut;tex manual;bibtex manual\
+tex manual; ../../../doc/manualindex manual\
+tex manual;pdftex manual;pdftex manual)
+
+# The HTML version of the manual
+mkdir -p ../htm
+mkdir -p ../htm/ref
+mkdir -p ../htm/tut
+echo "Creating HTML documentation"
+(cd ref;../convert.pl -t -c -n SONATA . ../../htm/ref)
+(cd ../htm/ref;for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done; rm -f tmp)
+
+#(cd ref;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA . ../../htm/ref)
+(cd tut;../convert.pl -t -c -n SONATA-tutorial . ../../htm/tut)
+(cd ../htm/tut;for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done; rm -f tmp)
+#(cd tut;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA-tutorial . ../../htm/tut)
+#########################################################################
+##
+#E

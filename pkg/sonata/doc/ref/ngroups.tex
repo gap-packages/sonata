@@ -1,0 +1,394 @@
+%
+\Chapter{N-groups}
+%
+
+In SONATA every N-group is a group, the only difference is, that there
+is a nearring that acts on the group. And since in SONATA all
+nearrings are left distributive, they act on the elements of an
+N-group from the right. *Note*, that the elements of an N-group are
+added via `\*', not `+'.
+
+The functions described in this section can be found in the source files
+`ngroups.g?'.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Construction of N-groups}
+
+
+There is a natural way to construct an N-group. It is to take a group,
+a nearring and define an action of the nearring on the group. The
+function `NGroup' allows one to do this. The special case, where
+(the group reduct of) a nearring is viewed as an N-group over the
+nearring itself, can be constructed easily via
+`NGroupByNearRingMultiplication'.
+
+\>NGroup( <G>, <nr>, <action> )
+
+The function `NGroup' has three arguments. <G> must be a group, <nr> the
+nearring that acts on the group and <action> a binary operation from the
+direct product of <G> and <nr> into <G>. It returns the N-group.
+
+\beginexample
+    gap> G := GTW4_2;                
+    4/2
+    gap> n := MapNearRing( G );
+    TransformationNearRing(4/2)
+    gap> action := function ( g, f )
+    > return Image( f, g );
+    > end;  
+    function ( g, f ) ... end
+    gap> gamma := NGroup( G, n, action );
+    < N-group of TransformationNearRing(4/2) >
+    gap> IsNGroup( gamma );
+    true
+    gap> NearRingActingOnNGroup( gamma );
+    TransformationNearRing(4/2)
+    gap> ActionOfNearRingOnNGroup( gamma );
+    function ( g, f ) ... end
+    gap> Print( ActionOfNearRingOnNGroup( gamma ) );
+    function ( g, f )
+        return Image( f, g );
+\endexample
+
+\>NGroupByNearRingMultiplication( <nr> )
+
+For every (left) nearring $(N,+,.)$ the group $(N,+)$ is an N-group
+over $N$ with respect to nearring multiplication from the right as the
+action.  The function `NGroupByNearRingMultiplication' returns this
+N-group of the nearring <nr>.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW8_2, 3 );
+    LibraryNearRing(8/2, 3)
+    gap> NGroupByNearRingMultiplication( n ) = GTW8_2;
+    true
+\endexample
+
+\>NGroupByApplication( <tfmnr> )
+
+For a nearring $T$ of transformations on a group $G$, $G$ is an
+N-group of $T$ with the application of functions as the action. The
+function `NGroupByApplication' returns this `N-group' of the nearring
+<tfmnr>.
+
+Another way to construct an N-Group is to take a nearring $N$, a right
+ideal $R$ and let $N$ act on the factor $N/R$ in the canonical way.
+This is accomplished by
+
+\>NGroupByRightIdealFactor( <nr>, <R> )
+
+The function `NGroupByRightIdealFactor' has two arguments, a nearring
+<nr> and a right ideal <R>. It returns the N-group <nr>/<R>.
+
+\beginexample
+    gap> N := LibraryNearRing( GTW4_2, 11 );
+    LibraryNearRing(4/2, 11)
+    gap> R := NearRingRightIdeals( N )[ 3 ];
+    < nearring right ideal >
+    gap> ng := NGroupByRightIdealFactor( N, R );
+    < N-group of LibraryNearRing(4/2, 11) >
+    gap> PrintTable( ng );
+    Let:
+    (0,0) := (())
+    (1,0) := ((3,4))
+    (0,1) := ((1,2))
+    (1,1) := ((1,2)(3,4))
+    --------------------------------------------------------------------
+    g0 := <identity> of ...
+    g1 := f1
+
+    N = LibraryNearRing(4/2, 11) acts on 
+    G = Group( [ f1 ] )
+    from the right by the following action: 
+
+             | g0  g1  
+      ---------------
+      (0,0)  | g0  g0  
+      (1,0)  | g0  g0  
+      (0,1)  | g0  g1  
+      (1,1)  | g0  g1  
+
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Operation tables of N-groups}
+
+
+\>PrintTable( <G> )!{for N-groups}
+
+The function `PrintTable' prints out the operation table of the 
+action of a nearring on its N-group <G>
+
+\beginexample
+    gap> n := LibraryNearRing( TWGroup( 8, 2 ), 3 );
+    LibraryNearRing(8/2, 3)
+    gap> gamma := NGroupByNearRingMultiplication( n );
+    < N-group of LibraryNearRing(8/2, 3) >
+    gap> PrintTable( gamma );
+    Let:
+    n0 := (())
+    n1 := ((3,4,5,6))
+    n2 := ((3,5)(4,6))
+    n3 := ((3,6,5,4))
+    n4 := ((1,2))
+    n5 := ((1,2)(3,4,5,6))
+    n6 := ((1,2)(3,5)(4,6))
+    n7 := ((1,2)(3,6,5,4))
+    --------------------------------------------------------------------
+    g0 := ()
+    g1 := (3,4,5,6)
+    g2 := (3,5)(4,6)
+    g3 := (3,6,5,4)
+    g4 := (1,2)
+    g5 := (1,2)(3,4,5,6)
+    g6 := (1,2)(3,5)(4,6)
+    g7 := (1,2)(3,6,5,4)
+
+    N = LibraryNearRing(8/2, 3) acts on 
+    G = Group( [ (1,2), (3,4,5,6) ] )
+    from the right by the following action: 
+
+          | g0  g1  g2  g3  g4  g5  g6  g7  
+      ------------------------------------
+      n0  | g0  g0  g0  g0  g0  g0  g0  g0  
+      n1  | g0  g0  g0  g0  g0  g0  g0  g2  
+      n2  | g0  g0  g0  g0  g0  g0  g0  g0  
+      n3  | g0  g0  g0  g0  g0  g0  g0  g2  
+      n4  | g0  g0  g0  g0  g0  g0  g0  g0  
+      n5  | g0  g0  g0  g0  g0  g0  g0  g2  
+      n6  | g0  g0  g0  g0  g0  g0  g0  g0  
+      n7  | g0  g0  g0  g0  g0  g0  g0  g2  
+
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Functions for N-groups}
+
+
+\>IsNGroup( <G> )
+
+For any group <G> the function `IsNGroup' tests whether there is a nearring
+defined that acts on <G>.
+
+\>NearRingActingOnNGroup( <G> )
+
+The function `NearRingActingOnNGroup' returns the nearring that acts on the
+N-group <G>.
+
+\beginexample
+    gap> n := LibraryNearRing( TWGroup( 8, 2 ), 3 );
+    LibraryNearRing(8/2, 3)
+    gap> gamma := NGroupByNearRingMultiplication( n );
+    < N-group of LibraryNearRing(8/2, 3) >
+    gap> NearRingActingOnNGroup( gamma );                   
+    LibraryNearRing(8/2, 3)
+\endexample
+
+\>ActionOfNearRingOnNGroup( <G> )
+
+The function `ActionOfNearRingOnNGroup' returns the action of the nearring
+that acts on the N-group <G> as a 2-ary \GAP-function.
+
+\beginexample
+    gap> n := LibraryNearRing( TWGroup( 8, 2 ), 3 );
+    LibraryNearRing(8/2, 3)
+    gap> gamma := NGroupByNearRingMultiplication( n );
+    < N-group of LibraryNearRing(8/2, 3) >
+    gap> ActionOfNearRingOnNGroup( gamma );
+    function ( g, n ) ... end
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{N-subgroups}
+
+
+\>NSubgroup( <G>, <gens> )
+
+The function `NSubgroup' returns the N-subgroup of the N-group <G>
+generated by <gens>.
+
+\>NSubgroups( <G> )
+
+The function `NSubgroups' returns a list of all N-subgroups of the
+N-group <G>.
+
+\>IsNSubgroup( <G>, <S> )
+
+The function `IsNSubgroup' returns `true' iff <S> is an N-subgroup of
+<G>.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{N0-subgroups}
+
+
+\>N0Subgroups( <G> )
+
+The function `N0Subgroups' returns a list of all $N_0$-subgroups
+of the N-group <G>.
+
+\beginexample
+    gap> n := LibraryNearRing(GTW12_3,20465);
+    LibraryNearRing(12/3, 20465)
+    gap> ng := NGroupByNearRingMultiplication( n );
+    < N-group of LibraryNearRing(12/3, 20465) >
+    gap> Length( N0Subgroups( ng ) );
+    9
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Ideals of N-groups}
+
+
+\>NIdeal( <G>, <gens> )
+
+The function `NIdeal' returns the N-ideal of the N-group <G> generated
+by <gens>.
+
+\>NIdeals( <G> )
+
+The function `NGroupIdeals' returns a list of all ideals of the N-group <G>.
+
+\beginexample
+    gap> n:=LibraryNearRing(GTW12_3,20465);
+    LibraryNearRing(12/3, 20465)
+    gap> ng := NGroupByNearRingMultiplication( n );
+    < N-group of LibraryNearRing(12/3, 20465) >
+    gap> NIdeals( ng );
+    [ < N-group of LibraryNearRing(12/3, 20465) >, 
+      < N-group of LibraryNearRing(12/3, 20465) >, 
+      < N-group of LibraryNearRing(12/3, 20465) > ]
+\endexample
+
+\>IsNIdeal( <G>, <I> )
+
+The function `IsNIdeal' returns `true' iff <I> is an N-ideal of the
+N-group <G>.
+
+\>IsSimpleNGroup( <G> )
+
+The function `IsSimpleNGroup' returns `true' if <G> is a simple N-group
+and `false' otherwise.
+
+\>IsN0SimpleNGroup( <G> )
+
+The function `IsN0SimpleNGroup' returns `true' if the N-group <G> is
+$N_0$-simple and `false' otherwise.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Special properties of N-groups}
+
+
+\>IsCompatible( <G> )
+
+The function `IsCompatible' returns `true' if the N-group <G> is compatible
+and `false' otherwise.
+
+\>IsTame( <G> )
+
+The function `IsTame' returns `true' if <G> is a tame N-group
+and `false' otherwise.
+
+\>Is2Tame( <G> )
+
+The function `Is2Tame' returns `true' if the N-group <G> is 2-tame
+and `false' otherwise.
+
+\>Is3Tame( <G> )
+
+The function `Is3Tame' returns `true' if the N-group <G> is 3-tame
+and `false' otherwise.
+
+\>IsMonogenic( <G> )
+
+The function `IsMonogenic' returns `true' if the N-group <G> is monogenic
+and `false' otherwise.
+
+\>IsStronglyMonogenic( <G> )
+
+The function `IsStronglyMonogenic' returns `true' if the N-group <G> is
+strongly monogenic and `false' otherwise.
+
+\>TypeOfNGroup( <G> )
+
+The function `TypeOfNGroup' returns the type of a monogenic N-group <G>. If
+<N> is not monogenic or not of type 0, 1 or 2 it returns `fail'.
+
+\beginexample
+    gap> n:=LibraryNearRing(GTW12_3,20465);
+    LibraryNearRing(12/3, 20465)
+    gap> ng := NGroupByNearRingMultiplication( n );
+    < N-group of LibraryNearRing(12/3, 20465) >
+    gap> TypeOfNGroup( ng );
+    fail
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Noetherian quotients}
+
+
+\>NoetherianQuotient( <nr>, <ngrp>, <target>, <source> )
+
+It is assumed that <source> and <target> are subsets of the <nr>-group
+<ngrp>. The function `NoetherianQuotient' computes the set of all
+elements <f> of <nr> such that <source>$*$<f> is a subset of <target>.
+If <target> is an <nr>-ideal of <ngrp>, the Noetherian quotient is
+returned as a near ring ideal, if <target> is an <nr>-subgroup of
+<ngrp>, a left ideal of <nr> is returned. Otherwise the result is a
+subset of <nr>.
+
+In the following example we let a nearring act on its group reduct and
+compute the noetherian quotient $(I,I)_N$ for an ideal $I$ of $N$.
+
+\beginexample
+    gap> N := LibraryNearRing( GTW12_3, 100 );
+    LibraryNearRing(12/3, 100)
+    gap> I := NearRingIdeals( N );            
+    [ < nearring ideal >, < nearring ideal >, < nearring ideal > ]
+    gap> List(I,Size);
+    [ 1, 6, 12 ]
+    gap> NN := NGroupByNearRingMultiplication( N );
+    < N-group of LibraryNearRing(12/3, 100) >
+    gap> NoetherianQuotient( N, NN, GroupReduct(I[2]), GroupReduct(I[2]) );
+    < nearring ideal >
+    gap> Size(last);
+    12
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Nearring radicals}
+
+
+\>NuRadical( <nr>, <nu> )
+
+The function `NuRadical' has two arguments, a nearring <nr> and a number
+<nu> which must be one of `0', `1/2', `1' and `2'. It returns the
+$\nu$-radical for $\nu = 0, 1/2, 1, 2$ respectively.
+
+\>NuRadicals( <nr> )
+
+the function `NuRadicals' returns a record with the components `J_0', `J1_2',
+`J1' and `J2' with the corresponding radicals.
+
+\beginexample
+    gap> f := LibraryNearRing( GTW8_4, 3 );
+    LibraryNearRing(8/4, 3)
+    gap> NuRadicals( f );
+    rec( J2 := < nearring ideal >, J1 := < nearring ideal >, 
+      J1_2 := < nearring right ideal >, J0 := < nearring ideal > )
+    gap> NuRadical( f, 1/2 );
+    < nearring right ideal >
+    gap> Size( NuRadical( f, 0 ) );  
+    8
+    gap> AsList( NuRadical( f, 1 ) );
+    [ (()), ((2,4)), ((1,2)(3,4)), ((1,2,3,4)), ((1,3)), ((1,3)(2,4)), 
+      ((1,4,3,2)), ((1,4)(2,3)) ]
+    gap> NuRadical( f, 1/2 ) = NuRadical( f, 2 );
+    true
+\endexample
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+

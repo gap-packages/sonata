@@ -1,0 +1,195 @@
+%
+\Chapter{The nearring library}
+%
+
+The nearring library contains all nearrings up to order 15 and all
+nearrings with identity up to order 31. All nearrings in the library are
+nearrings constructed via `ExplicitMultiplicationNearRingNC', so all functions
+for these nearrings are applicable to `LibraryNearRing's.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Extracting nearrings from the library}
+
+
+\>LibraryNearRing( <G>, <num> )
+
+`LibraryNearRing' retrieves a nearring from the nearrings library files. 
+<G> must be a group of order $\le 15$. <num> must be an integer which 
+indicates the number of the class of nearrings on the specified group. 
+
+(<Remark:> due to the large number of nearrings on $D_{12}$, make sure 
+that you have enough main memory - say at least 32 MB - available if you want 
+to get a library nearring on $D_{12}$).
+
+If <G> is given as a `TWGroup', then a nearring is returned whose group reduct
+is *equal to* <G>. Otherwise the result is a nearring whose group reduct is 
+*isomorphic to* <G>, and a warning is issued.
+ 
+The number of nearrings definable on a certain group <G> can be accessed via
+
+\>NumberLibraryNearRings( <G> )
+
+\>AllLibraryNearRings( <G> )
+
+returns a list of all nearrings (in the library) that have the group <G> as
+group reduct.
+
+\beginexample
+    gap> l := AllLibraryNearRings( GTW3_1 );
+    [ LibraryNearRing(3/1, 1), LibraryNearRing(3/1, 2), 
+      LibraryNearRing(3/1, 3), LibraryNearRing(3/1, 4), 
+      LibraryNearRing(3/1, 5) ]
+    gap> Filtered( l, IsNearField );
+    [ LibraryNearRing(3/1, 3) ]
+    gap> NumberLibraryNearRings( GTW14_2 );
+    1821
+    gap> LN14_2_1234 := LibraryNearRing( GTW14_2, 1234 );
+    LibraryNearRing(14/2, 1234)
+\endexample
+ 
+\>LibraryNearRingWithOne( <G>, <num> )
+
+`LibraryNearRingWithOne' retrieves a nearring from the nearrings library
+files. 
+<G> must be one of the predefined groups of order $\le 31$.  
+<num> must be an integer which indicates the number of the class of 
+nearrings with identity on the specified group. 
+
+The number of nearrings with identity definable on a certain group <G>
+can be accessed via
+
+\>NumberLibraryNearRingsWithOne( <G> )
+
+\>AllLibraryNearRingsWithOne( <G> )
+
+returns a list of all nearrings with identity (in the library) that have
+the group <G> as group reduct.
+ 
+\beginexample
+    gap> NumberLibraryNearRingsWithOne( GTW24_6 );
+    0
+    gap> NumberLibraryNearRingsWithOne( GTW24_4 );
+    10
+    gap> LNwI24_4_8 := LibraryNearRingWithOne( GTW24_4, 8 );
+    LibraryNearRingWithOne(24/4, 8)
+    gap> AllLibraryNearRingsWithOne( GTW24_6 );
+    [  ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Identifying nearrings}
+
+
+\>IdLibraryNearRing( <nr> )
+
+The function `IdLibraryNearRing' returns a pair [$G$, $n$] such that the
+nearring <nr> is isomorphic to the $n$th library nearring on the group $G$.
+
+\beginexample
+    gap> p := PolynomialNearRing( GTW4_2 );
+    PolynomialNearRing( 4/2 )
+    gap> IdLibraryNearRing( p );
+    [ 8/3, 833 ]
+    gap> n := LibraryNearRing( GTW3_1, 4 );
+    LibraryNearRing(3/1, 4)
+    gap> d := DirectProductNearRing( n, n );
+    DirectProductNearRing( LibraryNearRing(3/1, 4), LibraryNearRing(3/1, 4)\
+     )
+    gap> IdLibraryNearRing( d );
+    [ 9/2, 220 ]
+\endexample
+
+\>IdLibraryNearRingWithOne( <nr> )
+
+The function `IdLibraryNearRingWithOne' returns a pair [$G$, $n$] such
+that the nearring <nr> is isomorphic to the $n$th library nearring with
+identity on the group $G$. This function can only be applied to nearrings
+which have an identity.
+
+\beginexample
+    gap> l := LibraryNearRingWithOne( GTW12_3, 1 );
+    LibraryNearRingWithOne(12/3, 1)
+    gap> IdLibraryNearRing( l ); #this command requires time and memory!!!
+    [ 12/3, 37984 ]
+    gap> IdLibraryNearRingWithOne( l );           
+    [ 12/3, 1 ]
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{IsLibraryNearRing}
+
+
+\>IsLibraryNearRing( <nr> )
+
+The function `IsLibraryNearRing' returns `true' if the nearring <nr> has been
+read from the nearring library and `false' otherwise.
+
+\beginexample
+    gap> IsLibraryNearRing( LNwI24_4_8 );
+    true
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Accessing the information about a nearring stored in the library}
+
+
+\>LibraryNearRingInfo( <group>, <list>, <string> )
+
+This function provides information about the specified library nearrings
+in a way similar to how nearrings are presented in the appendix of
+[Pil??].%\cite{bluebook}.
+The parameter <group> specifies a predefined group; valid
+names are exactly those which are also valid for the function
+`Library\-Near\-rings' (cf. Section "LibraryNearRing"). 
+
+The parameter <list> must be a non-empty list of integers defining the 
+classes of nearrings to be printed. Naturally, these integers must all fit 
+into the ranges described in Section "LibraryNearRing" for the according
+groups.
+
+The third parameter <string> is optional. <string> must be a string
+consisting of one or more (or all) of the following characters:
+`l', `m', `i', `v', `s', `e', `a'.
+Per default, (i.e. if this parameter is not specified), the output is 
+minimal. According to each specified character, the following is added:
+\beginitems
+  `a' & list the nearring automorphisms.
+
+  `c' & print the meaning of the letters used in the output.
+
+  `e' & list the nearring endomorphisms.
+
+  `g' & list the endomorphisms of the group reduct.
+
+  `i' & list the ideals.
+
+  `l' & list the left ideals.
+
+  `m' & print the multiplication tables.
+
+  `r' & list the right ideals.
+
+  `s' & list the subnearrings.
+
+  `v' & list the invariant subnearrings.
+
+\enditems
+
+*Examples:*
+
+`LibraryNearRingInfo( GTW3\_1, [ 3 ], "lmivsea" )' will print all
+available information about the third class of nearrings on the group
+$Z_3$.
+
+`LibraryNearRingInfo( GTW4\_1, [ 1..12 ] )' will provide a minimal output
+for all classes of nearrings on $Z_4$.
+
+`LibraryNearRingInfo( GTW6\_2, [ 5, 18, 21 ], "mi" )' will print
+the minimal information plus the multiplication tables plus the ideals for
+the classes 5, 18, and 21 of nearrings on the group $S_3$.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

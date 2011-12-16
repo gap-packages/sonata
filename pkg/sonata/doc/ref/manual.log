@@ -1,0 +1,316 @@
+This is pdfTeX, Version 3.14159-1.00a-pretest-20011114-ojmw (Web2C 7.3.7) (format=pdftex 2002.12.12)  20 AUG 2003 14:08
+**manual
+(./manual.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(../gapmacro.tex
+\pagewidth=\dimen16
+\pageheight=\dimen17
+\colwidth=\dimen18
+\partialpage=\box16
+\manindent=\dimen19
+\smallmanindent=\dimen20
+\msbfam=\fam8
+\labelout=\write0
+\indexout=\write1
+\secindout=\write2
+\tocout=\write3
+\citeout=\write4
+\ans=\write5
+\labelin=\read0
+\indexin=\read1
+\tocin=\read2
+\citein=\read3
+\secno=\count26
+\exno=\count27
+) [-1{/usr/share/texmf/dvips/config/pdftex.map}] [-2]
+\makelabel {sonata:chapter Contents}{1}
+(./manual.toc
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(82.5+3.5)x228.0
+.\glue(\topskip) 1.5
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 95.08318fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 52.9164fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.etc.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(34.5+3.5)x228.0
+.\glue(\topskip) 1.5
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 10.24963fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 82.99979fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.etc.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(57.5+3.5)x228.0
+.\glue(\topskip) 1.5
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 5.30518fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 48.11082fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\lineskip) 1.0
+.etc.
+
+
+Underfull \vbox (badness 5022) has occurred while \output is active
+\vbox(624.0+3.5)x468.0, glue set 3.69266
+.\write3{\noexpand \chapcontents {\thechapter }{\TOCHeader }{\the \pageno }}
+.\glue(\topskip) 0.0
+.\hbox(72.26999+0.0)x468.0, glue set 75.999fil
+..\hbox(72.26999+0.0)x-8.58531
+...\kern -8.58531
+...\rule(72.26999+*)x0.0
+..\glue 0.0 plus 1.0fil
+..\vbox(27.77779+0.0)x400.58632
+...\hbox(27.77779+0.0)x400.58632, glue set 258.88266fil []
+.\penalty 10000
+.\glue 40.0
+.etc.
+
+ [-3.1
+\chapcontents {\tocstrut }{Contents}{-3}
+]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(22.25+3.5)x228.0
+.\glue(\topskip) 0.0
+.\hbox(20.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(20.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 8.61072fil []
+...\penalty 300
+...\glue(\baselineskip) 0.0
+...\hbox(8.5+3.5)x176.99998, glue set 79.19423fill []
+..\glue 0.0 plus 1.0fil
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(22.5+3.5)x228.0
+.\glue(\topskip) 1.5
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 77.97203fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 78.36093fill []
+..\glue 0.0 plus 1.0fil
+
+) [-4.1]
+(./manual.lab)
+\makelabel {sonata:chapter Bibliography}{2}
+(./manual.bbl)
+\openout3 = `manual.toc'.
+
+\openout0 = `manual.lab'.
+
+\openout1 = `manual.idx'.
+
+\openout2 = `manual.six'.
+
+\openout4 = `manual.aux'.
+
+\openout5 = `answers.tex'.
+
+ (./authors.tex) (./preface.tex [1.2] [2.2] [1.3]) [2.3]
+(./grpsupp.tex
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(624.0+2.5)x468.0, glue set 9.47641
+.\write3{\noexpand \chapcontents {\thechapter }{Supportive functions for group\
+ETC.}
+.\glue(\topskip) 0.0
+.\hbox(72.26999+6.66667)x468.0, glue set 75.999fil
+..\hbox(72.26999+0.0)x48.65251
+...\kern -8.58531
+.../cminch/1
+..\glue 0.0 plus 1.0fil
+..\vbox(71.77779+6.66667)x343.3485
+...\hbox(27.77779+6.66667)x343.3485, glue set 19.70345fil []
+...\penalty 300
+...\glue(\baselineskip) 9.55554
+...\hbox(27.77779+6.66667)x343.3485, glue set 183.89532fil []
+.\penalty 10000
+.\glue 40.0
+.etc.
+
+ [1.1]
+[2.1] [3.1] [4.1] [5.1] [6.1]) (./nr.tex [7.1] [8.1] [1.2] [2.2] [3.2] [4.2]
+Underfull \vbox (badness 3713) has occurred while \output is active
+\vbox(624.0+1.94444)x468.0, glue set 3.33733
+.\glue(\topskip) 3.05556
+.\hbox(6.94444+2.22223)x468.0, glue set 265.50229fil
+..\hbox(0.0+0.0)x0.0
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..etc.
+.\penalty 10000
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 2.83333
+.etc.
+
+ [5.2]
+[6.2] [7.2] [8.2]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(624.0+2.22223)x468.0, glue set 4.69768
+.\glue(\topskip) 3.05556
+.\hbox(6.94444+2.22223)x468.0, glue set 260.25233fil
+..\hbox(0.0+0.0)x0.0
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..etc.
+.\penalty 10000
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 2.83333
+.etc.
+
+ [9.2]
+[10.2] [11.2] [12.2] [13.2]) (./libnr.tex [14.2] [1.3] [2.3]) (./tfms.tex
+[3.3] [4.3] [1.4]
+Underfull \vbox (badness 6110) has occurred while \output is active
+\vbox(624.0+1.94444)x468.0, glue set 3.93951
+.\glue(\topskip) 3.05556
+.\hbox(6.94444+2.22223)x468.0, glue set 323.25179fil
+..\hbox(0.0+0.0)x0.0
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..etc.
+.\penalty 10000
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 2.83333
+.etc.
+
+ [2.4]
+[3.4] [4.4]) (./tfmnr.tex [5.4] [6.4] [1.5] [2.5] [3.5]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(624.0+1.94444)x468.0, glue set 8.16667
+.\glue(\topskip) 3.05556
+.\hbox(6.94444+2.22223)x468.0, glue set 302.25197fil
+..\hbox(0.0+0.0)x0.0
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..etc.
+.\penalty 10000
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 2.83333
+.etc.
+
+ [4.5]
+[5.5]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(624.0+2.5)x468.0, glue set 12.16667
+.\glue(\topskip) 3.05556
+.\hbox(6.94444+2.22223)x468.0, glue set 344.2516fil
+..\hbox(0.0+0.0)x0.0
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..etc.
+.\penalty 10000
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 2.83333
+.etc.
+
+ [6.5])
+(./ideals.tex [7.5] [8.5]
+Underfull \vbox (badness 2285) has occurred while \output is active
+\vbox(624.0+1.94444)x468.0, glue set 2.84082
+.\write3{\noexpand \chapcontents {\thechapter }{Nearring ideals}{\the \pageno \
+ETC.}
+.\glue(\topskip) 0.0
+.\hbox(72.26999+6.66667)x468.0, glue set 75.999fil
+..\hbox(72.26999+0.0)x48.65251
+...\kern -8.58531
+.../cminch/6
+..\glue 0.0 plus 1.0fil
+..\vbox(27.77779+6.66667)x343.3485
+...\hbox(27.77779+6.66667)x343.3485, glue set 108.78543fil []
+.\penalty 10000
+.\glue 40.0
+.etc.
+
+ [1.6]
+[2.6] [3.6] [4.6] [5.6] [6.6]) (./xsonata.tex [7.6] [8.6]) (./ngroups.tex
+[1.7] [2.7] [1.8] [2.8] [3.8] [4.8] [5.8]) (./fpf.tex [6.8] [1.9] [2.9]
+[3.9] [4.9] [5.9] [6.9] [7.9] [8.9]) (./nfplwd.tex [9.9] [10.9] [1.10]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(624.0+2.22223)x468.0, glue set 5.24194
+.\glue(\topskip) 2.5
+.\hbox(7.5+2.5)x468.0, glue set 0.90726
+..\hbox(0.0+0.0)x0.0
+../cmr10/N
+../cmr10/o
+../cmr10/t
+../cmr10/e
+..etc.
+.\penalty 300
+.\glue(\baselineskip) 2.55556
+.\hbox(6.94444+1.94444)x468.0, glue set 229.88994fil
+../cmr10/D
+../cmr10/i
+../cmr10/^^K (ligature ff)
+../cmr10/e
+../cmr10/r
+..etc.
+.etc.
+
+ [2.10]
+[3.10]) (./design.tex [4.10] [1.11] [2.11] [3.11] [4.11]) [5.11] [6]
+(./manual.bbl) [1.1] [2.1] (./manual.ind)
+##
+## Citations for BibTeX written on manual.aux.
+## Index entries for makeindex written on manual.idx.
+## Section index entries written on manual.six.
+## Label definitions written on manual.lab.
+## Table of contents written on manual.toc.
+##
+[1.2] )</usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy5.pfb></usr/share/texmf/fonts/type1/bluesky/symbols/msb
+m10.pfb></usr/share/texmf/fonts/type1/hoekwater/mflogo/manfnt.pfb></usr/share/t
+exmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm
+/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmss10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
+minch.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/texmf/
+fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7
+.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf/font
+s/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmssdc10.pfb>
+Output written on manual.pdf (87 pages, 308696 bytes).

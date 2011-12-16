@@ -1,0 +1,172 @@
+%
+\Chapter{The nearring library}
+%
+
+There are many non-isomorphic nearrings, even of small order.
+All non-isomorphic nearrings of orders $2$ to $15$ and
+all non-isomorphic nearrings with identity up
+to order $31$ with exception of those on
+the elementary abelian groups of orders
+$16$ and $27$ are collected in the SONATA
+nearring library.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\Section{An application of the nearring library}
+
+
+The number of nearrings in the library is big.
+For example, try
+
+\beginexample
+    gap> NumberLibraryNearRings( GTW12_3 );
+    48137
+\endexample
+
+Try your favorite small groups with this
+function to get an impression of these
+numbers.
+
+Of course, no one can know all these nearrings
+personally. Therefore, the main purpose
+of the nearring library is to filter out the
+nearrings of interest.
+
+Consider for example the following
+
+*Problem:* How many non-rings with identity of order $4$ are
+there  and what do they look like? If you cannot answer this
+question adhoc, stay tuned. 
+
+Let's start with the groups of order $4$. Of course you know,
+there are $2$ groups of order $4$: `GTW4_1', the cyclic group
+and `GTW4_2', Klein's four group.
+
+Let's go for `GTW4_1' first:
+
+\beginexample
+    gap> NumberLibraryNearRingsWithOne( GTW4_1 );
+    1
+    gap> Filtered( AllLibraryNearRingsWithOne( GTW4_1 ),     
+    >              n -> not IsDistributiveNearRing( n ) );
+    [  ]
+\endexample
+
+So, the only nearring with identity there is
+on `GTW4_1' is the ring. Well... you knew that before,
+didn't you?
+
+Now for `GTW4_2':
+
+\beginexample
+    gap> NumberLibraryNearRingsWithOne( GTW4_2 );
+    5
+    gap> Filtered( AllLibraryNearRingsWithOne( GTW4_2 ),
+    >              n -> not IsDistributiveNearRing( n ) );
+    [ LibraryNearRing(4/2, 12), LibraryNearRing(4/2, 22) ]
+\endexample
+
+Here we go:
+
+\beginexample
+    gap> PrintTable( LibraryNearRing( GTW4_2, 12 ) );
+    Let:
+    n0 := (())
+    n1 := ((3,4))
+    n2 := ((1,2))
+    n3 := ((1,2)(3,4))
+
+       +  | n0  n1  n2  n3  
+      --------------------
+      n0  | n0  n1  n2  n3  
+      n1  | n1  n0  n3  n2  
+      n2  | n2  n3  n0  n1  
+      n3  | n3  n2  n1  n0  
+
+       *  | n0  n1  n2  n3  
+      --------------------
+      n0  | n0  n0  n0  n0  
+      n1  | n0  n0  n1  n1  
+      n2  | n0  n0  n2  n2  
+      n3  | n0  n1  n2  n3  
+    gap> PrintTable( LibraryNearRing( GTW4_2, 22 ) );
+    Let:
+    n0 := (())
+    n1 := ((3,4))
+    n2 := ((1,2))
+    n3 := ((1,2)(3,4))
+
+       +  | n0  n1  n2  n3  
+      --------------------
+      n0  | n0  n1  n2  n3  
+      n1  | n1  n0  n3  n2  
+      n2  | n2  n3  n0  n1  
+      n3  | n3  n2  n1  n0  
+
+       *  | n0  n1  n2  n3  
+      --------------------
+      n0  | n0  n0  n2  n2  
+      n1  | n0  n1  n2  n3  
+      n2  | n0  n2  n2  n0  
+      n3  | n0  n3  n2  n1  
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\Section{Appendix K revisited}
+
+
+An alternative to filtering the nearring library is to
+use a `for ... do ... od' construction.
+
+We shall demonstrate this by recomputing the list
+of nearrings given in appendix K of \cite{Pilz:Nearrings},
+i.e.\ a list of all nearrings on the dihedral group of order $8$
+(`GTW8_4') which have an identity, are non-zerosymmetric or
+are integral.
+
+First, we initialize the variable `nr_list' 
+as the empty list:
+
+\beginexample
+    gap> nr_list := [ ];
+    [ ]
+\endexample
+
+Now, we write ourselves a `for' loop and add those nearrings
+we want:
+
+\beginexample
+    gap> for i in [1..NumberLibraryNearRings( GTW8_4 )] do  
+    >       n := LibraryNearRing( GTW8_4, i );
+    >       if ( not IsZeroSymmetricNearRing( n ) or     
+    >            IsIntegralNearRing( n ) or          
+    >            Identity( n ) <> fail    
+    >          ) then              
+    >         Add( nr_list, n );    
+    >       fi;
+    >    od;      
+    gap> Length( nr_list );                                          
+    141
+\endexample
+
+How many boolean nearrings are amongst these? We call a nearring
+*boolean* if $x*x=x$ for all $x \in N$.
+
+\beginexample
+    gap> Filtered( nr_list, IsBooleanNearRing );
+    [ LibraryNearRing(8/4, 1314), LibraryNearRing(8/4, 1380), 
+      LibraryNearRing(8/4, 1446), LibraryNearRing(8/4, 1447) ]
+\endexample
+
+Which correspond to the numbers
+$140$, $86$, $99$, and $141$ in
+\cite{Pilz:Nearrings}, appendix K, accordingly.
+
+For those who got interested in boolean nearrings:
+many results about them have been collected in
+\cite{Pilz:Nearrings}, 9.31.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "manual"
+%%% End: 

@@ -1,0 +1,151 @@
+%
+\Chapter{Planar nearrings}
+%
+
+We recall the definition of planar nearrings and basic results 
+(see \cite{Clay:Nearrings}).
+Let $(N,+,\cdot)$ be a left nearring. For $a,b \in N$ we define $a \equiv b$
+iff $a\cdot n = b\cdot n$ for all $n\in N$. If $a \equiv b$, then $a$ and $b$
+are called *equivalent multipliers*.
+A nearring $N$ is called *planar* if $| N/_{\equiv} | \ge 3$ and if 
+for any two non-equivalent multipliers $a$ and $b$ in $N$, for any $c\in N$, 
+the equation $a\cdot x = b\cdot x + c$ has a unique solution. 
+
+A *Ferrero pair* is a pair of finite groups $(N,\Phi)$ such that $\Phi$
+is a fixed-point-free automorphism group of $(N,+)$.   
+
+Starting with a Ferrero pair $(N,\Phi)$ we can construct a planar nearring
+in the following way:
+Select representatives, say $e_{1},\ldots,e_{t}$, for some or all of the
+non-trivial orbits of $N$ under $\Phi$. 
+Let $C = \Phi(e_1)\cup\ldots\cup\Phi(e_t)$.
+For each $x\in N$ we define $a\cdot x = 0$ for $a\in N\setminus C$, and 
+$a\cdot x=\phi_{a}(x)$ for $a\in\Phi(e_{i})\subset C$ and $\phi_{a}(e_{i})=a$.
+Then $(N,+,\cdot)$ is a (left) planar nearring with $|N/_{\equiv}| = |\Phi|+1$.
+
+Every finite planar nearring can be constructed from some Ferrero pair 
+together with a set of orbit representatives in this way.
+
+*The problem:* Find a planar nearring with 25 elements and 9 pairwise
+non-equivalent multipliers.
+
+*The solution:* We follow the Ferrero method described above for defining a
+nearring multiplication on an additive group. 
+First we have to find a fixed-point-free (fpf) automorphism group of
+order $8$ on a group of order $25$. %and choose some orbit representatives.
+
+We start with the cyclic group of order $25$:
+First of all we ask for the existence of an fpf automorphism group
+on `CyclicGroup(25)' by computing an upper bound for its order.
+
+\beginexample 
+    gap> FpfAutomorphismGroupsMaxSize( CyclicGroup(25) );
+    [ 4, 1 ]
+\endexample
+
+This function returns a list with two integers, $4$ and $1$. 
+The first number is an upper bound for the size of an fpf automorphism group;
+if there is a metacyclic fpf automorphism group, then it has a cyclic normal
+subgroup of index dividing the second number. These bounds are not sharp.
+%
+If the upper bound for the size of an fpf automorphism group on some group
+is $1$, we know that there is no nontrivial fpf automorphism group, no 
+Ferrero pair, and no planar nearring on this group at all.
+
+Here, SONATA does not exclude the possibility that the cyclic group of
+order $25$ has an fpf automorphism group of order $4$. 
+However, we can be sure that all fpf automorphism groups are cyclic and that
+none of them has size $8$.
+
+Thus we have to consider the elementary abelian group of order 25 instead.
+
+\beginexample
+    gap> FpfAutomorphismGroupsMaxSize( ElementaryAbelianGroup(25) );
+    [ 24, 2 ]
+\endexample
+
+There might even exist an fpf automorphism group of order $24$. (In fact
+there is more than one. The reference manual explains how to obtain all
+nearfields of size $25$.) 
+For our example, we could compute either a cyclic automorphism group or one 
+isomorphic to the quaternion group with 8 elements. Let's try the latter.
+ 
+\beginexample
+    gap> aux := FpfAutomorphismGroupsMetacyclic( [5,5], 4, -1 );
+    [ [ [ [ f1, f2 ] -> [ f1^2, f2^3 ], [ f1, f2 ] -> [ f2^4, f1 ] ] ], 
+      <pc group of size 25 with 2 generators> ]
+\endexample
+
+Here, the function `FpfAutomorphismGroupsMetacyclic' determines the metacyclic
+fpf automorphism groups on `AbelianGroup([5,5])' with generators $p,q$
+satisfying $p^4 = 1, p^q = p^{-1}$, and $q^2 = p^2$. For each conjugacy class
+of such groups one representative is given. Conjugacy is determined within the
+whole automorphism group of `AbelianGroup([5,5])'. 
+The actual output of the function is a list with 2 elements.
+The first is not the list of fpf groups up to conjugacy but the list of
+automorphisms $p,q$ generating those groups.
+The second element is simply the group `AbelianGroup([5,5])', on which the
+automorphisms act.
+
+Since there is only one pair of generators $p,q$, all fpf automorphism groups
+isomorphic to the quaternion group are conjugate. Now, we have our Ferrero
+pair $(G, \Phi)$.
+
+\beginexample
+    gap> phi := Group( aux[1][1] );
+    <group with 2 generators>
+    gap> G := aux[2];         
+    <pc group of size 25 with 2 generators>
+\endexample
+
+%By picking any one non-zero element of $G$ as representative we can now
+%define a planar nearring according to the Ferrero method.
+Next we have to pick some orbit representatives. 
+We note that for a fixed Ferrero pair distinct choices of representatives 
+may yield isomorphic nearrings. The function
+`OrbitRepresentativesForPlanarNearRing' returns exactly one set of
+representatives of given cardinality for each isomorphism class of planar
+nearrings which can be generated from $(G, \Phi)$.
+
+\beginexample
+    gap> OrbitRepresentativesForPlanarNearRing( G, phi, 1 );
+    [ [ f1 ] ]
+\endexample
+
+This tells us that all planar nearrings obtained from $(G,\Phi)$ with one
+orbit representative are in fact isomorphic. 
+What happens if we choose $2$ representatives?
+
+\beginexample
+    gap> reps := OrbitRepresentativesForPlanarNearRing( G, phi, 2 );
+    [ [ f1, f1*f2 ], [ f1, f1^2*f2^3 ] ]
+\endexample
+
+We obtain $2$ non-isomorphic planar near-rings. Let's just construct one of
+them. The result will be an `ExplicitMultiplicationNearRing'.
+
+\beginexample
+    gap> n := PlanarNearRing( G, phi, reps[1] );
+    ExplicitMultiplicationNearRing ( <pc group of size 25 with 
+    2 generators> , multiplication )
+\endexample
+
+How many non-isomorphic planar nearrings can be defined from our Ferrero pair
+$(G,\Phi)$ in total? Since there are $3$ non-trivial orbits of $\Phi$ on $G$,
+we may choose up to $3$ representatives.
+ 
+\beginexample
+    gap> Length(OrbitRepresentativesForPlanarNearRing( G, phi, 3 ));
+    6
+\endexample
+
+Summing all up, we get exactly $9$ non-isomorphic planar nearrings with 
+elementary abelian additive group of order $25$ whose multiplication is
+defined using a quaternion group of fpf automorphisms. 
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "manual"
+%%% End: 

@@ -1,0 +1,316 @@
+%
+\Chapter{Designs}
+%
+
+Although the functions described in this section were initially meant to
+investigate designs generated from nearrings, they can also be applied to
+other incidence structures. In principal a design is represented as a set
+of points and a set of blocks, a subset of the powerset of the points, with
+containment as incidence relation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Constructing a design}
+
+
+\>DesignFromPointsAndBlocks( <points>, <blocks> )
+
+`DesignFromPointsAndBlocks' returns the design with the set of points 
+<points> and the set of blocks <blocks>, a subset of the powerset of 
+<points>. 
+
+\beginexample
+    gap> points := [1..7];;
+    gap> blocks := [[1,2,3],[1,4,5],[1,6,7],[2,4,7],[2,5,6],[3,5,7],       
+    >                                                          [3,4,6]];;  
+    gap> D := DesignFromPointsAndBlocks( points, blocks );                 
+    <an incidence structure with 7 points and 7 blocks>
+\endexample
+
+\>DesignFromIncidenceMat( M );
+
+`DesignFromIncidenceMat' returns the design with incidence matrix <M>,
+The rows of <M> are labelled by the set of points $1$ to $v$, the
+columns represent the blocks.
+If the $( i, j )$ entry of the matrix <M> is $1$, then the point $i$ is 
+incident with the $j$-th block, i.e. the $j$-th block consists of those
+points $i$ for which the entry $( i, j )$ of <M> is $1$. All other entries 
+have to be $0$.
+
+\beginexample
+    gap> M := [[1,0,1,1],
+    >          [1,1,0,0],
+    >          [1,1,1,0]];;
+    gap> DesignFromIncidenceMat( M ); 
+    <an incidence structure with 3 points and 4 blocks>
+\endexample
+
+\>DesignFromPlanarNearRing( <N>, <type> )
+
+`DesignFromPlanarNearRing' returns a design obtained from the planar 
+nearring <N> following the constructions of James R. Clay
+\cite{Clay:Nearrings}.
+
+If <type> = `"*"', `DesignFromPlanarNearRing' returns the design 
+$(<N>,B^{*},\in)$ in the notation of J. R. Clay with the elements of <N> as 
+set of points and $\{N^{*}\cdot a+b | a,b\in N, a \not= 0 \}$ as set of blocks.
+Here $N^{*}$ is the set of elements $x\in N$ satisfying $x\cdot N = N$.
+
+If <type> = `" "' (blank), `DesignFromPlanarNearRing' returns the design 
+$(<N>,B,\in)$ in the notation of J. R. Clay with the elements of <N> as 
+set of points and $\{N\cdot a+b | a,b\in N, a \not= 0 \}$ as set of 
+blocks.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW9_2, 90 );
+    LibraryNearRing(9/2, 90)
+    gap> IsPlanarNearRing( n );
+    true
+    gap> D1 := DesignFromPlanarNearRing( n, "*" );
+    <a 2 - ( 9, 4, 3 ) nearring generated design>
+    gap> D2 := DesignFromPlanarNearRing( n, " " );
+    <a 2 - ( 9, 5, 5 ) nearring generated design>
+\endexample
+
+\>DesignFromFerreroPair( <G>, <phi>, <type> )
+
+`DesignFromFerreroPair' returns a design obtained from the group <G>, and
+a group of fixed-point-free automorphisms <phi> acting on <G> following the
+constructions of James R. Clay \cite{Clay:Nearrings}.
+
+If <type> = `"*"', `DesignFromFerreroPair' returns the design 
+$(<G>,B^{*},\in)$ in the notation of J. R. Clay with the elements of <G> as 
+set of points and the nonzero orbits of <G> under <phi> and their 
+translates by group-elements as set of blocks.
+
+If <type> = `" "' (blank), `DesignFromFerreroPair' returns the design 
+$(<G>,B,\in)$ in the notation of J. R. Clay with the elements of <G> as 
+set of points and the nonzero orbits of <G> under <phi> joined with the zero
+of <G> and their translates by group-elements as set of blocks.
+
+\beginexample
+    gap> aux := FpfAutomorphismGroupsCyclic( [3,3], 4 );
+    [ [ [ f1, f2 ] -> [ f1*f2, f1*f2^2 ] ], 
+      <pc group of size 9 with 2 generators> ]
+    gap> f := aux[1][1];
+    [ f1, f2 ] -> [ f1*f2, f1*f2^2 ]
+    gap> phi := Group( f );
+    <group with 1 generators>
+    gap> G := aux[2]; 
+    <pc group of size 9 with 2 generators>
+    gap> D3 := DesignFromFerreroPair( G, phi, "*" );
+    <a 2 - ( 9, 4, 3 ) nearring generated design>
+    gap> # D3 is actually isomorphic to D1
+\endexample
+
+\>DesignFromWdNearRing( <N> )
+
+`DesignFromWdNearring' returns a design obtained from the weakly divisible 
+nearring <N> with cyclic additive group of prime power order. Following the
+constructions of A. Benini, F. Morini and S. Pellegrini, we take the elements
+of <N> as set of points and $\{N\cdot a+b | a\in C, b\in <N>\}$ as set of
+blocks. Here $C$ is the set of elements $a\in N$ such that $a\cdot N = N$.
+
+\beginexample
+    gap> n := LibraryNearRing( GTW9_1, 202 );
+    LibraryNearRing(9/1, 202)
+    gap> IsWdNearRing( n );
+    true
+    gap> DesignFromWdNearRing( n );
+    <a 1 - ( 9, 5, 10 ) nearring generated design>
+\endexample
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Properties of a design}
+
+
+\>PointsOfDesign( <D> )
+
+`PointsOfDesign' returns the actual list of points of the design <D>, not
+their positions, no matter how the points of the design <D> may be 
+represented. To get the representation of those points, whose positions in 
+the list of all points are given by the list <pointnrs>, one can use
+`PointsOfDesign( <D> )\{<pointnrs>\}'.
+
+\beginexample
+    gap> D1;
+    <a 2 - ( 9, 4, 3 ) nearring generated design>
+    gap> PointsOfDesign( D1 );
+    [ (()), ((4,5,6)), ((4,6,5)), ((1,2,3)), ((1,2,3)(4,5,6)), 
+      ((1,2,3)(4,6,5)), ((1,3,2)), ((1,3,2)(4,5,6)), ((1,3,2)(4,6,5)) ]
+    gap> PointsOfDesign( D1 ){[2,4]};
+    [ ((4,5,6)), ((1,2,3)) ]
+    gap> # returns the points in position 2 and 4 
+\endexample
+
+\>BlocksOfDesign( <D> )
+
+`BlocksOfDesign' returns the actual list of blocks of the design <D>, not
+their positions. Blocks are represented as lists of points. A point is 
+incident with a block if the point is an element of the 
+block. To get the representation of those blocks, whose positions in 
+the list of all blocks are given by the list <blocknrs>, one can use
+`BlocksOfDesign( <D> )\{<blocknrs>\}'.
+
+\beginexample                              
+    gap> Length( BlocksOfDesign( D1 ) );
+    18
+    gap> BlocksOfDesign( D1 ){[3]};
+    [ [ ((4,6,5)), (()), ((1,2,3)(4,5,6)), ((1,3,2)(4,5,6)) ] ]
+    gap> # returns the block in position 3 as a list of points
+\endexample
+
+\>DesignParameter( <D> )
+
+`DesignParameter' returns the set of paramaters $t, v, b, r, k, \lambda$ 
+of the design <D>. Here $v$ is the size of the set of points 
+`PointsOfDesign', $b$ is the size of the set of blocks `PointsOfDesign',
+every point is incident with precisely $r$ blocks, every block is incident 
+with precisely $k$ points, every $t$ distinct points are together incident
+with precisely $\lambda$ blocks. 
+
+\beginexample
+    gap> DesignParameter( D1 );
+    [ 2, 9, 18, 8, 4, 3 ]
+    gap> # t = 2, v = 9, b = 18, r = 8, k = 4, lambda = 3
+\endexample
+
+\>IncidenceMat( <D> )
+
+`IncidenceMat' returns the incidence matrix of the design <D>, where the
+rows are labelled by the positions of the points in `PointsOfDesign', the
+columns are labelled by the positions of the blocks in `BlocksOfDesign'.
+If the point in position $i$ is incident with the block in position $j$, then
+the $( i, j )$ entry of the matrix `IncidenceMat' is $1$, else it is $0$.
+
+\beginexample
+    gap> M1 := IncidenceMat( D1 );
+    [ [ 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1 ], 
+      [ 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1 ], 
+      [ 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0 ], 
+      [ 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1 ], 
+      [ 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1 ], 
+      [ 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0 ], 
+      [ 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0 ], 
+      [ 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0 ], 
+      [ 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0 ] ]
+\endexample
+
+\>PrintIncidenceMat( <D> )
+
+`PrintIncidenceMat' prints only the entries of the incidence matrix 
+`IncidenceMat' of the design without commas. If the point in position $i$ is 
+incident with the block in position $j$, then there is $1$ in the $i$-th
+row, $j$-th column, else there is '.', a dot.
+
+\beginexample
+    gap> PrintIncidenceMat( D1 );
+    ..1.1.1..1.11..1.1
+    1...1..11..1.11..1
+    1.1....1.11..1.11.
+    1..1.1..1.1.1..1.1
+    .11..11...1..11..1
+    .1.11.1.1....1.11.
+    1..1.11..1.1..1.1.
+    .11..1.11..11...1.
+    .1.11..1.11.1.1...
+\endexample
+
+\>BlockIntersectionNumbers( <D> )
+\>BlockIntersectionNumbersK( <D>, <blocknr> )
+
+In the first form `BlockIntersectionNumbers' returns the list of 
+cardinalities of the intersection of each block with all other blocks of the
+design <D>.
+In the second form `BlockIntersectionNumbers' returns the list of 
+cardinalities of the intersection of the block in position <blocknr>  with 
+all other blocks of the design <D>. 
+
+\beginexample
+    gap> BlockIntersectionNumbers( D1, 2 );
+    [ 0, 4, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 1 ]
+    gap> # the second has empty intersection with the first block
+    gap> # and intersects all others in at most 2 points
+\endexample
+
+\>IsCircularDesign( <D> )
+
+`IsCircularDesign' returns `true' if the design <D> is circular and `false'
+otherwise. The design <D> has to be the result of `DesignFromPlanarNearRing'
+or `DesignFromFerreroPair', since `IsCircularDesign' assumes the particular
+structure of such a nearring-generated design. 
+
+A design <D> is *circular* if every two distinct blocks intersect in at most
+two points.
+% CLAY'S DEFINITION IS TOO STRICT:
+% every three distinct points of <D> are incident with at most one block and
+% every two distinct points of <D> are incident with at least two distinct blocks.
+
+`IsCircularDesign' calls the function `BlockIntersectionNumbers'.  
+
+\beginexample 
+    gap> IsCircularDesign( D1 );
+    true
+\endexample    
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{Working with the points and blocks of a design}
+
+
+\>IsPointIncidentBlock( <D>, <pointnr>, <blocknr> )
+
+`IsPointIncidentBlock' returns `true' if the point whose position in the list 
+`PointsOfDesign( <D> )' is given by <pointnr> is incident with the block
+whose position in the list `BlocksOfDesign( <D> )' is given by <blocknr>, 
+that is, the point is contained in the block as an element in a set.
+
+\beginexample
+    gap> IsPointIncidentBlock( D1, 3, 1 );
+    true
+    gap> # point 3 is incident with block 1
+    gap> IsPointIncidentBlock( D1, 3, 2 );       
+    false
+\endexample
+
+\>PointsIncidentBlocks( <D>, <blocknrs> )
+
+`PointsIncidentBlocks' returns a list of positions of those points of the 
+design <D> which are incident with the blocks, whose positions are given in
+the list <blocknrs>.
+
+\beginexample
+    gap> PointsIncidentBlocks( D1, [1, 4] );                 
+    [ 4, 7 ]
+    gap> # block 1 and block 4 are together incident with 
+    gap> # points 4 and 7
+\endexample
+
+\>BlocksIncidentPoints( <D>, <pointnrs> )
+
+`BlocksIncidentPoints' returns a list of positions of the blocks of the 
+design <D> which are incident with those points, whose positions are given 
+in the list <pointnrs>.
+
+\beginexample
+    gap> BlocksIncidentPoints( D1, [2, 7] );   
+    [ 1, 12, 15 ]
+    gap> # point 2 and point 7 are together incident with     
+    gap> # blocks 1, 12, 15
+    gap> BlocksOfDesign( D1 ){last};
+    [ [ ((4,5,6)), ((4,6,5)), ((1,2,3)), ((1,3,2)) ], 
+      [ ((1,3,2)), ((1,3,2)(4,5,6)), (()), ((4,5,6)) ], 
+      [ ((1,3,2)(4,6,5)), ((1,3,2)), ((4,5,6)), ((1,2,3)(4,5,6)) ] ]
+    gap> # the actual point sets of blocks 1, 12, and 15 
+    gap> BlocksIncidentPoints( D1, [2, 3, 7] );
+    [ 1 ]
+    gap> # points 2, 3, 7 are together incident with block 1
+    gap> PointsIncidentBlocks( D1, [1] );
+    [ 2, 3, 4, 7 ]
+    gap> # block 1 is incident with points 2, 3, 4, 7 
+\endexample
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -1,0 +1,179 @@
+This is pdfTeX, Version 3.14159-1.00a-pretest-20011114-ojmw (Web2C 7.3.7) (format=pdftex 2002.12.12)  20 AUG 2003 14:08
+**manual
+(./manual.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, n
+ohyphenation, loaded.
+(../gapmacro.tex
+\pagewidth=\dimen16
+\pageheight=\dimen17
+\colwidth=\dimen18
+\partialpage=\box16
+\manindent=\dimen19
+\smallmanindent=\dimen20
+\msbfam=\fam8
+\labelout=\write0
+\indexout=\write1
+\secindout=\write2
+\tocout=\write3
+\citeout=\write4
+\ans=\write5
+\labelin=\read0
+\indexin=\read1
+\tocin=\read2
+\citein=\read3
+\secno=\count26
+\exno=\count27
+) [-1{/usr/share/texmf/dvips/config/pdftex.map}] [-2]
+\makelabel {etudes:chapter Contents}{1}
+(./manual.toc
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(33.25+3.5)x228.0
+.\glue(\topskip) 0.0
+.\hbox(20.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(20.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 2.11072fil []
+...\penalty 300
+...\glue(\baselineskip) 0.0
+...\hbox(8.5+3.5)x176.99998, glue set 144.69437fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 128.02765fill []
+..\glue 0.0 plus 1.0fil
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(32.5+3.5)x228.0
+.\glue(\topskip) 1.5
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 21.88861fill []
+..\glue 0.0 plus 1.0fil
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(33.25+3.5)x228.0
+.\glue(\topskip) 0.0
+.\hbox(20.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(20.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 4.22188fil []
+...\penalty 300
+...\glue(\baselineskip) 0.0
+...\hbox(8.5+3.5)x176.99998, glue set 126.41655fill []
+..\glue 0.0 plus 1.0fil
+.\glue(\baselineskip) 0.0
+.\hbox(8.5+3.5)x228.0, glue set 15.00002fil
+..\kern 36.0
+..\vbox(8.5+3.5)x176.99998
+...\hbox(8.5+3.5)x176.99998, glue set 17.66635fill []
+..\glue 0.0 plus 1.0fil
+
+) [-3.1
+\chapcontents {\tocstrut }{Contents}{-3}
+] (./manual.lab)
+\makelabel {etudes:chapter Bibliography}{2}
+(./manual.bbl)
+\openout3 = `manual.toc'.
+
+\openout0 = `manual.lab'.
+
+\openout1 = `manual.idx'.
+
+\openout2 = `manual.six'.
+
+\openout4 = `manual.aux'.
+
+\openout5 = `answers.tex'.
+
+ [-4.1] (./authors.tex) [1.2] (./grpsupp.tex [2] [1.1]
+Underfull \vbox (badness 10000) has occurred while \output is active
+\vbox(624.0+1.94444)x468.0, glue set 6.64554
+.\glue(\topskip) 3.05556
+.\hbox(6.94444+1.94444)x468.0, glue set 136.33272fil
+../cmr10/g
+../cmr10/r
+../cmr10/o
+../cmr10/u
+../cmr10/p
+..etc.
+.\glue 6.0 plus 2.0 minus 2.0
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 3.11111
+.etc.
+
+ [2.1]
+[3.1]) (./nr.tex [4.1]
+Overfull \hbox (2.38794pt too wide) in paragraph at lines 74--81
+[]/cmr10/Now for en-ter-ing the near-ring mul-ti-pli-ca-tion: We will use the f
+unc-tion /cmtt10/Nr-Mul-ti-pli-ca-tion-By-Op-er-a-tionTable/cmr10/.|
+
+\hbox(6.94444+2.22223)x468.0, glue set - 1.0
+.\hbox(0.0+0.0)x0.0
+./cmr10/N
+./cmr10/o
+.\kern-0.27779
+./cmr10/w
+.etc.
+
+[1.2]
+Reference `Waehling:Fastkoerper' undefined.
+[2.2]) (./libnr.tex [3.2] [4.2] [1.3]
+Underfull \vbox (badness 1248) has occurred while \output is active
+\vbox(624.0+1.94444)x468.0, glue set 2.32155
+.\glue(\topskip) 3.88889
+.\hbox(6.11111+0.0)x468.0, glue set 396.75114fil
+..\hbox(0.0+0.0)x0.0
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..\glue 5.24995
+..etc.
+.\penalty 10000
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 6.69447
+.etc.
+
+ [2.3])
+(./tfms.tex [3.3] [4.3] [1.4]) (./tfmnr.tex [2.4] [1.5] [2.5] [3.5])
+(./ideals.tex [4.5] [1.6] [2.6]) (./plnr.tex [3.6] [4.6] [1.7]) (./design.tex
+[2.7] [1.8]) [2.8] (./manual.bbl) [1.1] [2.1] (./manual.ind)
+Underfull \vbox (badness 1137) has occurred while \output is active
+\vbox(208.0+1.94444)x228.0, glue set 2.25
+.\glue(\topskip) 0.27779
+.\hbox(9.72221+0.0)x228.0, glue set 219.09457fil
+..\hbox(0.0+0.0)x0.0
+../cmssdc10@14.0pt/A
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0 plus 20.00003
+.\penalty 10000
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 5.05556
+.etc.
+
+ [1.2]
+##
+## Citations for BibTeX written on manual.aux.
+## Index entries for makeindex written on manual.idx.
+## Section index entries written on manual.six.
+## Label definitions written on manual.lab.
+## Table of contents written on manual.toc.
+## There were undefined labels or references.
+##
+ )</usr/share/texmf/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.
+pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb><
+/usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmss10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bl
+uesky/cm/cmti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/s
+hare/texmf/fonts/type1/bluesky/cm/cminch.pfb></usr/share/texmf/fonts/type1/blue
+sky/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmssdc10.pfb>
+Output written on manual.pdf (35 pages, 178228 bytes).
