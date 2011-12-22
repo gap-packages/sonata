@@ -1,0 +1,40 @@
+      README file for the `sonata' GAP4 package
+
+To install SONATA, unpack the archive inside the `pkg' subdirectory of
+your GAP 4 installation. It creates a subdirectory called `sonata'.
+
+Then start GAP and load SONATA with the command
+
+LoadPackage("sonata");
+
+In addition to the standard GAP help, we have produced a tutorial for 
+SONATA, which can be found in the subdirectory doc/tut/ of the sonata 
+package.
+
+E-mail us if  there are any questions,  remarks,  suggestions. Also, we
+would like to hear about applications of this package.
+
+Erhard Aichinger
+Franz Binder
+Jürgen Ecker
+Peter Mayr
+Christof Nöbauer
+
+email: sonata@algebra.uni-linz.ac.at
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Main changes from SONATA 2.4 to SONATA 2.5.1
+------------------------------------------
+
+(1) Added test files in the subdirectory tst for automated testing of the
+SONATA installation (output is formatted for GAP 4.5)
+
+(2) Removed the function xor.
+
+(3) Added new upper bound for the computation of the Scott length of a group.
+
+(4) Added new methods for Zero for near-ring elements.
+
+(5) Changed the method for computing multiples of near-ring elements.
