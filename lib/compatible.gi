@@ -917,26 +917,31 @@ InstallMethod(
 	[IsGroup],
 	120,
   function( G )
-  if Size(G)<=64 then return IdGroup(G) in 
-	[ [ 1, 1 ], 
-	  [ 2, 1 ], 
-	  [ 4, 2 ], 
+  if Size(G)<=100 then return IdGroup(G) in 
+        [ [ 1, 1 ],
+          [ 2, 1 ],
+          [ 4, 2 ],
 	  [ 8, 2 ], [ 8, 5 ], 
 	  [ 9, 2 ], 
-	  [ 16, 2 ], [ 16, 10 ], [ 16, 14 ], [ 16, 12 ], [ 16, 11 ], 
-	  [ 18, 5 ], [ 18, 4 ], 
-	  [ 25, 2 ], 
+	  [ 16, 2 ], [ 16, 10 ], [ 16, 11 ], [ 16, 12 ], [ 16, 14 ],
+	  [ 18, 4 ], [ 18, 5 ],
+  	  [ 25, 2 ], 
 	  [ 27, 5 ], 
-  	  [ 32, 3 ], [ 32, 21 ], [ 32, 45 ], [ 32, 51 ], [ 32, 46 ], 
-	  [ 32, 47 ], [ 32, 27 ], [ 32, 34 ], [ 32, 35 ], 
-	  [ 36, 13 ], 
-	  [ 50, 4 ], 
-	  [ 54, 14 ], 
-	  [ 64, 2 ], [ 64, 55 ], [ 64, 73 ], [ 64, 76 ], [ 64, 83 ], 
-	  [ 64, 173 ], [ 64, 174 ], [ 64, 175 ], [ 64, 179 ], [ 64, 181 ], 
-	  [ 64, 192 ], [ 64, 202 ], [ 64, 211 ], [ 64, 212 ], [ 64, 260 ], 
-	  [ 64, 261 ], [ 64, 262 ], [ 64, 267 ] 
-	];
+	  [ 32, 3 ], [ 32, 21 ], [ 32, 27 ], [ 32, 34 ], [ 32, 35 ], 
+	  [ 32, 45 ], [ 32, 46 ], [ 32, 47 ], [ 32, 51 ],
+ 	  [ 36, 13 ], [ 36, 14 ],
+ 	  [ 49, 2 ],
+	  [ 50, 4 ], [ 50, 5 ], 
+	  [ 54, 14 ], [ 54, 15 ],
+  	  [ 60, 5 ], 
+	  [ 64, 2 ], [ 64, 55 ], [ 64, 73 ], [ 64, 76 ], [ 64, 83 ],
+  	  [ 64, 173 ], [ 64, 174 ], [ 64, 175 ], [ 64, 179 ], [ 64, 181 ],
+  	  [ 64, 192 ], [ 64, 202 ], [ 64, 211 ], [ 64, 212 ], [ 64, 260 ],
+  	  [ 64, 261 ], [ 64, 262 ], [ 64, 267 ], 
+	  [ 72, 32 ], [ 72, 34 ], [ 72, 36 ], [ 72, 49 ], [ 72, 50 ], 
+	  [ 81, 2 ], [ 81, 15 ], 
+	  [ 98, 4 ], [ 98, 5 ],
+  	  [ 100, 15 ], [ 100, 16 ] ];
   else
 	TryNextMethod();
   fi;
@@ -1250,12 +1255,14 @@ LiftCompGenFromQuotByMinDistNormSgp :=
   function( G, A, K, phi )
 # phi is a compatible function on G/A
 # K is the sum of all ideals of G having trivial intersection with A  
-  local R, S, epsA, epsK, E, listG, gens, phiA, 
+  local R, S, epsA, epsK, E, listG, gens, phiA, iso,
 	t, e, si, x, s, dx, cx, psix, pos;
 
     # coset representatives
     epsA := NaturalHomomorphismByNormalSubgroup( G, A );
     epsK := NaturalHomomorphismByNormalSubgroup( G, K );
+    iso := IsomorphismGroups( Range(epsA), Source(phi) );
+    epsA := epsA*iso;
     phiA := epsA*phi;
 
     R := List( Image(epsA), x -> PreImagesRepresentative( epsA, x ) );
