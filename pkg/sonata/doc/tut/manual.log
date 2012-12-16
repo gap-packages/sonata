@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdftex 2010.6.30)  3 OCT 2011 16:45
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdftex 2012.8.29)  7 NOV 2012 15:16
 entering extended mode
  %&-line parsing enabled.
 **manual
@@ -30,16 +30,16 @@ Running PDFTeX
 \citeout=\write4
 \ans=\write5
 \exampleout=\write6
-\labelin=\read0
-\indexin=\read1
-\tocin=\read2
-\citein=\read3
-\secno=\count26
-\subsecno=\count27
-\exno=\count28
-\indentno=\count29
-\chapnum=\count30
-\ortoks=\toks12
+\labelin=\read1
+\indexin=\read2
+\tocin=\read3
+\citein=\read4
+\secno=\count27
+\subsecno=\count28
+\exno=\count29
+\indentno=\count30
+\chapnum=\count31
+\ortoks=\toks13
 \bibindent=\dimen23
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 \makelabel{etudes:Contents}{{\setbox 0=\hbox {1}\vrule width 0pt height\ht 0}}
@@ -118,22 +118,23 @@ Chapter `Index' .
 ## Examples written to manual.example-XX.tst.
 ## Labels have changed, run again. (Or they were multiply defined.)
 ##
- )</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf
--texlive/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type
-1/bluesky/cm/cminch.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi10
-.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/tex
-mf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/typ
-e1/bluesky/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pf
-b></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf
--texlive/fonts/type1/bluesky/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type
-1/bluesky/cm/cmssdc10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy
-10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/t
-exmf-texlive/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/
-type1/bluesky/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/ams/m
-sbm10.pfb>
-Output written on manual.pdf (29 pages, 192029 bytes).
+ )</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cminch.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb>
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmssdc10.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on manual.pdf (29 pages, 276851 bytes).
 PDF statistics:
  381 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 131072)
+ 46 named destinations out of 1000 (max. 500000)
  321 words of extra memory for PDF output out of 10000 (max. 10000000)
 

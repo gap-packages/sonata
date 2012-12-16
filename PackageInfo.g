@@ -42,11 +42,11 @@ Subtitle := "System of nearrings and their applications",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "2.5.1",
+Version := "2.6",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 # 
-Date := "23/11/2011",
+Date := "07/11/2012",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
@@ -58,7 +58,7 @@ Date := "23/11/2011",
 # 
 ArchiveURL := 
 #          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-1.5",
-	   "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.5.1/sonata-2.5.1",
+	   "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.6/sonata-2.6",
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
 ##  Currently recognized formats are:

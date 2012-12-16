@@ -38,12 +38,12 @@ containment as incidence relation.
 <li><code>DesignFromIncidenceMat( M ) ;</code>
 <p>
 <code>DesignFromIncidenceMat</code> returns the design with incidence matrix <var>M</var>,
-The rows of <var>M</var> are labelled by the set of points 1 to <i>v</i>, the
+The rows of <var>M</var> are labelled by the set of points <var>1</var> to <var>v</var>, the
 columns represent the blocks.
-If the ( <i>i</i>, <i>j</i> ) entry of the matrix <var>M</var> is 1, then the point <i>i</i> is 
-incident with the <i>j</i>-th block, i.e. the <i>j</i>-th block consists of those
-points <i>i</i> for which the entry ( <i>i</i>, <i>j</i> ) of <var>M</var> is 1. All other entries 
-have to be 0.
+If the <var>( i, j )</var> entry of the matrix <var>M</var> is <var>1</var>, then the point <var>i</var> is 
+incident with the <var>j</var>-th block, i.e. the <var>j</var>-th block consists of those
+points <var>i</var> for which the entry <var>( i, j )</var> of <var>M</var> is <var>1</var>. All other entries 
+have to be <var>0</var>.
 <p>
 <pre>
     gap&gt; M := [[1,0,1,1],
@@ -61,13 +61,13 @@ nearring <var>N</var> following the constructions of James R. Clay
 <a href="biblio.htm#Clay:Nearrings"><[>Clay:Nearrings</cite></a>].
 <p>
 If <var>type</var> = <code>"*"</code>, <code>DesignFromPlanarNearRing</code> returns the design 
-(<i>N</i> ,<i>B</i><sup>*</sup>, <font face="symbol">Î</font> ) in the notation of J. R. Clay with the elements of <var>N</var> as 
-set of points and {<i>N</i><sup>*</sup>&#183;<i>a</i>+<i>b</i> <font face="symbol">|</font> <i>a</i>,<i>b</i> <font face="symbol">Î</font> <i>N</i>, <i>a</i>  <font face="symbol">¹</font> 0 } as set of blocks.
-Here <i>N</i><sup>*</sup> is the set of elements <i>x</i> <font face="symbol">Î</font> <i>N</i> satisfying <i>x</i>&#183;<i>N</i> = <i>N</i>.
+<var>(<var>N</var>,B<sup>*</sup>,in)</var> in the notation of J. R. Clay with the elements of <var>N</var> as 
+set of points and <var>{N<sup>*</sup>cdota+b | a,binN, a not= 0 }</var> as set of blocks.
+Here <var>N<sup>*</sup></var> is the set of elements <var>xinN</var> satisfying <var>xcdotN = N</var>.
 <p>
 If <var>type</var> = <code>" "</code> (blank), <code>DesignFromPlanarNearRing</code> returns the design 
-(<i>N</i> ,<i>B</i>, <font face="symbol">Î</font> ) in the notation of J. R. Clay with the elements of <var>N</var> as 
-set of points and {<i>N</i>&#183;<i>a</i>+<i>b</i> <font face="symbol">|</font> <i>a</i>,<i>b</i> <font face="symbol">Î</font> <i>N</i>, <i>a</i>  <font face="symbol">¹</font> 0 } as set of 
+<var>(<var>N</var>,B,in)</var> in the notation of J. R. Clay with the elements of <var>N</var> as 
+set of points and <var>{Ncdota+b | a,binN, a not= 0 }</var> as set of 
 blocks.
 <p>
 <pre>
@@ -89,12 +89,12 @@ a group of fixed-point-free automorphisms <var>phi</var> acting on <var>G</var> 
 constructions of James R. Clay <a href="biblio.htm#Clay:Nearrings"><[>Clay:Nearrings</cite></a>].
 <p>
 If <var>type</var> = <code>"*"</code>, <code>DesignFromFerreroPair</code> returns the design 
-(<i>G</i> ,<i>B</i><sup>*</sup>, <font face="symbol">Î</font> ) in the notation of J. R. Clay with the elements of <var>G</var> as 
+<var>(<var>G</var>,B<sup>*</sup>,in)</var> in the notation of J. R. Clay with the elements of <var>G</var> as 
 set of points and the nonzero orbits of <var>G</var> under <var>phi</var> and their 
 translates by group-elements as set of blocks.
 <p>
 If <var>type</var> = <code>" "</code> (blank), <code>DesignFromFerreroPair</code> returns the design 
-(<i>G</i> ,<i>B</i>, <font face="symbol">Î</font> ) in the notation of J. R. Clay with the elements of <var>G</var> as 
+<var>(<var>G</var>,B,in)</var> in the notation of J. R. Clay with the elements of <var>G</var> as 
 set of points and the nonzero orbits of <var>G</var> under <var>phi</var> joined with the zero
 of <var>G</var> and their translates by group-elements as set of blocks.
 <p>
@@ -119,8 +119,8 @@ of <var>G</var> and their translates by group-elements as set of blocks.
 <code>DesignFromWdNearring</code> returns a design obtained from the weakly divisible 
 nearring <var>N</var> with cyclic additive group of prime power order. Following the
 constructions of A. Benini, F. Morini and S. Pellegrini, we take the elements
-of <var>N</var> as set of points and {<i>N</i>&#183;<i>a</i>+<i>b</i> <font face="symbol">|</font> <i>a</i> <font face="symbol">Î</font> <i>C</i>, <i>b</i> <font face="symbol">Î</font> <i>N</i> } as set of
-blocks. Here <i>C</i> is the set of elements <i>a</i> <font face="symbol">Î</font> <i>N</i> such that <i>a</i>&#183;<i>N</i> = <i>N</i>.
+of <var>N</var> as set of points and <var>{Ncdota+b | ainC, bin<var>N</var>}</var> as set of
+blocks. Here <var>C</var> is the set of elements <var>ainN</var> such that <var>acdotN = N</var>.
 <p>
 <pre>
     gap&gt; n := LibraryNearRing( GTW9_1, 202 );
@@ -175,12 +175,12 @@ the list of all blocks are given by the list <var>blocknrs</var>, one can use
 <a name = "SSEC002.3"></a>
 <li><code>DesignParameter( </code><var>D</var><code> )</code>
 <p>
-<code>DesignParameter</code> returns the set of paramaters <i>t</i>, <i>v</i>, <i>b</i>, <i>r</i>, <i>k</i>, <font face="symbol">l</font> 
-of the design <var>D</var>. Here <i>v</i> is the size of the set of points 
-<code>PointsOfDesign</code>, <i>b</i> is the size of the set of blocks <code>PointsOfDesign</code>,
-every point is incident with precisely <i>r</i> blocks, every block is incident 
-with precisely <i>k</i> points, every <i>t</i> distinct points are together incident
-with precisely <font face="symbol">l</font> blocks. 
+<code>DesignParameter</code> returns the set of paramaters <var>t, v, b, r, k, lambda</var> 
+of the design <var>D</var>. Here <var>v</var> is the size of the set of points 
+<code>PointsOfDesign</code>, <var>b</var> is the size of the set of blocks <code>PointsOfDesign</code>,
+every point is incident with precisely <var>r</var> blocks, every block is incident 
+with precisely <var>k</var> points, every <var>t</var> distinct points are together incident
+with precisely <var>lambda</var> blocks. 
 <p>
 <pre>
     gap&gt; DesignParameter( D1 );
@@ -194,8 +194,8 @@ with precisely <font face="symbol">l</font> blocks.
 <code>IncidenceMat</code> returns the incidence matrix of the design <var>D</var>, where the
 rows are labelled by the positions of the points in <code>PointsOfDesign</code>, the
 columns are labelled by the positions of the blocks in <code>BlocksOfDesign</code>.
-If the point in position <i>i</i> is incident with the block in position <i>j</i>, then
-the ( <i>i</i>, <i>j</i> ) entry of the matrix <code>IncidenceMat</code> is 1, else it is 0.
+If the point in position <var>i</var> is incident with the block in position <var>j</var>, then
+the <var>( i, j )</var> entry of the matrix <code>IncidenceMat</code> is <var>1</var>, else it is <var>0</var>.
 <p>
 <pre>
     gap&gt; M1 := IncidenceMat( D1 );
@@ -214,9 +214,9 @@ the ( <i>i</i>, <i>j</i> ) entry of the matrix <code>IncidenceMat</code> is 1, e
 <li><code>PrintIncidenceMat( </code><var>D</var><code> )</code>
 <p>
 <code>PrintIncidenceMat</code> prints only the entries of the incidence matrix 
-<code>IncidenceMat</code> of the design without commas. If the point in position <i>i</i> is 
-incident with the block in position <i>j</i>, then there is 1 in the <i>i</i>-th
-row, <i>j</i>-th column, else there is '.', a dot.
+<code>IncidenceMat</code> of the design without commas. If the point in position <var>i</var> is 
+incident with the block in position <var>j</var>, then there is <var>1</var> in the <var>i</var>-th
+row, <var>j</var>-th column, else there is '.', a dot.
 <p>
 <pre>
     gap&gt; PrintIncidenceMat( D1 );
@@ -329,5 +329,5 @@ in the list <var>pointnrs</var>.
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP010.htm">Previous</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>Oktober 2011
+<address>SONATA manual<br>November 2012
 </address></body></html>

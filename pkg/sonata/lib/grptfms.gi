@@ -2,11 +2,14 @@
 ##
 #W  grptfms.gi             Near-ring Library                   Christof N"obauer
 ##
-#H  @(#)$Id: grptfms.gi,v 1.13 2011-11-23 20:01:17 stein Exp $
+#H  @(#)$Id: grptfms.gi,v 1.14 2012-11-07 13:22:59 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: grptfms.gi,v $
+##  Revision 1.14  2012-11-07 13:22:59  stein
+##  Adapted filters in method for \in.
+##
 ##  Revision 1.13  2011-11-23 20:01:17  stein
 ##  New methods for Zero for elements of a nearring.
 ##  New methods for multiplying a nearring element with an integer (These should
@@ -49,7 +52,7 @@
 ##
 
 grptfms_gi:=
-  "@(#)$Id: grptfms.gi,v 1.13 2011-11-23 20:01:17 stein Exp $";
+  "@(#)$Id: grptfms.gi,v 1.14 2012-11-07 13:22:59 stein Exp $";
 
 #############################################################################
 ##
@@ -382,7 +385,17 @@ InstallMethod(
 	\in,
 	"nearrings with known additive group",
 	IsElmsColls,
-	[IsNearRingElement, IsNearRing],
+	[IsNearRingElement and HasGroupElementRepOfNearRingElement, IsNearRing],
+	0,
+  function ( e , nr )
+    return GroupElementRepOfNearRingElement(e) in GroupReduct(nr);
+  end );
+
+InstallMethod(
+	\in,
+	"nearrings with known additive group",
+	IsElmsColls,
+	[IsExplicitMultiplicationNearRingElement, IsNearRing],
 	0,
   function ( e , nr )
     return GroupElementRepOfNearRingElement(e) in GroupReduct(nr);

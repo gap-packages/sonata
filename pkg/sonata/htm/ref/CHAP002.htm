@@ -30,10 +30,10 @@
 <li> <A HREF="CHAP002.htm#SECT023">Special properties of a nearring</a>
 </ol><p>
 <p>
-A <strong>(left) nearring</strong> is a nonempty set <i>N</i> together with two binary 
-operations on <i>N</i>, + and &#183; s.t. (<i>N</i>,+) is a group, (<i>N</i>,&#183;) is 
-a semigroup, and &#183; is left distributive over +, i.e. 
-<font face="symbol">"</font><i>n</i><sub>1</sub>,<i>n</i><sub>2</sub>,<i>n</i><sub>3</sub>  <font face="symbol">Î</font> <i>N</i>:&nbsp;<i>n</i><sub>1</sub>&#183;(<i>n</i><sub>2</sub>+<i>n</i><sub>3</sub>) = <i>n</i><sub>1</sub>&#183;<i>n</i><sub>2</sub> + <i>n</i><sub>1</sub>&#183;<i>n</i><sub>3</sub>.
+A <strong>(left) nearring</strong> is a nonempty set <var>N</var> together with two binary 
+operations on <var>N</var>, <var>+</var> and <var>.</var> s.t. <var>(N,+)</var> is a group, <var>(N,.)</var> is 
+a semigroup, and <var>.</var> is left distributive over <var>+</var>, i.e. 
+<var>foralln<sub>1</sub>,n<sub>2</sub>,n<sub>3</sub> inN: n<sub>1</sub>.(n<sub>2</sub>+n<sub>3</sub>) = n<sub>1</sub>.n<sub>2</sub> + n<sub>1</sub>.n<sub>3</sub></var>.
 <p>
 For more information we suggest <a href="biblio.htm#Pilz:Nearrings"><[>Pilz:Nearrings</cite></a>],
 <a href="biblio.htm#meldrum85:NATLWG"><[>meldrum85:NATLWG</cite></a>], and <a href="biblio.htm#Clay:Nearrings"><[>Clay:Nearrings</cite></a>].
@@ -511,8 +511,8 @@ according subnearrings.
 <a name = "SSEC016.1"></a>
 <li><code>InvariantSubNearRings( </code><var>nr</var><code> )</code>
 <p>
-A subnearring (<i>M</i>,+,&#183;) of a nearring (<i>N</i>,+,&#183;) is called an 
-<strong>invariant subnearring</strong> if both, <i>M</i> &#183;<i>N</i> and <i>N</i> &#183;<i>M</i> are subsets of <i>M</i>.
+A subnearring <var>(M,+,.)</var> of a nearring <var>(N,+,.)</var> is called an 
+<strong>invariant subnearring</strong> if both, <var>M . N</var> and <var>N . M</var> are subsets of <var>M</var>.
 <p>
 The function <code>InvariantSubNearRings</code>  computes all invariant 
 subnearrings of the nearring <var>nr</var>.
@@ -639,8 +639,8 @@ whether a nearring has an identity use <code>Identity(</code><var>nr</var><code>
 <a name = "SSEC020.1"></a>
 <li><code>IsNearRingUnit( </code><var>nr</var><code>, </code><var>x</var><code> )</code>
 <p>
-An element <i>x</i> of a nearring (<i>N</i>,+,&#183;) with identity 1 is called a <hr>unit
-if there exists an element <i>y</i> in <i>N</i> such that <i>x</i>&#183;<i>y</i> = <i>y</i>&#183;<i>x</i> = 1.
+An element <var>x</var> of a nearring <var>(N,+,.)</var> with identity <var>1</var> is called a <hr>unit
+if there exists an element <var>y</var> in <var>N</var> such that <var>x.y = y.x = 1</var>.
 <p>
 The function <code>IsNearRingUnit</code> returns <code>true</code> if <var>x</var> is a unit in <var>nr</var> and
 false otherwise.
@@ -664,9 +664,9 @@ false otherwise.
 <a name = "SSEC021.1"></a>
 <li><code>Distributors( </code><var>nr</var><code> )</code>
 <p>
-An element <i>x</i> of a nearring (<i>N</i>,+,&#183;) is called a <hr>distributor
-if <i>x</i> = (<i>n</i><sub>1</sub> + <i>n</i><sub>2</sub> ) &#183;<i>n</i><sub>3</sub> <font face="symbol">-</font> (<i>n</i><sub>1</sub> &#183;<i>n</i><sub>3</sub> + <i>n</i><sub>2</sub> &#183;<i>n</i><sub>3</sub> ) for some elements
-<i>n</i><sub>1</sub>, <i>n</i><sub>2</sub>, <i>n</i><sub>3</sub> of <i>N</i>.
+An element <var>x</var> of a nearring <var>(N,+,.)</var> is called a <hr>distributor
+if <var>x = (n<sub>1</sub> + n<sub>2</sub> ) . n<sub>3</sub> - (n<sub>1</sub> . n<sub>3</sub> + n<sub>2</sub> . n<sub>3</sub> )</var> for some elements
+<var>n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub></var> of <var>N</var>.
 <p>
 The function <code>Distributors</code> returns a list containing the distributors 
 of the nearring <var>nr</var>. 
@@ -685,9 +685,9 @@ of the nearring <var>nr</var>.
 <a name = "SSEC021.2"></a>
 <li><code>DistributiveElements( </code><var>nr</var><code> )</code>
 <p>
-An element <i>d</i> of a left nearring (<i>N</i>,+,&#183;) is called a 
+An element <var>d</var> of a left nearring <var>(N,+,.)</var> is called a 
 <strong>distributive element</strong> if it is also right distributive over all elements,
-i.e. <font face="symbol">"</font><i>n</i><sub>1</sub>, <i>n</i><sub>2</sub>  <font face="symbol">Î</font> <i>N</i>:&nbsp;(<i>n</i><sub>1</sub> + <i>n</i><sub>2</sub> )&#183;<i>d</i> = <i>n</i><sub>1</sub>&#183;<i>d</i> + <i>n</i><sub>2</sub>&#183;<i>d</i>. 
+i.e. <var>foralln<sub>1</sub>, n<sub>2</sub> inN: (n<sub>1</sub> + n<sub>2</sub> ).d = n<sub>1</sub>.d + n<sub>2</sub>.d</var>. 
 <p>
 The function <code>DistributiveElements</code> returns a list containing the 
 distributive elements of the nearring <var>nr</var>. 
@@ -702,7 +702,7 @@ distributive elements of the nearring <var>nr</var>.
 <a name = "SSEC021.3"></a>
 <li><code>IsDistributiveNearRing( </code><var>nr</var><code> )</code>
 <p>
-A left nearring <i>N</i> is called <strong>distributive nearring</strong> if its
+A left nearring <var>N</var> is called <strong>distributive nearring</strong> if its
 multiplication is also right distributive.
 <p>
 The function <code>IsDistributiveNearRing</code> simply checks if all elements
@@ -722,12 +722,12 @@ are distributive and returns the according boolean value
 <a name = "SSEC022.1"></a>
 <li><code>ZeroSymmetricElements( </code><var>nr</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a left nearring and denote by 0 the neutral element 
-of (<i>N</i>,+). 
-An element <i>n</i> of <i>N</i> is called a <strong>zero-symmetric element</strong> if 0&#183;<i>n</i> = 0. 
+Let <var>(N,+,.)</var> be a left nearring and denote by <var>0</var> the neutral element 
+of <var>(N,+)</var>. 
+An element <var>n</var> of <var>N</var> is called a <strong>zero-symmetric element</strong> if <var>0.n = 0</var>. 
 <p>
-<strong>Remark:</strong> note that in a <strong>left</strong> nearring <i>n</i>&#183;0 = 0 is true for all elements
-<i>n</i>.
+<strong>Remark:</strong> note that in a <strong>left</strong> nearring <var>n.0 = 0</var> is true for all elements
+<var>n</var>.
 <p>
 The function <code>ZeroSymmetricElements</code> returns a list containing the 
 zero-symmetric elements of the nearring <var>nr</var>. 
@@ -757,13 +757,13 @@ idempotent elements of the multiplicative semigroup of the nearring <var>nr</var
 <a name = "SSEC022.3"></a>
 <li><code>NilpotentElements( </code><var>nr</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a nearring with zero 0. An element <i>n</i> of <i>N</i> is 
-called <strong>nilpotent</strong> if there is a positive integer <i>k</i> such that
-<i>n</i><sup><i>k</i></sup> = 0.
+Let <var>(N,+,.)</var> be a nearring with zero <var>0</var>. An element <var>n</var> of <var>N</var> is 
+called <strong>nilpotent</strong> if there is a positive integer <var>k</var> such that
+<var>n<sup>k</sup> = 0</var>.
 <p>
 The function <code>NilpotentElements</code> returns a list of sublists of length 
-2 where the first entry is a nilpotent element <i>n</i> and the second
-entry is the smallest <i>k</i> such that <i>n</i><sup><i>k</i></sup> = 0.
+<var>2</var> where the first entry is a nilpotent element <var>n</var> and the second
+entry is the smallest <var>k</var> such that <var>n<sup>k</sup> = 0</var>.
 <p>
 <pre>
     gap&gt; n := LibraryNearRing( GTW12_4, 8 );            
@@ -778,10 +778,10 @@ entry is the smallest <i>k</i> such that <i>n</i><sup><i>k</i></sup> = 0.
 <a name = "SSEC022.4"></a>
 <li><code>QuasiregularElements( </code><var>nr</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a left nearring. For an element <i>z</i>  <font face="symbol">Î</font> <i>N</i>, 
-denote the right ideal generated by the set {<i>n</i> <font face="symbol">-</font> <i>z</i>&#183;<i>n</i> <font face="symbol">|</font> <i>n</i>  <font face="symbol">Î</font> <i>N</i>}
-by <i>L</i><sub><i>z</i></sub>.
-An element <i>z</i> of <i>N</i> is called <strong>quasiregular</strong> if <i>z</i>  <font face="symbol">Î</font> <i>L</i><sub><i>z</i></sub>.
+Let <var>(N,+,.)</var> be a left nearring. For an element <var>z inN</var>, 
+denote the right ideal generated by the set <var>{n - z.n | n inN}</var>
+by <var>L<sub>z</sub></var>.
+An element <var>z</var> of <var>N</var> is called <strong>quasiregular</strong> if <var>z inL<sub>z</sub></var>.
 <p>
 The function <code>QuasiregularElements</code> returns a list of all 
 quasiregular elements of a nearring <var>nr</var>.
@@ -797,8 +797,8 @@ quasiregular elements of a nearring <var>nr</var>.
 <a name = "SSEC022.5"></a>
 <li><code>RegularElements( </code><var>nr</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a nearring. An element <i>n</i> of <i>N</i> is called <strong>regular</strong> if
-there is an element <i>x</i> such that <i>n</i>&#183;<i>x</i>&#183;<i>n</i> = <i>n</i>.
+Let <var>(N,+,.)</var> be a nearring. An element <var>n</var> of <var>N</var> is called <strong>regular</strong> if
+there is an element <var>x</var> such that <var>n. x. n = n</var>.
 <p>
 The function <code>RegularElements</code> returns a list of all regular elements of a
 nearring <var>nr</var>.
@@ -831,7 +831,7 @@ The function <code>IsAbelianNearRing</code> returns the according boolean value
 <a name = "SSEC023.2"></a>
 <li><code>IsAbstractAffineNearRing( </code><var>nr</var><code> )</code>
 <p>
-A left nearring <i>N</i> is called <strong>abstract affine</strong> if its group reduct is
+A left nearring <var>N</var> is called <strong>abstract affine</strong> if its group reduct is
 abelian and its zero-symmetric elements are exactly its distributive
 elements.
 <p>
@@ -848,7 +848,7 @@ value <code>true</code> or <code>false</code>.
 <a name = "SSEC023.3"></a>
 <li><code>IsBooleanNearRing( </code><var>nr</var><code> )</code>
 <p>
-A left nearring <i>N</i> is called <strong>boolean</strong> if all its elements are
+A left nearring <var>N</var> is called <strong>boolean</strong> if all its elements are
 idempotent with respect to multiplication.
 <p>
 The function <code>IsBooleanNearRing</code> simply checks if all elements
@@ -865,7 +865,7 @@ are idempotent and returns the according boolean value
 <a name = "SSEC023.4"></a>
 <li><code>IsNilNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring <i>N</i> is called <strong>nil</strong> if all its elements are nilpotent.
+A nearring <var>N</var> is called <strong>nil</strong> if all its elements are nilpotent.
 <p>
 The function <code>IsNilNearRing</code> checks if all elements are nilpotent and returns
 the according boolean value <code>true</code> or <code>false</code>.
@@ -880,8 +880,8 @@ the according boolean value <code>true</code> or <code>false</code>.
 <a name = "SSEC023.5"></a>
 <li><code>IsNilpotentNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring <i>N</i> is called <strong>nilpotent</strong> if there is a positive integer
-<i>k</i>, s.t. <i>N</i><sup><i>k</i></sup> = {0}.
+A nearring <var>N</var> is called <strong>nilpotent</strong> if there is a positive integer
+<var>k</var>, s.t. <var>N<sup>k</sup> = {0}</var>.
 <p>
 The function <code>IsNilpotentNearRing</code> tests if
 the nearring <var>nr</var> is nilpotent and returns the according boolean value 
@@ -897,11 +897,11 @@ the nearring <var>nr</var> is nilpotent and returns the according boolean value
 <a name = "SSEC023.6"></a>
 <li><code>IsNilpotentFreeNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring <i>N</i> is called <strong>nilpotent free</strong> if its only nilpotent
-element is 0.
+A nearring <var>N</var> is called <strong>nilpotent free</strong> if its only nilpotent
+element is <var>0</var>.
 <p>
 The function <code>IsNilpotentFreeNearRing</code> checks if 
-0 is the only nilpotent and returns the according boolean value 
+<var>0</var> is the only nilpotent and returns the according boolean value 
 <code>true</code> or <code>false</code>.
 <p>
 <pre>
@@ -914,7 +914,7 @@ The function <code>IsNilpotentFreeNearRing</code> checks if
 <a name = "SSEC023.7"></a>
 <li><code>IsCommutative( </code><var>nr</var><code> )</code>
 <p>
-A nearring (<i>N</i>,+,&#183;) is called <strong>commutative</strong> if its multiplicative semigroup
+A nearring <var>(N,+,.)</var> is called <strong>commutative</strong> if its multiplicative semigroup
 is commutative.
 <p>
 The function <code>IsCommutative</code> returns the according value <code>true</code> or <code>false</code>.
@@ -929,8 +929,8 @@ The function <code>IsCommutative</code> returns the according value <code>true</
 <a name = "SSEC023.8"></a>
 <li><code>IsDgNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring (<i>N</i>,+,&#183;) is called <strong>distributively generated (d.g.)</strong> if 
-(<i>N</i>,+) is generated additively by the distributive elements of the
+A nearring <var>(N,+,.)</var> is called <strong>distributively generated (d.g.)</strong> if 
+<var>(N,+)</var> is generated additively by the distributive elements of the
 nearring.
 <p>
 The function <code>IsDgNearRing</code> returns the according value <code>true</code> or <code>false</code>
@@ -946,8 +946,9 @@ for a nearring <var>nr</var>.
 <a name = "SSEC023.9"></a>
 <li><code>IsIntegralNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring (<i>N</i>,+,&#183;) with zero element 0 is called <strong>integral</strong> if 
-it has no zero divisors, i.e. the condition <font face="symbol">"</font><i>n</i><sub>1</sub>,<i>n</i><sub>2</sub>:&nbsp;<i>n</i><sub>1</sub> &#183;<i>n</i><sub>2</sub> = 0 <font face="symbol">Þ</font> <i>n</i><sub>1</sub> = 0 <font face="symbol">Ú</font><i>n</i><sub>2</sub> = 0 holds.
+A nearring <var>(N,+,.)</var> with zero element <var>0</var> is called <strong>integral</strong> if 
+it has no zero divisors, i.e. the condition <var>foralln<sub>1</sub>,n<sub>2</sub>: 
+n<sub>1</sub> . n<sub>2</sub> = 0 Rightarrown<sub>1</sub> = 0 lorn<sub>2</sub> = 0</var> holds.
 <p>
 The function <code>IsIntegralNearRing</code> returns 
 the according value <code>true</code> or <code>false</code> for a nearring <var>nr</var>.
@@ -962,11 +963,12 @@ the according value <code>true</code> or <code>false</code> for a nearring <var>
 <a name = "SSEC023.10"></a>
 <li><code>IsPrimeNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring (<i>N</i>,+,&#183;) with zero element 0 is called <strong>prime</strong> if 
-the ideal { 0 } is a prime ideal.
+A nearring <var>(N,+,.)</var> with zero element <var>0</var> is called <strong>prime</strong> if 
+the ideal <var>{ 0 }</var> is a prime ideal.
 <p>
 The function <code>IsPrimeNearRing</code> checks if <var>nr</var> is a prime nearring
-by using the condition <var>for all non-zero ideals</var> <i>I</i>,<i>J</i>:&nbsp;<i>I</i> &#183;<i>J</i>  <font face="symbol">¹</font> { 0 } and returns the according value <code>true</code> or <code>false</code>.
+by using the condition <var>for all non-zero ideals</var> <var>I,J: I . J ne
+{ 0 }</var> and returns the according value <code>true</code> or <code>false</code>.
 <p>
 <pre>
     gap&gt; n := LibraryNearRing( GTW12_4, 8 );            
@@ -978,7 +980,7 @@ by using the condition <var>for all non-zero ideals</var> <i>I</i>,<i>J</i>:&nbs
 <a name = "SSEC023.11"></a>
 <li><code>IsQuasiregularNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring <i>N</i> is called <strong>quasiregular</strong> if all its elements are
+A nearring <var>N</var> is called <strong>quasiregular</strong> if all its elements are
 quasiregular.
 <p>
 The function <code>IsQuasiregularNearRing</code> simply checks if all elements
@@ -995,7 +997,7 @@ boolean value <code>true</code> or <code>false</code>.
 <a name = "SSEC023.12"></a>
 <li><code>IsRegularNearRing( </code><var>nr</var><code> )</code>
 <p>
-A nearring <i>N</i> is called <strong>regular</strong> if all its elements are regular.
+A nearring <var>N</var> is called <strong>regular</strong> if all its elements are regular.
 <p>
 The function <code>IsRegularNearRing</code> simply checks if all elements
 of the nearring <var>nr</var> are regular and returns the according 
@@ -1011,9 +1013,9 @@ boolean value <code>true</code> or <code>false</code>.
 <a name = "SSEC023.13"></a>
 <li><code>IsNearField( </code><var>nr</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a nearring with zero 0 and denote by <i>N</i><sup>*</sup> 
-the set <i>N</i> <font face="symbol">-</font> {0}. N is a <strong>nearfield</strong> if (<i>N</i>,+,&#183;) has an identity and
-(<i>N</i><sup>*</sup>,&#183;) is a group.
+Let <var>(N,+,.)</var> be a nearring with zero <var>0</var> and denote by <var>N^*</var> 
+the set <var>N - {0}</var>. N is a <strong>nearfield</strong> if <var>(N,+,.)</var> has an identity and
+<var>(N^*,.)</var> is a group.
 <p>
 The function <code>IsNearField</code> tests if <var>nr</var> has an identity and 
 if every non-zero element has a multiplicative inverse and returns
@@ -1029,12 +1031,12 @@ the according value <code>true</code> or <code>false</code>.
 <a name = "SSEC023.14"></a>
 <li><code>IsPlanarNearRing( </code><var>nr</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a left nearring. For <i>a</i>,<i>b</i>  <font face="symbol">Î</font> <i>N</i> we define <i>a</i>  <font face="symbol">º</font> <i>b</i>
-iff <i>a</i>&#183;<i>n</i> = <i>b</i>&#183;<i>n</i> for all <i>n</i> <font face="symbol">Î</font> <i>N</i>. If <i>a</i>  <font face="symbol">º</font> <i>b</i>, then <i>a</i> and <i>b</i>
+Let <var>(N,+,cdot)</var> be a left nearring. For <var>a,b inN</var> we define <var>a equivb</var>
+iff <var>acdotn = bcdotn</var> for all <var>ninN</var>. If <var>a equivb</var>, then <var>a</var> and <var>b</var>
 are called <strong>equivalent multipliers</strong>.
-A nearring <i>N</i> is called <strong>planar</strong> if <font face="symbol">|</font> <i>N</i>/<sub> <font face="symbol">º</font> </sub> <font face="symbol">|</font>  <font face="symbol">³</font> 3 and if 
-for any two non-equivalent multipliers <i>a</i> and <i>b</i> in <i>N</i>, for any <i>c</i> <font face="symbol">Î</font> <i>N</i>, 
-the equation <i>a</i>&#183;<i>x</i> = <i>b</i>&#183;<i>x</i> + <i>c</i> has a unique solution.
+A nearring <var>N</var> is called <strong>planar</strong> if <var>| N/<sub>equiv</sub> | ge3</var> and if 
+for any two non-equivalent multipliers <var>a</var> and <var>b</var> in <var>N</var>, for any <var>cinN</var>, 
+the equation <var>acdotx = bcdotx + c</var> has a unique solution.
 <p>
 The function <code>IsPlanarNearRing</code> returns the according value <code>true</code> or
 <code>false</code> for a nearring <var>nr</var>.
@@ -1049,8 +1051,8 @@ The function <code>IsPlanarNearRing</code> returns the according value <code>tru
 <a name = "SSEC023.15"></a>
 <li><code>IsWdNearRing( </code><var>nr</var><code> )</code>
 <p>
-A left nearring (<i>N</i>,+,&#183;) is called <strong>weakly divisible</strong> if 
-<font face="symbol">"</font><i>a</i>,<i>b</i> <font face="symbol">Î</font> <i>N</i> <font face="symbol">$</font><i>x</i> <font face="symbol">Î</font> <i>N</i> : <i>a</i>&#183;<i>x</i>=<i>b</i> or <i>b</i>&#183;<i>x</i>=<i>a</i>. 
+A left nearring <var>(N,+,cdot)</var> is called <strong>weakly divisible</strong> if 
+<var>foralla,binN existsxinN : acdotx=b</var> or <var>bcdotx=a</var>. 
 <p>
 The function <code>IsWdNearRing</code> returns the according value <var>true</var> or <var>false</var> 
 for the nearring <var>nr</var>.
@@ -1065,5 +1067,5 @@ for the nearring <var>nr</var>.
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP001.htm">Previous</a>] [<a href ="CHAP003.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>Oktober 2011
+<address>SONATA manual<br>November 2012
 </address></body></html>

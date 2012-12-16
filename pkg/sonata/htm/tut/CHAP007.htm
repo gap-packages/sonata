@@ -5,24 +5,24 @@
 <p>
 We recall the definition of planar nearrings and basic results 
 (see <a href="biblio.htm#Clay:Nearrings"><[>Clay:Nearrings</cite></a>)].
-Let (<i>N</i>,+,&#183;) be a left nearring. For <i>a</i>,<i>b</i>  <font face="symbol">Î</font> <i>N</i> we define <i>a</i>  <font face="symbol">º</font> <i>b</i>
-iff <i>a</i>&#183;<i>n</i> = <i>b</i>&#183;<i>n</i> for all <i>n</i> <font face="symbol">Î</font> <i>N</i>. If <i>a</i>  <font face="symbol">º</font> <i>b</i>, then <i>a</i> and <i>b</i>
+Let <var>(N,+,cdot)</var> be a left nearring. For <var>a,b inN</var> we define <var>a equivb</var>
+iff <var>acdotn = bcdotn</var> for all <var>ninN</var>. If <var>a equivb</var>, then <var>a</var> and <var>b</var>
 are called <strong>equivalent multipliers</strong>.
-A nearring <i>N</i> is called <strong>planar</strong> if <font face="symbol">|</font> <i>N</i>/<sub> <font face="symbol">º</font> </sub> <font face="symbol">|</font>  <font face="symbol">³</font> 3 and if 
-for any two non-equivalent multipliers <i>a</i> and <i>b</i> in <i>N</i>, for any <i>c</i> <font face="symbol">Î</font> <i>N</i>, 
-the equation <i>a</i>&#183;<i>x</i> = <i>b</i>&#183;<i>x</i> + <i>c</i> has a unique solution. 
+A nearring <var>N</var> is called <strong>planar</strong> if <var>| N/<sub>equiv</sub> | ge3</var> and if 
+for any two non-equivalent multipliers <var>a</var> and <var>b</var> in <var>N</var>, for any <var>cinN</var>, 
+the equation <var>acdotx = bcdotx + c</var> has a unique solution. 
 <p>
-A <strong>Ferrero pair</strong> is a pair of finite groups (<i>N</i>,<font face="symbol">F</font>) such that <font face="symbol">F</font>
-is a fixed-point-free automorphism group of (<i>N</i>,+).   
+A <strong>Ferrero pair</strong> is a pair of finite groups <var>(N,Phi)</var> such that <var>Phi</var>
+is a fixed-point-free automorphism group of <var>(N,+)</var>.   
 <p>
-Starting with a Ferrero pair (<i>N</i>,<font face="symbol">F</font>) we can construct a planar nearring
+Starting with a Ferrero pair <var>(N,Phi)</var> we can construct a planar nearring
 in the following way:
-Select representatives, say <i>e</i><sub>1</sub>,<font face="symbol">¼</font>,<i>e</i><sub><i>t</i></sub>, for some or all of the
-non-trivial orbits of <i>N</i> under <font face="symbol">F</font>. 
-Let <i>C</i> = <font face="symbol">F</font>(<i>e</i><sub>1</sub>)<font face="symbol">È</font><font face="symbol">¼</font><font face="symbol">È</font><font face="symbol">F</font>(<i>e</i><sub><i>t</i></sub>).
-For each <i>x</i> <font face="symbol">Î</font> <i>N</i> we define <i>a</i>&#183;<i>x</i> = 0 for <i>a</i> <font face="symbol">Î</font> <i>N</i>\<i>C</i>, and 
-<i>a</i>&#183;<i>x</i>=<font face="symbol">f</font><sub><i>a</i></sub>(<i>x</i>) for <i>a</i> <font face="symbol">Î</font> <font face="symbol">F</font>(<i>e</i><sub><i>i</i></sub>) <font face="symbol">Ì</font> <i>C</i> and <font face="symbol">f</font><sub><i>a</i></sub>(<i>e</i><sub><i>i</i></sub>)=<i>a</i>.
-Then (<i>N</i>,+,&#183;) is a (left) planar nearring with <font face="symbol">|</font><i>N</i>/<sub> <font face="symbol">º</font> </sub><font face="symbol">|</font> = <font face="symbol">|</font><font face="symbol">F</font><font face="symbol">|</font>+1.
+Select representatives, say <var>e<sub>1</sub>,...,e<sub>t</sub></var>, for some or all of the
+non-trivial orbits of <var>N</var> under <var>Phi</var>. 
+Let <var>C = Phi(e<sub>1</sub>)cup...cupPhi(e<sub>t</sub>)</var>.
+For each <var>xinN</var> we define <var>acdotx = 0</var> for <var>ainNsetminusC</var>, and 
+<var>acdotx=phi<sub>a</sub>(x)</var> for <var>ainPhi(e<sub>i</sub>)subsetC</var> and <var>phi<sub>a</sub>(e<sub>i</sub>)=a</var>.
+Then <var>(N,+,cdot)</var> is a (left) planar nearring with <var>|N/<sub>equiv</sub>| = |Phi|+1</var>.
 <p>
 Every finite planar nearring can be constructed from some Ferrero pair 
 together with a set of orbit representatives in this way.
@@ -33,9 +33,9 @@ non-equivalent multipliers.
 <strong>The solution:</strong> We follow the Ferrero method described above for defining a
 nearring multiplication on an additive group. 
 First we have to find a fixed-point-free (fpf) automorphism group of
-order 8 on a group of order 25. 
+order <var>8</var> on a group of order <var>25</var>. 
 <p>
-We start with the cyclic group of order 25:
+We start with the cyclic group of order <var>25</var>:
 First of all we ask for the existence of an fpf automorphism group
 on <code>CyclicGroup(25)</code> by computing an upper bound for its order.
 <p>
@@ -44,18 +44,18 @@ on <code>CyclicGroup(25)</code> by computing an upper bound for its order.
     [ 4, 1 ]
 </pre>
 <p>
-This function returns a list with two integers, 4 and 1. 
+This function returns a list with two integers, <var>4</var> and <var>1</var>. 
 The first number is an upper bound for the size of an fpf automorphism group;
 if there is a metacyclic fpf automorphism group, then it has a cyclic normal
 subgroup of index dividing the second number. These bounds are not sharp.
 If the upper bound for the size of an fpf automorphism group on some group
-is 1, we know that there is no nontrivial fpf automorphism group, no 
+is <var>1</var>, we know that there is no nontrivial fpf automorphism group, no 
 Ferrero pair, and no planar nearring on this group at all.
 <p>
 Here, SONATA does not exclude the possibility that the cyclic group of
-order 25 has an fpf automorphism group of order 4. 
+order <var>25</var> has an fpf automorphism group of order <var>4</var>. 
 However, we can be sure that all fpf automorphism groups are cyclic and that
-none of them has size 8.
+none of them has size <var>8</var>.
 <p>
 Thus we have to consider the elementary abelian group of order 25 instead.
 <p>
@@ -64,9 +64,9 @@ Thus we have to consider the elementary abelian group of order 25 instead.
     [ 24, 2 ]
 </pre>
 <p>
-There might even exist an fpf automorphism group of order 24. (In fact
+There might even exist an fpf automorphism group of order <var>24</var>. (In fact
 there is more than one. The reference manual explains how to obtain all
-nearfields of size 25.) 
+nearfields of size <var>25</var>.) 
 For our example, we could compute either a cyclic automorphism group or one 
 isomorphic to the quaternion group with 8 elements. Let's try the latter.
 <p>
@@ -77,19 +77,19 @@ isomorphic to the quaternion group with 8 elements. Let's try the latter.
 </pre>
 <p>
 Here, the function <code>FpfAutomorphismGroupsMetacyclic</code> determines the metacyclic
-fpf automorphism groups on <code>AbelianGroup([5,5])</code> with generators <i>p</i>,<i>q</i>
-satisfying <i>p</i><sup>4</sup> = 1, <i>p</i><sup><i>q</i></sup> = <i>p</i><sup><font face="symbol">-</font>1</sup>, and <i>q</i><sup>2</sup> = <i>p</i><sup>2</sup>. For each conjugacy class
+fpf automorphism groups on <code>AbelianGroup([5,5])</code> with generators <var>p,q</var>
+satisfying <var>p<sup>4</sup> = 1, p<sup>q</sup> = p<sup>-1</sup></var>, and <var>q<sup>2</sup> = p<sup>2</sup></var>. For each conjugacy class
 of such groups one representative is given. Conjugacy is determined within the
 whole automorphism group of <code>AbelianGroup([5,5])</code>. 
 The actual output of the function is a list with 2 elements.
 The first is not the list of fpf groups up to conjugacy but the list of
-automorphisms <i>p</i>,<i>q</i> generating those groups.
+automorphisms <var>p,q</var> generating those groups.
 The second element is simply the group <code>AbelianGroup([5,5])</code>, on which the
 automorphisms act.
 <p>
-Since there is only one pair of generators <i>p</i>,<i>q</i>, all fpf automorphism groups
+Since there is only one pair of generators <var>p,q</var>, all fpf automorphism groups
 isomorphic to the quaternion group are conjugate. Now, we have our Ferrero
-pair (<i>G</i>, <font face="symbol">F</font>).
+pair <var>(G, Phi)</var>.
 <p>
 <pre>
     gap&gt; phi := Group( aux[1][1] );
@@ -103,23 +103,23 @@ We note that for a fixed Ferrero pair distinct choices of representatives
 may yield isomorphic nearrings. The function
 <code>OrbitRepresentativesForPlanarNearRing</code> returns exactly one set of
 representatives of given cardinality for each isomorphism class of planar
-nearrings which can be generated from (<i>G</i>, <font face="symbol">F</font>).
+nearrings which can be generated from <var>(G, Phi)</var>.
 <p>
 <pre>
     gap&gt; OrbitRepresentativesForPlanarNearRing( G, phi, 1 );
     [ [ f1 ] ]
 </pre>
 <p>
-This tells us that all planar nearrings obtained from (<i>G</i>,<font face="symbol">F</font>) with one
+This tells us that all planar nearrings obtained from <var>(G,Phi)</var> with one
 orbit representative are in fact isomorphic. 
-What happens if we choose 2 representatives?
+What happens if we choose <var>2</var> representatives?
 <p>
 <pre>
     gap&gt; reps := OrbitRepresentativesForPlanarNearRing( G, phi, 2 );
     [ [ f1, f1*f2 ], [ f1, f1^2*f2^2 ] ]
 </pre>
 <p>
-We obtain 2 non-isomorphic planar near-rings. Let's just construct one of
+We obtain <var>2</var> non-isomorphic planar near-rings. Let's just construct one of
 them. The result will be an <code>ExplicitMultiplicationNearRing</code>.
 <p>
 <pre>
@@ -129,20 +129,20 @@ them. The result will be an <code>ExplicitMultiplicationNearRing</code>.
 </pre>
 <p>
 How many non-isomorphic planar nearrings can be defined from our Ferrero pair
-(<i>G</i>,<font face="symbol">F</font>) in total? Since there are 3 non-trivial orbits of <font face="symbol">F</font> on <i>G</i>,
-we may choose up to 3 representatives.
+<var>(G,Phi)</var> in total? Since there are <var>3</var> non-trivial orbits of <var>Phi</var> on <var>G</var>,
+we may choose up to <var>3</var> representatives.
 <p>
 <pre>
     gap&gt; Length(OrbitRepresentativesForPlanarNearRing( G, phi, 3 ));
     6
 </pre>
 <p>
-Summing all up, we get exactly 9 non-isomorphic planar nearrings with 
-elementary abelian additive group of order 25 whose multiplication is
+Summing all up, we get exactly <var>9</var> non-isomorphic planar nearrings with 
+elementary abelian additive group of order <var>25</var> whose multiplication is
 defined using a quaternion group of fpf automorphisms. 
 <p>
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP006.htm">Previous</a>] [<a href ="CHAP008.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA-tutorial manual<br>Oktober 2011
+<address>SONATA-tutorial manual<br>November 2012
 </address></body></html>

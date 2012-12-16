@@ -22,36 +22,36 @@ We are going to generate a design with a feasible parameter set from a planar
 nearring, respectively from a Ferrero pair.
 For notations and definitions we refer to <a href="biblio.htm#Clay:Nearrings"><[>Clay:Nearrings</cite></a>].
 <p>
-Let <i>N</i> be a (left) planar nearring. Then we can define a design
-(<i>N</i>,<i>B</i><sup>*</sup>, <font face="symbol">Î</font> ) with <i>N</i> as the set of points and
-{<i>N</i><sup>*</sup>&#183;<i>a</i>+<i>b</i> <font face="symbol">|</font> <i>a</i>,<i>b</i> <font face="symbol">Î</font> <i>N</i>, <i>a</i>  <font face="symbol">¹</font> 0 } as set of blocks.
-Here <i>N</i><sup>*</sup> = { <i>x</i> <font face="symbol">Î</font> <i>N</i> <font face="symbol">|</font> <i>x</i>&#183;<i>N</i> = <i>N</i> }.
+Let <var>N</var> be a (left) planar nearring. Then we can define a design
+<var>(N,B<sup>*</sup>,in)</var> with <var>N</var> as the set of points and
+<var>{N<sup>*</sup>cdota+b | a,binN, a not= 0 }</var> as set of blocks.
+Here <var>N<sup>*</sup> = { xinN | xcdotN = N }</var>.
 We note that such a design is always a BIB-design. Suppose that the planar
-nearring <i>N</i> is obtained from the Ferrero pair (<i>G</i>,<font face="symbol">F</font>) as described in the
-previous chapter with <i>v</i> : = <font face="symbol">|</font><i>G</i><font face="symbol">|</font>, <i>k</i> : = <font face="symbol">|</font><font face="symbol">F</font><font face="symbol">|</font>. 
-We can identify <i>G</i> and the additive group of the nearring <i>N</i>.
-Then <i>N</i><sup>*</sup>&#183;<i>a</i> = <font face="symbol">F</font>(<i>a</i>) for all <i>a</i> <font face="symbol">Î</font> <i>N</i>. The number of points of
-(<i>N</i>,<i>B</i><sup>*</sup>, <font face="symbol">Î</font> ) is <i>v</i>, each block has size <i>k</i>, and any 2 distinct points
-are together incident with precisely <i>k</i><font face="symbol">-</font>1 blocks. We say that (<i>N</i>,<i>B</i><sup>*</sup>, <font face="symbol">Î</font> )
-is a 2<font face="symbol">-</font>(<i>v</i>,<i>k</i>,<i>k</i><font face="symbol">-</font>1) design. Note that <i>k</i> divides <i>v</i><font face="symbol">-</font>1.
+nearring <var>N</var> is obtained from the Ferrero pair <var>(G,Phi)</var> as described in the
+previous chapter with <var>v := |G|</var>, <var>k := |Phi|</var>. 
+We can identify <var>G</var> and the additive group of the nearring <var>N</var>.
+Then <var>N<sup>*</sup>cdota = Phi(a)</var> for all <var>ainN</var>. The number of points of
+<var>(N,B<sup>*</sup>,in)</var> is <var>v</var>, each block has size <var>k</var>, and any <var>2</var> distinct points
+are together incident with precisely <var>k-1</var> blocks. We say that <var>(N,B<sup>*</sup>,in)</var>
+is a <var>2-(v,k,k-1)</var> design. Note that <var>k</var> divides <var>v-1</var>.
 <p>
 <strong>The problem:</strong>
-Find a 2<font face="symbol">-</font>(16,5,4) design (<i>N</i>,<i>B</i><sup>*</sup>, <font face="symbol">Î</font> ) if possible.
+Find a <var>2-(16,5,4)</var> design <var>(N,B<sup>*</sup>,in)</var> if possible.
 <p>
 <strong>The solution:</strong>
-Since our design should have 16 points, we need a planar nearring of size 
-16. Furthermore, this planar nearring has an underlying Ferrero pair with
-a fixed-point-free (fpf) automorphism group of order 5, since the blocks 
+Since our design should have <var>16</var> points, we need a planar nearring of size 
+<var>16</var>. Furthermore, this planar nearring has an underlying Ferrero pair with
+a fixed-point-free (fpf) automorphism group of order <var>5</var>, since the blocks 
 should be of that size. 
 <p>
-Let (<i>G</i>,<font face="symbol">F</font>) be such a Ferrero pair.
-We note that <font face="symbol">F</font> is fpf on all characteristic subgroups of <i>G</i>, in 
-particular, on the center of <i>G</i>. For our example the size of the center
-modulo 5 has to be congruent to 1. Therefore the center has order 16,
-and <i>G</i> is abelian.
-Since <font face="symbol">F</font> is also fpf on any factor of <i>G</i> by a characteristic subgroup,
-<font face="symbol">F</font> is fpf on the factor of <i>G</i> by its Frattini subgroup. 
-Thus <i>G</i> is elementary abelian.
+Let <var>(G,Phi)</var> be such a Ferrero pair.
+We note that <var>Phi</var> is fpf on all characteristic subgroups of <var>G</var>, in 
+particular, on the center of <var>G</var>. For our example the size of the center
+modulo <var>5</var> has to be congruent to <var>1</var>. Therefore the center has order <var>16</var>,
+and <var>G</var> is abelian.
+Since <var>Phi</var> is also fpf on any factor of <var>G</var> by a characteristic subgroup,
+<var>Phi</var> is fpf on the factor of <var>G</var> by its Frattini subgroup. 
+Thus <var>G</var> is elementary abelian.
 <p>
 Now we compute an fpf automorphism group of order 5 on the elementary abelian
 group of order 16:
@@ -68,8 +68,8 @@ group of order 16:
 <p>
 Up to conjugacy there is only one fpf automorphism group of order 5.
 We note that all planar nearrings obtained from a fixed Ferrero pair 
-(<i>G</i>,<font face="symbol">F</font>) yield the same design. We build the blocks <font face="symbol">F</font>(<i>a</i>)+<i>b</i> for
-<i>a</i>,<i>b</i> <font face="symbol">Î</font> <i>G</i>, <i>a</i> <font face="symbol">¹</font> 0, of (<i>N</i>,<i>B</i><sup>*</sup>, <font face="symbol">Î</font> ) directly from (<i>G</i>,<font face="symbol">F</font>) without
+<var>(G,Phi)</var> yield the same design. We build the blocks <var>Phi(a)+b</var> for
+<var>a,binG, anot=0</var>, of <var>(N,B<sup>*</sup>,in)</var> directly from <var>(G,Phi)</var> without
 actually generating a nearring.
 <p>
 <pre>
@@ -93,14 +93,14 @@ nearring in the last section.
     [ 2, 16, 48, 15, 5, 4 ]
 </pre>
 <p>
-<code>DesignParameter( D )</code> returns the set of parameters <i>t</i>, <i>v</i>, <i>b</i>, <i>r</i>, <i>k</i>, <font face="symbol">l</font> 
+<code>DesignParameter( D )</code> returns the set of parameters <var>t, v, b, r, k, lambda</var> 
 of the design <code>D</code>. Here there are 16 points, 48 blocks,
 every point is incident with precisely 15 blocks, every block is incident 
 with precisely 5 points, every 2 distinct points are together incident
 with precisely 4 blocks. The design can be visualized by printing the
 incidence matrix. The rows are labelled by the points, the columns by
-the blocks. The point of number <i>i</i> is incident with the block of number <i>j</i> 
-if and only if the entry in the <i>i</i>-th row, <i>j</i>-th column is 1. 
+the blocks. The point of number <var>i</var> is incident with the block of number <var>j</var> 
+if and only if the entry in the <var>i</var>-th row, <var>j</var>-th column is 1. 
 <p>
 <pre>
     gap&gt; PrintIncidenceMat( D );
@@ -123,7 +123,7 @@ if and only if the entry in the <i>i</i>-th row, <i>j</i>-th column is 1.
 </pre>
 <p>
 By checking the entries in the incidence matrix we realize this design is
-circular, that is, any 2 distinct blocks have at most 2 points in common.
+circular, that is, any <var>2</var> distinct blocks have at most <var>2</var> points in common.
 Actually, this is not so easy to see. We prefer to do it like this:
 <p>
 <pre>
@@ -162,5 +162,5 @@ matter how they have been generated.
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP007.htm">Previous</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA-tutorial manual<br>Oktober 2011
+<address>SONATA-tutorial manual<br>November 2012
 </address></body></html>

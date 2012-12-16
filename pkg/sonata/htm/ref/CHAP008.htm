@@ -67,8 +67,8 @@ direct product of <var>G</var> and <var>nr</var> into <var>G</var>. It returns t
 <a name = "SSEC001.2"></a>
 <li><code>NGroupByNearRingMultiplication( </code><var>nr</var><code> )</code>
 <p>
-For every (left) nearring (<i>N</i>,+,&#183;) the group (<i>N</i>,+) is an N-group
-over <i>N</i> with respect to nearring multiplication from the right as the
+For every (left) nearring <var>(N,+,.)</var> the group <var>(N,+)</var> is an N-group
+over <var>N</var> with respect to nearring multiplication from the right as the
 action.  The function <code>NGroupByNearRingMultiplication</code> returns this
 N-group of the nearring <var>nr</var>.
 <p>
@@ -82,13 +82,13 @@ N-group of the nearring <var>nr</var>.
 <a name = "SSEC001.3"></a>
 <li><code>NGroupByApplication( </code><var>tfmnr</var><code> )</code>
 <p>
-For a nearring <i>T</i> of transformations on a group <i>G</i>, <i>G</i> is an
-N-group of <i>T</i> with the application of functions as the action. The
+For a nearring <var>T</var> of transformations on a group <var>G</var>, <var>G</var> is an
+N-group of <var>T</var> with the application of functions as the action. The
 function <code>NGroupByApplication</code> returns this <code>N-group</code> of the nearring
 <var>tfmnr</var>.
 <p>
-Another way to construct an N-Group is to take a nearring <i>N</i>, a right
-ideal <i>R</i> and let <i>N</i> act on the factor <i>N</i>/<i>R</i> in the canonical way.
+Another way to construct an N-Group is to take a nearring <var>N</var>, a right
+ideal <var>R</var> and let <var>N</var> act on the factor <var>N/R</var> in the canonical way.
 This is accomplished by
 <p>
 <a name = "SSEC001.4"></a>
@@ -244,7 +244,7 @@ The function <code>IsNSubgroup</code> returns <code>true</code> iff <var>S</var>
 <a name = "SSEC005.1"></a>
 <li><code>N0Subgroups( </code><var>G</var><code> )</code>
 <p>
-The function <code>N0Subgroups</code> returns a list of all <i>N</i><sub>0</sub>-subgroups
+The function <code>N0Subgroups</code> returns a list of all <var>N<sub>0</sub></var>-subgroups
 of the N-group <var>G</var>.
 <p>
 <pre>
@@ -297,7 +297,7 @@ and <code>false</code> otherwise.
 <li><code>IsN0SimpleNGroup( </code><var>G</var><code> )</code>
 <p>
 The function <code>IsN0SimpleNGroup</code> returns <code>true</code> if the N-group <var>G</var> is
-<i>N</i><sub>0</sub>-simple and <code>false</code> otherwise.
+<var>N<sub>0</sub></var>-simple and <code>false</code> otherwise.
 <p>
 <p>
 <h2><a name="SECT007">8.7 Special properties of N-groups</a></h2>
@@ -361,14 +361,14 @@ The function <code>TypeOfNGroup</code> returns the type of a monogenic N-group <
 <p>
 It is assumed that <var>source</var> and <var>target</var> are subsets of the <var>nr</var>-group
 <var>ngrp</var>. The function <code>NoetherianQuotient</code> computes the set of all
-elements <var>f</var> of <var>nr</var> such that <var>source</var>*<var>f</var> is a subset of <var>target</var>.
+elements <var>f</var> of <var>nr</var> such that <var>source</var><var>*</var><var>f</var> is a subset of <var>target</var>.
 If <var>target</var> is an <var>nr</var>-ideal of <var>ngrp</var>, the Noetherian quotient is
 returned as a near ring ideal, if <var>target</var> is an <var>nr</var>-subgroup of
 <var>ngrp</var>, a left ideal of <var>nr</var> is returned. Otherwise the result is a
 subset of <var>nr</var>.
 <p>
 In the following example we let a nearring act on its group reduct and
-compute the noetherian quotient (<i>I</i>,<i>I</i>)<sub><i>N</i></sub> for an ideal <i>I</i> of <i>N</i>.
+compute the noetherian quotient <var>(I,I)<sub>N</sub></var> for an ideal <var>I</var> of <var>N</var>.
 <p>
 <pre>
     gap&gt; N := LibraryNearRing( GTW12_3, 100 );
@@ -393,7 +393,7 @@ compute the noetherian quotient (<i>I</i>,<i>I</i>)<sub><i>N</i></sub> for an id
 <p>
 The function <code>NuRadical</code> has two arguments, a nearring <var>nr</var> and a number
 <var>nu</var> which must be one of <code>0</code>, <code>1/2</code>, <code>1</code> and <code>2</code>. It returns the
-<font face="symbol">n</font>-radical for <font face="symbol">n</font> =  0, 1/2, 1, 2 respectively.
+<var>nu</var>-radical for <var>nu= 0, 1/2, 1, 2</var> respectively.
 <p>
 <a name = "SSEC009.2"></a>
 <li><code>NuRadicals( </code><var>nr</var><code> )</code>
@@ -421,5 +421,5 @@ the function <code>NuRadicals</code> returns a record with the components <code>
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP007.htm">Previous</a>] [<a href ="CHAP009.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>Oktober 2011
+<address>SONATA manual<br>November 2012
 </address></body></html>

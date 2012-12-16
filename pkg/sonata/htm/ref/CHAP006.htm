@@ -209,9 +209,9 @@ It returns <code>true</code> if <var>I</var> is an ideal in its parent nearring.
 <a name = "SSEC002.5"></a>
 <li><code>IsSubgroupNearRingLeftIdeal( </code><var>nr</var><code>, </code><var>S</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a nearring. A subgroup <i>S</i> of the group (<i>N</i>,+) is a
-<strong>left ideal</strong> of <i>N</i> if for all <i>a</i>, <i>b</i> in <i>N</i> and  <i>s</i> in <i>S</i>:\
-<i>a</i>&#183;(<i>b</i>+<i>s</i>)<font face="symbol">-</font><i>a</i>&#183;<i>b</i> in <i>S</i>. 
+Let <var>(N,+,.)</var> be a nearring. A subgroup <var>S</var> of the group <var>(N,+)</var> is a
+<strong>left ideal</strong> of <var>N</var> if for all <var>a</var>, <var>b</var> in <var>N</var> and  <var>s</var> in <var>S</var>:\
+<var>a.(b+s)-a.b</var> in <var>S</var>. 
 <code>IsSubgroupNearRingLeftIdeal</code> takes as arguments a nearring <var>nr</var> and a subgroup
 <var>S</var> of the group reduct of <var>nr</var> and returns <code>true</code> if <var>S</var> is a nearring
 ideal of <var>nr</var> and <code>false</code> otherwise.
@@ -225,8 +225,8 @@ ideal.
 <a name = "SSEC002.6"></a>
 <li><code>IsSubgroupNearRingRightIdeal( </code><var>nr</var><code>, </code><var>S</var><code> )</code>
 <p>
-Let (<i>N</i>,+,&#183;) be a nearring. A subgroup <i>S</i> of the group (<i>N</i>,+) is a
-<strong>right ideal</strong> of <i>N</i> if <i>S</i>&#183;<i>N</i>  <font face="symbol">Í</font> <i>S</i>.
+Let <var>(N,+,.)</var> be a nearring. A subgroup <var>S</var> of the group <var>(N,+)</var> is a
+<strong>right ideal</strong> of <var>N</var> if <var>S.N subseteqS</var>.
 <code>IsSubgroupNearRingRightIdeal</code> takes as arguments a nearring <var>nr</var> and a
 subgroup <var>S</var> of the group reduct of <var>nr</var> and returns <code>true</code> if <var>S</var> is a
 right ideal of <var>nr</var> and <code>false</code> otherwise.
@@ -255,9 +255,9 @@ is a group, not a right ideal). You can use
 <a name = "SSEC003.1"></a>
 <li><code>IsPrimeNearRingIdeal( </code><var>I</var><code> )</code>
 <p>
-An ideal <i>I</i> of a nearring <i>N</i> is <strong>prime</strong> if for any two ideals <i>J</i> and <i>K</i>
-of <i>N</i> whenever <i>J</i>&#183;<i>K</i> is contained in <i>I</i> then at least one of them is
-contained in <i>I</i>.
+An ideal <var>I</var> of a nearring <var>N</var> is <strong>prime</strong> if for any two ideals <var>J</var> and <var>K</var>
+of <var>N</var> whenever <var>J.K</var> is contained in <var>I</var> then at least one of them is
+contained in <var>I</var>.
 <code>IsPrimeNearRingIdeal</code> returns <code>true</code> if <var>I</var> is a prime ideal in its parent
 nearring and <code>false</code> otherwise.
 <p>
@@ -271,8 +271,8 @@ nearring and <code>false</code> otherwise.
 <a name = "SSEC003.2"></a>
 <li><code>IsMaximalNearRingIdeal( </code><var>I</var><code> )</code>
 <p>
-A proper ideal <i>I</i> of a nearring <i>N</i> is <strong>maximal</strong> if there is no
-proper ideal containing <i>I</i> properly.
+A proper ideal <var>I</var> of a nearring <var>N</var> is <strong>maximal</strong> if there is no
+proper ideal containing <var>I</var> properly.
 <code>IsMaximalNearRingIdeal( </code><var>I</var><code> ) returns `true</code> if <var>I</var> is a
 maximal ideal in its parent nearring and <code>false</code> otherwise.
 <p>
@@ -360,7 +360,7 @@ elements of <var>nr</var>.
 <p>
 <h2><a name="SECT007">6.7 Membership of an ideal</a></h2>
 <p><p>
-For a (left / right) ideal <var>I</var> of a nearring <i>N</i> and an element <var>n</var> of <i>N</i>
+For a (left / right) ideal <var>I</var> of a nearring <var>N</var> and an element <var>n</var> of <var>N</var>
 <p>
 <a name = "SSEC007.1"></a>
 <li><code></code><var>n</var><code> in </code><var>I</var><code></code>
@@ -425,19 +425,19 @@ In both cases the result is again a (left / right) ideal.
 <li><code>ClosureNearRingLeftIdeal( </code><var>L1</var><code>, </code><var>L2</var><code> )</code>
 <p>
 The function <code>ClosureNearRingLeftIdeal</code> computes the left ideal <var>L1</var> + <var>L2</var>
-of the nearRing <i>N</i> if both <var>L1</var> and <var>L2</var> are (left) ideals of <i>N</i>.
+of the nearRing <var>N</var> if both <var>L1</var> and <var>L2</var> are (left) ideals of <var>N</var>.
 <p>
 <a name = "SSEC011.4"></a>
 <li><code>ClosureNearRingRightIdeal( </code><var>R1</var><code>, </code><var>R2</var><code> )</code>
 <p>
 The function <code>ClosureNearRingRightIdeal</code> computes the right ideal <var>L1</var> + <var>L2</var>
-of the nearring <i>N</i> if both <var>R1</var> and <var>R2</var> are (right) ideals of <i>N</i>.
+of the nearring <var>N</var> if both <var>R1</var> and <var>R2</var> are (right) ideals of <var>N</var>.
 <p>
 <a name = "SSEC011.5"></a>
 <li><code>ClosureNearRingIdeal( </code><var>I1</var><code>, </code><var>I2</var><code> )</code>
 <p>
 The function <code>ClosureNearRingIdeal</code> computes the ideal <var>L1</var> + <var>L2</var>
-of the nearring <i>N</i> if both <var>I1</var> and <var>I2</var> are ideals of <i>N</i>.
+of the nearring <var>N</var> if both <var>I1</var> and <var>I2</var> are ideals of <var>N</var>.
 <p>
 <p>
 <h2><a name="SECT012">6.12 Commutators</a></h2>
@@ -532,5 +532,5 @@ for such nearrings can be applied to the factor nearring.
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP005.htm">Previous</a>] [<a href ="CHAP007.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>Oktober 2011
+<address>SONATA manual<br>November 2012
 </address></body></html>

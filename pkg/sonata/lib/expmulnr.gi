@@ -2,7 +2,7 @@
 ##
 #W  expmulnrnr.gi             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: expmulnr.gi,v 1.7 2011-11-23 20:01:17 stein Exp $
+#H  @(#)$Id: expmulnr.gi,v 1.8 2012-11-07 13:22:07 stein Exp $
 ##
 
 
@@ -11,7 +11,7 @@
 
 
 expmulnrnr_gi:=
-  "@(#)$Id: expmulnr.gi,v 1.7 2011-11-23 20:01:17 stein Exp $";
+  "@(#)$Id: expmulnr.gi,v 1.8 2012-11-07 13:22:07 stein Exp $";
 
 #############################################################################
 ##
@@ -492,7 +492,17 @@ InstallMethod(
 	Size,
 	"nearring with known add group",
 	true,
-	[IsNearRing],
+	[IsTransformationNearRing],
+	0,
+  function ( nr )
+    return Size(GroupReduct(nr));
+  end );
+
+InstallMethod(
+	Size,
+	"nearring with known add group",
+	true,
+	[IsExplicitMultiplicationNearRing],
 	0,
   function ( nr )
     return Size(GroupReduct(nr));

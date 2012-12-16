@@ -1,4 +1,30 @@
-      README file for the `sonata' GAP4 package
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++                                                                           +
++   Copyright (C) 2012        Erhard Aichinger, Franz Binder		    +
++   	      	  	      Jürgen Ecker, Peter Mayr, Christof Nöbauer    +
++  			      	     	    	  		 	    +
++   This file is part of Sonata.					    +	
++   	      	      	 						    +
++   Sonata is free software: you can redistribute it and/or modify	    +	
++   it under the terms of the GNU General Public License as published by    +	
++   the Free Software Foundation, either version 2 of the License, or 	    +
++   (at your option) any later version.	 	      	  	   	    +
++   	     	     	       						    +
++   Sonata is distributed in the hope that it will be useful,		    +
++   but WITHOUT ANY WARRANTY; without even the implied warranty of	    +
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the	    +
++   GNU General Public License for more details.	      		    +
++   		       	       	   					    +
++   You should have received a copy of the GNU General Public License	    +
++   along with Sonata. If not, see <http://www.gnu.org/licenses/>.	    +
++                                                                    	    +
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+      README file for the GAP4 package SONATA
+
+
 
 To install SONATA, unpack the archive inside the `pkg' subdirectory of
 your GAP 4 installation. It creates a subdirectory called `sonata'.
@@ -25,16 +51,9 @@ email: sonata@algebra.uni-linz.ac.at
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Main changes from SONATA 2.4 to SONATA 2.5.1
+Main changes from SONATA 2.5.1 to SONATA 2.6
 ------------------------------------------
 
-(1) Added test files in the subdirectory tst for automated testing of the
-SONATA installation (output is formatted for GAP 4.5)
+(1) Corrected bugs in Size, \in, Is1AffineComplete, CompatibleFunctionNearRing
 
-(2) Removed the function xor.
-
-(3) Added new upper bound for the computation of the Scott length of a group.
-
-(4) Added new methods for Zero for near-ring elements.
-
-(5) Changed the method for computing multiples of near-ring elements.
+(2) Updated the copyright from GNU GPL 2 to GNU GPL 2+

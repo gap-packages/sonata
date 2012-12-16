@@ -21,7 +21,7 @@ SONATA, one has to load it into GAP:
 <h2><a name="SECT001">1.1 Thomas' and Wood's catalogue of small groups</a></h2>
 <p><p>
         Most of the nonabelian groups (even small ones) do not have a
-        popular name (as <i>S</i><sub>3</sub> or <i>A</i><sub>4</sub>). We like to give unique names to
+        popular name (as <var>S<sub>3</sub></var> or <var>A<sub>4</sub></var>). We like to give unique names to
         the groups we are working with. The book ``Group Tables'' by
         Thomas and Wood classifies all groups up to order 32. In this book
         every group has a name of the form <code>m/n</code>, where <code>m</code> is the order of
@@ -109,11 +109,11 @@ SONATA, one has to load it into GAP:
 <p>
 <h2><a name="SECT003">1.3 Group endomorphisms</a></h2>
 <p><p>
-        Everybody knows that every automorphism of the symmetric group <i>S</i><sub>3</sub>
+        Everybody knows that every automorphism of the symmetric group <var>S<sub>3</sub></var>
         (= <code>GTW6_2</code>) fixes a point (besides the identity of the group). But,
         are there endomorphisms which fix nothing but the identity? We are
         going to simply try it out. On our way we will find out that all
-        automorphisms of <i>S</i><sub>3</sub> are inner automorphisms.
+        automorphisms of <var>S<sub>3</sub></var> are inner automorphisms.
 <pre>
     gap&gt; G := GTW6_2;
     6/2
@@ -145,7 +145,7 @@ SONATA, one has to load it into GAP:
         This paragraph says that <code>IsFixedpointfree</code> is a function that takes
         one argument (called <code>endo</code>). Now we create a local variable <code>group</code> to
         store the group on which the endomorphism acts (in our example this
-        will always be <i>S</i><sub>3</sub>, but maybe we want to use this function for
+        will always be <var>S<sub>3</sub></var>, but maybe we want to use this function for
         other groups, too). Local means that <font face="Gill Sans,Helvetica,Arial">GAP</font> may forget this variable
         as soon as it has computed what we want (and it will forget it
         instantly afterwards). Now we store the domain of <code>endo</code> in the
@@ -173,11 +173,11 @@ SONATA, one has to load it into GAP:
 <p>
 <h2><a name="SECT004">1.4 Finding a set of generators</a></h2>
 <p><p>
-        It is well known that for any finite p-group <i>G</i> the factor <i>G</i>/<font face="symbol">F</font>(<i>G</i>)
-        modulo the Frattini subgroup <font face="symbol">F</font>(<i>G</i>) has order <i>p</i><sup><font face="symbol">d</font>(<i>G</i>)</sup>, where
-        <font face="symbol">d</font>(<i>G</i>) is the minimal number of generators of <i>G</i>. Moreover
-        the representatives of the residue classes modulo <font face="symbol">F</font>(<i>G</i>) form a
-        set of generators. So a generating set for a <i>p</i>-group
+        It is well known that for any finite p-group <var>G</var> the factor <var>G/Phi(G)</var>
+        modulo the Frattini subgroup <var>Phi(G)</var> has order <var>p<sup>delta(G)</sup></var>, where
+        <var>delta(G)</var> is the minimal number of generators of <var>G</var>. Moreover
+        the representatives of the residue classes modulo <var>Phi(G)</var> form a
+        set of generators. So a generating set for a <var>p</var>-group
         could  be obtained in the following way. We choose the group 16/11 (a
         semidirect product of the cyclic group of order 8 with the cyclic
         group of order 2).
@@ -203,5 +203,5 @@ SONATA, one has to load it into GAP:
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA-tutorial manual<br>Oktober 2011
+<address>SONATA-tutorial manual<br>November 2012
 </address></body></html>

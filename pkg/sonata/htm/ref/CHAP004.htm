@@ -11,9 +11,9 @@
 <li> <A HREF="CHAP004.htm#SECT004">Nicer ways to print a mapping</a>
 </ol><p>
 <p>
-An <strong>endomapping</strong> is a mapping with equal source and range, say <i>G</i>,
-where <i>G</i> is a group. An endomapping  on <i>G</i> then acts on <i>G</i> by
-<strong>transforming</strong> each element of <i>G</i> into (precisely one) element of <i>G</i>.
+An <strong>endomapping</strong> is a mapping with equal source and range, say <var>G</var>,
+where <var>G</var> is a group. An endomapping  on <var>G</var> then acts on <var>G</var> by
+<strong>transforming</strong> each element of <var>G</var> into (precisely one) element of <var>G</var>.
 Endomappings are special cases of Mappings.
 <p>
 Endomappings are created by the constructor functions 
@@ -177,9 +177,9 @@ function on a group.
 <a name = "SSEC002.3"></a>
 <li><code>IsDistributiveEndoMapping( </code><var>endomap</var><code> )</code>
 <p>
-A mapping <i>t</i> on an (additively written) group <i>G</i> is called
-<strong>distributive</strong> if for all elements <i>x</i> and <i>y</i> in <i>G</i>:\
-<i>t</i>(<i>x</i>+<i>y</i>) = <i>t</i>(<i>x</i>) + <i>t</i>(<i>y</i>).
+A mapping <var>t</var> on an (additively written) group <var>G</var> is called
+<strong>distributive</strong> if for all elements <var>x</var> and <var>y</var> in <var>G</var>:\
+<var>t(x+y) = t(x) + t(y)</var>.
 The function <code>IsDistributiveEndoMapping</code> returns the according
 boolean value <code>true</code> or <code>false</code>.
 <p>
@@ -215,16 +215,16 @@ from the transformations <var>t1</var> and <var>t2</var> by composition of <var>
 The add operator <code>+</code> returns the endomapping which is obtained 
 from the endomappings <var>t1</var> and <var>t2</var> by pointwise addition 
 of <var>t1</var> and <var>t2</var>. (Note that in this context addition means that
-for every place <i>x</i> in the source of <var>t1</var> and <var>t2</var>,   
+for every place <var>x</var> in the source of <var>t1</var> and <var>t2</var>,   
 <font face="Gill Sans,Helvetica,Arial">GAP</font> performs the  operation <code>p * q</code>, where
-<code>p</code> is the image of <var>t1</var> at <i>x</i> and <code>q</code> is the image of <var>t2</var> at <i>x</i>.) 
+<code>p</code> is the image of <var>t1</var> at <var>x</var> and <code>q</code> is the image of <var>t2</var> at <var>x</var>.) 
 <p>
 The subtract operator <code>-</code> returns the endomapping which is 
 obtained from the endomappings <var>t1</var> and <var>t2</var> by pointwise 
 subtraction of <var>t1</var> and <var>t2</var>. (Note that in this context subtraction 
 means performing the <font face="Gill Sans,Helvetica,Arial">GAP</font> operation <code>p * q^(-1)</code>,
 where
-<code>p</code> is the image of <var>t1</var> at a place <i>x</i> and <code>q</code> is the image of <var>t2</var> at <i>x</i>.) 
+<code>p</code> is the image of <var>t1</var> at a place <var>x</var> and <code>q</code> is the image of <var>t2</var> at <var>x</var>.) 
 <p>
 <pre>
     gap&gt; G := SymmetricGroup ( 3 );
@@ -297,5 +297,5 @@ polynomial of minimal length.
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP003.htm">Previous</a>] [<a href ="CHAP005.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>Oktober 2011
+<address>SONATA manual<br>November 2012
 </address></body></html>

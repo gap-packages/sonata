@@ -29,11 +29,12 @@ The functions described here can be found in the source files
 <p>
 <h2><a name="SECT001">1.1 Predefined groups</a></h2>
 <p><p>
-All groups of order 2 to 32 are predefined. They can be accessed
+All groups of order <var>2</var> to <var>32</var> are predefined. They can be accessed
 by variables of the kind <code>GTW</code><var>o</var><code>_</code><var>n</var><code></code> where <var>o</var> defines the order
 of the group and <var>n</var> the number of the group of order <var>o</var> as they
 appear in <a href="biblio.htm#thomaswood80:GT"><[>thomaswood80:GT</cite></a>] . For example, <code>GTW16_6</code> defines the
-group of Thomas -- Wood type 16/6, which is actually <i>D</i><sub>4</sub> &times;<i>C</i><sub>2</sub>.
+group of Thomas -- Wood type <var>16/6</var>, which is actually <var>D<sub>4</sub> times
+C<sub>2</sub></var>.
 <p>
 Alternatively, these groups can be accessed via the function
 <p>
@@ -49,7 +50,7 @@ Conversely, for any group <var>G</var> of order at most 32,
 <li><code>IdTWGroup( </code><var>G</var><code> )</code>
 <p>
 returns a pair <code>[</code><var>o</var><code>,</code><var>n</var><code>]</code>, meaning that <var>G</var> is isomorphic to the group
-<i>o</i>/<i>n</i>.
+<var>o/n</var>.
 <p>
 <pre>
     gap&gt; G := GTW6_2;               
@@ -105,7 +106,7 @@ returns a pair <code>[</code><var>o</var><code>,</code><var>n</var><code>]</code
 </pre>
 <p>
 Sometimes different symbols for the elements in the would make the table
-look nicer. For the group 4/2 (<b>Z</b><sub>2</sub> &times;<b>Z</b><sub>2</sub>) one could choose
+look nicer. For the group <var>4/2</var> (<var><font face="helvetica,arial">Z</font><sub>2</sub> times<font face="helvetica,arial">Z</font><sub>2</sub></var>) one could choose
 the canonical form as pairs of zeros and ones.
 <p>
 <pre>
@@ -418,5 +419,5 @@ to <var>G</var>. In the case of a permutation group this is the group itself.
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>SONATA manual<br>Oktober 2011
+<address>SONATA manual<br>November 2012
 </address></body></html>
