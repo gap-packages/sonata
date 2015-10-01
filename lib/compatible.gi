@@ -915,7 +915,7 @@ InstallMethod(
 	"small groups",
 	true,
 	[IsGroup],
-	120,
+	200,
   function( G )
   if Size(G)<=100 then return IdGroup(G) in 
         [ [ 1, 1 ],
@@ -968,8 +968,9 @@ InstallMethod(
       od;
       Sort(pexps); pexps := Reversed(pexps);
       if p=2 then
-	if Length( pexps ) <> 1 and 
-	   pexps[1]-pexps[2]>1 then
+	if (Length( pexps ) = 1 and pexps[1] > 1 ) or
+           (Length( pexps ) <> 1 and 
+	   pexps[1]-pexps[2]>1) then
 		return false;
 	fi;
       else
