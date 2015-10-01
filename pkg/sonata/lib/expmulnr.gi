@@ -2,7 +2,7 @@
 ##
 #W  expmulnrnr.gi             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: expmulnr.gi,v 1.8 2012-11-07 13:22:07 stein Exp $
+#H  @(#)$Id: expmulnr.gi,v 1.8 2012/11/07 13:22:07 stein Exp $
 ##
 
 
@@ -11,7 +11,7 @@
 
 
 expmulnrnr_gi:=
-  "@(#)$Id: expmulnr.gi,v 1.8 2012-11-07 13:22:07 stein Exp $";
+  "@(#)$Id: expmulnr.gi,v 1.8 2012/11/07 13:22:07 stein Exp $";
 
 #############################################################################
 ##

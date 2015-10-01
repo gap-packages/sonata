@@ -51,9 +51,7 @@ email: sonata@algebra.uni-linz.ac.at
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Main changes from SONATA 2.5.1 to SONATA 2.6
+Main changes from SONATA 2.6 to SONATA 2.8
 ------------------------------------------
 
-(1) Corrected bugs in Size, \in, Is1AffineComplete, CompatibleFunctionNearRing
-
-(2) Updated the copyright from GNU GPL 2 to GNU GPL 2+
+(1) Corrected bugs in Is1AffineComplete and IsDistributiveNearring

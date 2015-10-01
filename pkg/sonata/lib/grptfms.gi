@@ -2,11 +2,14 @@
 ##
 #W  grptfms.gi             Near-ring Library                   Christof N"obauer
 ##
-#H  @(#)$Id: grptfms.gi,v 1.14 2012-11-07 13:22:59 stein Exp $
+#H  @(#)$Id: grptfms.gi,v 1.15 2015/04/09 13:43:54 stein Exp $
 ##
 #Y  Copyright (C)
 ##
 ##  $Log: grptfms.gi,v $
+##  Revision 1.15  2015/04/09 13:43:54  stein
+##  Added condition to make the method "abelian near ring (Binder e.a.)" for IsDistributiveNearring only applicable to abelian nearrings.
+##
 ##  Revision 1.14  2012-11-07 13:22:59  stein
 ##  Adapted filters in method for \in.
 ##
@@ -52,7 +55,7 @@
 ##
 
 grptfms_gi:=
-  "@(#)$Id: grptfms.gi,v 1.14 2012-11-07 13:22:59 stein Exp $";
+  "@(#)$Id: grptfms.gi,v 1.15 2015/04/09 13:43:54 stein Exp $";
 
 #############################################################################
 ##
@@ -1122,6 +1125,9 @@ InstallMethod(
   function( nr )
     local F, G, E, gamma;
     gamma := Gamma( nr );
+    if not IsAbelian(gamma) then
+      TryNextMethod();
+    fi;
     F := AdditiveGenerators( nr );
     for gamma in Gamma( nr ) do
       G := Ntimesg( nr, gamma );
