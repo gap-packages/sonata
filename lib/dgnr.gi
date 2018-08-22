@@ -213,7 +213,7 @@ InstallMethod(
     if Size( gamma ) = 1 then
 	return 1;
     fi;
-    npc := NilpotencyClass( gamma );
+    npc := NilpotencyClassOfGroup( gamma );
     if npc = fail or npc > 2 then
 	TryNextMethod();
     elif npc = 1 then

@@ -95,13 +95,6 @@ DeclareOperation( "NontrivialRepresentativesModNormalSubgroup",
 
 #####################################################################
 ##
-#A  NilpotencyClass( <G> )	returns the nilpotency class of the group <G>
-##
-
-DeclareAttribute( "NilpotencyClass", IsGroup );
-
-#####################################################################
-##
 #F  ScottSigma		Scott's Sigma function 
 
 DeclareGlobalFunction( "ScottSigma" );
