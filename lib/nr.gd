@@ -321,4 +321,4 @@ DeclareAttribute( "NRMultiplication", IsNearRing );
 ##  				corresponding to the elements n of <N>
 ##
 
-DeclareAttribute( "NRRowEndos", IsNearRing, IsMutable );
+DeclareAttribute( "NRRowEndos", IsNearRing, "mutable" );
