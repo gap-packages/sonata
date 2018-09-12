@@ -23,10 +23,6 @@ Version := "2.8",
 ##  Release date of the current version in dd/mm/yyyy format.
 Date := "29/07/2015",
 
-ArchiveURL := 
-           "http://www.algebra.uni-linz.ac.at/Sonata/sonata-2.8/sonata-2.8",
-ArchiveFormats := ".tar.gz",
-
 Persons := [
   rec( 
     LastName      := "Aichinger",
@@ -110,10 +106,18 @@ Status := "accepted",
 CommunicatedBy := "Charles R.B. Wright (Univ. of Oregon)",
 AcceptDate := "04/2003",
 
-README_URL := 
-  "http://www.algebra.uni-linz.ac.at/Sonata/README.sonata",
-PackageInfoURL := 
-  "http://www.algebra.uni-linz.ac.at/Sonata/PackageInfo.g",
+PackageWWWHome  := "https://gap-packages.github.io/sonata/",
+README_URL      := Concatenation( ~.PackageWWWHome, "README.sonata" ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/gap-packages/sonata",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/sonata-", ~.Version ),
+ArchiveFormats := ".tar.gz",
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
@@ -124,9 +128,6 @@ PackageInfoURL :=
 AbstractHTML := 
    "The <span class=\"pkgname\">SONATA</span> package provides methods for \
     the construction and analysis of finite nearrings.",
- 
-PackageWWWHome := 
-   "http://www.algebra.uni-linz.ac.at/Sonata/",
      
 PackageDoc := [
   rec(
