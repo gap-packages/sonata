@@ -227,40 +227,8 @@ InstallMethod(
 	1000,
   G -> G );
 
-InstallMethod(
-	AsPermGroup,
-	"PcGroups",
-	true,
-	[IsPcGroup and IsFinitelyGeneratedGroup],
-	0,
-  function ( PcGroup )
-    return Image( IsomorphismPermGroup( PcGroup ), PcGroup );
-  end );
-
-InstallMethod(
-	AsPermGroup,
-	"FpGroups",
-	true,
-	[IsFinitelyGeneratedGroup],
-	0,
-  function ( FpGroup )
-  local PcGroup;
-    if not IsMultiplicativeElementWithInverseByRws( FpGroup.1 ) then
-	TryNextMethod();
-    fi;
-    PcGroup := PcGroupFpGroup(FpGroup);
-    return AsPermGroup( PcGroup );
-  end );
-
-InstallMethod(
-	AsPermGroup,
-	"automorhism groups",
-	true,
-	[IsGroup],
-	10,
-  function ( G )
-    return Action( G, AsList(G), OnRight );
-  end );
+InstallMethod( AsPermGroup, [IsGroup],
+  G -> Image( IsomorphismPermGroup( G ) ) );
 
 #####################################################################
 ##
