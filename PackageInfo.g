@@ -1,102 +1,186 @@
 #############################################################################
 ##  
-##  Demo PackageInfo.g for the GitHubPagesForGAP
+##  PackageInfo.g for the package `SONATA'                 Jürgen Ecker
+##                                                         Erhard Aichinger
+##                                                         Franz Binder
+##                                                         Peter Mayr
+##                                                         Christof Nöbauer
 ##
-
+##  (created from Frank Lübeck's PackageInfo.g template file)
+##  
+##  This is a GAP readable file. Of course you can change and remove all
+##  comments as you like.
+##  
+##  This file contains meta-information on the package. It is used by
+##  the package loading mechanism and the upgrade mechanism for the
+##  redistribution of the package via the GAP website.
+##  
 SetPackageInfo( rec(
 
-PackageName := "GitHubPagesForGAP",
-
-Subtitle := "A GitHub Pages generator for GAP packages",
-Version := "0.2",
-Date := "04/02/2017", # dd/mm/yyyy format
+PackageName := "SONATA",
+Subtitle := "System of nearrings and their applications",
+Version := "2.8",
+##  Release date of the current version in dd/mm/yyyy format.
+Date := "29/07/2015",
 
 Persons := [
-  rec(
-    LastName      := "Horn",
-    FirstNames    := "Max",
+  rec( 
+    LastName      := "Aichinger",
+    FirstNames    := "Erhard",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "max.horn@math.uni-giessen.de",
-    WWWHome       := "http://www.quendi.de/math",
-    PostalAddress := Concatenation(
-                       "AG Algebra\n",
-                       "Mathematisches Institut\n",
-                       "Justus-Liebig-Universität Gießen\n",
-                       "Arndtstraße 2\n",
-                       "35392 Gießen\n",
-                       "Germany" ),
-    Place         := "Gießen",
-    Institution   := "Justus-Liebig-Universität Gießen"
+    Email         := "erhard.aichinger@algebra.uni-linz.ac.at",
+    WWWHome       := "http://www.algebra.uni-linz.ac.at/~erhard/",
+    PostalAddress := Concatenation( [
+                       "Institut für Algebra\n",
+                       "Johannes Kepler Universität Linz\n",
+                       "4040 Linz\n",
+                       "Austria" ] ),
+    Place         := "Linz",
+    Institution   := "Johannes Kepler Universität Linz"
   ),
-
-  rec(
-    LastName      := "Thor",
-    FirstNames    := "A. U.",
+  rec( 
+    LastName      := "Binder",
+    FirstNames    := "Franz",
     IsAuthor      := true,
     IsMaintainer  := false,
-    #Email         := "author@example.com",
+    Email         := "franz.binder@algebra.uni-linz.ac.at",
+    WWWHome       := "http://www.algebra.uni-linz.ac.at/~xbx/",
+    PostalAddress := Concatenation( [
+                       "Institut für Algebra\n",
+                       "Johannes Kepler Universität Linz\n",
+                       "4040 Linz\n",
+                       "Austria" ] ),
+    Place         := "Linz",
+    Institution   := "Johannes Kepler Universität Linz"
   ),
-
-  rec(
-    LastName      := "Itor",
-    FirstNames    := "Jan",
-    IsAuthor      := false,
+  rec( 
+    LastName      := "Ecker",
+    FirstNames    := "Jürgen",
+    IsAuthor      := true,
+    IsMaintainer  := false,
+    Email         := "juergen.ecker@algebra.uni-linz.ac.at",
+    WWWHome       := "http://www.algebra.uni-linz.ac.at/~juergen/",
+    PostalAddress := Concatenation( [
+                       "Institut für Algebra\n",
+                       "Johannes Kepler Universität Linz\n",
+                       "4040 Linz\n",
+                       "Austria" ] ),
+    Place         := "Linz",
+    Institution   := "Johannes Kepler Universität Linz"
+  ),
+  rec( 
+    LastName      := "Mayr",
+    FirstNames    := "Peter",
+    IsAuthor      := true,
     IsMaintainer  := true,
-    #Email         := "janitor@example.com",
+    Email         := "baernstein@gmail.com",
+    WWWHome       := "http://www.algebra.uni-linz.ac.at/~stein/",
+    PostalAddress := Concatenation( [
+                       "Institut für Algebra\n",
+                       "Johannes Kepler Universität Linz\n",
+                       "4040 Linz\n",
+                       "Austria" ] ),
+    Place         := "Linz",
+    Institution   := "Johannes Kepler Universität Linz"
+  ),
+  rec( 
+    LastName      := "Nöbauer",
+    FirstNames    := "Christof",
+    IsAuthor      := true,
+    IsMaintainer  := false,
+    Email         := "christof.noebauer@algebra.uni-linz.ac.at",
+    WWWHome       := "http://www.algebra.uni-linz.ac.at/",
+    PostalAddress := Concatenation( [
+                       "Institut für Algebra",
+                       "Johannes Kepler Universität Linz\n",
+                       "4040 Linz\n",
+                       "Austria" ] ),
+    Place         := "Linz",
+    Institution   := "Johannes Kepler Universität Linz"
+  ),
+  
+],
+
+Status := "accepted",
+CommunicatedBy := "Charles R.B. Wright (Univ. of Oregon)",
+AcceptDate := "04/2003",
+
+PackageWWWHome  := "https://gap-packages.github.io/sonata/",
+README_URL      := Concatenation( ~.PackageWWWHome, "README" ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/gap-packages/sonata",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/sonata-", ~.Version ),
+ArchiveFormats := ".tar.gz",
+
+##  Here you  must provide a short abstract explaining the package content 
+##  in HTML format (used on the package overview Web page) and an URL 
+##  for a Webpage with more detailed information about the package
+##  (not more than a few lines, less is ok):
+##  Please, use '<span class="pkgname">GAP</span>' and
+##  '<span class="pkgname">MyPKG</span>' for specifing package names.
+AbstractHTML := 
+   "The <span class=\"pkgname\">SONATA</span> package provides methods for \
+    the construction and analysis of finite nearrings.",
+     
+PackageDoc := [
+  rec(
+  BookName  := "SONATA",
+  ArchiveURLSubset := ["doc/ref","htm/ref"],
+  HTMLStart := "htm/ref/chapters.htm",
+  PDFFile   := "doc/ref/manual.pdf",
+  SixFile   := "doc/ref/manual.six",
+  LongTitle := "System of nearrings and their applications",
+  Autoload  := true
+  ),
+  rec(
+  BookName  := "SONATA Tutorial",
+  ArchiveURLSubset := ["doc/tut","htm/tut"],
+  HTMLStart := "htm/tut/chapters.htm",
+  PDFFile   := "doc/tut/manual.pdf",
+  SixFile   := "doc/tut/manual.six",
+  LongTitle := "Eight easy pieces for SONATA: a SONATA tutorial",
+  Autoload  := false
   ),
 ],
 
-Status := "other",
 
-# The following are not strictly necessary in your own PackageInfo.g
-# (in the sense that update.g only looks at the usual fields
-# like PackageWWWHome, ArchiveURL etc.). But they are convenient
-# if you use exactly the scheme for your package website that we propose.
-GithubUser := "gap-system",
-GithubRepository := ~.PackageName,
-GithubWWW := Concatenation("https://github.com/", ~.GithubUser, "/", ~.GithubRepository),
-
-PackageWWWHome := Concatenation("https://", ~.GithubUser, ".github.io/", ~.GithubRepository, "/"),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-# The following assumes you are using the Github releases system. If not, adjust
-# it accordingly.
-ArchiveURL     := Concatenation(~.GithubWWW,
-                    "/releases/download/v", ~.Version, "/",
-                    ~.GithubRepository, "-", ~.Version),
-
-ArchiveFormats := ".tar.gz .tar.bz2",
-
-AbstractHTML := 
-  "This is a pseudo package that contains no actual\
-  <span class=\"pkgname\">GAP</span> code. Instead, it is a template for other\
-  GAP packages that allows to quickly setup GitHub Pages.",
-
-PackageDoc := rec(
-  BookName  := "GitHubPagesForGAP",
-  ArchiveURLSubset := ["doc"],
-  HTMLStart := "doc/chap0.html",
-  PDFFile   := "doc/manual.pdf",
-  SixFile   := "doc/manual.six",
-  LongTitle := "A GitHub Pages generator for GAP packages",
-),
-
-# The following dependencies are fake and for testing / demo purposes
 Dependencies := rec(
-  GAP := ">=4.8.1",
-  NeededOtherPackages := [
-    ["GAPDoc", ">= 1.2"],
-    ["IO", ">= 4.1"],
-  ],
-  SuggestedOtherPackages := [["orb", ">= 4.2"]],
+  GAP := ">=4.5",
+  NeededOtherPackages := [],
+  SuggestedOtherPackages := [["xgap",">=0"]],
   ExternalConditions := []
 ),
 
 AvailabilityTest := ReturnTrue,
 
-Keywords := ["GitHub Pages", "GAP"]
+##  The LoadPackage mechanism can produce a default banner from the info
+##  in this file. If you are not happy with it, you can provide a string
+##  here that is used as a banner. GAP decides when the banner is shown and
+##  when it is not shown. *optional* (note the ~-syntax in this example)
+BannerString := Concatenation( 
+"\n  ___________________________________________________________________________",
+"\n /        ___",
+"\n||       /   \\                 /\\    Version", ~.Version,
+"\n||      ||   ||  |\\    |      /  \\               /\\       Erhard Aichinger",
+"\n \\___   ||   ||  |\\\\   |     /____\\_____________/__\\      Franz Binder",
+"\n     \\  ||   ||  | \\\\  |    /      \\     ||    /    \\     Juergen Ecker",
+"\n     ||  \\___/   |  \\\\ |   /        \\    ||   /      \\    Peter Mayr",
+"\n     ||          |   \\\\|  /          \\   ||               Christof Noebauer",
+"\n \\___/           |    \\|                 ||\n",
+"\n System    Of   Nearrings     And      Their Applications\n",
+" Info: ", ~.PackageWWWHome, "\n\n" ),
+
+
+#TestFile := "tst/testall.g",
+
+Keywords := ["near ring", "endomorphism", "Frobenius group", "fixed point free automorphism"],
 
 ));
-
 
