@@ -329,21 +329,6 @@ of the group.
     [ f1, f2, f3, f2*f3, f1*f2*f4, f1*f3*f4, f1*f2*f3*f4 ]
 \endexample
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\Section{Nilpotency class}
-
-
-\>NilpotencyClass( <G> )
-
-If <G> is a nilpotent group then the function `NilpotencyClass' returns the 
-nilpotency class of <G> and `fail' otherwise.
-
-\beginexample
-    gap> NilpotencyClass( SymmetricGroup( 7 ) );
-    fail
-    gap> NilpotencyClass( GTW32_47 );
-    3
-\endexample
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{Scott length}

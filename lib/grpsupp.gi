@@ -442,28 +442,6 @@ InstallMethod(
 
 #############################################################################
 ##
-#M  NilpotencyClass
-##
-
-InstallMethod(
-	NilpotencyClass,
-	"default",
-	true,
-	[IsGroup],
-	0,
-  function ( G )
-  local l, LCS;
-    LCS := LowerCentralSeries (G);
-    l := Length (LCS);
-    if Size (LCS[l]) = 1 then
-      return l - 1;
-    else 
-      return fail;
-    fi;
-  end );
-
-#############################################################################
-##
 #M  ScottLength
 ##
 
@@ -636,7 +614,7 @@ InstallMethod(
 	[IsGroup],
 	2,
   function ( G )
-    if not IsNilpotent( G ) or NilpotencyClass( G ) <> 2 then
+    if not IsNilpotent( G ) or NilpotencyClassOfGroup( G ) <> 2 then
 	TryNextMethod();
     fi;
 
