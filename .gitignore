@@ -1,0 +1,14 @@
+/doc/*/*.aux
+/doc/*/*.dvi
+/doc/*/*.idx
+/doc/*/*.lab
+/doc/*/*.log
+/doc/*/*.pdf
+/doc/*/*.six
+/doc/*/*.toc
+/doc/*/*.tst
+
+/htm/
+
+/gh-pages/
+/tmp/
