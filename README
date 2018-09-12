@@ -1,23 +1,23 @@
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 +                                                                           +
-+   Copyright (C) 2012        Erhard Aichinger, Franz Binder		    +
-+   	      	  	      Jürgen Ecker, Peter Mayr, Christof Nöbauer    +
-+  			      	     	    	  		 	    +
-+   This file is part of Sonata.					    +	
-+   	      	      	 						    +
-+   Sonata is free software: you can redistribute it and/or modify	    +	
-+   it under the terms of the GNU General Public License as published by    +	
-+   the Free Software Foundation, either version 2 of the License, or 	    +
-+   (at your option) any later version.	 	      	  	   	    +
-+   	     	     	       						    +
-+   Sonata is distributed in the hope that it will be useful,		    +
-+   but WITHOUT ANY WARRANTY; without even the implied warranty of	    +
-+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the	    +
-+   GNU General Public License for more details.	      		    +
-+   		       	       	   					    +
-+   You should have received a copy of the GNU General Public License	    +
-+   along with Sonata. If not, see <http://www.gnu.org/licenses/>.	    +
-+                                                                    	    +
++   Copyright (C) 2012        Erhard Aichinger, Franz Binder                +
++                             JÃ¼rgen Ecker, Peter Mayr, Christof NÃ¶bauer    +
++                                                                           +
++   This file is part of Sonata.                                            +   
++                                                                           +
++   Sonata is free software: you can redistribute it and/or modify          +   
++   it under the terms of the GNU General Public License as published by    +   
++   the Free Software Foundation, either version 2 of the License, or       +
++   (at your option) any later version.                                     +
++                                                                           +
++   Sonata is distributed in the hope that it will be useful,               +
++   but WITHOUT ANY WARRANTY; without even the implied warranty of          +
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           +
++   GNU General Public License for more details.                            +
++                                                                           +
++   You should have received a copy of the GNU General Public License       +
++   along with Sonata. If not, see <http://www.gnu.org/licenses/>.          +
++                                                                           +
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -42,9 +42,9 @@ would like to hear about applications of this package.
 
 Erhard Aichinger
 Franz Binder
-Jürgen Ecker
+JÃ¼rgen Ecker
 Peter Mayr
-Christof Nöbauer
+Christof NÃ¶bauer
 
 email: sonata@algebra.uni-linz.ac.at
 

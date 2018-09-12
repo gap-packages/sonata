@@ -1,12 +1,12 @@
 #############################################################################
 ##  
-##  PackageInfo.g for the package `SONATA'                 Jürgen Ecker
+##  PackageInfo.g for the package `SONATA'                 JÃ¼rgen Ecker
 ##                                                         Erhard Aichinger
 ##                                                         Franz Binder
 ##                                                         Peter Mayr
-##                                                         Christof Nöbauer
+##                                                         Christof NÃ¶bauer
 ##
-##  (created from Frank Lübeck's PackageInfo.g template file)
+##  (created from Frank LÃ¼beck's PackageInfo.g template file)
 ##  
 ##  This is a GAP readable file. Of course you can change and remove all
 ##  comments as you like.
@@ -32,12 +32,12 @@ Persons := [
     Email         := "erhard.aichinger@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~erhard/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra\n",
-                       "Johannes Kepler Universität Linz\n",
+                       "Institut fÃ¼r Algebra\n",
+                       "Johannes Kepler UniversitÃ¤t Linz\n",
                        "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+    Institution   := "Johannes Kepler UniversitÃ¤t Linz"
   ),
   rec( 
     LastName      := "Binder",
@@ -47,27 +47,27 @@ Persons := [
     Email         := "franz.binder@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~xbx/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra\n",
-                       "Johannes Kepler Universität Linz\n",
+                       "Institut fÃ¼r Algebra\n",
+                       "Johannes Kepler UniversitÃ¤t Linz\n",
                        "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+    Institution   := "Johannes Kepler UniversitÃ¤t Linz"
   ),
   rec( 
     LastName      := "Ecker",
-    FirstNames    := "Jürgen",
+    FirstNames    := "JÃ¼rgen",
     IsAuthor      := true,
     IsMaintainer  := false,
     Email         := "juergen.ecker@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~juergen/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra\n",
-                       "Johannes Kepler Universität Linz\n",
+                       "Institut fÃ¼r Algebra\n",
+                       "Johannes Kepler UniversitÃ¤t Linz\n",
                        "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+    Institution   := "Johannes Kepler UniversitÃ¤t Linz"
   ),
   rec( 
     LastName      := "Mayr",
@@ -77,27 +77,27 @@ Persons := [
     Email         := "baernstein@gmail.com",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/~stein/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra\n",
-                       "Johannes Kepler Universität Linz\n",
+                       "Institut fÃ¼r Algebra\n",
+                       "Johannes Kepler UniversitÃ¤t Linz\n",
                        "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+    Institution   := "Johannes Kepler UniversitÃ¤t Linz"
   ),
   rec( 
-    LastName      := "Nöbauer",
+    LastName      := "NÃ¶bauer",
     FirstNames    := "Christof",
     IsAuthor      := true,
     IsMaintainer  := false,
     Email         := "christof.noebauer@algebra.uni-linz.ac.at",
     WWWHome       := "http://www.algebra.uni-linz.ac.at/",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra",
-                       "Johannes Kepler Universität Linz\n",
+                       "Institut fÃ¼r Algebra",
+                       "Johannes Kepler UniversitÃ¤t Linz\n",
                        "4040 Linz\n",
                        "Austria" ] ),
     Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+    Institution   := "Johannes Kepler UniversitÃ¤t Linz"
   ),
   
 ],
