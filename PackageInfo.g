@@ -178,7 +178,7 @@ BannerString := Concatenation(
 " Info: ", ~.PackageWWWHome, "\n\n" ),
 
 
-#TestFile := "tst/testall.g",
+TestFile := "tst/testall.g",
 
 Keywords := ["near ring", "endomorphism", "Frobenius group", "fixed point free automorphism"],
 
