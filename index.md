@@ -46,7 +46,7 @@ The following additional GAP packages are not required, but suggested:
 Introduction
 ------------
 
- SONATA stands for "systems of nearrings and their applications". It provides methods for the construction and the analysis of finite nearrings. A left nearring is an algebra (N;+,*), where (N,+) is a (not necessarily abelian) group, (N,*) is a semigroup, and x*(y+z) = x*y + x*z holds for all x,y,z in N.
+ SONATA stands for "systems of nearrings and their applications". It provides methods for the construction and the analysis of finite nearrings. A left nearring is an algebra (N;+,.), where (N,+) is a (not necessarily abelian) group, (N,.) is a semigroup, and x(y+z) = xy + xz holds for all x,y,z in N.
 
  As a typical example of a nearring, we may consider the set of all mappings from a group G into G, where the addition is the pointwise addition of mappings in G, and the multiplication is composition of functions. If functions are written on the right of their arguments, then the left distributive law holds, while the right distributive law is not satisfied for non-trivial G.
 
