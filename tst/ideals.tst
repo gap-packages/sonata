@@ -217,7 +217,7 @@ gap> NuRadical( f, 1/2 );
 < nearring right ideal >
 gap> Size( NuRadical( f, 0 ) );  
 8
-gap> AsList( NuRadical( f, 1 ) );
+gap> AsSortedList( NuRadical( f, 1 ) );
 [ (()), ((2,4)), ((1,2)(3,4)), ((1,2,3,4)), ((1,3)), ((1,3)(2,4)), 
   ((1,4,3,2)), ((1,4)(2,3)) ]
 gap> NuRadical( f, 1/2 ) = NuRadical( f, 2 );

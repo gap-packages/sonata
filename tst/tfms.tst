@@ -80,7 +80,7 @@ Sym( [ 1 .. 3 ] )
 gap> m := ConstantEndoMapping (G, (1,2,3)) + IdentityEndoMapping( G );
 MappingByFunction( Sym( [ 1 .. 3 ] ), Sym( [ 1 .. 3 ] ), function( g ) ... end\
  )
-gap> PrintArray( GraphOfMapping( m ) );
+gap> PrintArray( AsSortedList( GraphOfMapping( m ) ) );
 [ [       (),  (1,2,3) ],
   [    (2,3),    (1,3) ],
   [    (1,2),    (2,3) ],
@@ -202,7 +202,7 @@ ExplicitMultiplicationNearRing ( Group(
   (7,8)(9,10)(13,14)(15,16) ]) , multiplication )
 gap> G := SymmetricGroup ( 4 );
 Sym( [ 1 .. 4 ] )
-gap> V := First ( NormalSubgroups ( G ), x -> Size ( x ) = 4 );
+gap> V := Group([ (1,4)(2,3), (1,3)(2,4) ]);
 Group([ (1,4)(2,3), (1,3)(2,4) ])
 gap> P := InnerAutomorphismNearRing ( G );
 InnerAutomorphismNearRing( Sym( [ 1 .. 4 ] ) )

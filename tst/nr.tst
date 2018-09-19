@@ -117,7 +117,7 @@ gap> Endomorphisms ( LibraryNearRing( GTW12_4, 4 ) ) ;
 gap> Length( Endomorphisms( GTW12_4 ) );
 33
 gap> Automorphisms( LibraryNearRing( GTW12_4, 4 ) );
-[ IdentityMapping( 12/4 ) ]
+[ ^() ]
 gap> IsIsomorphicNearRing( MapNearRing( GTW2_1 ),                       
 > LibraryNearRingWithOne( GTW4_2, 5 ) );
 true
