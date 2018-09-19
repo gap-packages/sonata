@@ -6,21 +6,22 @@ description: |
 
 authors:
     - name: Erhard Aichinger
-      url: http://www.algebra.uni-linz.ac.at/~erhard/
+      url: https://www.jku.at/institut-fuer-algebra/team/erhard-aichinger/
     - name: Franz Binder
       url: http://www.algebra.uni-linz.ac.at/~xbx/
     - name: Jürgen Ecker
       url: http://www.algebra.uni-linz.ac.at/~juergen/
     - name: Peter Mayr
-      url: http://www.algebra.uni-linz.ac.at/~stein/
+      url: https://www.colorado.edu/math/peter-mayr
     - name: Christof Nöbauer
-      url: http://www.algebra.uni-linz.ac.at/
+   
 
 maintainers:
     - name: Erhard Aichinger
-      url: http://www.algebra.uni-linz.ac.at/~erhard/
+      url: /http://www.algebra.uni-linz.ac.at/~erhard/
     - name: Peter Mayr
-      url: http://www.algebra.uni-linz.ac.at/~stein/
+      url: https://www.colorado.edu/math/peter-mayr
+      
 
 GAP: ">=4.5"
 
