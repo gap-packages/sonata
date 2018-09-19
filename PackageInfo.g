@@ -29,8 +29,8 @@ Persons := [
     FirstNames    := "Erhard",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "erhard.aichinger@algebra.uni-linz.ac.at",
-    WWWHome       := "http://www.algebra.uni-linz.ac.at/~erhard/",
+    Email         := "erhard@algebra.uni-linz.ac.at",
+    WWWHome       := "https://www.jku.at/institut-fuer-algebra/team/erhard-aichinger/",
     PostalAddress := Concatenation( [
                        "Institut für Algebra\n",
                        "Johannes Kepler Universität Linz\n",
@@ -75,29 +75,29 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "baernstein@gmail.com",
-    WWWHome       := "http://www.algebra.uni-linz.ac.at/~stein/",
+    WWWHome       := "https://www.colorado.edu/math/peter-mayr",
     PostalAddress := Concatenation( [
-                       "Institut für Algebra\n",
-                       "Johannes Kepler Universität Linz\n",
-                       "4040 Linz\n",
-                       "Austria" ] ),
-    Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+                       "Department of Mathematics",
+                       "CU Boulder\n",
+                       "Boulder, Colorado",
+                       "USA" ] ),
+    Place         := "Boulder",
+    Institution   := "University of Colorado"
   ),
   rec( 
     LastName      := "Nöbauer",
     FirstNames    := "Christof",
     IsAuthor      := true,
-    IsMaintainer  := false,
-    Email         := "christof.noebauer@algebra.uni-linz.ac.at",
-    WWWHome       := "http://www.algebra.uni-linz.ac.at/",
-    PostalAddress := Concatenation( [
-                       "Institut für Algebra",
-                       "Johannes Kepler Universität Linz\n",
-                       "4040 Linz\n",
-                       "Austria" ] ),
-    Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+    IsMaintainer  := false
+##    Email         := "christof.noebauer@algebra.uni-linz.ac.at",
+##    WWWHome       := "http://www.algebra.uni-linz.ac.at/",
+##   PostalAddress := Concatenation( [
+##                       "Institut für Algebra",
+##                       "Johannes Kepler Universität Linz\n",
+##                       "4040 Linz\n",
+##                       "Austria" ] ),
+##    Place         := "Linz",
+##    Institution   := "Johannes Kepler Universität Linz"
   ),
   
 ],
@@ -178,7 +178,7 @@ BannerString := Concatenation(
 " Info: ", ~.PackageWWWHome, "\n\n" ),
 
 
-#TestFile := "tst/testall.g",
+TestFile := "tst/testall.g",
 
 Keywords := ["near ring", "endomorphism", "Frobenius group", "fixed point free automorphism"],
 
