@@ -59,15 +59,10 @@ Persons := [
     FirstNames    := "Jürgen",
     IsAuthor      := true,
     IsMaintainer  := false,
-    Email         := "juergen.ecker@algebra.uni-linz.ac.at",
-    WWWHome       := "http://www.algebra.uni-linz.ac.at/~juergen/",
-    PostalAddress := Concatenation( [
-                       "Institut für Algebra\n",
-                       "Johannes Kepler Universität Linz\n",
-                       "4040 Linz\n",
-                       "Austria" ] ),
-    Place         := "Linz",
-    Institution   := "Johannes Kepler Universität Linz"
+    Email         := "juergen.fuss@fh-hagenberg.at",
+    WWWHome       := "http://research.fh-ooe.at/en/staff/113",
+    Place         := "Hagenberg",
+    Institution   := "Upper Austria University of Applied Sciences"
   ),
   rec( 
     LastName      := "Mayr",
@@ -89,15 +84,6 @@ Persons := [
     FirstNames    := "Christof",
     IsAuthor      := true,
     IsMaintainer  := false
-##    Email         := "christof.noebauer@algebra.uni-linz.ac.at",
-##    WWWHome       := "http://www.algebra.uni-linz.ac.at/",
-##   PostalAddress := Concatenation( [
-##                       "Institut für Algebra",
-##                       "Johannes Kepler Universität Linz\n",
-##                       "4040 Linz\n",
-##                       "Austria" ] ),
-##    Place         := "Linz",
-##    Institution   := "Johannes Kepler Universität Linz"
   ),
   
 ],
