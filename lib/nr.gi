@@ -525,11 +525,7 @@ InstallMethod(
 ##
 #M  IsPrimeNearRing 
 
-InstallImmediateMethod(
-	IsPrimeNearRing,
-	IsNearRing and IsIntegralNearRing,
-	10,
-  x -> true );
+InstallTrueMethod( IsPrimeNearRing, IsNearRing and IsIntegralNearRing );
 
 InstallMethod(
 	IsPrimeNearRing,

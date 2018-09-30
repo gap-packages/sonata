@@ -149,17 +149,9 @@ InstallMethod(
 #M  IsSimpleNearRing
 ##
 
-InstallImmediateMethod(
-	IsSimpleNearRing,
-	IsFullTransformationNearRing,
-	0,
-  x -> true );
+InstallTrueMethod( IsSimpleNearRing, IsFullTransformationNearRing );
 
-InstallImmediateMethod(
-	IsSimpleNearRing,
-	IsNearField,
-	0,
-  x -> true );
+InstallTrueMethod( IsSimpleNearRing, IsNearField );
 
 InstallMethod(
 	IsSimpleNearRing,

@@ -23,23 +23,9 @@
 ##
 #I  Ideal <=> LeftIdeal & RightIdeal
 
-InstallImmediateMethod(
-	IsNearRingIdeal,
-	IsNearRingLeftIdeal and IsNearRingRightIdeal,
-	10,
-  x -> true );
-
-InstallImmediateMethod(
-	IsNearRingLeftIdeal,
-	IsNearRingIdeal,
-	10,
-  x -> true );
-
-InstallImmediateMethod(
-	IsNearRingRightIdeal,
-	IsNearRingIdeal,
-	10,
-  x -> true );
+InstallTrueMethod( IsNearRingIdeal, IsNearRingLeftIdeal and IsNearRingRightIdeal );
+InstallTrueMethod( IsNearRingLeftIdeal, IsNearRingIdeal );
+InstallTrueMethod( IsNearRingRightIdeal, IsNearRingIdeal );
 
 #############################################################################
 ##
