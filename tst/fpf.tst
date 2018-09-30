@@ -121,7 +121,7 @@ gap> phi := Group( aux[1][1] );
 gap> G := aux[2];
 <pc group of size 25 with 2 generators>
 gap> aux := FpfAutomorphismGroups4( [7,7], 3, 1, -1 );
-[ [ [ [ f1, f2 ] -> [ f1^2*f2^3, f1^3*f2^5 ], [ f1, f2 ] -> [ f2^6, f1 ],
+[ [ [ [ f1, f2 ] -> [ f1^2*f2^3, f1^3*f2^5 ], [ f1, f2 ] -> [ f2^6, f1 ], 
           [ f1, f2 ] -> [ f1^2, f1*f2^4 ], 
           [ f1, f2 ] -> [ f1^5*f2^3, f1^3*f2^2 ] ] ], 
   <pc group of size 49 with 2 generators> ]

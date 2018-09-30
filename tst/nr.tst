@@ -124,25 +124,25 @@ true
 gap> n := LibraryNearRing( GTW12_4, 8 );
 LibraryNearRing(12/4, 8)
 gap> SubNearRings( n );
-[ ExplicitMultiplicationNearRing ( Group(()) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,2,4) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,3,2) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3), (1,3)(2,4)
-     ]) , multiplication ), ExplicitMultiplicationNearRing ( Group(
-    [ (1,4)(2,3), (1,3)(2,4), (2,3,4) ]) , multiplication ) ]
+[ ExplicitMultiplicationNearRing ( Group(()) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,2,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,3,2) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3), (1,3)
+  (2,4) ]) , multiplication ), ExplicitMultiplicationNearRing ( Group([ (1,4)
+  (2,3), (1,3)(2,4), (2,3,4) ]) , multiplication ) ]
 gap> n := LibraryNearRing( GTW12_4, 8 );
 LibraryNearRing(12/4, 8)
 gap> i := InvariantSubNearRings( n );
-[ ExplicitMultiplicationNearRing ( Group(()) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ),
-  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3), (1,3)(2,4), (2,3,4)
-     ]) , multiplication ) ]
+[ ExplicitMultiplicationNearRing ( Group(()) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3), (1,3)
+  (2,4), (2,3,4) ]) , multiplication ) ]
 gap> n := LibraryNearRing( GTW12_4, 8 );            
 LibraryNearRing(12/4, 8)
 gap> S := Subgroup( GTW12_4, [ (1,2)(3,4) ] );
@@ -152,22 +152,20 @@ ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication )
 gap> n := LibraryNearRingWithOne( GTW27_4, 5 );
 LibraryNearRingWithOne(27/4, 5)
 gap> si := Filtered( SubNearRings( n ), s -> Identity( n ) in s );
-[ ExplicitMultiplicationNearRing ( Group(
-    [ (1,23,14)(2,13,6)(3,27,22)(4,18,9)(5,20,12)(7,16,26)(8,25,17)(10,21,
-        19)(11,24,15) ]) , multiplication ), 
-  ExplicitMultiplicationNearRing ( Group(
-    [ (1,22,16)(2,12,21)(3,26,23)(4,17,11)(5,19,13)(6,20,10)(7,14,27)(8,24,
-        18)(9,25,15), (1,26,27)(2,19,20)(3,14,16)(4,24,25)(5,6,21)(7,22,23)(8,
-        9,11)(10,12,13)(15,17,18) ]) , multiplication ), 
-  ExplicitMultiplicationNearRing ( Group(
-    [ (1,6,15)(2,9,7)(3,13,25)(4,14,10)(5,18,27)(8,23,20)(11,22,19)(12,24,
-        16)(17,26,21), (1,5,17)(2,8,22)(3,12,4)(6,18,26)(7,20,11)(9,23,19)(10,
-        25,16)(13,24,14)(15,27,21), (1,2,4)(3,6,11)(5,9,16)(7,13,17)(8,14,
-        21)(10,18,22)(12,15,23)(19,24,26)(20,25,27) ]) , multiplication ) ]
+[ ExplicitMultiplicationNearRing ( Group([ (1,23,14)(2,13,6)(3,27,22)(4,18,9)
+  (5,20,12)(7,16,26)(8,25,17)(10,21,19)(11,24,15) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,22,16)(2,12,21)(3,26,23)
+  (4,17,11)(5,19,13)(6,20,10)(7,14,27)(8,24,18)(9,25,15), (1,26,27)(2,19,20)
+  (3,14,16)(4,24,25)(5,6,21)(7,22,23)(8,9,11)(10,12,13)
+  (15,17,18) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,6,15)(2,9,7)(3,13,25)(4,14,10)
+  (5,18,27)(8,23,20)(11,22,19)(12,24,16)(17,26,21), (1,5,17)(2,8,22)(3,12,4)
+  (6,18,26)(7,20,11)(9,23,19)(10,25,16)(13,24,14)(15,27,21), (1,2,4)(3,6,11)
+  (5,9,16)(7,13,17)(8,14,21)(10,18,22)(12,15,23)(19,24,26)
+  (20,25,27) ]) , multiplication ) ]
 gap> Intersection( si );
-ExplicitMultiplicationNearRing ( Group(
-[ (1,23,14)(2,13,6)(3,27,22)(4,18,9)(5,20,12)(7,16,26)(8,25,17)(10,21,19)(11,
-    24,15) ]) , multiplication )
+ExplicitMultiplicationNearRing ( Group([ (1,23,14)(2,13,6)(3,27,22)(4,18,9)
+(5,20,12)(7,16,26)(8,25,17)(10,21,19)(11,24,15) ]) , multiplication )
 gap> Size( last );
 3
 gap> n := LibraryNearRing( GTW12_4, 8 );            
@@ -246,7 +244,7 @@ false
 gap> IsRegularNearRing( n );
 false
 gap> IsNearField( n );                        
-false    
+false
 gap> n := LibraryNearRing( GTW9_2, 90 );
 LibraryNearRing(9/2, 90)
 gap> IsPlanarNearRing( n );     
@@ -289,8 +287,3 @@ gap> IdLibraryNearRingWithOne( l );
 gap> IsLibraryNearRing( LNwI24_4_8 );
 true
 gap> STOP_TEST( "nr.tst", 10000);
-
-
-
-
-

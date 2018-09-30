@@ -18,11 +18,11 @@ false
 gap> a := GroupReduct( n );                                          
 8/4
 gap> nsgps := NormalSubgroups( a );
-[ 8/4, Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,4)(2,3), (1,3)(2,4) ]), 
-  Group([ (2,4), (1,3)(2,4) ]), Group([ (1,3)(2,4) ]), Group(()) ]
+[ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,3)(2,4), (1,2)(3,4) ]), 
+  Group([ (1,3)(2,4), (2,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]), 8/4 ]
 gap> l := Filtered( nsgps,                                             
 > s -> IsSubgroupNearRingRightIdeal( n, s ) );
-[ 8/4, Group([ (2,4), (1,3)(2,4) ]), Group(()) ]
+[ Group(()), Group([ (1,3)(2,4), (2,4) ]), 8/4 ]
 gap> l := List( l,      
 > s -> NearRingRightIdealBySubgroupNC( n, s ) );
 [ < nearring right ideal >, < nearring right ideal >, 
@@ -45,7 +45,7 @@ gap> List( s, sg -> IsSubgroupNearRingRightIdeal( n, sg ) );
 gap> n := LibraryNearRingWithOne( GTW27_2, 5 );
 LibraryNearRingWithOne(27/2, 5)
 gap> Filtered( NearRingIdeals( n ), IsPrimeNearRingIdeal );
-[ < nearring ideal of size 27 >, < nearring ideal of size 9 > ]
+[ < nearring ideal of size 9 >, < nearring ideal of size 27 > ]
 gap> n := LibraryNearRingWithOne( GTW27_2, 5 );
 LibraryNearRingWithOne(27/2, 5)
 gap> Filtered( NearRingIdeals( n ), IsMaximalNearRingIdeal );
@@ -53,16 +53,16 @@ gap> Filtered( NearRingIdeals( n ), IsMaximalNearRingIdeal );
 gap> n := LibraryNearRing( GTW8_2, 2 );
 LibraryNearRing(8/2, 2)
 gap> li := NearRingLeftIdeals( n );
-[ < nearring left ideal >, < nearring left ideal >, < nearring left ideal >,
+[ < nearring left ideal >, < nearring left ideal >, < nearring left ideal >, 
   < nearring left ideal >, < nearring left ideal >, < nearring left ideal > ]
 gap> l := LibraryNearRing( GTW6_2, 3 );
 LibraryNearRing(6/2, 3)
 gap> i := NearRingIdeals( l );               
 [ < nearring ideal >, < nearring ideal > ]
 gap> List( i, Size );
-[ 6, 1 ]
+[ 1, 6 ]
 gap> NearRingCommutator( i[2], i[2] );
-< nearring ideal >
+< nearring ideal of size 6 >
 gap> l := LibraryNearRing( GTW8_4, 13 );
 LibraryNearRing(8/4, 13)
 gap> NearRingIdeals( l );
@@ -70,7 +70,7 @@ gap> NearRingIdeals( l );
 gap> NumberLibraryNearRings( GTW4_2 );                         
 23
 gap> Filtered( AllLibraryNearRings( GTW4_2 ), IsSimpleNearRing );
-[ LibraryNearRing(4/2, 3), LibraryNearRing(4/2, 16), LibraryNearRing(4/2, 17)
+[ LibraryNearRing(4/2, 3), LibraryNearRing(4/2, 16), LibraryNearRing(4/2, 17) 
  ]
 gap> n := LibraryNearRing( GTW8_2, 2 );
 LibraryNearRing(8/2, 2)
@@ -201,7 +201,7 @@ LibraryNearRing(12/3, 100)
 gap> I := NearRingIdeals( N );            
 [ < nearring ideal >, < nearring ideal >, < nearring ideal > ]
 gap> List(I,Size);
-[ 12, 6, 1 ]
+[ 1, 6, 12 ]
 gap> NN := NGroupByNearRingMultiplication( N );
 < N-group of LibraryNearRing(12/3, 100) >
 gap> NoetherianQuotient( N, NN, GroupReduct(I[2]), GroupReduct(I[2]) );
