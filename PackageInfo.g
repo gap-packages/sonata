@@ -19,9 +19,9 @@ SetPackageInfo( rec(
 
 PackageName := "SONATA",
 Subtitle := "System of nearrings and their applications",
-Version := "2.8",
+Version := "2.9",
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "29/07/2015",
+Date := "01/10/2018",
 
 Persons := [
   rec( 
@@ -138,7 +138,7 @@ PackageDoc := [
 
 
 Dependencies := rec(
-  GAP := ">=4.5",
+  GAP := ">=4.9",
   NeededOtherPackages := [],
   SuggestedOtherPackages := [["xgap",">=0"]],
   ExternalConditions := []
@@ -153,7 +153,7 @@ AvailabilityTest := ReturnTrue,
 BannerString := Concatenation( 
 "\n  ___________________________________________________________________________",
 "\n /        ___",
-"\n||       /   \\                 /\\    Version", ~.Version,
+"\n||       /   \\                 /\\    Version ", ~.Version,
 "\n||      ||   ||  |\\    |      /  \\               /\\       Erhard Aichinger",
 "\n \\___   ||   ||  |\\\\   |     /____\\_____________/__\\      Franz Binder",
 "\n     \\  ||   ||  | \\\\  |    /      \\     ||    /    \\     Juergen Ecker",
