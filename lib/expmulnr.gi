@@ -2,16 +2,8 @@
 ##
 #W  expmulnrnr.gi             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: expmulnr.gi,v 1.8 2012/11/07 13:22:07 stein Exp $
-##
-
-
 
 ##  13.01.00:  N!.multiplication ersetzt, PM
-
-
-expmulnrnr_gi:=
-  "@(#)$Id: expmulnr.gi,v 1.8 2012/11/07 13:22:07 stein Exp $";
 
 #############################################################################
 ##

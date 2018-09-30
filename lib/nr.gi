@@ -2,8 +2,6 @@
 ##
 #W  nr.gi             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: nr.gi,v 1.10 2011-11-23 20:01:17 stein Exp $
-##
 #Y  Copyright (C)
 ##
 ##  $Log: nr.gi,v $
@@ -41,9 +39,6 @@
 ##  Revision 1.1.1.1  2000/02/21 15:59:03  hetzi
 ##  Sonata Project Start
 ##
-
-nr_gi:=
-  "@(#)$Id: nr.gi,v 1.10 2011-11-23 20:01:17 stein Exp $";
 
 #############################################################################
 ##

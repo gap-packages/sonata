@@ -2,8 +2,6 @@
 ##
 #W  grptfms.gi             Near-ring Library                   Christof N"obauer
 ##
-#H  @(#)$Id: grptfms.gi,v 1.15 2015/04/09 13:43:54 stein Exp $
-##
 #Y  Copyright (C)
 ##
 ##  $Log: grptfms.gi,v $
@@ -53,9 +51,6 @@
 ##  Revision 1.1.1.1  2000/02/21 15:59:03  hetzi
 ##  Sonata Project Start
 ##
-
-grptfms_gi:=
-  "@(#)$Id: grptfms.gi,v 1.15 2015/04/09 13:43:54 stein Exp $";
 
 #############################################################################
 ##

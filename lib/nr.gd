@@ -2,8 +2,6 @@
 ##
 #W  nr.gd             Near-ring Library                   J"urgen Ecker
 ##
-#H  @(#)$Id: nr.gd,v 1.4 2007-05-09 22:45:31 stein Exp $
-##
 #Y  Copyright (C)
 ##
 ##  $Log: nr.gd,v $
@@ -24,9 +22,6 @@
 
 ## 13.01.00 PM: new attribute NRMultiplication
 ##		new attribute NRRowEndos
-
-nr_gd:=
-  "@(#)$Id: nr.gd,v 1.4 2007-05-09 22:45:31 stein Exp $";
 
 
 #############################################################################
