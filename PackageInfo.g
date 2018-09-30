@@ -153,7 +153,7 @@ AvailabilityTest := ReturnTrue,
 BannerString := Concatenation( 
 "\n  ___________________________________________________________________________",
 "\n /        ___",
-"\n||       /   \\                 /\\    Version", ~.Version,
+"\n||       /   \\                 /\\    Version ", ~.Version,
 "\n||      ||   ||  |\\    |      /  \\               /\\       Erhard Aichinger",
 "\n \\___   ||   ||  |\\\\   |     /____\\_____________/__\\      Franz Binder",
 "\n     \\  ||   ||  | \\\\  |    /      \\     ||    /    \\     Juergen Ecker",
