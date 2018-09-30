@@ -2,7 +2,7 @@
 #
 # Script to convert GAP manual TeX files to HTML
 # Usage:
-#  convert.pl [-csti] [-f <frontpage>] [-n <sharepkg>] <doc-dir> [<html-dir>]
+#  convert.pl [-csti] [-f <frontpage>] [-n <pkgname>] <doc-dir> [<html-dir>]
 #
 # Requirements: Perl (might need to edit the first line of this file)
 #               TtH is not strictlty necessary but very desirable to treat
@@ -29,17 +29,16 @@
 #
 #         <GAPDIR>/
 #                 doc/
-#                    htm/
-#                       <main>
+#                    <main>
 #                 pkg/
 #                    <pkg>/
 #                         htm
 #
-#     for each main manual <main> (in: ref, ext, tut, prg, new) and each
-#     share package <pkg>. To make inter-linking between manuals work,
+#     for each main manual <main> (in: ref, tut, changes) and each
+#     package <pkg>. To make inter-linking between manuals work,
 #     one should generally use the -c option for everything, (or not use
-#     it for everything). Linking to share package manuals from the main
-#     manual can only be expected to work if the share package manuals
+#     it for everything). Linking to package manuals from the main
+#     manual can only be expected to work if the package manuals
 #     are created using this converter.
 #
 #  5. Only the manual.lab files for books that are referenced via the
@@ -56,7 +55,7 @@
 #        for each chapter; sections are level 2 headings and anchors 
 #        CHAPxxx.htm#SECTxxx.
 #        This is intended for local browsing, especially under MS-DOS.
-#        It may be used with the -n (share package) option.
+#        It may be used with the -n (package) option.
 # 
 #    -f <frontpage> 
 #        Adds a "Top" link to link <frontpage> to each manual page, 
@@ -64,10 +63,10 @@
 # 
 #    -s  silent running: Conversational messages are suppressed.
 #
-#    -n <sharepkg>
-#        We are not building the main manual but the one for the share
-#        package <sharepkg>. To get cross references to the main library
-#        right, it assumes that the share package is in the right place.
+#    -n <pkgname>
+#        We are not building the main manual but the one for the 
+#        package <pkgname>. To get cross references to the main library
+#        right, it assumes that the package is in the right place.
 #        The -c option may be used with this option.
 #
 #    -i  index: Only one index file is produced.
@@ -106,7 +105,7 @@
 #     .  By default, the \beginlist ... \endlist environment is interpreted
 #        as a compact description list. By adding %unordered or %ordered...
 #        markup it will be interpreted as either an unordered or ordered
-#        list respectively (see the ext manual for details).
+#        list respectively (see gapmacro documentation for details).
 #     .  There are spacing differences e.g. \begintt ... \endtt etc.
 #        environments are not indented.
 #     .  Supports all accents of TeX, in probably the best way currently
@@ -488,7 +487,7 @@ sub name2fn {
     # : indicates a cross-volume reference
     my $canon_name = canonize $name;
     #print STDERR "canon_name = $canon_name\n";
-    if ( $canon_name =~ /^(ref|tut|ext|prg|new):/ ) {
+    if ( $canon_name =~ /^(ref|tut|changes):/ ) {
       if ($mainman==1) {
 	$bdir = "../$1/";
       } else {
@@ -541,7 +540,7 @@ sub name2fn {
 sub name2linktext {
    my $name;
   ($name) = @_;
-  $name =~ s/^(ref|tut|ext|prg|new)://;
+  $name =~ s/^(ref|tut|changes)://;
   return $name;
 }
 
@@ -728,8 +727,9 @@ sub tth_math_replace {
 #print STDERR "in: ${tth}\n";
     my $tthorig = $tth;
     # replace <...> by proper TeX
-    while ($tth =~ /(.*[^\\])<(.*[^\\])>(.*)/) {
+    while ($tth =~ /(.*?[^\\])<(.*?[^\\])>(.*)/) {
         $tth= $1."{\\it ".$2."\\/}".$3;
+#print STDERR "tth: ${tth}\n";
     }
     # replace `...' by proper TeX
     while ($tth =~ /(.*[^\\])`(.*[^\\])\'(.*)/) { 
@@ -944,8 +944,7 @@ sub macro_replace {
           }
 	# pseudo ``itemend'' character
         elsif ($macro eq "itmnd")        { return ($rest, "<dd>");         }
-#        elsif ($macro eq "cite" and $rest =~ /^\{\s*(\w+)\s*\}/) 
-        elsif ($macro eq "cite" and $rest =~ /^\{\s*(\S+)\s*\}/)
+        elsif ($macro eq "cite" and $rest =~ /^\{\s*(\S+)\s*\}/) 
           { return ($', "<a href=\"biblio.htm#$1\"><cite>$1</cite></a>"); }
         elsif ($macro eq "URL" and $rest =~ /^\{([^\}]*)\}/) 
           { return ($', "<a href=\"$1\">$1</a>"); }
@@ -1205,7 +1204,7 @@ sub convert_text {
           # \><anything>;   # [<arg>] here is treated as an optional arg
           # \>`<func-with-args>'{<func>![gdfile]} # possibility from
           #                                       # buildman.pe \Declaration
-          if (/^\\>(.*;|`[^\']+\'{[^}!]*!\[[^\]]*\]})/) {
+          if (/^\\>(.*;|`[^\']+\'\{[^}!]*!\[[^\]]*\]})/) {
               ;
           } elsif (/^\\>.*\(/) {
               if (s/^(\\>[^(]*\([^)]*\)[^\[]*)(\[[^\]]*\])/$1/) {
@@ -2106,14 +2105,10 @@ if ($opt_n) {
       $booktitle = "The GAP 4 Tutorial";
   } elsif ($book eq "ref") { 
       $booktitle = "The GAP 4 Reference Manual"; 
-  } elsif ($book eq "prg") { 
-      $booktitle = "The GAP 4 Programming Tutorial";
-  } elsif ($book eq "ext") { 
-      $booktitle = "The GAP 4 Programming Reference Manual";
-  } elsif ($book eq "new") { 
-      $booktitle = "GAP 4: New Features for Developers"; 
+  } elsif ($book eq "changes") { 
+      $booktitle = "GAP - Changes from Earlier Versions"; 
   } else  { 
-      die "Invalid book, must be tut, ref, prg, new or ext"; 
+      die "Invalid book, must be tut, ref or changes"; 
   }
   $booktitle_body = booktitle_body($booktitle, "GAP");
   $mainman=1;
@@ -2146,7 +2141,6 @@ if ($opt_t || $opt_u) {
   open (TTHIN, ">tthmacros.tex") || die "Can't create tthmacros.tex";
   print TTHIN "\\def\\Q{{\\bf Q}}\\def\\Z{{\\bf Z}}\\def\\N{{\\bf N}}\n",
               "\\def\\R{{\\bf R}}\\def\\F{{\\bf F}}\n";
-  # \R and \I are used in the last chapter of ext
   print TTHIN "\\def\\calR{{\\cal R}}\\def\\I{{\\cal I}}\n",
               "\\def\\frac#1#2{{{#1}\\over{#2}}}\\def\\colon{:}\n",
               "\\def\\longmapsto{\\mapsto}\\def\\lneqq{<}\n",
@@ -2171,14 +2165,18 @@ print  "Processed TOC files\n" unless ($opt_s);
 open (TEX, "<${dir}manual.tex") || die "Can't open ${dir}manual.tex";
 getlabs $dir;
 while (<TEX>) {
-  if (/\\UseReferences{([^}]*)}/) { 
+  if (/\\UseReferences\{\/([^}]*)}/) {
+      getlabs "/$1/";
+  } elsif (/\\UseReferences\{([^}]*)}/) {
       getlabs "$dir$1/";
-  } elsif (/\\UseGapDocReferences{([^}]*)}/) { 
+  } elsif (/\\UseGapDocReferences\{\/([^}]*)}/) {
+      getlabs "/$1/";
+  } elsif (/\\UseGapDocReferences\{([^}]*)}/) {
       getlabs "$dir$1/";
 #      ($gapdocbook = $1) =~ s?.*/([^/]*)/doc?$1?;
 #      $gapdocbooks{$gapdocbook} = 1;
 #      print STDERR "GapDoc books: ", keys(%gapdocbooks), "\n";
-  } elsif (/\\Package{([^}]*)}/) {
+  } elsif (/\\Package\{([^}]*)}/) {
       $sharepkg .= "|$1"; 
   }
 }
