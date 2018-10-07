@@ -17,12 +17,13 @@ gap> l = r;
 false
 gap> a := GroupReduct( n );                                          
 8/4
-gap>  nsgps := AsSortedList( NormalSubgroups( a ) );
-[ Group(()), 8/4, Group([ (2,4), (1,3)(2,4) ]), Group([ (1,4)(2,3), (1,3)
-  (2,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,3)(2,4) ]) ]
+gap> nsgps := AsSortedList( NormalSubgroups( a ) );;
+gap> List(nsgps, StructureDescription);;
+gap> nsgps;
+[ 1, 8/4, C2 x C2, C2 x C2, C4, C2 ]
 gap> l := Filtered( nsgps,                                             
 > s -> IsSubgroupNearRingRightIdeal( n, s ) );
-[ Group(()), 8/4, Group([ (2,4), (1,3)(2,4) ]) ]
+[ 1, 8/4, C2 x C2 ]
 gap> l := List( l,      
 > s -> NearRingRightIdealBySubgroupNC( n, s ) );
 [ < nearring right ideal >, < nearring right ideal >, 

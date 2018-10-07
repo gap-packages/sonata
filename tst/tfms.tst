@@ -213,8 +213,7 @@ gap> G := GTW8_4;
 8/4
 gap> P := PolynomialNearRing (G);
 PolynomialNearRing( 8/4 )
-gap> A := TrivialSubgroup (G);
-Group(())
+gap> A := TrivialSubgroup (G);;
 gap> B := DerivedSubgroup (G);
 Group([ (1,3)(2,4) ])
 gap> C := G;
