@@ -21,7 +21,8 @@ PackageName := "SONATA",
 Subtitle := "System of nearrings and their applications",
 Version := "2.9.1",
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "07/10/2018",
+Date := "07/10/2018", # dd/mm/yyyy format
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec( 
