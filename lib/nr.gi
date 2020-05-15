@@ -70,7 +70,7 @@ InstallMethod(
 #M  \-			For NR elements
 
 InstallOtherMethod(
-	\AdditiveInverseOp,
+	AdditiveInverseOp,
 	"Nearring Elements",
 	true,
 	[IsNearRingElement],
