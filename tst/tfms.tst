@@ -28,8 +28,9 @@ gap> AsGroupGeneralMappingByImages ( m );
 gap> IsEndoMapping ( InnerAutomorphisms ( GTW6_2 ) [3] );
 true
 gap> AsList ( UnderlyingRelation ( IdentityEndoMapping ( Group ((1,2,3,4)) ) ) );
-[ DirectProductElement( [ (), () ] ), DirectProductElement( [ (1,2,3,4), (1,2,
-   3,4) ] ), DirectProductElement( [ (1,3)(2,4), (1,3)(2,4) ] ), 
+[ DirectProductElement( [ (), () ] ), 
+  DirectProductElement( [ (1,2,3,4), (1,2,3,4) ] ), 
+  DirectProductElement( [ (1,3)(2,4), (1,3)(2,4) ] ), 
   DirectProductElement( [ (1,4,3,2), (1,4,3,2) ] ) ]
 gap> C3 := CyclicGroup (3);
 <pc group of size 3 with 1 generators>
@@ -169,8 +170,8 @@ gap> U := First ( NormalSubgroups ( G ),
 >              x -> Size (x) = 2 );
 Group([ (1,5)(2,10)(3,11)(4,12)(6,15)(7,16)(8,9)(13,14) ])
 gap> HGU := RestrictedEndomorphismNearRing (G, U);
-RestrictedEndomorphismNearRing( 16/8, Group([ (1,5)(2,10)(3,11)(4,12)(6,15)
-(7,16)(8,9)(13,14) ]) )
+RestrictedEndomorphismNearRing( 16/8, Group(
+[ (1,5)(2,10)(3,11)(4,12)(6,15)(7,16)(8,9)(13,14) ]) )
 gap> Size (HGU);
 8
 gap> IsDistributiveNearRing ( HGU );
@@ -198,7 +199,7 @@ gap> P := PolynomialNearRing ( GTW4_2 );
 PolynomialNearRing( 4/2 )
 gap> n := AsExplicitMultiplicationNearRing ( P );
 ExplicitMultiplicationNearRing ( Group([ (1,2)(5,6)(9,10)(13,14), (3,4)(7,8)
-(11,12)(15,16), (7,8)(9,10)(13,14)(15,16) ]) , multiplication )
+  (11,12)(15,16), (7,8)(9,10)(13,14)(15,16) ]) , multiplication )
 gap> G := SymmetricGroup ( 4 );
 Sym( [ 1 .. 4 ] )
 gap> V := Group([ (1,4)(2,3), (1,3)(2,4) ]);
