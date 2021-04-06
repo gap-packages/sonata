@@ -163,9 +163,7 @@ gap> orbs := Orbits( phi, C7 );
 [ [ <identity> of ... ], [ f1, f1^6 ], [ f1^2, f1^5 ], [ f1^3, f1^4 ] ]
 gap> reps := [orbs[2][1], orbs[3][2]];
 [ f1, f1^5 ]
-gap> n := PlanarNearRing( C7, phi, reps );
-ExplicitMultiplicationNearRing ( <pc group of size 7 with 
-1 generators> , multiplication )
+gap> n := PlanarNearRing( C7, phi, reps );;
 gap> C7 := CyclicGroup( 7 );;
 gap> i := GroupHomomorphismByFunction( C7, C7, x -> x^-1 );;
 gap> phi := Group( i );;
@@ -198,8 +196,9 @@ gap> aux := FpfAutomorphismGroupsCyclic( [3,3], 4 );
   <pc group of size 9 with 2 generators> ]
 gap> f := aux[1][1];
 [ f1, f2 ] -> [ f1*f2, f1*f2^2 ]
-gap> phi := Group( f );
-<group with 1 generators>
+gap> phi := Group( f );;
+gap> IsCyclic(phi);
+true
 gap> G := aux[2]; 
 <pc group of size 9 with 2 generators>
 gap> D3 := DesignFromFerreroPair( G, phi, "*" );

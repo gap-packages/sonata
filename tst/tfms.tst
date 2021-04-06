@@ -32,18 +32,14 @@ gap> AsList ( UnderlyingRelation ( IdentityEndoMapping ( Group ((1,2,3,4)) ) ) )
   DirectProductElement( [ (1,2,3,4), (1,2,3,4) ] ), 
   DirectProductElement( [ (1,3)(2,4), (1,3)(2,4) ] ), 
   DirectProductElement( [ (1,4,3,2), (1,4,3,2) ] ) ]
-gap> C3 := CyclicGroup (3);
-<pc group of size 3 with 1 generators>
-gap> m := ConstantEndoMapping (C3, AsSortedList (C3) [2]);
-MappingByFunction( <pc group of size 3 with 1 generators>, <pc group of size 
-3 with 1 generators>, function( x ) ... end )
+gap> C3 := CyclicGroup (3);;
+gap> m := ConstantEndoMapping (C3, AsSortedList (C3) [2]);;
 gap> List (AsList (C3), x -> Image (m, x));
 [ f1, f1, f1 ]
 gap> IsIdentityEndoMapping (EndoMappingByFunction ( 
 > AlternatingGroup ( [1..5] ), x -> x^31));
 true
-gap> C3 := CyclicGroup ( 3 );
-<pc group of size 3 with 1 generators>
+gap> C3 := CyclicGroup ( 3 );;
 gap> IsConstantEndoMapping ( EndoMappingByFunction ( C3,  x -> x^3 ));
 true
 gap> G := Group ( (1,2,3), (1,2) );

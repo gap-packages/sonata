@@ -54,9 +54,7 @@ DirectProductNearRing( ExplicitMultiplicationNearRing ( 18/3 , multiplication \
 ), ExplicitMultiplicationNearRing ( 12/3 , multiplication ) )
 gap> IsExplicitMultiplicationNearRing( d );
 true
-gap> n := ExplicitMultiplicationNearRingNC( CyclicGroup( 3 ), mul_l );
-ExplicitMultiplicationNearRing ( <pc group of size 3 with 
-1 generators> , multiplication )
+gap> n := ExplicitMultiplicationNearRingNC( CyclicGroup( 3 ), mul_l );;
 gap> SetSymbols( n, ["0","1","2"] );
 gap> PrintTable( n );               
 Let:
