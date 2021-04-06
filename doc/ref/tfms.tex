@@ -122,11 +122,11 @@ which maps everything to the group element <g> of <G>.
 
 \beginexample
     gap> C3 := CyclicGroup (3);
-    <pc group of size 3 with 1 generators>
+    <pc group of size 3 with 1 generator>
     gap> m := ConstantEndoMapping (C3, AsSortedList (C3) [2]);
     MappingByFunction( <pc group of size 3 with 
-    1 generators>, <pc group of size 3 with 
-    1 generators>, function( x ) ... end )
+    1 generator>, <pc group of size 3 with 
+    1 generator>, function( x ) ... end )
     gap> List (AsList (C3), x -> Image (m, x));
     [ f1, f1, f1 ]
 \endexample
@@ -154,7 +154,7 @@ function on a group.
 
 \beginexample
     gap> C3 := CyclicGroup ( 3 );
-    <pc group of size 3 with 1 generators>
+    <pc group of size 3 with 1 generator>
     gap> IsConstantEndoMapping ( EndoMappingByFunction ( C3,  x -> x^3 ));
     true
 \endexample
