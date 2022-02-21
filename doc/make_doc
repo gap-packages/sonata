@@ -34,24 +34,23 @@ pdftex manual; pdftex manual
 cd ..
 
 # The HTML version of the manual
-rm -rf ../htm
-mkdir -p ../htm
-mkdir -p ../htm/ref
-mkdir -p ../htm/tut
+rm -rf htm
+mkdir -p htm/ref
+mkdir -p htm/tut
 
 echo "Creating HTML documentation:ref"
 cd ref
-../../../../etc/convert.pl -i -u -c -n SONATA . ../../htm/ref
-cd ../../htm/ref
+../../../../etc/convert.pl -i -u -c -n SONATA . ../htm/ref
+cd ../htm/ref
 for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done
 rm -f tmp
-cd ../../doc
+cd ../..
 
-#(cd ref;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA . ../../htm/ref)
+#(cd ref;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA . ../htm/ref)
 echo "Creating HTML documentation:tut"
 cd tut
-../../../../etc/convert.pl -i -u -c -n SONATA-tutorial . ../../htm/tut
-cd ../../htm/tut
+../../../../etc/convert.pl -i -u -c -n SONATA-tutorial . ../htm/tut
+cd ../htm/tut
 for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done;
 rm -f tmp
-cd ../../doc
+cd ../..
