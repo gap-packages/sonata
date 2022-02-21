@@ -3,34 +3,55 @@
 ##
 #W  make_doc        make SONATA Package documentation     Alexander Hulpke
 ##
+set -e
 
 echo "TeXing documentation:ref"
 # TeX the manual and build its bibliography
 # CAVEAT: For version 2.4 manualindex did not produce a proper file manual.mst
 # for the reference-manual, hence no index. Copying manual.mst for the
 # tutorial-manual into the directory ref/ did the trick.
-(cd ref;tex manual;bibtex manual\
-tex manual; ../../doc/manualindex manual\
-tex manual;pdftex manual;pdftex manual)
+cd ref
+# TeX the manual and build its bibliography
+tex manual;bibtex manual
+# TeX the manual again to incorporate the ToC ... and build the index
+tex manual; ../../../../doc/manualindex manual
+# Finally TeX the manual again to get cross-references right
+tex manual
+# Create PDF version
+pdftex manual; pdftex manual
+cd ..
 
 echo "TeXing documentation:tut"
-(cd tut;tex manual;bibtex manual\
-tex manual; ../../doc/manualindex manual\
-tex manual;pdftex manual;pdftex manual)
+cd tut
+# TeX the manual and build its bibliography
+tex manual;bibtex manual
+# TeX the manual again to incorporate the ToC ... and build the index
+tex manual; ../../../../doc/manualindex manual
+# Finally TeX the manual again to get cross-references right
+tex manual
+# Create PDF version
+pdftex manual; pdftex manual
+cd ..
 
 # The HTML version of the manual
+rm -rf ../htm
 mkdir -p ../htm
 mkdir -p ../htm/ref
 mkdir -p ../htm/tut
+
 echo "Creating HTML documentation:ref"
-(cd ref;../convert.pl -t -c -n SONATA . ../../htm/ref)
-(cd ../htm/ref;for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done; rm -f tmp)
+cd ref
+../../../../etc/convert.pl -i -u -c -n SONATA . ../../htm/ref
+cd ../../htm/ref
+for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done
+rm -f tmp
+cd ../../doc
 
 #(cd ref;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA . ../../htm/ref)
 echo "Creating HTML documentation:tut"
-(cd tut;../convert.pl -t -c -n SONATA-tutorial . ../../htm/tut)
-(cd ../htm/tut;for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done; rm -f tmp)
-#(cd tut;/home/staff/juergen/SSOONNAATTAA/gap/etc/convert.pl -t -c -n SONATA-tutorial . ../../htm/tut)
-#########################################################################
-##
-#E
+cd tut
+../../../../etc/convert.pl -i -u -c -n SONATA-tutorial . ../../htm/tut
+cd ../../htm/tut
+for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done;
+rm -f tmp
+cd ../../doc
