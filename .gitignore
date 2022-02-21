@@ -12,7 +12,7 @@
 /doc/*/*.toc
 /doc/*/*.tst
 
-/htm/
+/doc/htm/
 
 /gh-pages/
 /tmp/

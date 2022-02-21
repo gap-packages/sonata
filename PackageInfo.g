@@ -120,7 +120,7 @@ PackageDoc := [
   rec(
   BookName  := "SONATA",
   ArchiveURLSubset := ["doc/ref","htm/ref"],
-  HTMLStart := "htm/ref/chapters.htm",
+  HTMLStart := "doc/htm/ref/chapters.htm",
   PDFFile   := "doc/ref/manual.pdf",
   SixFile   := "doc/ref/manual.six",
   LongTitle := "System of nearrings and their applications",
@@ -129,7 +129,7 @@ PackageDoc := [
   rec(
   BookName  := "SONATA Tutorial",
   ArchiveURLSubset := ["doc/tut","htm/tut"],
-  HTMLStart := "htm/tut/chapters.htm",
+  HTMLStart := "doc/htm/tut/chapters.htm",
   PDFFile   := "doc/tut/manual.pdf",
   SixFile   := "doc/tut/manual.six",
   LongTitle := "Eight easy pieces for SONATA: a SONATA tutorial",
