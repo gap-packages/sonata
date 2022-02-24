@@ -1,6 +1,6 @@
 name: SONATA
-version: 2.9.1
-date: 2018-10-07
+version: 2.9.2
+date: 2022-02-23
 description: |
     System of nearrings and their applications
 
@@ -34,41 +34,41 @@ packageinfo: https://gap-packages.github.io/sonata/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/sonata/releases/download/v2.9.1/sonata-2.9.1.tar.gz
+      url: https://github.com/gap-packages/sonata/releases/download/v2.9.2/sonata-2.9.2.tar.gz
 
 abstract: |
     The <span class="pkgname">SONATA</span> package provides methods for     the construction and analysis of finite nearrings.
 
 status: accepted
-doc-html: htm/ref/chapters.htm
+doc-html: doc/htm/ref/chapters.htm
 doc-pdf: doc/ref/manual.pdf
 keywords: |
     near ring, endomorphism, Frobenius group, fixed point free automorphism.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>ABEMN18</span>]   <b class='BibAuthor'>Aichinger, E., Binder, F., Ecker, J., Mayr, P. and Nöbauer, C.</b>,
+    [<span class='BibKey'>ABEMN22</span>]   <b class='BibAuthor'>Aichinger, E., Binder, F., Ecker, J., Mayr, P. and Nöbauer, C.</b>,
      <i class='BibTitle'>SONATA, System of nearrings and their applications,
-             Version 2.9.1</i>
-     (<span class='BibYear'>2018</span>)<br />
+             Version 2.9.2</i>
+     (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>Refereed GAP package</span>),
     <span class='BibHowpublished'><a href="https://gap-packages.github.io/sonata/">https://gap-packages.github.io/sonata/</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ SONATA2.9.1,
+    @misc{ SONATA2.9.2,
       author =           {Aichinger,  E.  and Binder, F. and Ecker, J. and Mayr,
                           P. and N{\"o}bauer, C.},
       title =            {{SONATA},  System of nearrings and their applications,
-                          {V}ersion 2.9.1},
-      month =            {Oct},
-      year =             {2018},
+                          {V}ersion 2.9.2},
+      month =            {Feb},
+      year =             {2022},
       note =             {Refereed GAP package},
       howpublished =     {\href         {https://gap-packages.github.io/sonata/}
                           {\texttt{https://gap-packages.github.io/}\discretionary
                           {}{}{}\texttt{sonata/}}},
       keywords =         {near  ring; endomorphism; Frobenius group; fixed point
                           free automorphism},
-      printedkey =       {ABEMN18}
+      printedkey =       {ABEMN22}
     }
 
