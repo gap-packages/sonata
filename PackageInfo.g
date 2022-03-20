@@ -19,9 +19,9 @@ SetPackageInfo( rec(
 
 PackageName := "SONATA",
 Subtitle := "System of nearrings and their applications",
-Version := "2.9.2",
+Version := "2.9.3",
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "23/02/2022", # dd/mm/yyyy format
+Date := "20/03/2022", # dd/mm/yyyy format
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -119,7 +119,7 @@ AbstractHTML :=
 PackageDoc := [
   rec(
   BookName  := "SONATA",
-  ArchiveURLSubset := ["doc/ref","htm/ref"],
+  ArchiveURLSubset := ["doc/ref","doc/htm/ref"],
   HTMLStart := "doc/htm/ref/chapters.htm",
   PDFFile   := "doc/ref/manual.pdf",
   SixFile   := "doc/ref/manual.six",
@@ -128,7 +128,7 @@ PackageDoc := [
   ),
   rec(
   BookName  := "SONATA Tutorial",
-  ArchiveURLSubset := ["doc/tut","htm/tut"],
+  ArchiveURLSubset := ["doc/tut","doc/htm/tut"],
   HTMLStart := "doc/htm/tut/chapters.htm",
   PDFFile   := "doc/tut/manual.pdf",
   SixFile   := "doc/tut/manual.six",
