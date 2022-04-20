@@ -225,8 +225,6 @@ gap> j := CongruenceNoetherianQuotientForInnerAutomorphismNearRings (I,A,B,C);
 < nearring ideal >
 gap> Size (I/j);
 2
-gap> Zp := ZeroSymmetricPart ( P );
-< transformation nearring with 3 generators >
-gap> I = Zp;
+gap> I = ZeroSymmetricPart ( P );
 true
 gap> STOP_TEST( "tfms.tst", 10000);
