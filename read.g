@@ -43,18 +43,6 @@ ReadPackage( "sonata", "lib/compatible.gi" );
 ReadPackage( "sonata", "lib/ring.gi" );
 
 # test if xgap is available and running
-
-TTEESSTTXXGGAAPP := TestPackageAvailability("xgap","0");
-
-if TTEESSTTXXGGAAPP = true then
+if TestPackageAvailability("xgap","0") = true then
    ReadPackage( "sonata", "lib/xgap.gi" );	# xgap is running
-elif TTEESSTTXXGGAAPP = fail then
-   Info(InfoWarning,1,"You may wish to install the xgap package");
-   Info(InfoWarning,1,"and enjoy the graphic capabilities of SONATA.");
-else
-   Info(InfoWarning,1,"You may wish to start xgap"); 
-   Info(InfoWarning,1,"and enjoy the graphic capabilities of SONATA.");
 fi;
-
-Unbind(TTEESSTTXXGGAAPP);
-
