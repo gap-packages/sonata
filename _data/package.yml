@@ -1,6 +1,6 @@
 name: SONATA
-version: 2.9.4
-date: 2022-04-20
+version: 2.9.5
+date: 2022-10-14
 description: |
     System of nearrings and their applications
 
@@ -34,7 +34,7 @@ packageinfo: https://gap-packages.github.io/sonata/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/sonata/releases/download/v2.9.4/sonata-2.9.4.tar.gz
+      url: https://github.com/gap-packages/sonata/releases/download/v2.9.5/sonata-2.9.5.tar.gz
 
 abstract: |
     The <span class="pkgname">SONATA</span> package provides methods for     the construction and analysis of finite nearrings.
@@ -48,7 +48,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>ABEMN22</span>]   <b class='BibAuthor'>Aichinger, E., Binder, F., Ecker, J., Mayr, P. and Nöbauer, C.</b>,
      <i class='BibTitle'>SONATA, System of nearrings and their applications,
-             Version 2.9.4</i>
+             Version 2.9.5</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>Refereed GAP package</span>),
     <span class='BibHowpublished'><a href="https://gap-packages.github.io/sonata/">https://gap-packages.github.io/sonata/</a></span>.
@@ -56,12 +56,12 @@ citeas: |
     
 
 bibtex: |
-    @misc{ SONATA2.9.4,
+    @misc{ SONATA2.9.5,
       author =           {Aichinger,  E.  and Binder, F. and Ecker, J. and Mayr,
                           P. and N{\"o}bauer, C.},
       title =            {{SONATA},  System of nearrings and their applications,
-                          {V}ersion 2.9.4},
-      month =            {Apr},
+                          {V}ersion 2.9.5},
+      month =            {Oct},
       year =             {2022},
       note =             {Refereed GAP package},
       howpublished =     {\href         {https://gap-packages.github.io/sonata/}
