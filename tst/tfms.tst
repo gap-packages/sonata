@@ -141,7 +141,7 @@ gap> Size ( I );
 3072
 gap> m := Enumerator( I )[1000];
 <mapping: AlternatingGroup( [ 1 .. 4 ] ) -> AlternatingGroup( [ 1 .. 4 ] ) >
-gap> graph := List ( AsList ( AlternatingGroup ( 4 ) ),
+gap> graph := List ( AsSet ( AlternatingGroup ( 4 ) ),
 > x -> [x, Image (m, x)] );
 [ [ (), () ], [ (2,3,4), (1,2,3) ], [ (2,4,3), (2,3,4) ], 
   [ (1,2)(3,4), (1,2)(3,4) ], [ (1,2,3), (1,2,4) ], [ (1,2,4), (1,4,2) ], 
