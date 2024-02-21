@@ -8,7 +8,11 @@ layout: default
 
 The current version of this package is version {{site.data.package.version}}, released on {{site.data.package.date}}.
 For more information, please refer to [the package manual]({{site.data.package.doc-html}}).
-There is also a [README](README.html) file and a [tutorial](htm/tut/chapters.htm).
+There is also a [README](README.html) file.
+
+{% if site.data.package.license %}
+  License: [{{ site.data.package.license }}](https://spdx.org/licenses/{{ site.data.package.license }})
+{% endif %}
 
 ## Dependencies
 

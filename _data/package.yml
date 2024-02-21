@@ -1,5 +1,6 @@
 name: SONATA
-version: 2.9.6
+version: "2.9.6"
+license: "GPL-2.0-or-later"
 date: 2022-12-06
 description: |
     System of nearrings and their applications
