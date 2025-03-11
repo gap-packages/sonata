@@ -123,7 +123,6 @@ PackageDoc := [
   PDFFile   := "doc/ref/manual.pdf",
   SixFile   := "doc/ref/manual.six",
   LongTitle := "System of nearrings and their applications",
-  Autoload  := true
   ),
   rec(
   BookName  := "SONATA Tutorial",
@@ -132,7 +131,6 @@ PackageDoc := [
   PDFFile   := "doc/tut/manual.pdf",
   SixFile   := "doc/tut/manual.six",
   LongTitle := "Eight easy pieces for SONATA: a SONATA tutorial",
-  Autoload  := false
   ),
 ],
 
