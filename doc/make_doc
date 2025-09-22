@@ -1,8 +1,4 @@
 #!/bin/sh
-#########################################################################
-##
-#W  make_doc        make SONATA Package documentation     Alexander Hulpke
-##
 set -e
 
 echo "TeXing documentation:ref"
@@ -11,26 +7,46 @@ echo "TeXing documentation:ref"
 # for the reference-manual, hence no index. Copying manual.mst for the
 # tutorial-manual into the directory ref/ did the trick.
 cd ref
-# TeX the manual and build its bibliography
-tex manual;bibtex manual
-# TeX the manual again to incorporate the ToC ... and build the index
-tex manual; ../../../../doc/manualindex manual
+
+# delete old stuff to avoid spurious or "hidden errors" caused by their presence
+rm -f manual.{aux,bbl,blg,dvi,idx,ilg,ind,lab,log,pdf,ps,six,toc}
+# TeX the manual
+tex manual
+# ... and build its bibliography
+bibtex manual
+# TeX the manual again to incorporate the ToC
+tex manual
+# ... and build the index
+../../../../doc/manualindex manual
 # Finally TeX the manual again to get cross-references right
 tex manual
+
 # Create PDF version
-pdftex manual; pdftex manual
+pdftex manual
+pdftex manual
+
 cd ..
 
 echo "TeXing documentation:tut"
 cd tut
-# TeX the manual and build its bibliography
-tex manual;bibtex manual
-# TeX the manual again to incorporate the ToC ... and build the index
-tex manual; ../../../../doc/manualindex manual
+
+# delete old stuff to avoid spurious or "hidden errors" caused by their presence
+rm -f manual.{aux,bbl,blg,dvi,idx,ilg,ind,lab,log,pdf,ps,six,toc}
+# TeX the manual
+tex manual
+# ... and build its bibliography
+bibtex manual
+# TeX the manual again to incorporate the ToC
+tex manual
+# ... and build the index
+../../../../doc/manualindex manual
 # Finally TeX the manual again to get cross-references right
 tex manual
+
 # Create PDF version
-pdftex manual; pdftex manual
+pdftex manual
+pdftex manual
+
 cd ..
 
 # The HTML version of the manual
@@ -42,7 +58,10 @@ echo "Creating HTML documentation:ref"
 cd ref
 ../../../../etc/convert.pl -i -u -c -n SONATA . ../htm/ref
 cd ../htm/ref
-for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done
+for d in *.htm; do
+  sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp
+  cp tmp $d
+done
 rm -f tmp
 cd ../..
 
@@ -51,6 +70,9 @@ echo "Creating HTML documentation:tut"
 cd tut
 ../../../../etc/convert.pl -i -u -c -n SONATA-tutorial . ../htm/tut
 cd ../htm/tut
-for d in *.htm; do sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp; cp tmp $d; done;
+for d in *.htm; do
+  sed 's/cite\([^ .,]\+\)/[\1]/g' < $d > tmp
+  cp tmp $d
+done
 rm -f tmp
 cd ../..
