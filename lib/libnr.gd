@@ -1,9 +1,3 @@
-DeclareGlobalVariable( "NEARRING_PATH_NAME",
-	"path to the directory containing the library of small near rings" );
-
-DeclareGlobalVariable( "NEARRING_WITH_IDENTITY_PATH_NAME",
-	"path to the directory containing the library of small near rings with identity" );
-
 #############################################################################
 ##
 #O  LibraryNearRing( <group>, <num> ). . . . . . . . get a nr from the library
