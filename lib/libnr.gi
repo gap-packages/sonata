@@ -8,124 +8,107 @@
 ##  13.01.00  N!.multiplication ersetzt, PM
 ##
 
-##############################################################################
-##
-BindGlobal( "NEARRING_PATH_NAME", 
-		DirectoriesPackageLibrary( "sonata", "nr" ) );
-BindGlobal( "NEARRING_WITH_IDENTITY_PATH_NAME",
-		DirectoriesPackageLibrary( "sonata", "nri" ) );
+DeclareAutoreadableVariables("sonata", "nr/nr_2-7.nr",
+        [ "NR_C2", "NR_C3", "NR_C4", "NR_V4", "NR_C5", "NR_C6", "NR_S3", "NR_C7" ] );
 
-BindGlobal( "AutoReadNR",
-  function ( filename )
-    Read( Filename( NEARRING_PATH_NAME, Concatenation(filename,".nr") ) );
-end );
+DeclareAutoreadableVariables("sonata", "nr/nr8_1.nr", [ "NR_C8" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr8_2.nr", [ "NR_C2xC4" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr8_3.nr", [ "NR_C2xC2xC2" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr8_4.nr", [ "NR_D8" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr8_5.nr", [ "NR_Q8" ] );
 
-BindGlobal( "AutoReadNRI",
-  function ( filename )
-    Read( Filename( NEARRING_WITH_IDENTITY_PATH_NAME, Concatenation(filename,".nr") ) );
-end );
+DeclareAutoreadableVariables("sonata", "nr/nr9_1.nr", [ "NR_C9" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr9_2.nr", [ "NR_C3xC3" ] );
 
-AUTO( AutoReadNR, "nr_2-7" ,  "NR_C2", "NR_C3", "NR_C4", "NR_V4", "NR_C5", 
-                                 "NR_C6", "NR_S3", "NR_C7"                  );
+DeclareAutoreadableVariables("sonata", "nr/nr10_1.nr", [ "NR_C10" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr10_2.nr", [ "NR_D10" ] );
 
-AUTO( AutoReadNR, "nr8_1" ,   "NR_C8"       ); 
-AUTO( AutoReadNR, "nr8_2" ,   "NR_C2xC4"    ); 
-AUTO( AutoReadNR, "nr8_3" ,   "NR_C2xC2xC2" ); 
-AUTO( AutoReadNR, "nr8_4" ,   "NR_D8"       ); 
-AUTO( AutoReadNR, "nr8_5" ,   "NR_Q8"       ); 
+DeclareAutoreadableVariables("sonata", "nr/nr11_1.nr", [ "NR_C11" ] );
 
-AUTO( AutoReadNR, "nr9_1" ,   "NR_C9"       ); 
-AUTO( AutoReadNR, "nr9_2" ,   "NR_C3xC3"    ); 
+DeclareAutoreadableVariables("sonata", "nr/nr12_1.nr", [ "NR_C12" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_2.nr", [ "NR_C2xC6" ] );
 
-AUTO( AutoReadNR, "nr10_1" ,   "NR_C10"     ); 
-AUTO( AutoReadNR, "nr10_2" ,   "NR_D10"     ); 
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.1.nr", [ "NR_D12_1" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.2.nr", [ "NR_D12_2" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.3.nr", [ "NR_D12_3" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.4.nr", [ "NR_D12_4" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.5.nr", [ "NR_D12_5" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.6.nr", [ "NR_D12_6" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.7.nr", [ "NR_D12_7" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.8.nr", [ "NR_D12_8" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_3.9.nr", [ "NR_D12_9" ] );
 
-AUTO( AutoReadNR, "nr11_1" ,   "NR_C11"     ); 
+DeclareAutoreadableVariables("sonata", "nr/nr12_4.nr", [ "NR_A4" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr12_5.nr", [ "NR_T" ] );
 
-AUTO( AutoReadNR, "nr12_1" ,   "NR_C12"     ); 
-AUTO( AutoReadNR, "nr12_2" ,   "NR_C2xC6"   ); 
+DeclareAutoreadableVariables("sonata", "nr/nr13_1.nr", [ "NR_C13" ] );
 
-AUTO( AutoReadNR, "nr12_3.1" ,   "NR_D12_1"     ); 
-AUTO( AutoReadNR, "nr12_3.2" ,   "NR_D12_2"     ); 
-AUTO( AutoReadNR, "nr12_3.3" ,   "NR_D12_3"     ); 
-AUTO( AutoReadNR, "nr12_3.4" ,   "NR_D12_4"     ); 
-AUTO( AutoReadNR, "nr12_3.5" ,   "NR_D12_5"     ); 
-AUTO( AutoReadNR, "nr12_3.6" ,   "NR_D12_6"     ); 
-AUTO( AutoReadNR, "nr12_3.7" ,   "NR_D12_7"     ); 
-AUTO( AutoReadNR, "nr12_3.8" ,   "NR_D12_8"     ); 
-AUTO( AutoReadNR, "nr12_3.9" ,   "NR_D12_9"     ); 
+DeclareAutoreadableVariables("sonata", "nr/nr14_1.nr", [ "NR_C14" ] );
+DeclareAutoreadableVariables("sonata", "nr/nr14_2.nr", [ "NR_D14" ] );
 
-AUTO( AutoReadNR, "nr12_4" ,   "NR_A4"      ); 
-AUTO( AutoReadNR, "nr12_5" ,   "NR_T"       ); 
-
-AUTO( AutoReadNR, "nr13_1" ,   "NR_C13"     ); 
-
-AUTO( AutoReadNR, "nr14_1" ,   "NR_C14"     ); 
-AUTO( AutoReadNR, "nr14_2" ,   "NR_D14"     ); 
-
-AUTO( AutoReadNR, "nr15_1" ,   "NR_C15"     );
+DeclareAutoreadableVariables("sonata", "nr/nr15_1.nr", [ "NR_C15" ] );
 
 ########################################################
 
-AUTO( AutoReadNRI, "nri12_3" ,   "NI12_3"      ); 
+DeclareAutoreadableVariables("sonata", "nri/nri12_3.nr", [ "NI12_3" ] );
 
-AUTO( AutoReadNRI, "nri16_1" ,   "NI16_1"      ); 
-AUTO( AutoReadNRI, "nri16_2" ,   "NI16_2"      ); 
-AUTO( AutoReadNRI, "nri16_3" ,   "NI16_3"      ); 
-AUTO( AutoReadNRI, "nri16_4" ,   "NI16_4"      ); 
-AUTO( AutoReadNRI, "nri16_5" ,   "NI16_5"      ); 
-AUTO( AutoReadNRI, "nri16_6" ,   "NI16_6"      ); 
-AUTO( AutoReadNRI, "nri16_7" ,   "NI16_7"      ); 
-AUTO( AutoReadNRI, "nri16_9" ,   "NI16_9"      ); 
-AUTO( AutoReadNRI, "nri16_10" ,  "NI16_10"     ); 
-AUTO( AutoReadNRI, "nri16_11" ,  "NI16_11"     );
+DeclareAutoreadableVariables("sonata", "nri/nri16_1.nr", [ "NI16_1" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_2.nr", [ "NI16_2" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_3.nr", [ "NI16_3" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_4.nr", [ "NI16_4" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_5.nr", [ "NI16_5" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_6.nr", [ "NI16_6" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_7.nr", [ "NI16_7" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_9.nr", [ "NI16_9" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_10.nr", [ "NI16_10" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri16_11.nr", [ "NI16_11" ] );
 
-AUTO( AutoReadNRI, "nri17_1" ,   "NI17_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri17_1.nr", [ "NI17_1" ] );
 
-AUTO( AutoReadNRI, "nri18_1" ,   "NI18_1"      );
-AUTO( AutoReadNRI, "nri18_2" ,   "NI18_2"      );  
-AUTO( AutoReadNRI, "nri18_3" ,   "NI18_3"      );
+DeclareAutoreadableVariables("sonata", "nri/nri18_1.nr", [ "NI18_1" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri18_2.nr", [ "NI18_2" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri18_3.nr", [ "NI18_3" ] );
 
-AUTO( AutoReadNRI, "nri19_1" ,   "NI19_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri19_1.nr", [ "NI19_1" ] );
 
-AUTO( AutoReadNRI, "nri20_1" ,   "NI20_1"      );
-AUTO( AutoReadNRI, "nri20_2" ,   "NI20_2"      ); 
-AUTO( AutoReadNRI, "nri20_3" ,   "NI20_3"      );
+DeclareAutoreadableVariables("sonata", "nri/nri20_1.nr", [ "NI20_1" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri20_2.nr", [ "NI20_2" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri20_3.nr", [ "NI20_3" ] );
 
-AUTO( AutoReadNRI, "nri21_1" ,   "NI21_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri21_1.nr", [ "NI21_1" ] );
 
-AUTO( AutoReadNRI, "nri22_1" ,   "NI22_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri22_1.nr", [ "NI22_1" ] );
 
-AUTO( AutoReadNRI, "nri23_1" ,   "NI23_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri23_1.nr", [ "NI23_1" ] );
 
-AUTO( AutoReadNRI, "nri24_1" ,   "NI24_1"      );
-AUTO( AutoReadNRI, "nri24_2" ,   "NI24_2"      );  
-AUTO( AutoReadNRI, "nri24_3" ,   "NI24_3"      );  
-AUTO( AutoReadNRI, "nri24_4" ,   "NI24_4"      ); 
-AUTO( AutoReadNRI, "nri24_5" ,   "NI24_5"      ); 
-AUTO( AutoReadNRI, "nri24_7" ,   "NI24_7"      ); 
-AUTO( AutoReadNRI, "nri24_9" ,   "NI24_9"      ); 
+DeclareAutoreadableVariables("sonata", "nri/nri24_1.nr", [ "NI24_1" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri24_2.nr", [ "NI24_2" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri24_3.nr", [ "NI24_3" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri24_4.nr", [ "NI24_4" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri24_5.nr", [ "NI24_5" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri24_7.nr", [ "NI24_7" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri24_9.nr", [ "NI24_9" ] );
 
-AUTO( AutoReadNRI, "nri25_1" ,   "NI25_1"      );
-AUTO( AutoReadNRI, "nri25_2" ,   "NI25_2"      ); 
+DeclareAutoreadableVariables("sonata", "nri/nri25_1.nr", [ "NI25_1" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri25_2.nr", [ "NI25_2" ] );
 
-AUTO( AutoReadNRI, "nri26_1" ,   "NI26_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri26_1.nr", [ "NI26_1" ] );
 
-AUTO( AutoReadNRI, "nri27_1" ,   "NI27_1"      );
-AUTO( AutoReadNRI, "nri27_2" ,   "NI27_2"      ); 
-AUTO( AutoReadNRI, "nri27_3" ,   "NI27_3"      ); 
-AUTO( AutoReadNRI, "nri27_4" ,   "NI27_4"      ); 
-AUTO( AutoReadNRI, "nri27_5" ,   "NI27_5"      ); 
+DeclareAutoreadableVariables("sonata", "nri/nri27_1.nr", [ "NI27_1" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri27_2.nr", [ "NI27_2" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri27_3.nr", [ "NI27_3" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri27_4.nr", [ "NI27_4" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri27_5.nr", [ "NI27_5" ] );
 
-AUTO( AutoReadNRI, "nri28_1" ,   "NI28_1"      );
-AUTO( AutoReadNRI, "nri28_2" ,   "NI28_2"      ); 
-AUTO( AutoReadNRI, "nri28_3" ,   "NI28_3"      );
+DeclareAutoreadableVariables("sonata", "nri/nri28_1.nr", [ "NI28_1" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri28_2.nr", [ "NI28_2" ] );
+DeclareAutoreadableVariables("sonata", "nri/nri28_3.nr", [ "NI28_3" ] );
 
-AUTO( AutoReadNRI, "nri29_1" ,   "NI29_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri29_1.nr", [ "NI29_1" ] );
 
-AUTO( AutoReadNRI, "nri30_1" ,   "NI30_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri30_1.nr", [ "NI30_1" ] );
 
-AUTO( AutoReadNRI, "nri31_1" ,   "NI31_1"      );
+DeclareAutoreadableVariables("sonata", "nri/nri31_1.nr", [ "NI31_1" ] );
 
 ############################################################################
 ##
