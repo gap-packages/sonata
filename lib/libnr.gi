@@ -405,7 +405,7 @@ InstallMethod(
         i,     # help var: a loop variable
         tfle,  # help var: the record that holds the tfl's of the group endos
         f,     # help var: a valid function that represents a class of nr's
-        vf,endos,g,a,a_inv,h,compute_all, ns,
+        vf,endos,g,a,a_inv,h,compute_all,
         mul,   # local function: the multiplication of the nearring
 	gens,  # generators of group
 	imgs;  # images of gens under endomorphisms
@@ -421,45 +421,45 @@ InstallMethod(
   n := rec(); n.classes := rec();
 
   if   ( Name( group ) = "2/1" ) then  
-    n := NR_C2; ns := "2/1";
+    n := NR_C2;
   elif ( Name( group ) = "3/1" )  then
-    n := NR_C3; ns := "3/1";
+    n := NR_C3;
   elif ( Name( group ) = "4/1" )  then
-    n := NR_C4;  ns := "4/1";
+    n := NR_C4;
   elif ( Name( group ) = "4/2" )  then
-    n := NR_V4;  ns := "4/2";
+    n := NR_V4;
   elif ( Name( group ) = "5/1" )  then
-    n := NR_C5;  ns := "5/1";
+    n := NR_C5;
   elif ( Name( group ) = "6/1" )  then
-    n := NR_C6;  ns := "6/1";
+    n := NR_C6;
   elif ( Name( group ) = "6/2" )  then
-    n := NR_S3;  ns := "6/2";
+    n := NR_S3;
   elif ( Name( group ) = "7/1" )  then
-    n := NR_C7;  ns := "7/1";
+    n := NR_C7;
   elif ( Name( group ) = "8/1" )  then
-    n := NR_C8;  ns := "8/1";
+    n := NR_C8;
   elif ( Name( group ) = "8/2" )  then
-    n := NR_C2xC4;  ns := "8/2";
+    n := NR_C2xC4;
   elif ( Name( group ) = "8/3" )  then
-    n := NR_C2xC2xC2;  ns := "8/3";
+    n := NR_C2xC2xC2;
   elif ( Name( group ) = "8/4" )  then
-    n := NR_D8;  ns := "8/4";
+    n := NR_D8;
   elif ( Name( group ) = "8/5" )  then
-    n := NR_Q8;  ns := "8/5";
+    n := NR_Q8;
   elif ( Name( group ) = "9/1" )  then
-    n := NR_C9; ns := "9/1";
+    n := NR_C9;
   elif ( Name( group ) = "9/2" )  then
-    n := NR_C3xC3;  ns := "9/2";
+    n := NR_C3xC3;
   elif ( Name( group ) = "10/1" )  then
-    n := NR_C10;  ns := "10/1";
+    n := NR_C10;
   elif ( Name( group ) = "10/2" )  then
-    n := NR_D10;  ns := "10/2";
+    n := NR_D10;
   elif ( Name( group ) = "11/1" )  then
-    n := NR_C11;  ns := "11/1";
+    n := NR_C11;
   elif ( Name( group ) = "12/1" )  then
-    n := NR_C12;  ns := "12/1";
+    n := NR_C12;
   elif ( Name( group ) = "12/2" )  then
-    n := NR_C2xC6;  ns := "12/2";
+    n := NR_C2xC6;
 
   elif ( Name( group ) = "12/3" )  then
     if num in [1..5000] then
@@ -481,20 +481,20 @@ InstallMethod(
     elif num in [40001..48137] then
       n := NR_D12_9;
     fi;
-    ns := "12/3";
+
 
   elif ( Name( group ) = "12/4" )  then
-    n := NR_A4;  ns := "12/4";
+    n := NR_A4;
   elif ( Name( group ) = "12/5" )  then
-    n := NR_T;  ns := "12/5";
+    n := NR_T;
   elif ( Name( group ) = "13/1" )  then
-    n := NR_C13;  ns := "13/1";
+    n := NR_C13;
   elif ( Name( group ) = "14/1" )  then
-    n := NR_C14;  ns := "14/1";
+    n := NR_C14;
   elif ( Name( group ) = "14/2" )  then
-    n := NR_D14;  ns := "14/2";
+    n := NR_D14;
   elif ( Name( group ) = "15/1" )  then
-    n := NR_C15;  ns := "15/1";
+    n := NR_C15;
   else
     TryNextMethod();
 #    Print( "There is no group name '", group, 
@@ -588,7 +588,7 @@ InstallMethod(
         i,     # help var: a loop variable
         tfle,  # help var: the record that holds the tfl's of the group endos
         f,     # help var: a valid function that represents a class of nr's
-        vf,endos,g,a,a_inv,h,compute_all, ns,
+        vf,endos,g,a,a_inv,h,compute_all,
         mul,   # local function: the multiplication of the nearring
 	gens,  # generators of group
 	imgs,  # images of gens under endomorphisms
@@ -608,106 +608,106 @@ InstallMethod(
 
 
   if   ( Name( group ) = "12/3" ) then  
-    n := NI12_3; ns := "12/3";
+    n := NI12_3;
   elif ( Name( group ) = "16/1" ) then  
-    n := NI16_1; ns := "16/1";
+    n := NI16_1;
   elif ( Name( group ) = "16/2" )  then
-    n := NI16_2; ns := "16/2";
+    n := NI16_2;
   elif ( Name( group ) = "16/3" )  then
-    n := NI16_3; ns := "16/3";
+    n := NI16_3;
   elif ( Name( group ) = "16/4" )  then
-    n := NI16_4; ns := "16/4";
+    n := NI16_4;
   elif ( Name( group ) = "16/5" )  then
-    n := NI16_5; ns := "16/5";
+    n := NI16_5;
   elif ( Name( group ) = "16/6" )  then
-    n := NI16_6; ns := "16/6";
+    n := NI16_6;
   elif ( Name( group ) = "16/7" )  then
-    n := NI16_7; ns := "16/7";
+    n := NI16_7;
   elif ( Name( group ) = "16/9" )  then
-    n := NI16_9; ns := "16/9";
+    n := NI16_9;
   elif ( Name( group ) = "16/10" )  then
-    n := NI16_10; ns := "16/10";
+    n := NI16_10;
   elif ( Name( group ) = "16/11" )  then
-    n := NI16_11; ns := "16/11";
+    n := NI16_11;
 
   elif ( Name( group ) = "17/1" ) then  
-    n := NI17_1; ns := "17/1";
+    n := NI17_1;
 
   elif ( Name( group ) = "18/1" ) then  
-    n := NI18_1; ns := "18/1";
+    n := NI18_1;
   elif ( Name( group ) = "18/2" )  then
-    n := NI18_2; ns := "18/2";
+    n := NI18_2;
   elif ( Name( group ) = "18/3" )  then
-    n := NI18_3; ns := "18/3";
+    n := NI18_3;
 
   elif ( Name( group ) = "19/1" ) then  
-    n := NI19_1; ns := "19/1";
+    n := NI19_1;
 
   elif ( Name( group ) = "20/1" ) then  
-    n := NI20_1; ns := "20/1";
+    n := NI20_1;
   elif ( Name( group ) = "20/2" )  then
-    n := NI20_2; ns := "20/2";
+    n := NI20_2;
   elif ( Name( group ) = "20/3" ) then  
-    n := NI20_3; ns := "20/3";
+    n := NI20_3;
 
   elif ( Name( group ) = "21/1" ) then  
-    n := NI21_1; ns := "21/1";
+    n := NI21_1;
 
   elif ( Name( group ) = "22/1" ) then  
-    n := NI22_1; ns := "22/1";
+    n := NI22_1;
 
   elif ( Name( group ) = "23/1" ) then  
-    n := NI23_1; ns := "23/1";
+    n := NI23_1;
 
   elif ( Name( group ) = "24/1" ) then  
-    n := NI24_1; ns := "24/1";
+    n := NI24_1;
   elif ( Name( group ) = "24/2" )  then
-    n := NI24_2; ns := "24/2";
+    n := NI24_2;
   elif ( Name( group ) = "24/3" )  then
-    n := NI24_3; ns := "24/3";
+    n := NI24_3;
   elif ( Name( group ) = "24/4" )  then
-    n := NI24_4; ns := "24/4";
+    n := NI24_4;
   elif ( Name( group ) = "24/5" )  then
-    n := NI24_5; ns := "24/5";
+    n := NI24_5;
   elif ( Name( group ) = "24/7" )  then
-    n := NI24_7; ns := "24/7";
+    n := NI24_7;
   elif ( Name( group ) = "24/9" )  then
-    n := NI24_9; ns := "24/9";
+    n := NI24_9;
 
   elif ( Name( group ) = "25/1" ) then  
-    n := NI25_1; ns := "25/1";
+    n := NI25_1;
   elif ( Name( group ) = "25/2" ) then  
-    n := NI25_2; ns := "25/2";
+    n := NI25_2;
 
   elif ( Name( group ) = "26/1" ) then  
-    n := NI26_1; ns := "26/1";
+    n := NI26_1;
 
   elif ( Name( group ) = "27/1" ) then  
-    n := NI27_1; ns := "27/1";
+    n := NI27_1;
   elif ( Name( group ) = "27/2" ) then  
-    n := NI27_2; ns := "27/2";
+    n := NI27_2;
   elif ( Name( group ) = "27/3" ) then  
-    n := NI27_3; ns := "27/3";
+    n := NI27_3;
   elif ( Name( group ) = "27/4" )  then
-    n := NI27_4; ns := "27/4";
+    n := NI27_4;
   elif ( Name( group ) = "27/5" )  then
-    n := NI27_5; ns := "27/5";
+    n := NI27_5;
 
   elif ( Name( group ) = "28/1" ) then  
-    n := NI28_1; ns := "28/1";
+    n := NI28_1;
   elif ( Name( group ) = "28/2" )  then
-    n := NI28_2; ns := "28/2";
+    n := NI28_2;
   elif ( Name( group ) = "28/3" ) then  
-    n := NI28_3; ns := "28/3";
+    n := NI28_3;
 
   elif ( Name( group ) = "29/1" ) then  
-    n := NI29_1; ns := "29/1";
+    n := NI29_1;
 
   elif ( Name( group ) = "30/1" ) then  
-    n := NI30_1; ns := "30/1";
+    n := NI30_1;
 
   elif ( Name( group ) = "31/1" ) then  
-    n := NI31_1; ns := "31/1";
+    n := NI31_1;
 
   else
     Print( "There is no group name '", group,
