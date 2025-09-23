@@ -10,9 +10,9 @@
 
 ##############################################################################
 ##
-  InstallValue( NEARRING_PATH_NAME, 
+BindGlobal( "NEARRING_PATH_NAME", 
 		DirectoriesPackageLibrary( "sonata", "nr" ) );
-  InstallValue( NEARRING_WITH_IDENTITY_PATH_NAME,
+BindGlobal( "NEARRING_WITH_IDENTITY_PATH_NAME",
 		DirectoriesPackageLibrary( "sonata", "nri" ) );
 
 BindGlobal( "AutoReadNR",
