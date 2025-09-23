@@ -19,8 +19,8 @@ SetPackageInfo( rec(
 
 PackageName := "SONATA",
 Subtitle := "System of nearrings and their applications",
-Version := "2.9.6",
-Date := "06/12/2022", # dd/mm/yyyy format
+Version := "2.9.7",
+Date := "23/09/2025", # dd/mm/yyyy format
 License := "GPL-2.0-or-later",
 
 Persons := [
