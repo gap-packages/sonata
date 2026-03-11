@@ -28,7 +28,7 @@ jobs:
         with:
           use-latex: 'true'
       - name: 'Upload PDF documentation'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sonata-manuals-pdf
           path: |
@@ -36,7 +36,7 @@ jobs:
             ./doc/tut/manual.pdf
           if-no-files-found: error
       - name: 'Upload HTML manuals'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sonata-manuals-html
           path: |
