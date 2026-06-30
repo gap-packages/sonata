@@ -138,7 +138,7 @@ PackageDoc := [
 Dependencies := rec(
   GAP := ">=4.9",
   NeededOtherPackages := [],
-  SuggestedOtherPackages := [["xgap",">=0"]],
+  SuggestedOtherPackages := [],
   ExternalConditions := []
 ),
 
