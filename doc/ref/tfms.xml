@@ -1,0 +1,276 @@
+<Chapter Label="Arbitrary functions on groups: EndoMappings">
+<Heading>Arbitrary functions on groups: EndoMappings</Heading>
+An <E>endomapping</E> is a mapping with equal source and range, say <M>G</M>,
+where <M>G</M> is a group. An endomapping  on <M>G</M> then acts on <M>G</M> by
+<E>transforming</E> each element of <M>G</M> into (precisely one) element of <M>G</M>.
+Endomappings are special cases of Mappings.
+<P/>
+Endomappings are created by the constructor functions 
+<C>EndoMappingByPositionList</C>, <C>EndoMappingByFunction</C>, <C>IdentityEndoMapping</C>,
+<C>ConstantEndoMapping</C>, and are represented as mappings.
+The functions described in
+this section can be found in the file <C>grptfms.g?</C>.
+<Section Label="Defining endo mappings">
+<Heading>Defining endo mappings</Heading>
+<ManSection>
+<Oper Name="EndoMappingByPositionList" Arg="G, list"/>
+<Description>
+The constructor function <C>EndoMappingByPositionList</C> returns the 
+the endomapping that maps the i-th element of the group (in the
+ordering given by AsSortedList)
+to the i-th element of list.
+<Example><![CDATA[
+gap> G := GTW4_2;
+4/2
+gap> t1 := EndoMappingByPositionList ( G, [1, 2, 4, 4] );
+<mapping: 4/2 -> 4/2 >
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="EndoMappingByFunction" Arg="G, fun"/>
+<Description>
+The constructor function <C>EndoMappingByFunction</C> returns the
+function <A>fun</A> that maps elements of the group <A>G</A> into <A>G</A> as an
+endomapping.
+<Example><![CDATA[
+gap> t2 := EndoMappingByFunction ( GTW8_2, g -> g^-1 );
+<mapping: 8/2 -> 8/2 >
+gap> IsGroupHomomorphism ( t2 );
+true
+gap> t3 := EndoMappingByFunction ( GTW6_2, g -> g^-1 );
+<mapping: 6/2 -> 6/2 >
+gap> IsGroupHomomorphism ( t3 );
+false
+]]></Example>
+<C>EndoMappings</C> and <C>GroupGeneralMappings</C> are different
+kinds of objects in &GAP;: <C>GroupGeneralMappings</C> model homomorphisms between
+two different groups, whereas <C>EndoMappings</C> model nonlinear functions
+on one group.
+However, <C>GroupGeneralMappings</C> can be transformed into
+<C>Endomappings</C> if they have equal source and range.
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="AsEndoMapping" Arg="map"/>
+<Description>
+The constructor function <C>AsEndoMapping</C> returns the mapping <A>map</A> 
+as an endomapping.
+<Example><![CDATA[
+gap> G1 := Group ((1,2,3), (1, 2));
+Group([ (1,2,3), (1,2) ])
+gap> G2 := Group ((2,3,4), (2, 3));
+Group([ (2,3,4), (2,3) ])
+gap> f1 := IsomorphismGroups ( G1, G2 );
+[ (1,2,3), (1,2) ] -> [ (2,3,4), (2,3) ]
+gap> f2 := IsomorphismGroups ( G2, G1 );
+[ (2,3,4), (2,3) ] -> [ (1,2,3), (1,2) ]
+gap> AsEndoMapping ( CompositionMapping ( f1, f2 ) );
+<mapping: Group( [ (2,3,4), (2,3) ] ) -> Group( [ (2,3,4), (2,3) ] ) >
+]]></Example>
+<C>EndoMappings</C> and <C>GroupGeneralMappings</C> are two completely different
+kinds of objects in &GAP;, but they can be transformed into one
+another.
+</Description>
+</ManSection>
+<ManSection>
+<Meth Name="AsGroupGeneralMappingByImages" Arg="endomap"/>
+<Description>
+<C>AsGroupGeneralMappingByImages</C> returns the
+<C>GroupGeneralMappingByImages</C> that acts on the group the same way as
+the endomapping <A>endomap</A>. It only makes sense to use this function
+for endomappings that are group endomorphisms.
+<Example><![CDATA[
+gap> m := IdentityEndoMapping ( GTW6_2 );
+<mapping: 6/2 -> 6/2 >
+gap> AsGroupGeneralMappingByImages ( m );
+[ (1,2), (1,2,3) ] -> [ (1,2), (1,2,3) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Filt Name="IsEndoMapping" Arg="obj"/>
+<Description>
+<C>IsEndoMapping</C> returns <K>true</K> if the object <A>obj</A> is an endomapping
+and <K>false</K> otherwise.
+<Example><![CDATA[
+gap> IsEndoMapping ( InnerAutomorphisms ( GTW6_2 ) [3] );
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="IdentityEndoMapping" Arg="G"/>
+<Description>
+<C>IdentitEndoMapping</C> is the counterpart to the &GAP; standard
+library function <C>IdentityMapping</C>. It returns the identity
+transformation on the group <A>G</A>.
+<Example><![CDATA[
+gap> AsList ( UnderlyingRelation ( IdentityEndoMapping ( Group ((1,2,3,4)) ) ) );
+[ DirectProductElement( [ (), () ] ), 
+  DirectProductElement( [ (1,2,3,4), (1,2,3,4) ] ), 
+  DirectProductElement( [ (1,3)(2,4), (1,3)(2,4) ] ), 
+  DirectProductElement( [ (1,4,3,2), (1,4,3,2) ] ) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="ConstantEndoMapping" Arg="G, g"/>
+<Description>
+<C>ConstantEndoMapping</C> returns the endomapping on the group <A>G</A>
+which maps everything to the group element <A>g</A> of <A>G</A>.
+<Example><![CDATA[
+gap> C3 := CyclicGroup (3);
+<pc group of size 3 with 1 generator>
+gap> m := ConstantEndoMapping (C3, AsSortedList (C3) [2]);
+MappingByFunction( <pc group of size 3 with 1 generator>, <pc group of size 
+3 with 1 generator>, function( x ) ... end )
+gap> List (AsList (C3), x -> Image (m, x));
+[ f1, f1, f1 ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Properties of endo mappings">
+<Heading>Properties of endo mappings</Heading>
+<ManSection>
+<Oper Name="IsIdentityEndoMapping" Arg="endomap"/>
+<Description>
+<C>IsIdentityEndoMapping</C> returns <K>true</K> if <A>endomap</A> is the identity
+function on a group.
+<Example><![CDATA[
+gap> IsIdentityEndoMapping (EndoMappingByFunction ( 
+> AlternatingGroup ( [1..5] ), x -> x^31));
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsConstantEndoMapping" Arg="endomap"/>
+<Description>
+<C>IsConstantEndoMapping</C> returns <K>true</K> if the endomapping
+<A>endomap</A> is constant and <K>false</K> otherwise.
+<Example><![CDATA[
+gap> C3 := CyclicGroup ( 3 );
+<pc group of size 3 with 1 generator>
+gap> IsConstantEndoMapping ( EndoMappingByFunction ( C3,  x -> x^3 ));
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="IsDistributiveEndoMapping" Arg="endomap"/>
+<Description>
+A mapping <M>t</M> on an (additively written) group <M>G</M> is called
+<E>distributive</E> if for all elements <M>x</M> and <M>y</M> in <M>G</M>:
+<M>t(x+y) = t(x) + t(y)</M>.
+The function <C>IsDistributiveEndoMapping</C> returns the according
+boolean value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> G := Group ( (1,2,3), (1,2) );
+Group([ (1,2,3), (1,2) ])
+gap> IsDistributiveEndoMapping ( EndoMappingByFunction ( G, x -> x^3));
+false
+gap> IsDistributiveEndoMapping ( EndoMappingByFunction ( G, x -> x^7));
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Operations for endo mappings">
+<Heading>Operations for endo mappings</Heading>
+While the composition operator <C>*</C> is applicable to mappings and
+transformations, the operation <C>+</C> (pointwise addition of the images) can
+only be applied to transformations.
+<P/>
+The product operator <C>*</C> returns the transformation which is obtained 
+from the transformations <A>t1</A> and <A>t2</A> by composition of <A>t1</A> and <A>t2</A>
+(i.e. performing <A>t2</A> <E>after</E> <A>t1</A>).
+<Example><![CDATA[
+gap> t1 := ConstantEndoMapping ( GTW2_1, ());
+MappingByFunction( 2/1, 2/1, function( x ) ... end )
+gap> t2 := ConstantEndoMapping (GTW2_1, (1, 2));
+MappingByFunction( 2/1, 2/1, function( x ) ... end )
+gap> List ( AsList ( GTW2_1 ), x -> Image ( t1 * t2, x ));
+[ (1,2), (1,2) ]
+]]></Example>
+The add operator <C>+</C> returns the endomapping which is obtained 
+from the endomappings <A>t1</A> and <A>t2</A> by pointwise addition 
+of <A>t1</A> and <A>t2</A>. (Note that in this context addition means that
+for every place <M>x</M> in the source of <A>t1</A> and <A>t2</A>,   
+&GAP; performs the  operation <C>p * q</C>, where
+<C>p</C> is the image of <A>t1</A> at <M>x</M> and <C>q</C> is the image of <A>t2</A> at <M>x</M>.)
+<P/>
+The subtract operator <C>-</C> returns the endomapping which is 
+obtained from the endomappings <A>t1</A> and <A>t2</A> by pointwise 
+subtraction of <A>t1</A> and <A>t2</A>. (Note that in this context subtraction 
+means performing the &GAP; operation <C>p * q^{}(-1)</C>,
+where
+<C>p</C> is the image of <A>t1</A> at a place <M>x</M> and <C>q</C> is the image of <A>t2</A> at <M>x</M>.)
+<Example><![CDATA[
+gap> G := SymmetricGroup ( 3 );
+Sym( [ 1 .. 3 ] )
+gap> invertingOnG := EndoMappingByFunction ( G, x -> x^-1 );
+<mapping: SymmetricGroup( [ 1 .. 3 ] ) -> SymmetricGroup( [ 1 .. 3 ] ) >
+gap> identityOnG := IdentityEndoMapping (G);
+<mapping: SymmetricGroup( [ 1 .. 3 ] ) -> SymmetricGroup( [ 1 .. 3 ] ) >
+gap> AsSortedList ( G );
+[ (), (2,3), (1,2), (1,2,3), (1,3,2), (1,3) ]
+gap> List ( AsSortedList (G), 
+>              x -> Image ( identityOnG * invertingOnG, x ));
+[ (), (2,3), (1,2), (1,3,2), (1,2,3), (1,3) ]
+gap> List ( AsSortedList (G),
+>              x -> Image ( identityOnG + invertingOnG, x ));
+[ (), (), (), (), (), () ]
+gap> IsIdentityEndoMapping ( - invertingOnG );
+true
+gap> - invertingOnG = identityOnG;
+true
+]]></Example>
+</Section>
+<Section Label="Nicer ways to print a mapping">
+<Heading>Nicer ways to print a mapping</Heading>
+<ManSection>
+<Oper Name="GraphOfMapping" Arg="mapping"/>
+<Description>
+<C>GraphOfMapping</C> returns the set of all pairs (x,m(x)), where
+x lies in the source of the mapping. In particular, it returns
+List (Source (m), x -&gt; [x, Image (m, x)]);
+<Example><![CDATA[
+gap> G := SymmetricGroup ( 3 );
+Sym( [ 1 .. 3 ] )
+gap> m := ConstantEndoMapping (G, (1,2,3)) + IdentityEndoMapping( G );
+MappingByFunction( Sym( [ 1 .. 3 ] ), Sym( [ 1 .. 3 ] ), function( g ) ... end\
+ )
+gap> PrintArray( GraphOfMapping( m ) );
+[ [       (),  (1,2,3) ],
+  [    (2,3),    (1,3) ],
+  [    (1,3),    (1,2) ],
+  [  (1,3,2),       () ],
+  [  (1,2,3),  (1,3,2) ],
+  [    (1,2),    (2,3) ] ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Func Name="PrintAsTerm" Arg="mapping"/>
+<Description>
+If <A>mapping</A> is a polynomial function on its source then <C>PrintAsTerm</C>
+prints a polynomial that induces the mapping <A>mapping</A>.
+<Example><![CDATA[
+gap> G := SymmetricGroup ( 3 );
+Sym( [ 1 .. 3 ] )
+gap> p := Random( PolynomialNearRing( G ) );
+<mapping: SymmetricGroup( [ 1 .. 3 ] ) -> SymmetricGroup( [ 1 .. 3 ] ) >
+gap> PrintAsTerm( p );
+ - x - g2 + g1 - x - g1 - g2
+gap> GeneratorsOfGroup( G );
+[ (1,2,3), (1,2) ]
+]]></Example>
+The expressions <C>g1</C> and <C>g2</C> stand for the first and secong generator 
+of the group <A>G</A> respectively. The result is not necessarily a 
+polynomial of minimal length.
+</Description>
+</ManSection>
+</Section>
+</Chapter>

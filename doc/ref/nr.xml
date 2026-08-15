@@ -1,0 +1,1031 @@
+<Chapter Label="Nearrings">
+<Heading>Nearrings</Heading>
+A <E>(left) nearring</E> is a nonempty set <M>N</M> together with two binary 
+operations on <M>N</M>, <M>+</M> and <M>.</M> s.t. <M>(N,+)</M> is a group, <M>(N,.)</M> is 
+a semigroup, and <M>.</M> is left distributive over <M>+</M>, i.e. 
+<M>\forall n_1,n_2,n_3 \in N: n_1.(n_2+n_3) = n_1.n_2 + n_1.n_3</M>.
+<P/>
+For more information we suggest <Cite Key="Pilz:Nearrings"/>,
+<Cite Key="meldrum85:NATLWG"/>, and <Cite Key="Clay:Nearrings"/>.
+<P/>
+The functions described in this section can be found in the source files
+<C>nr.g?</C> and <C>nrconstr.g?</C>.
+<Section Label="Defining a nearring multiplication">
+<Heading>Defining a nearring multiplication</Heading>
+<ManSection>
+<Func Name="IsNearRingMultiplication" Arg="G, mul, [lcs]"/>
+<Description>
+The arguments of the function <C>IsNrMultiplication</C> are a 
+group <A>G</A>, a &GAP;-function <A>mul</A> which has two arguments <C>x</C> and <C>y</C> which
+must both be elements of the group <A>G</A> and returns an element <C>z</C> of <A>G</A> s.t.
+<A>mul</A> defines a  binary operation on  G. As an optional third parameter
+<C>IsNrMultiplication</C> accepts a list of control strings <A>lcs</A>.
+<P/>
+<C>IsNearRingMultiplication</C> returns <K>true</K> (<K>false</K>) if <A>mul</A> is (is not) a nearring
+multiplication on <A>G</A> i.e. it checks whether it is well-defined, associative
+and left distributive over the group operation of <A>G</A>. The list <A>lcs</A> may
+contain one or more of the strings <C> "closed" </C>, <C> "ass" </C> and <C> "rdistr" </C>
+in which case the according property is not tested. In this case it is
+assumed that the user has checked it. This feature should only be used in cases
+where it would take too long to check certain laws element by element and the
+user is absolutely sure about the correctness.
+<Example><![CDATA[
+gap> G := TWGroup( 24, 6 );
+24/6
+gap> mul_l := function ( x, y ) return y; end;
+function( x, y ) ... end
+gap> IsNearRingMultiplication( G, mul_l );
+true
+gap> mul_r := function ( x, y ) return x; end;
+function( x, y ) ... end
+gap> IsNearRingMultiplication( G, mul_r );          
+#I  specified multiplication is not left distributive
+false
+gap> IsNearRingMultiplication( G, mul_r, ["closed","ldistr"] );
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="NearRingMultiplicationByOperationTable" Arg="G, table, elmlist"/>
+<Description>
+The function <C>NearRingMultiplicationByOperationTable</C> returns the nearring
+multiplication on the group <A>G</A> which is defined by the multiplication table
+<A>table</A>. Rather than group elements the entries of <A>table</A> are the positions
+of the group element in the list <A>elmlist</A> (the first element in
+<A>elmlist</A> is 1, the second is 2, a.s.o.). Usually the neutral element of the
+group will be the first.
+<P/>
+<C>IsNearRingMultiplication</C> can be used to check whether the resulting multiplication
+is indeed a nearring multiplication on <A>G</A>.
+<Example><![CDATA[
+gap> G := CyclicGroup( 4 );            
+<pc group of size 4 with 2 generators>
+gap> GeneratorsOfGroup( G );
+[ f1, f2 ]
+gap> a := last[1];
+f1
+gap> Order( a );
+4
+gap> # a generates G indeed
+gap> elmlist := List( [0..3], x -> a^x );
+[ <identity> of ..., f1, f2, f1*f2 ]
+gap> # Let:  1 := identity of ..., 2 := f1, 3 := f2, 4 := f1*f2
+gap> # Consider the following multiplication table on G:
+gap> OT := [[1, 1, 1, 1],
+> [1, 4, 3, 2],                                                   
+> [1, 1, 1, 1],
+> [1, 2, 3, 4]];;
+gap> mul := NearRingMultiplicationByOperationTable( G, OT, elmlist );
+function( x, y ) ... end
+gap> IsNearRingMultiplication( G, mul );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Construction of nearrings">
+<Heading>Construction of nearrings</Heading>
+<ManSection>
+<Oper Name="ExplicitMultiplicationNearRing" Arg="G, mul"/>
+<Description>
+The constructor function <C>ExplicitMultiplicationNearRing</C> returns the nearring 
+defined by the group <A>G</A> and the nearring multiplication <A>mul</A>.
+(For a detailed explanation of <A>mul</A> see Section <Ref Func="IsNearRingMultiplication"/>.)
+<P/>
+<C>ExplicitMultiplicationNearRing</C> calls
+<C>IsNearRingMultiplication</C> in order to make sure that
+<A>mul</A> is really a nearring multiplication. If the nearring
+multiplication should not be checked,
+</Description>
+</ManSection>
+<ManSection>
+<Func Name="ExplicitMultiplicationNearRingNC" Arg="G, mul"/>
+<Description>
+may be called.
+<Example><![CDATA[
+gap> n := ExplicitMultiplicationNearRing( GTW18_3, mul_l );
+ExplicitMultiplicationNearRing ( 18/3 , multiplication )
+gap> n = ExplicitMultiplicationNearRingNC( GTW18_3, mul_l );
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Filt Name="IsNearRing" Arg="obj"/>
+<Description>
+<C>IsNearRing</C> returns <K>true</K> if the object <A>obj</A> is a nearring 
+and <K>false</K> otherwise.
+<Example><![CDATA[
+gap> n := ExplicitMultiplicationNearRingNC( GTW18_3, mul_l );
+ExplicitMultiplicationNearRing ( 18/3 , multiplication )
+gap> IsNearRing( n );                                       
+true
+gap> IsNearRing( GroupReduct( n ) );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Filt Name="IsExplicitMultiplicationNearRing" Arg="obj"/>
+<Description>
+<C>IsExplicitMultiplicationNearRing</C> returns <K>true</K>, if the object <A>obj</A> is
+a nearring defined by a group and a multiplication as with
+<Ref Func="ExplicitMultiplicationNearRing"/>.
+<Example><![CDATA[
+gap> IsExplicitMultiplicationNearRing( n );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Direct products of nearrings">
+<Heading>Direct products of nearrings</Heading>
+<ManSection>
+<Oper Name="DirectProductNearRing" Arg="nr1, nr2"/>
+<Description>
+Given two nearrings <A>nr1</A> and <A>nr2</A>, the function <C>DirectProductNearRing</C>
+constructs the direct product of these.
+<Example><![CDATA[
+gap> n := ExplicitMultiplicationNearRingNC( GTW18_3, mul_l );
+ExplicitMultiplicationNearRing ( 18/3 , multiplication )
+gap> zero_mul := function ( x, y ) return (); end;
+function( x, y ) ... end
+gap> z := ExplicitMultiplicationNearRingNC( GTW12_3, zero_mul );
+ExplicitMultiplicationNearRing ( 12/3 , multiplication )
+gap> d := DirectProductNearRing( n, z );
+DirectProductNearRing( ExplicitMultiplicationNearRing ( 18/3 , multiplication \
+), ExplicitMultiplicationNearRing ( 12/3 , multiplication ) )
+gap> IsExplicitMultiplicationNearRing( d );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Operation tables for nearrings">
+<Heading>Operation tables for nearrings</Heading>
+<ManSection>
+<Func Name="PrintTable" Label="near rings" Arg="nr"/>
+<Description>
+<C>PrintTable</C> prints the additive and multiplicative Cayley tables of the 
+nearring <A>nr</A>. This function works the same way as for groups.
+<Example><![CDATA[
+gap> n := ExplicitMultiplicationNearRingNC( CyclicGroup( 3 ), mul_l );
+ExplicitMultiplicationNearRing ( <pc group of size 3 with 
+1 generator> , multiplication )
+gap> SetSymbols( n, ["0","1","2"] );
+gap> PrintTable( n );               
+Let:
+0 := (<identity> of ...)
+1 := (f1)
+2 := (f1^2)
+
+  +  | 0  1  2  
+  ------------
+  0  | 0  1  2  
+  1  | 1  2  0  
+  2  | 2  0  1  
+
+  *  | 0  1  2  
+  ------------
+  0  | 0  1  2  
+  1  | 0  1  2  
+  2  | 0  1  2  
+]]></Example>
+Optionally, <C>PrintTable</C> can be used in the form <C>PrintTable( <A>nr</A>, <A>mode</A> )</C>, 
+where <A>mode</A> is a string. If the letter <C>e</C> is contained in this string, the 
+definitions of the symbols used are printed, if the letter <C>a</C> is contained 
+in the string, the addition table is printed, and if the letter <C>m</C> is contained
+in the string, the multiplication table of the nearring is printed. Every 
+combination of these three letters in any order is possible.
+</Description>
+</ManSection>
+</Section>
+<Section Label="Modified symbols for the operation tables">
+<Heading>Modified symbols for the operation tables</Heading>
+<ManSection>
+<Func Name="SetSymbols" Arg="nr, symblist"/>
+<Func Name="SetSymbolsSupervised" Arg="nr, symblist"/>
+<Description>
+The function <C>SetSymbols</C> and <C>SetSymbolsSupervised</C> allow you to define a
+list <A>symblist</A> of strings to be used when printing the operation tables of
+the nearring. <C>SetSymbols</C> simply sets the set of strings to the given value.
+<C>SetSymbolsSupervised</C> checks, if there are more symbols than the nearring has
+elements. In this case the superfluous strings are ignored. If there are less
+symbols than the nearring has elements, <C>SetSymbolsSupervised</C> <Q>invents</Q>
+unique names for the rest of the elements. In any case a warning is printed.
+If there are repetitions or holes in the list <A>symblist</A> an error is signaled.
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="Symbols" Arg="nr"/>
+<Description>
+allows you to look at the set of symbols, which are currently in use.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW3_1, 4 );
+LibraryNearRing(3/1, 4)
+gap> Symbols( n );
+[ "n0", "n1", "n2" ]
+gap> SetSymbolsSupervised( n,
+>         ["apple", "banana", "coconut", "donut", "potato"] );
+Warning: too many symbols ...ignoring the last 2 symbols
+gap> PrintTable( n, "m" );
+
+        *  | apple    banana   coconut  
+  ------------------------------------
+  apple    | apple    apple    apple    
+  banana   | apple    banana   coconut  
+  coconut  | apple    banana   coconut  
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Accessing nearring elements">
+<Heading>Accessing nearring elements</Heading>
+The elements of a nearring are different from those of its group reduct.
+In order to make group elements and nearring elements distinguishable for the
+user, nearring elements are printed with an extra pair of parentheses.
+The two functions <C>AsGroupReductElement</C> and <C>AsNearRingElement</C> can be
+used to switch between these two representations.
+<ManSection>
+<Oper Name="AsNearRingElement" Arg="nr, grpelm"/>
+<Description>
+returns the representation as a nearring element of an element <A>grpelm</A> of the
+group reduct of the nearring <A>nr</A>.
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="AsGroupReductElement" Arg="nrelm"/>
+<Description>
+returns the representation as an element of the group reduct of the nearring
+of the nearring element <A>nrelm</A>.
+<Example><![CDATA[
+gap> mul_l := function ( x, y ) return y; end;              
+function( x, y ) ... end
+gap> n := ExplicitMultiplicationNearRingNC( GTW6_2, mul_l );
+ExplicitMultiplicationNearRing ( 6/2 , multiplication )
+gap> AsList( n );
+[ (()), ((2,3)), ((1,2)), ((1,2,3)), ((1,3,2)), ((1,3)) ]
+gap> e := AsNearRingElement( n, (2,3) );
+((2,3))
+gap> e in n;
+true
+gap> f := AsNearRingElement( n, (1,3) );
+((1,3))
+gap> e + f;
+((1,3,2))
+gap> e * f;
+((1,3))
+gap> p := AsGroupReductElement( e );                      
+(2,3)
+gap> IsPerm( p );
+true
+]]></Example>
+Addition is not defined on the group reduct element, so the next line drops
+into a break loop:
+<Log><![CDATA[
+gap> p + p;
+Error, no method found! For debugging hints type ?Recovery from NoMethodFound
+Error, no 1st choice method found for `+' on 2 arguments at
+...
+brk>
+]]></Log>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Nearring elements">
+<Heading>Nearring elements</Heading>
+There are three different ways to ask for the elements of a nearring.
+<ManSection>
+<Meth Name="AsList" Label="near rings" Arg="nr"/>
+<Description>
+The function <C>AsList</C> computes the elements of the nearring <A>nr</A>. It returns
+the elements as a list.
+</Description>
+</ManSection>
+<ManSection>
+<Meth Name="AsSortedList" Label="near rings" Arg="nr"/>
+<Description>
+does essentially the same, but returns a set of elements.
+</Description>
+</ManSection>
+<ManSection>
+<Meth Name="Enumerator" Label="near rings" Arg="nr"/>
+<Description>
+does essentially the same as <C>AsList</C>, but returns an enumerator for the
+elements of <A>nr</A>. An enumerator is an object that is capable of enumerating
+the elements the nearring one by one. This is especially important if the
+nearring is very big and not every element can be stored.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW6_2, 39 );                    
+LibraryNearRing(6/2, 39)
+gap> e := Enumerator( n );                                  
+<enumerator of near ring>
+gap> e[1];
+(())
+gap> x := AsNearRingElement( n, (1,2,3) );
+((1,2,3))
+gap> Position( e, x );
+4
+gap> Length(e);
+6
+gap> l := AsList( n );                                           
+[ (()), ((2,3)), ((1,2)), ((1,2,3)), ((1,3,2)), ((1,3)) ]
+gap> e[3] = l[3];
+true
+gap> AsSortedList( n );                                     
+[ (()), ((2,3)), ((1,2)), ((1,2,3)), ((1,3,2)), ((1,3)) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Random nearring elements">
+<Heading>Random nearring elements</Heading>
+<ManSection>
+<Meth Name="Random" Label="near ring element" Arg="nr"/>
+<Description>
+<C>Random</C> returns a random element of the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW6_2, 39 );                    
+LibraryNearRing(6/2, 39)
+gap> Random(n);
+((1,2))
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Nearring generators">
+<Heading>Nearring generators</Heading>
+<ManSection>
+<Attr Name="GeneratorsOfNearRing" Arg="nr"/>
+<Description>
+The function <C>GeneratorsOfNearRing</C> returns a set of (not necessarily
+additive) generators of the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := ExplicitMultiplicationNearRingNC( GTW8_4, mul_l );
+ExplicitMultiplicationNearRing ( 8/4 , multiplication )
+gap> GeneratorsOfNearRing( n );
+[ ((1,2,3,4)), ((2,4)) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Size of a nearring">
+<Heading>Size of a nearring</Heading>
+<ManSection>
+<Meth Name="Size" Label="near rings" Arg="nr"/>
+<Description>
+<C>Size</C> returns the number of elements in the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRingWithOne( GTW24_3, 8 );
+LibraryNearRingWithOne(24/3, 8)
+gap> Size(n);
+24
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="The additive group of a nearring">
+<Heading>The additive group of a nearring</Heading>
+<ManSection>
+<Attr Name="GroupReduct" Arg="nr"/>
+<Description>
+The function <C>GroupReduct</C> returns the nearring <A>nr</A> as a
+(multiplicative) group.
+<Example><![CDATA[
+gap> GroupReduct( LibraryNearRingWithOne( GTW24_3, 8 ) );
+24/3
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Nearring endomorphisms">
+<Heading>Nearring endomorphisms</Heading>
+<ManSection>
+<Attr Name="Endomorphisms" Label="near rings" Arg="nr"/>
+<Description>
+<C>Endomorphisms</C> computes all the endomorphisms of the nearring <A>nr</A>. 
+The endomorphisms are returned as a list of transformations. In fact, the
+returned list contains those endomorphisms of the group reduct of <A>nr</A>
+which are also nearring endomorphisms.
+<Example><![CDATA[
+gap> Endomorphisms ( LibraryNearRing( GTW12_4, 4 ) ) ;
+[ [ (1,2,4), (2,3,4) ] -> [ (), () ], 
+  [ (1,2,4), (2,3,4) ] -> [ (1,2,4), (2,3,4) ] ]
+gap> Length( Endomorphisms( GTW12_4 ) );
+33
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Nearring automorphisms">
+<Heading>Nearring automorphisms</Heading>
+<ManSection>
+<Attr Name="Automorphisms" Label="near rings" Arg="nr"/>
+<Description>
+<C>Automorphisms</C> computes all the automorphisms of the nearring <A>nr</A>. 
+The automorphisms are returned as a list of transformations. In fact, the
+returned list contains those automorphisms of the group reduct of <A>nr</A>
+which are also nearring automorphisms.
+<Example><![CDATA[
+gap> Automorphisms( LibraryNearRing( GTW12_4, 4 ) );
+[ ^() ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Isomorphic nearrings">
+<Heading>Isomorphic nearrings</Heading>
+<ManSection>
+<Oper Name="IsIsomorphicNearRing" Arg="nr1, nr2"/>
+<Description>
+The function <C>IsIsomorphicNearRing</C> returns <K>true</K> if the two nearrings
+<A>nr1</A> and <A>nr2</A> are isomorphic and <K>false</K> otherwise.
+<Example><![CDATA[
+gap> IsIsomorphicNearRing( MapNearRing( GTW2_1 ),                       
+> LibraryNearRingWithOne( GTW4_2, 5 ) );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Subnearrings">
+<Heading>Subnearrings</Heading>
+<ManSection>
+<Attr Name="SubNearRings" Arg="nr"/>
+<Description>
+The function <C>SubNearRings</C> computes all subnearrings of the nearring 
+<A>nr</A>. The function returns a list of nearrings representing the 
+according subnearrings.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );
+LibraryNearRing(12/4, 8)
+gap> SubNearRings( n );
+[ ExplicitMultiplicationNearRing ( Group(()) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,2,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,3,2) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3), (1,3)(2,4) 
+     ]) , multiplication ), ExplicitMultiplicationNearRing ( Group(
+    [ (1,4)(2,3), (1,3)(2,4), (2,3,4) ]) , multiplication ) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Invariant subnearrings">
+<Heading>Invariant subnearrings</Heading>
+<ManSection>
+<Attr Name="InvariantSubNearRings" Arg="nr"/>
+<Description>
+A subnearring <M>(M,+,.)</M> of a nearring <M>(N,+,.)</M> is called an 
+<E>invariant subnearring</E> if both, <M>M . N</M> and <M>N . M</M> are subsets of <M>M</M>.
+<P/>
+The function <C>InvariantSubNearRings</C>  computes all invariant 
+subnearrings of the nearring <A>nr</A>.
+The function returns a list of nearrings representing the according 
+invariant subnearrings.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );
+LibraryNearRing(12/4, 8)
+gap> i := InvariantSubNearRings( n );
+[ ExplicitMultiplicationNearRing ( Group(()) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (2,3,4) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4,3) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,4)(2,3), (1,3)(2,4), (2,3,4) 
+     ]) , multiplication ) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Constructing subnearrings">
+<Heading>Constructing subnearrings</Heading>
+<ManSection>
+<Oper Name="SubNearRingBySubgroupNC" Arg="nr, S"/>
+<Description>
+For a subgroup <A>S</A> of the group reduct of the nearring which is closed
+under the multiplication of <A>nr</A> the function
+<C>SubNearRingBySubgroupNC</C> returns the subnearRing of <A>nr</A>, which is
+induced by this subgroup. The <A>nr</A>-invariance is not explicitely
+tested.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> S := Subgroup( GTW12_4, [ (1,2)(3,4) ] );
+Group([ (1,2)(3,4) ])
+gap> sn := SubNearRingBySubgroupNC( n, S );
+ExplicitMultiplicationNearRing ( Group([ (1,2)(3,4) ]) , multiplication )
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Intersection of nearrings">
+<Heading>Intersection of nearrings</Heading>
+<ManSection>
+<Meth Name="Intersection" Label="for nearrings" Arg="listofnrs"/>
+<Description>
+computes the intersection of the nearrings in the list <A>listofnrs</A>.
+All of the nearrings in <A>listofnrs</A> must be subnearrings of a common
+supernearring.
+<Example><![CDATA[
+gap> n := LibraryNearRingWithOne( GTW27_4, 5 );
+LibraryNearRingWithOne(27/4, 5)
+gap> si := Filtered( SubNearRings( n ), s -> Identity( n ) in s );
+[ ExplicitMultiplicationNearRing ( Group([ (1,23,14)(2,13,6)(3,27,22)(4,18,9)
+      (5,20,12)(7,16,26)(8,25,17)(10,21,19)(11,24,15) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group(
+    [ (1,22,16)(2,12,21)(3,26,23)(4,17,11)(5,19,13)(6,20,10)(7,14,27)(8,24,18)
+      (9,25,15), (1,26,27)(2,19,20)(3,14,16)(4,24,25)(5,6,21)(7,22,23)(8,9,11)
+      (10,12,13)(15,17,18) ]) , multiplication ), 
+  ExplicitMultiplicationNearRing ( Group([ (1,6,15)(2,9,7)(3,13,25)(4,14,10)
+      (5,18,27)(8,23,20)(11,22,19)(12,24,16)(17,26,21), (1,5,17)(2,8,22)
+      (3,12,4)(6,18,26)(7,20,11)(9,23,19)(10,25,16)(13,24,14)(15,27,21), 
+      (1,2,4)(3,6,11)(5,9,16)(7,13,17)(8,14,21)(10,18,22)(12,15,23)(19,24,26)
+      (20,25,27) ]) , multiplication ) ]
+gap> Intersection( si );
+ExplicitMultiplicationNearRing ( Group([ (1,23,14)(2,13,6)(3,27,22)(4,18,9)
+  (5,20,12)(7,16,26)(8,25,17)(10,21,19)(11,24,15) ]) , multiplication )
+gap> Size( last );
+3
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Identity of a nearring">
+<Heading>Identity of a nearring</Heading>
+<ManSection>
+<Meth Name="Identity" Arg="nr"/>
+<Meth Name="One" Arg="nr"/>
+<Description>
+The functions <C>Identity</C> and <C>One</C> return the identity of the multiplicative
+semigroup of the nearring <A>nr</A> if it exists and <K>fail</K> otherwise.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> Identity( n );
+fail
+gap> One( n );
+fail
+gap> n := LibraryNearRingWithOne( GTW24_4, 8 ); 
+LibraryNearRingWithOne(24/4, 8)
+gap> Identity( n );
+((1,2,3,4,5,6)(7,8))
+gap> One( n );
+((1,2,3,4,5,6)(7,8))
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Filt Name="IsNearRingWithOne" Arg="nr"/>
+<Description>
+The function <C>IsNearRingWithOne</C> returns <K>true</K> if the nearring was
+constructed as a nearring with one and <K>false</K> otherwise. To decide
+whether a nearring has an identity use <C>Identity(<A>nr</A>)=true</C>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );             
+LibraryNearRing(12/4, 8)
+gap> IsNearRingWithOne( n );
+false
+gap> n := LibraryNearRingWithOne( GTW24_4, 8 ); 
+LibraryNearRingWithOne(24/4, 8)
+gap> Identity( n );
+((1,2,3,4,5,6)(7,8))
+gap> IsNearRingWithOne( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Units of a nearring">
+<Heading>Units of a nearring</Heading>
+<ManSection>
+<Oper Name="IsNearRingUnit" Arg="nr, x"/>
+<Description>
+An element <M>x</M> of a nearring <M>(N,+,.)</M> with identity <M>1</M> is called a  unit
+if there exists an element <M>y</M> in <M>N</M> such that <M>x.y = y.x = 1</M>.
+<P/>
+The function <C>IsNearRingUnit</C> returns <K>true</K> if <A>x</A> is a unit in <A>nr</A> and
+false otherwise.
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="NearRingUnits" Arg="nr"/>
+<Description>
+<C>NearRingUnits</C> returns the units of the nearring <A>nr</A> either as
+ multiplicative group or list.
+<Example><![CDATA[
+gap> n := LibraryNearRingWithOne( GTW24_4, 8 );
+LibraryNearRingWithOne(24/4, 8)
+gap> NearRingUnits( n );    
+[ ((1,2,3,4,5,6)(7,8)), ((1,6,5,4,3,2)(7,8)) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Distributivity in a nearring">
+<Heading>Distributivity in a nearring</Heading>
+<ManSection>
+<Attr Name="Distributors" Arg="nr"/>
+<Description>
+An element <M>x</M> of a nearring <M>(N,+,.)</M> is called a  distributor
+if <M>x = (n_1 + n_2 ) . n_3 - (n_1 . n_3 + n_2 . n_3 )</M> for some elements
+<M>n_1, n_2, n_3</M> of <M>N</M>.
+<P/>
+The function <C>Distributors</C> returns a list containing the distributors 
+of the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );             
+LibraryNearRing(12/4, 8)
+gap> IsNearRingWithOne( n );
+false
+gap> Distributors( n );
+[ (()), ((2,3,4)), ((2,4,3)), ((1,2)(3,4)), ((1,2,3)), ((1,2,4)), ((1,3,2)), 
+  ((1,3,4)), ((1,3)(2,4)), ((1,4,2)), ((1,4,3)), ((1,4)(2,3)) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="DistributiveElements" Arg="nr"/>
+<Description>
+An element <M>d</M> of a left nearring <M>(N,+,.)</M> is called a 
+<E>distributive element</E> if it is also right distributive over all elements,
+i.e. <M>\forall n_1, n_2 \in N: (n_1 + n_2 ).d = n_1.d + n_2.d</M>.
+<P/>
+The function <C>DistributiveElements</C> returns a list containing the 
+distributive elements of the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> DistributiveElements( n );
+[ (()) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsDistributiveNearRing" Arg="nr"/>
+<Description>
+A left nearring <M>N</M> is called <E>distributive nearring</E> if its
+multiplication is also right distributive.
+<P/>
+The function <C>IsDistributiveNearRing</C> simply checks if all elements
+are distributive and returns the according boolean value 
+<K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsDistributiveNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Elements of a nearring with special properties">
+<Heading>Elements of a nearring with special properties</Heading>
+<ManSection>
+<Attr Name="ZeroSymmetricElements" Arg="nr"/>
+<Description>
+Let <M>(N,+,.)</M> be a left nearring and denote by <M>0</M> the neutral element 
+of <M>(N,+)</M>. 
+An element <M>n</M> of <M>N</M> is called a <E>zero-symmetric element</E> if <M>0.n = 0</M>.
+<P/>
+<E>Remark:</E> note that in a <E>left</E> nearring <M>n.0 = 0</M> is true for all elements
+<M>n</M>.
+<P/>
+The function <C>ZeroSymmetricElements</C> returns a list containing the 
+zero-symmetric elements of the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> ZeroSymmetricElements( n );
+[ (()), ((2,3,4)), ((2,4,3)), ((1,2)(3,4)), ((1,2,3)), ((1,2,4)), ((1,3,2)), 
+  ((1,3,4)), ((1,3)(2,4)), ((1,4,2)), ((1,4,3)), ((1,4)(2,3)) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="IdempotentElements" Arg="nr"/>
+<Description>
+The function <C>IdempotentElements</C> returns a list containing the 
+idempotent elements of the multiplicative semigroup of the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IdempotentElements( n );
+[ (()), ((1,4)(2,3)) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="NilpotentElements" Arg="nr"/>
+<Description>
+Let <M>(N,+,.)</M> be a nearring with zero <M>0</M>. An element <M>n</M> of <M>N</M> is 
+called <E>nilpotent</E> if there is a positive integer <M>k</M> such that
+<M>n^k = 0</M>.
+<P/>
+The function <C>NilpotentElements</C> returns a list of sublists of length 
+<M>2</M> where the first entry is a nilpotent element <M>n</M> and the second
+entry is the smallest <M>k</M> such that <M>n^k = 0</M>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> NilpotentElements( n );
+[ [ (()), 1 ], [ ((2,3,4)), 2 ], [ ((2,4,3)), 2 ], [ ((1,2)(3,4)), 2 ], 
+  [ ((1,2,3)), 2 ], [ ((1,2,4)), 2 ], [ ((1,3,2)), 2 ], [ ((1,3,4)), 2 ], 
+  [ ((1,4,2)), 2 ], [ ((1,4,3)), 2 ] ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="QuasiregularElements" Arg="nr"/>
+<Description>
+Let <M>(N,+,.)</M> be a left nearring. For an element <M>z \in N</M>, 
+denote the right ideal generated by the set <M>\{n - z.n | n \in N\}</M>
+by <M>L_z</M>.
+An element <M>z</M> of <M>N</M> is called <E>quasiregular</E> if <M>z \in L_z</M>.
+<P/>
+The function <C>QuasiregularElements</C> returns a list of all 
+quasiregular elements of a nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> QuasiregularElements( n );
+[ (()), ((2,3,4)), ((2,4,3)), ((1,2)(3,4)), ((1,2,3)), ((1,2,4)), ((1,3,2)), 
+  ((1,3,4)), ((1,3)(2,4)), ((1,4,2)), ((1,4,3)) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="RegularElements" Arg="nr"/>
+<Description>
+Let <M>(N,+,.)</M> be a nearring. An element <M>n</M> of <M>N</M> is called <E>regular</E> if
+there is an element <M>x</M> such that <M>n. x. n = n</M>.
+<P/>
+The function <C>RegularElements</C> returns a list of all regular elements of a
+nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> RegularElements( n );
+[ (()), ((1,3)(2,4)), ((1,4)(2,3)) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Special properties of a nearring">
+<Heading>Special properties of a nearring</Heading>
+<ManSection>
+<Prop Name="IsAbelianNearRing" Arg="nr"/>
+<Description>
+A nearring is called <E>abelian</E> if its group reduct is abelian.
+<P/>
+The function <C>IsAbelianNearRing</C> returns the according boolean value
+<K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsAbelianNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsAbstractAffineNearRing" Arg="nr"/>
+<Description>
+A left nearring <M>N</M> is called <E>abstract affine</E> if its group reduct is
+abelian and its zero-symmetric elements are exactly its distributive
+elements.
+<P/>
+The function <C>IsAbstractAffineNearRing</C> returns the according boolean 
+value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsAbstractAffineNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsBooleanNearRing" Arg="nr"/>
+<Description>
+A left nearring <M>N</M> is called <E>boolean</E> if all its elements are
+idempotent with respect to multiplication.
+<P/>
+The function <C>IsBooleanNearRing</C> simply checks if all elements
+are idempotent and returns the according boolean value 
+<K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsBooleanNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsNilNearRing" Arg="nr"/>
+<Description>
+A nearring <M>N</M> is called <E>nil</E> if all its elements are nilpotent.
+<P/>
+The function <C>IsNilNearRing</C> checks if all elements are nilpotent and returns
+the according boolean value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsNilNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsNilpotentNearRing" Arg="nr"/>
+<Description>
+A nearring <M>N</M> is called <E>nilpotent</E> if there is a positive integer
+<M>k</M>, s.t. <M>N^k = \{0\}</M>.
+<P/>
+The function <C>IsNilpotentNearRing</C> tests if
+the nearring <A>nr</A> is nilpotent and returns the according boolean value 
+<K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsNilpotentNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsNilpotentFreeNearRing" Arg="nr"/>
+<Description>
+A nearring <M>N</M> is called <E>nilpotent free</E> if its only nilpotent
+element is <M>0</M>.
+<P/>
+The function <C>IsNilpotentFreeNearRing</C> checks if 
+<M>0</M> is the only nilpotent and returns the according boolean value 
+<K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsNilpotentFreeNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Meth Name="IsCommutative" Arg="nr"/>
+<Description>
+A nearring <M>(N,+,.)</M> is called <E>commutative</E> if its multiplicative semigroup
+is commutative.
+<P/>
+The function <C>IsCommutative</C> returns the according value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsCommutative( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsDgNearRing" Arg="nr"/>
+<Description>
+A nearring <M>(N,+,.)</M> is called <E>distributively generated (d.g.)</E> if 
+<M>(N,+)</M> is generated additively by the distributive elements of the
+nearring.
+<P/>
+The function <C>IsDgNearRing</C> returns the according value <K>true</K> or <K>false</K>
+for a nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsDgNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsIntegralNearRing" Arg="nr"/>
+<Description>
+A nearring <M>(N,+,.)</M> with zero element <M>0</M> is called <E>integral</E> if 
+it has no zero divisors, i.e. the condition <M>\forall n_1,n_2: 
+n_1 . n_2 = 0 \Rightarrow n_1 = 0 \lor n_2 = 0</M> holds.
+<P/>
+The function <C>IsIntegralNearRing</C> returns 
+the according value <K>true</K> or <K>false</K> for a nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsIntegralNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsPrimeNearRing" Arg="nr"/>
+<Description>
+A nearring <M>(N,+,.)</M> with zero element <M>0</M> is called <E>prime</E> if 
+the ideal <M>\{ 0 \}</M> is a prime ideal.
+<P/>
+The function <C>IsPrimeNearRing</C> checks if <A>nr</A> is a prime nearring
+by using the condition &lt;for all non-zero ideals&gt; <M>I,J: I . J \ne 
+\{ 0 \}</M> and returns the according value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsPrimeNearRing( n );
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsQuasiregularNearRing" Arg="nr"/>
+<Description>
+A nearring <M>N</M> is called <E>quasiregular</E> if all its elements are
+quasiregular.
+<P/>
+The function <C>IsQuasiregularNearRing</C> simply checks if all elements
+of the nearring <A>nr</A> are quasiregular and returns the according 
+boolean value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsQuasiregularNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsRegularNearRing" Arg="nr"/>
+<Description>
+A nearring <M>N</M> is called <E>regular</E> if all its elements are regular.
+<P/>
+The function <C>IsRegularNearRing</C> simply checks if all elements
+of the nearring <A>nr</A> are regular and returns the according 
+boolean value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );            
+LibraryNearRing(12/4, 8)
+gap> IsRegularNearRing( n );
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsNearField" Arg="nr"/>
+<Description>
+Let <M>(N,+,.)</M> be a nearring with zero <M>0</M> and denote by <M>N^*</M> 
+the set <M>N - \{0\}</M>. N is a <E>nearfield</E> if <M>(N,+,.)</M> has an identity and
+<M>(N^*,.)</M> is a group.
+<P/>
+The function <C>IsNearField</C> tests if <A>nr</A> has an identity and 
+if every non-zero element has a multiplicative inverse and returns
+the according value <K>true</K> or <K>false</K>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW12_4, 8 );
+LibraryNearRing(12/4, 8)
+gap> IsNearField( n );                        
+false
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsPlanarNearRing" Arg="nr"/>
+<Description>
+Let <M>(N,+,\cdot)</M> be a left nearring. For <M>a,b \in N</M> we define <M>a \equiv b</M>
+iff <M>a\cdot n = b\cdot n</M> for all <M>n\in N</M>. If <M>a \equiv b</M>, then <M>a</M> and <M>b</M>
+are called <E>equivalent multipliers</E>.
+A nearring <M>N</M> is called <E>planar</E> if <M>| N/_{\equiv} | \ge 3</M> and if 
+for any two non-equivalent multipliers <M>a</M> and <M>b</M> in <M>N</M>, for any <M>c\in N</M>, 
+the equation <M>a\cdot x = b\cdot x + c</M> has a unique solution.
+<P/>
+The function <C>IsPlanarNearRing</C> returns the according value <K>true</K> or
+<K>false</K> for a nearring <A>nr</A>.
+<Example><![CDATA[
+gap> n := LibraryNearRing( GTW9_2, 90 );
+LibraryNearRing(9/2, 90)
+gap> IsPlanarNearRing( n );     
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsWdNearRing" Arg="nr"/>
+<Description>
+A left nearring <M>(N,+,\cdot)</M> is called <E>weakly divisible</E> if 
+<M>\forall a,b\in N \exists x\in N : a\cdot x=b</M> or <M>b\cdot x=a</M>.
+<P/>
+The function <C>IsWdNearRing</C> returns the according value <A>true</A> or <A>false</A> 
+for the nearring <A>nr</A>.
+<Example><![CDATA[
+gap> nr := LibraryNearRing( GTW9_1, 185 );
+LibraryNearRing(9/1, 185)
+gap> IsWdNearRing( nr );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+</Chapter>

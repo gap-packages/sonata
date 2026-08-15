@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Book SYSTEM "gapdoc.dtd">
+
+<Book Name="SONATA Tutorial">
+<#Include SYSTEM "title.xml">
+<TableOfContents/>
+<Body>
+<#Include SYSTEM "grpsupp.xml">
+<#Include SYSTEM "nr.xml">
+<#Include SYSTEM "libnr.xml">
+<#Include SYSTEM "tfms.xml">
+<#Include SYSTEM "tfmnr.xml">
+<#Include SYSTEM "ideals.xml">
+<#Include SYSTEM "plnr.xml">
+<#Include SYSTEM "design.xml">
+</Body>
+<Bibliography Databases="../ref/sonata.bib"/>
+<TheIndex/>
+</Book>

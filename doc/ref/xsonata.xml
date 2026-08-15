@@ -1,0 +1,45 @@
+<Chapter Label="Graphic ideal lattices (XGAP only)">
+<Heading>Graphic ideal lattices (XGAP only)</Heading>
+If you run SONATA under XGAP or Gap.app, it is possible to study ideal lattices of
+nearrings graphically.
+<Section>
+<Heading>Graphic ideal lattices (XGAP only)</Heading>
+<ManSection>
+<Oper Name="GraphicIdealLattice" Arg="nr, string"/>
+<Description>
+The function <C>GraphicIdealLattice</C> computes one- and two-sided
+nearring ideals and uses XGAP's graphic capabilities to draw the ideal
+lattice of the nearring <A>nr</A>. The string <A>string</A> determines, which
+ideals are shown:
+<P/>
+If <A>string</A> contains the letter <C>l</C>, left ideals are shown, if
+<A>string</A> contains the letter <C>r</C>, right ideals are shown, and if
+<A>string</A> contains the letter <C>i</C>, two-sided ideals are shown.  Any
+combination of these letters is possible.
+<P/>
+Right ideals of the nearring are represented by squares, left ideals
+by diamonds and two-sided ideals by circles. It is possible, that
+two-sided ideals are shown as right or left ideals, if the two-sided
+ideal property has not yet been tested.
+<P/>
+Left clicking on an ideal allows one to select the ideal and determine
+more information about the ideal. Choosing <C>Ideal type</C> from the
+<C>Ideals</C>-menu determines, whether the selected ideal is two-sided (in
+which case its shape changes to a circle immediately). On a right
+click on an ideal a window opens showing more information about the
+ideal, such as its size and the isomorphism class of the factor
+nearring by the ideal (if it is two-sided). The information is
+computed and displayed as soon as you click on the corresponding entry
+in the window. Finally clicking on <C>Export ideal to GAP</C> makes the
+ideal the last output of XGAP's main window, where you may then go on
+working with it.
+<P/>
+It is also possible to select several ideals at the same time pressing
+the Ctrl-key while left clicking on the ideals. When several ideals
+are selected it is possible to compute their sums and intersection
+from the corresponding <C>Ideals</C>-menu entries. The result of the
+computation is then indicated by green color.
+</Description>
+</ManSection>
+</Section>
+</Chapter>

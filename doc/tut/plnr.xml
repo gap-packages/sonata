@@ -1,0 +1,124 @@
+<Chapter Label="Planar nearrings">
+<Heading>Planar nearrings</Heading>
+We recall the definition of planar nearrings and basic results 
+(see <Cite Key="Clay:Nearrings"/>).
+Let <M>(N,+,\cdot)</M> be a left nearring. For <M>a,b \in N</M> we define <M>a \equiv b</M>
+iff <M>a\cdot n = b\cdot n</M> for all <M>n\in N</M>. If <M>a \equiv b</M>, then <M>a</M> and <M>b</M>
+are called <E>equivalent multipliers</E>.
+A nearring <M>N</M> is called <E>planar</E> if <M>| N/_{\equiv} | \ge 3</M> and if 
+for any two non-equivalent multipliers <M>a</M> and <M>b</M> in <M>N</M>, for any <M>c\in N</M>, 
+the equation <M>a\cdot x = b\cdot x + c</M> has a unique solution.
+<P/>
+A <E>Ferrero pair</E> is a pair of finite groups <M>(N,\Phi)</M> such that <M>\Phi</M>
+is a fixed-point-free automorphism group of <M>(N,+)</M>.
+<P/>
+Starting with a Ferrero pair <M>(N,\Phi)</M> we can construct a planar nearring
+in the following way:
+Select representatives, say <M>e_{1},\ldots,e_{t}</M>, for some or all of the
+non-trivial orbits of <M>N</M> under <M>\Phi</M>. 
+Let <M>C = \Phi(e_1)\cup\ldots\cup\Phi(e_t)</M>.
+For each <M>x\in N</M> we define <M>a\cdot x = 0</M> for <M>a\in N\setminus C</M>, and 
+<M>a\cdot x=\phi_{a}(x)</M> for <M>a\in\Phi(e_{i})\subset C</M> and <M>\phi_{a}(e_{i})=a</M>.
+Then <M>(N,+,\cdot)</M> is a (left) planar nearring with <M>|N/_{\equiv}| = |\Phi|+1</M>.
+<P/>
+Every finite planar nearring can be constructed from some Ferrero pair 
+together with a set of orbit representatives in this way.
+<P/>
+<E>The problem:</E> Find a planar nearring with 25 elements and 9 pairwise
+non-equivalent multipliers.
+<P/>
+<E>The solution:</E> We follow the Ferrero method described above for defining a
+nearring multiplication on an additive group. 
+First we have to find a fixed-point-free (fpf) automorphism group of
+order <M>8</M> on a group of order <M>25</M>.
+<P/>
+We start with the cyclic group of order <M>25</M>:
+First of all we ask for the existence of an fpf automorphism group
+on <C>CyclicGroup(25)</C> by computing an upper bound for its order.
+<Example><![CDATA[
+gap> FpfAutomorphismGroupsMaxSize( CyclicGroup(25) );
+[ 4, 1 ]
+]]></Example>
+This function returns a list with two integers, <M>4</M> and <M>1</M>. 
+The first number is an upper bound for the size of an fpf automorphism group;
+if there is a metacyclic fpf automorphism group, then it has a cyclic normal
+subgroup of index dividing the second number. These bounds are not sharp.
+If the upper bound for the size of an fpf automorphism group on some group
+is <M>1</M>, we know that there is no nontrivial fpf automorphism group, no 
+Ferrero pair, and no planar nearring on this group at all.
+<P/>
+Here, SONATA does not exclude the possibility that the cyclic group of
+order <M>25</M> has an fpf automorphism group of order <M>4</M>. 
+However, we can be sure that all fpf automorphism groups are cyclic and that
+none of them has size <M>8</M>.
+<P/>
+Thus we have to consider the elementary abelian group of order 25 instead.
+<Example><![CDATA[
+gap> FpfAutomorphismGroupsMaxSize( ElementaryAbelianGroup(25) );
+[ 24, 2 ]
+]]></Example>
+There might even exist an fpf automorphism group of order <M>24</M>. (In fact
+there is more than one. The reference manual explains how to obtain all
+nearfields of size <M>25</M>.) 
+For our example, we could compute either a cyclic automorphism group or one 
+isomorphic to the quaternion group with 8 elements. Let's try the latter.
+<Example><![CDATA[
+gap> aux := FpfAutomorphismGroupsMetacyclic( [5,5], 4, -1 );
+[ [ [ [ f1, f2 ] -> [ f1^2, f2^3 ], [ f1, f2 ] -> [ f2^4, f1 ] ] ], 
+  <pc group of size 25 with 2 generators> ]
+]]></Example>
+Here, the function <C>FpfAutomorphismGroupsMetacyclic</C> determines the metacyclic
+fpf automorphism groups on <C>AbelianGroup([5,5])</C> with generators <M>p,q</M>
+satisfying <M>p^4 = 1, p^q = p^{-1}</M>, and <M>q^2 = p^2</M>. For each conjugacy class
+of such groups one representative is given. Conjugacy is determined within the
+whole automorphism group of <C>AbelianGroup([5,5])</C>. 
+The actual output of the function is a list with 2 elements.
+The first is not the list of fpf groups up to conjugacy but the list of
+automorphisms <M>p,q</M> generating those groups.
+The second element is simply the group <C>AbelianGroup([5,5])</C>, on which the
+automorphisms act.
+<P/>
+Since there is only one pair of generators <M>p,q</M>, all fpf automorphism groups
+isomorphic to the quaternion group are conjugate. Now, we have our Ferrero
+pair <M>(G, \Phi)</M>.
+<Example><![CDATA[
+gap> phi := Group( aux[1][1] );
+<group with 2 generators>
+gap> G := aux[2];         
+<pc group of size 25 with 2 generators>
+]]></Example>
+Next we have to pick some orbit representatives. 
+We note that for a fixed Ferrero pair distinct choices of representatives 
+may yield isomorphic nearrings. The function
+<C>OrbitRepresentativesForPlanarNearRing</C> returns exactly one set of
+representatives of given cardinality for each isomorphism class of planar
+nearrings which can be generated from <M>(G, \Phi)</M>.
+<Example><![CDATA[
+gap> OrbitRepresentativesForPlanarNearRing( G, phi, 1 );
+[ [ f1 ] ]
+]]></Example>
+This tells us that all planar nearrings obtained from <M>(G,\Phi)</M> with one
+orbit representative are in fact isomorphic. 
+What happens if we choose <M>2</M> representatives?
+<Example><![CDATA[
+gap> reps := OrbitRepresentativesForPlanarNearRing( G, phi, 2 );
+[ [ f1, f1*f2 ], [ f1, f1^2*f2^2 ] ]
+]]></Example>
+We obtain <M>2</M> non-isomorphic planar near-rings. Let's just construct one of
+them. The result will be an <C>ExplicitMultiplicationNearRing</C>.
+<Example><![CDATA[
+gap> n := PlanarNearRing( G, phi, reps[1] );
+ExplicitMultiplicationNearRing ( <pc group of size 25 with 
+2 generators> , multiplication )
+]]></Example>
+How many non-isomorphic planar nearrings can be defined from our Ferrero pair
+<M>(G,\Phi)</M> in total? Since there are <M>3</M> non-trivial orbits of <M>\Phi</M> on <M>G</M>,
+we may choose up to <M>3</M> representatives.
+<Example><![CDATA[
+gap> Length(OrbitRepresentativesForPlanarNearRing( G, phi, 3 ));
+6
+]]></Example>
+Summing all up, we get exactly <M>9</M> non-isomorphic planar nearrings with 
+elementary abelian additive group of order <M>25</M> whose multiplication is
+defined using a quaternion group of fpf automorphisms.
+</Chapter>

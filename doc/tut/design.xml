@@ -1,0 +1,136 @@
+<Chapter Label="Designs">
+<Heading>Designs</Heading>
+Various designs can be obtained from nearrings. The design structure and 
+basic functions for the manipulation of designs have been implemented within 
+SONATA, as well as the means to construct the most popular nearring designs.
+Please see the reference manual for other ways to generate designs, e.g.
+by a set of blocks or by an incidence matrix.
+<Section Label="Designs from planar nearrings">
+<Heading>Designs from planar nearrings</Heading>
+We are going to generate a design with a feasible parameter set from a planar 
+nearring, respectively from a Ferrero pair.
+For notations and definitions we refer to <Cite Key="Clay:Nearrings"/>.
+<P/>
+Let <M>N</M> be a (left) planar nearring. Then we can define a design
+<M>(N,B^{*},\in)</M> with <M>N</M> as the set of points and
+<M>\{N^{*}\cdot a+b | a,b\in N, a \not= 0 \}</M> as set of blocks.
+Here <M>N^{*} = \{ x\in N | x\cdot N = N \}</M>.
+We note that such a design is always a BIB-design. Suppose that the planar
+nearring <M>N</M> is obtained from the Ferrero pair <M>(G,\Phi)</M> as described in the
+previous chapter with <M>v := |G|</M>, <M>k := |\Phi|</M>. 
+We can identify <M>G</M> and the additive group of the nearring <M>N</M>.
+Then <M>N^{*}\cdot a = \Phi(a)</M> for all <M>a\in N</M>. The number of points of
+<M>(N,B^{*},\in)</M> is <M>v</M>, each block has size <M>k</M>, and any <M>2</M> distinct points
+are together incident with precisely <M>k-1</M> blocks. We say that <M>(N,B^{*},\in)</M>
+is a <M>2-(v,k,k-1)</M> design. Note that <M>k</M> divides <M>v-1</M>.
+<P/>
+<E>The problem:</E>
+Find a <M>2-(16,5,4)</M> design <M>(N,B^{*},\in)</M> if possible.
+<P/>
+<E>The solution:</E>
+Since our design should have <M>16</M> points, we need a planar nearring of size 
+<M>16</M>. Furthermore, this planar nearring has an underlying Ferrero pair with
+a fixed-point-free (fpf) automorphism group of order <M>5</M>, since the blocks 
+should be of that size.
+<P/>
+Let <M>(G,\Phi)</M> be such a Ferrero pair.
+We note that <M>\Phi</M> is fpf on all characteristic subgroups of <M>G</M>, in 
+particular, on the center of <M>G</M>. For our example the size of the center
+modulo <M>5</M> has to be congruent to <M>1</M>. Therefore the center has order <M>16</M>,
+and <M>G</M> is abelian.
+Since <M>\Phi</M> is also fpf on any factor of <M>G</M> by a characteristic subgroup,
+<M>\Phi</M> is fpf on the factor of <M>G</M> by its Frattini subgroup. 
+Thus <M>G</M> is elementary abelian.
+<P/>
+Now we compute an fpf automorphism group of order 5 on the elementary abelian
+group of order 16:
+<Example><![CDATA[
+gap> aux := FpfAutomorphismGroupsCyclic( [2,2,2,2], 5 );
+[ [ [ f1, f2, f3, f4 ] -> [ f4, f1*f2, f2*f3, f3*f4 ] ], 
+  <pc group of size 16 with 4 generators> ]
+gap> a := aux[1][1];
+[ f1, f2, f3, f4 ] -> [ f4, f1*f2, f2*f3, f3*f4 ]
+gap> phi := Group( a );;
+gap> G := aux[2];;
+]]></Example>
+Up to conjugacy there is only one fpf automorphism group of order 5.
+We note that all planar nearrings obtained from a fixed Ferrero pair 
+<M>(G,\Phi)</M> yield the same design. We build the blocks <M>\Phi(a)+b</M> for
+<M>a,b\in G, a\not=0</M>, of <M>(N,B^{*},\in)</M> directly from <M>(G,\Phi)</M> without
+actually generating a nearring.
+<Example><![CDATA[
+gap> D := DesignFromFerreroPair( G, phi, "*" );
+<a 2 - ( 16, 5, 4 ) nearring generated design>
+]]></Example>
+The reference manual describes other options for <C>DesignFromFerreroPair</C> 
+besides <C>"*"</C> and the correponding designs as well.
+</Section>
+<Section Label="Information on designs">
+<Heading>Information on designs</Heading>
+We investigate the design <C>D</C>, which we have generated from a planar
+nearring in the last section.
+<Example><![CDATA[
+gap> D;
+<a 2 - ( 16, 5, 4 ) nearring generated design>
+gap> DesignParameter( D );
+[ 2, 16, 48, 15, 5, 4 ]
+]]></Example>
+<C>DesignParameter( D )</C> returns the set of parameters <M>t, v, b, r, k, \lambda</M> 
+of the design <C>D</C>. Here there are 16 points, 48 blocks,
+every point is incident with precisely 15 blocks, every block is incident 
+with precisely 5 points, every 2 distinct points are together incident
+with precisely 4 blocks. The design can be visualized by printing the
+incidence matrix. The rows are labelled by the points, the columns by
+the blocks. The point of number <M>i</M> is incident with the block of number <M>j</M> 
+if and only if the entry in the <M>i</M>-th row, <M>j</M>-th column is 1.
+<Example><![CDATA[
+gap> PrintIncidenceMat( D );
+...1...1...11...1...1..1..11..1...1..1..1...11..
+1......1...1..1.1...11...1..1..1...11..1..1....1
+.1..1......11..1...1..1...11....1..1..11..1...1.
+..1..1..1...1...1.1...1..1...11...1.1....11...1.
+1....11..1......1..1.1....1.1...11...1...1..1.1.
+.1..1.1...1..1......11....1..11....11....1.1.1..
+..1..1.1.1...1...1...1...1.1....1.1...11...1.1..
+..11...1..1.1..1..1.....1...1...1..1.1...1.1...1
+..1.1...1.1...1..1.1.1.....1..1..1...1..1.1....1
+1...1.1....1.1...11...1.1.......1.1.1...1...1..1
+1...1...11....11....1..11....1....1..1.1...1..1.
+.1...1..1.1.1....1.1...11...1..1....1..1....11..
+.1.1....11...1.1....1.1..1.1...1.1.......1..1..1
+.1.1..1....1..1..11....1.1..1.1..1....1....1..1.
+..11..1..1....1.1..1..1.1....1.1...1..1.1....1..
+1....1.1..1..1.1..1....1..1..1.1.1....1.1.1.....
+]]></Example>
+By checking the entries in the incidence matrix we realize this design is
+circular, that is, any <M>2</M> distinct blocks have at most <M>2</M> points in common.
+Actually, this is not so easy to see. We prefer to do it like this:
+<Example><![CDATA[
+gap> IsCircularDesign( D );
+true
+]]></Example>
+There are convenient functions to check which points are incident with
+a given set of blocks and vice versa.
+<Example><![CDATA[
+gap> PointsIncidentBlocks( D, [2,7] );
+[ 6, 14 ]
+gap> BlocksIncidentPoints( D, [6,14] );
+[ 2, 7, 31, 44 ]
+]]></Example>
+Here the 6-th and the 14-th point are incident with the given blocks with
+numbers 2 and 7. The numbering corresponds to that of the columns and rows of
+the incidence matrix. Blocks 2, 7, 31, and 44 are incident with points 6 and
+14.
+<P/>
+The cardinalities of the intersections of one block with all the others,
+e.g. of the 4-th block with all 48 blocks are given like this.
+<Example><![CDATA[
+gap> BlockIntersectionNumbers( D, 4 );
+[ 0, 2, 2, 5, 0, 0, 2, 2, 1, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 0, 
+  2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1, 2, 1, 2, 0, 2, 2, 0, 2, 2, 0, 2, 
+  2, 2, 1, 2 ]
+]]></Example>
+Of course, all these functions can be applied to all kinds of designs no
+matter how they have been generated.
+</Section>
+</Chapter>

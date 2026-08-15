@@ -1,0 +1,189 @@
+<Chapter Label="The nearring library">
+<Heading>The nearring library</Heading>
+The nearring library contains all nearrings up to order 15 and all
+nearrings with identity up to order 31. All nearrings in the library are
+nearrings constructed via <C>ExplicitMultiplicationNearRingNC</C>, so all functions
+for these nearrings are applicable to <C>LibraryNearRing</C>s.
+<Section Label="Extracting nearrings from the library">
+<Heading>Extracting nearrings from the library</Heading>
+<ManSection>
+<Oper Name="LibraryNearRing" Arg="G, num"/>
+<Description>
+<C>LibraryNearRing</C> retrieves a nearring from the nearrings library files. 
+<A>G</A> must be a group of order <M>\le 15</M>. <A>num</A> must be an integer which 
+indicates the number of the class of nearrings on the specified group.
+<P/>
+(&lt;Remark:&gt; due to the large number of nearrings on <M>D_{12}</M>, make sure 
+that you have enough main memory - say at least 32 MB - available if you want 
+to get a library nearring on <M>D_{12}</M>).
+<P/>
+If <A>G</A> is given as a <C>TWGroup</C>, then a nearring is returned whose group reduct
+is <E>equal to</E> <A>G</A>. Otherwise the result is a nearring whose group reduct is 
+<E>isomorphic to</E> <A>G</A>, and a warning is issued.
+<P/>
+The number of nearrings definable on a certain group <A>G</A> can be accessed via
+</Description>
+</ManSection>
+<ManSection>
+<Func Name="NumberLibraryNearRings" Arg="G"/>
+<Func Name="AllLibraryNearRings" Arg="G"/>
+<Description>
+returns a list of all nearrings (in the library) that have the group <A>G</A> as
+group reduct.
+<Example><![CDATA[
+gap> l := AllLibraryNearRings( GTW3_1 );
+[ LibraryNearRing(3/1, 1), LibraryNearRing(3/1, 2), LibraryNearRing(3/1, 3), 
+  LibraryNearRing(3/1, 4), LibraryNearRing(3/1, 5) ]
+gap> Filtered( l, IsNearField );
+[ LibraryNearRing(3/1, 3) ]
+gap> NumberLibraryNearRings( GTW14_2 );
+1821
+gap> LN14_2_1234 := LibraryNearRing( GTW14_2, 1234 );
+LibraryNearRing(14/2, 1234)
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="LibraryNearRingWithOne" Arg="G, num"/>
+<Description>
+<C>LibraryNearRingWithOne</C> retrieves a nearring from the nearrings library
+files. 
+<A>G</A> must be one of the predefined groups of order <M>\le 31</M>.  
+<A>num</A> must be an integer which indicates the number of the class of 
+nearrings with identity on the specified group.
+<P/>
+The number of nearrings with identity definable on a certain group <A>G</A>
+can be accessed via
+</Description>
+</ManSection>
+<ManSection>
+<Func Name="NumberLibraryNearRingsWithOne" Arg="G"/>
+<Func Name="AllLibraryNearRingsWithOne" Arg="G"/>
+<Description>
+returns a list of all nearrings with identity (in the library) that have
+the group <A>G</A> as group reduct.
+<Example><![CDATA[
+gap> NumberLibraryNearRingsWithOne( GTW24_6 );
+0
+gap> NumberLibraryNearRingsWithOne( GTW24_4 );
+10
+gap> LNwI24_4_8 := LibraryNearRingWithOne( GTW24_4, 8 );
+LibraryNearRingWithOne(24/4, 8)
+gap> AllLibraryNearRingsWithOne( GTW24_6 );
+[  ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Identifying nearrings">
+<Heading>Identifying nearrings</Heading>
+<ManSection>
+<Attr Name="IdLibraryNearRing" Arg="nr"/>
+<Description>
+The function <C>IdLibraryNearRing</C> returns a pair [<M>G</M>, <M>n</M>] such that the
+nearring <A>nr</A> is isomorphic to the <M>n</M>th library nearring on the group <M>G</M>.
+<Example><![CDATA[
+gap> p := PolynomialNearRing( GTW4_2 );
+PolynomialNearRing( 4/2 )
+gap> IdLibraryNearRing( p );
+[ 8/3, 833 ]
+gap> n := LibraryNearRing( GTW3_1, 4 );
+LibraryNearRing(3/1, 4)
+gap> d := DirectProductNearRing( n, n );
+DirectProductNearRing( LibraryNearRing(3/1, 4), LibraryNearRing(3/1, 4) )
+gap> IdLibraryNearRing( d );
+[ 9/2, 220 ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="IdLibraryNearRingWithOne" Arg="nr"/>
+<Description>
+The function <C>IdLibraryNearRingWithOne</C> returns a pair [<M>G</M>, <M>n</M>] such
+that the nearring <A>nr</A> is isomorphic to the <M>n</M>th library nearring with
+identity on the group <M>G</M>. This function can only be applied to nearrings
+which have an identity.
+<Example><![CDATA[
+gap> l := LibraryNearRingWithOne( GTW12_3, 1 );
+LibraryNearRingWithOne(12/3, 1)
+gap> IdLibraryNearRing( l ); #this command requires time and memory!!!
+[ 12/3, 37984 ]
+gap> IdLibraryNearRingWithOne( l );           
+[ 12/3, 1 ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section>
+<Heading>IsLibraryNearRing</Heading>
+<ManSection>
+<Filt Name="IsLibraryNearRing" Arg="nr"/>
+<Description>
+The function <C>IsLibraryNearRing</C> returns <K>true</K> if the nearring <A>nr</A> has been
+read from the nearring library and <K>false</K> otherwise.
+<Example><![CDATA[
+gap> IsLibraryNearRing( LNwI24_4_8 );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Accessing the information about a nearring stored in the library">
+<Heading>Accessing the information about a nearring stored in the library</Heading>
+<ManSection>
+<Func Name="LibraryNearRingInfo" Arg="group, list, string"/>
+<Description>
+This function provides information about the specified library nearrings
+in a way similar to how nearrings are presented in the appendix of
+[Pil??].The parameter <A>group</A> specifies a predefined group; valid
+names are exactly those which are also valid for the function
+<C>LibraryNearrings</C> (cf. Section <Ref Func="LibraryNearRing"/>).
+<P/>
+The parameter <A>list</A> must be a non-empty list of integers defining the 
+classes of nearrings to be printed. Naturally, these integers must all fit 
+into the ranges described in Section <Ref Func="LibraryNearRing"/> for the according
+groups.
+<P/>
+The third parameter <A>string</A> is optional. <A>string</A> must be a string
+consisting of one or more (or all) of the following characters:
+<C>l</C>, <C>m</C>, <C>i</C>, <C>v</C>, <C>s</C>, <C>e</C>, <C>a</C>.
+Per default, (i.e. if this parameter is not specified), the output is 
+minimal. According to each specified character, the following is added:
+<List>
+<Mark><C>a</C></Mark>
+<Item>list the nearring automorphisms.</Item>
+<Mark><C>c</C></Mark>
+<Item>print the meaning of the letters used in the output.</Item>
+<Mark><C>e</C></Mark>
+<Item>list the nearring endomorphisms.</Item>
+<Mark><C>g</C></Mark>
+<Item>list the endomorphisms of the group reduct.</Item>
+<Mark><C>i</C></Mark>
+<Item>list the ideals.</Item>
+<Mark><C>l</C></Mark>
+<Item>list the left ideals.</Item>
+<Mark><C>m</C></Mark>
+<Item>print the multiplication tables.</Item>
+<Mark><C>r</C></Mark>
+<Item>list the right ideals.</Item>
+<Mark><C>s</C></Mark>
+<Item>list the subnearrings.</Item>
+<Mark><C>v</C></Mark>
+<Item>list the invariant subnearrings.</Item>
+</List>
+<E>Examples:</E>
+<P/>
+<C>LibraryNearRingInfo( GTW3_1, [ 3 ], "lmivsea" )</C> will print all
+available information about the third class of nearrings on the group
+<M>Z_3</M>.
+<P/>
+<C>LibraryNearRingInfo( GTW4_1, [ 1..12 ] )</C> will provide a minimal output
+for all classes of nearrings on <M>Z_4</M>.
+<P/>
+<C>LibraryNearRingInfo( GTW6_2, [ 5, 18, 21 ], "mi" )</C> will print
+the minimal information plus the multiplication tables plus the ideals for
+the classes 5, 18, and 21 of nearrings on the group <M>S_3</M>.
+</Description>
+</ManSection>
+</Section>
+</Chapter>

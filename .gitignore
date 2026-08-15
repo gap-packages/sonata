@@ -1,18 +1,34 @@
 /doc/*/*.aux
 /doc/*/*.bbl
 /doc/*/*.blg
-/doc/*/*.dvi
+/doc/*/*.brf
+/doc/*/*.css
 /doc/*/*.idx
 /doc/*/*.ilg
 /doc/*/*.ind
+/doc/*/*.js
 /doc/*/*.lab
 /doc/*/*.log
-/doc/*/*.pdf
+/doc/*/*.out
+/doc/*/*.pnr
 /doc/*/*.six
+/doc/*/*.tex
 /doc/*/*.toc
-/doc/*/*.tst
+/doc/*/_*.xml
+/doc/*/chap*.html
+/doc/*/chap*.txt
+/doc/*/chooser.html
+/doc/*/manual.pdf
 
+# The reference book is scaffolded by AutoDoc; the tutorial's main.xml and
+# title.xml are written by hand, so only the reference ones are generated.
+/doc/ref/main.xml
+/doc/ref/title.xml
+
+# Output of the old plain-TeX manuals; kept ignored until the leftover
+# directory is removed for good.
 /doc/htm/
 
 /gh-pages/
 /tmp/
+/doc/*/*.dvi
