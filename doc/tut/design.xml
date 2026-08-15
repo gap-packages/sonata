@@ -63,7 +63,7 @@ gap> D := DesignFromFerreroPair( G, phi, "*" );
 <a 2 - ( 16, 5, 4 ) nearring generated design>
 ]]></Example>
 The reference manual describes other options for <C>DesignFromFerreroPair</C> 
-besides <C>"*"</C> and the correponding designs as well.
+besides <C>"*"</C> and the corresponding designs as well.
 </Section>
 <Section Label="Information on designs">
 <Heading>Information on designs</Heading>

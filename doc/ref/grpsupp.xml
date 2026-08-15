@@ -298,7 +298,7 @@ true
 If <A>G</A> is a group and <A>N</A> is a normal subgroup of <A>G</A> then the function
 <C>RepresentativesModNormalSubgroup</C> returns a set of representatives for
 the congruence classes modulo the normal subgroup <A>N</A>, i.e. a set of elements
-of <A>G</A> with exactly one element from each cogruence class modulo <A>N</A>.
+of <A>G</A> with exactly one element from each congruence class modulo <A>N</A>.
 <Example><![CDATA[
 gap> G := DihedralGroup( 16 );
 <pc group of size 16 with 4 generators>
@@ -331,7 +331,7 @@ gap> NontrivialRepresentativesModNormalSubgroup( G, C );
 <ManSection>
 <Attr Name="ScottLength" Arg="G"/>
 <Description>
-The function <C>ScottLength</C> retuns the Scott-length of the group <A>G</A>.
+The function <C>ScottLength</C> returns the Scott-length of the group <A>G</A>.
 For a definition of the Scott-length of a group and an idea for an
 algorithm for the general case see <Cite Key="scott69:TAOPMOAGATSOCPPGI"/>.
 In the case of a class 2 nilpotent finite group <A>G</A> a faster algorithm

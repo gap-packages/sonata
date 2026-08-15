@@ -125,7 +125,7 @@ it has more than one element and its nonzero elements are
 a group with respect to multiplication. A textbook
 on nearfields is <Cite Key="Waehling:Fastkoerper"/>. They are interesting
 structures, closely connected to sharply <M>2</M>-transitive permutation
-groups and fixedpointfree automorphism groups of groups.
+groups and fixed-point-free automorphism groups of groups.
 <Example><![CDATA[
 gap> IsNearField( N );
 false
@@ -183,7 +183,7 @@ Let's make for sure:
 gap> IsIsomorphicNearRing( N, T );
 true
 ]]></Example>
-However, <C>N</C> and <C>T</C> are certaily not equal:
+However, <C>N</C> and <C>T</C> are certainly not equal:
 <Example><![CDATA[
 gap> N = T;
 false

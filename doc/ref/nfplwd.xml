@@ -39,7 +39,7 @@ true
 <ManSection>
 <Oper Name="DicksonNearFields" Arg="q, n"/>
 <Description>
-All finite nearfields with 7 exceptions can be obtained via socalled
+All finite nearfields with 7 exceptions can be obtained via so-called
 coupling maps from finite fields. These nearfields are called Dickson
 nearfields.
 <P/>

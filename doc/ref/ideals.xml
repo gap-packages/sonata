@@ -3,13 +3,13 @@
 For an introduction to nearring ideals we suggest <Cite Key="Pilz:Nearrings"/>,
 <Cite Key="meldrum85:NATLWG"/>, and <Cite Key="Clay:Nearrings"/>.
 <P/>
-Ideals of nearrings can either be left, right or twosided ideals. However,
+Ideals of nearrings can either be left, right or two-sided ideals. However,
 all of them are called ideals. Mathematicians tend to use the expression
 ideal also for subgroups of the group reduct of the nearring. &GAP; does
 not allow that.
 <P/>
-Left, right or twosided ideals in &GAP; form their own category <C>IsNRI</C>.
-Whenever a left, right or twosided ideal is constructed it lies in this
+Left, right or two-sided ideals in &GAP; form their own category <C>IsNRI</C>.
+Whenever a left, right or two-sided ideal is constructed it lies in this
 category. The objects in this category are what &GAP; considers as ideals.
 We will refer to them as <C>NRI</C>s.
 <P/>
@@ -150,7 +150,7 @@ gap> NearRingLeftIdeals( n );
 <Description>
 <C>IsNRI</C> returns <K>true</K> if the object <A>obj</A> is a left ideal, a right ideal or
 an ideal of a nearring. (Such an object may be considered as a (one or
-twosided) &GAP; -- nearring ideal.)
+two-sided) &GAP; -- nearring ideal.)
 </Description>
 </ManSection>
 <ManSection>
@@ -381,8 +381,8 @@ false
 </Description>
 </ManSection>
 </Section>
-<Section Label="Comparision of ideals">
-<Heading>Comparision of ideals</Heading>
+<Section Label="Comparison of ideals">
+<Heading>Comparison of ideals</Heading>
 <ManSection>
 <Meth Name="\=" Label="for nearring ideals" Arg="I, J"/>
 <Description>
@@ -417,7 +417,7 @@ In both cases the result is again a (left / right) ideal.
 <Oper Name="ClosureNearRingLeftIdeal" Arg="L1, L2"/>
 <Description>
 The function <C>ClosureNearRingLeftIdeal</C> computes the left ideal <A>L1</A> + <A>L2</A>
-of the nearRing <M>N</M> if both <A>L1</A> and <A>L2</A> are (left) ideals of <M>N</M>.
+of the nearring <M>N</M> if both <A>L1</A> and <A>L2</A> are (left) ideals of <M>N</M>.
 </Description>
 </ManSection>
 <ManSection>

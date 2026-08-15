@@ -102,7 +102,7 @@ true
 <ManSection>
 <Oper Name="IdentityEndoMapping" Arg="G"/>
 <Description>
-<C>IdentitEndoMapping</C> is the counterpart to the &GAP; standard
+<C>IdentityEndoMapping</C> is the counterpart to the &GAP; standard
 library function <C>IdentityMapping</C>. It returns the identity
 transformation on the group <A>G</A>.
 <Example><![CDATA[
@@ -267,7 +267,7 @@ gap> PrintAsTerm( p );
 gap> GeneratorsOfGroup( G );
 [ (1,2,3), (1,2) ]
 ]]></Example>
-The expressions <C>g1</C> and <C>g2</C> stand for the first and secong generator 
+The expressions <C>g1</C> and <C>g2</C> stand for the first and second generator 
 of the group <A>G</A> respectively. The result is not necessarily a 
 polynomial of minimal length.
 </Description>

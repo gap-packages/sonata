@@ -362,7 +362,7 @@ For <A>m</A>, <A>r</A>, <A>k</A> as above and <A>p</A> coprime to <A>m</A>
 returns a list of matrices <M>\{ (A_i,B_i,Q_i) | i</M> in <M>indexlist \}</M> over
 GF(<A>p</A>) as well as the list <M>indexlist</M>. The GF(<A>p</A>)-representations
 determined by <M>a \mapsto A_i, b \mapsto B_i</M> and <M>q \mapsto Q_i</M> are all
-irreducible, fpf representations of <M>\Phi</M> upto equivalence.
+irreducible, fpf representations of <M>\Phi</M> up to equivalence.
 <P/>
 We determine the irreducible matrix representations of the smallest
 type-II-group which is not metacyclic (parameters m = 30, r = 11, k = -1,
@@ -426,7 +426,7 @@ For <M>r = 1</M> mod <M>m</M>, the group <M>H</M> is cyclic and <C>FpfRepresenta
 <P/>
 The GF(<A>p</A>)-representations
 determined by <M>p \mapsto P, q \mapsto Q</M> and <M>a \mapsto A_i, b \mapsto B_i</M>
-are all irreducible, fpf representations of <M>\Phi</M> upto equivalence.
+are all irreducible, fpf representations of <M>\Phi</M> up to equivalence.
 <P/>
 We determine the irreducible matrix representation of the smallest
 type-III-group, namely SL(2,3), (parameters m = 3, r = 1, size 24) over the
@@ -482,7 +482,7 @@ For <M>r = 1</M> mod <M>m</M>, the function <C>FpfRepresentations4</C> returns
 The GF(<A>p</A>)-representations
 determined by <M>p \mapsto P, q \mapsto Q</M> and
 <M>a \mapsto A_i, b \mapsto B_i, z \mapsto Z_i</M>
-are all irreducible, fpf representations of <M>\Phi</M> upto equivalence.
+are all irreducible, fpf representations of <M>\Phi</M> up to equivalence.
 <P/>
 We determine the <M>2</M> nonequivalent irreducible matrix representations of the
 smallest type-IV-group (binary octahedral group, m = 3, r = 1, k = -1, size 48)
@@ -620,7 +620,7 @@ returned together with the group <C>AbelianGroup(<A>ints</A>)</C>, on which the
 automorphisms act.
 Here <A>ints</A> is sorted with the order above.
 <P/>
-Upto conjugacy there is only one fpf automorphism group of type II with
+Up to conjugacy there is only one fpf automorphism group of type II with
 parameters <M>m = 30, r = 11, k = -1</M>, size <M>120</M> on the elementary abelian
 group of size <M>11^4</M>:
 <Example><![CDATA[

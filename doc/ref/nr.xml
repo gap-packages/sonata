@@ -508,8 +508,8 @@ gap> i := InvariantSubNearRings( n );
 <Description>
 For a subgroup <A>S</A> of the group reduct of the nearring which is closed
 under the multiplication of <A>nr</A> the function
-<C>SubNearRingBySubgroupNC</C> returns the subnearRing of <A>nr</A>, which is
-induced by this subgroup. The <A>nr</A>-invariance is not explicitely
+<C>SubNearRingBySubgroupNC</C> returns the subnearring of <A>nr</A>, which is
+induced by this subgroup. The <A>nr</A>-invariance is not explicitly
 tested.
 <Example><![CDATA[
 gap> n := LibraryNearRing( GTW12_4, 8 );            

@@ -104,7 +104,7 @@ gap> # D3 is actually isomorphic to D1
 <ManSection>
 <Oper Name="DesignFromWdNearRing" Arg="N"/>
 <Description>
-<C>DesignFromWdNearring</C> returns a design obtained from the weakly divisible 
+<C>DesignFromWdNearRing</C> returns a design obtained from the weakly divisible 
 nearring <A>N</A> with cyclic additive group of prime power order. Following the
 constructions of A. Benini, F. Morini and S. Pellegrini, we take the elements
 of <A>N</A> as set of points and <M>\{N\cdot a+b | a\in C, b\in &lt;N&gt;\}</M> as set of
@@ -163,7 +163,7 @@ gap> # returns the block in position 3 as a list of points
 <ManSection>
 <Attr Name="DesignParameter" Arg="D"/>
 <Description>
-<C>DesignParameter</C> returns the set of paramaters <M>t, v, b, r, k, \lambda</M> 
+<C>DesignParameter</C> returns the set of parameters <M>t, v, b, r, k, \lambda</M> 
 of the design <A>D</A>. Here <M>v</M> is the size of the set of points 
 <C>PointsOfDesign</C>, <M>b</M> is the size of the set of blocks <C>PointsOfDesign</C>,
 every point is incident with precisely <M>r</M> blocks, every block is incident 
