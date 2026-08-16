@@ -13,8 +13,8 @@ LoadPackage("AutoDoc");
 
 AutoDoc(rec(
     dir := "doc/ref",
-    autodoc := rec(scan_dirs := []),
-    gapdoc := rec(main := "main", files := []),
+    autodoc := true,
+    gapdoc := true,
     extract_examples := true,
     scaffold := rec(
         includes := [
