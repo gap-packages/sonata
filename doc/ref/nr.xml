@@ -345,12 +345,12 @@ gap> AsSortedList( n );
 <Meth Name="Random" Label="near ring element" Arg="nr"/>
 <Description>
 <C>Random</C> returns a random element of the nearring <A>nr</A>.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> n := LibraryNearRing( GTW6_2, 39 );                    
 LibraryNearRing(6/2, 39)
 gap> Random(n);
 ((1,2))
-]]></Example>
+]]></Log>
 </Description>
 </ManSection>
 </Section>

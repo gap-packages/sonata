@@ -21,7 +21,7 @@ gap> Size (I);
 3072
 ]]></Example>
 For a polynomial function, we can ask for a polynomial that induces it.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> p := Random( I );
 <mapping: AlternatingGroup( [ 1 .. 4 ] ) -> AlternatingGroup( [ 1 .. 4 ] ) >
 gap> PrintAsTerm( p );
@@ -30,7 +30,7 @@ gap> PrintAsTerm( p );
 g1 + x - g2 - x + g2 - g1 - x + g1 + x
 gap> GeneratorsOfGroup( AlternatingGroup( 4 ) );
 [ (1,2,3), (2,3,4) ]
-]]></Example>
+]]></Log>
 We get a polynomial (not necessarily the shortest possible polynomial) that induces
 the polynomial function. The expressions <C>g1</C> and <C>g2</C> stand for the first and second
 generator of the group respectively.
@@ -67,7 +67,7 @@ We do an example on the group <M>16/8</M> in the classification of
 Thomas and Wood. It is a subdirectly irreducible group of order 16,
 and the factor modulo the monolith is isomorphic to the elementary abelian group
 of order 8.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> G := GTW16_8;
 16/8
 gap> U := First ( NormalSubgroups( G ), N -> Size(N) = 2 );
@@ -77,7 +77,7 @@ RestrictedEndomorphismNearRing( 16/8, Group(
 [ ( 1, 5)( 2,10)( 3,11)( 4,12)( 6,15)( 7,16)( 8, 9)(13,14) ]) )
 gap> Size (HGU);
 8
-]]></Example>
+]]></Log>
 It is interesting to compare this nearring to the nearring of
 all functions <M>e</M> in the endomorphism nearring <M>E (G)</M> with the
 property <M>e (G) \subseteq U</M>.

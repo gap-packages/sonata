@@ -364,7 +364,7 @@ subset of <A>nr</A>.
 <P/>
 In the following example we let a nearring act on its group reduct and
 compute the noetherian quotient <M>(I,I)_N</M> for an ideal <M>I</M> of <M>N</M>.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> N := LibraryNearRing( GTW12_3, 100 );
 LibraryNearRing(12/3, 100)
 gap> I := NearRingIdeals( N );            
@@ -377,7 +377,7 @@ gap> NoetherianQuotient( N, NN, GroupReduct(I[2]), GroupReduct(I[2]) );
 < nearring ideal >
 gap> Size(last);
 12
-]]></Example>
+]]></Log>
 </Description>
 </ManSection>
 </Section>

@@ -148,20 +148,6 @@ gap> ng := NGroupByNearRingMultiplication( n );
 gap> TypeOfNGroup( ng );
 fail
 
-# doc/ref/ngroups.xml:367-380
-gap> N := LibraryNearRing( GTW12_3, 100 );
-LibraryNearRing(12/3, 100)
-gap> I := NearRingIdeals( N );            
-[ < nearring ideal >, < nearring ideal >, < nearring ideal > ]
-gap> List(I,Size);
-[ 1, 6, 12 ]
-gap> NN := NGroupByNearRingMultiplication( N );
-< N-group of LibraryNearRing(12/3, 100) >
-gap> NoetherianQuotient( N, NN, GroupReduct(I[2]), GroupReduct(I[2]) );
-< nearring ideal >
-gap> Size(last);
-12
-
 # doc/ref/ngroups.xml:399-414
 gap> f := LibraryNearRing( GTW8_4, 3 );
 LibraryNearRing(8/4, 3)

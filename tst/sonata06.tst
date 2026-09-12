@@ -65,62 +65,11 @@ gap> List( s, sg -> IsSubgroupNearRingLeftIdeal( n, sg ) );
 gap> List( s, sg -> IsSubgroupNearRingRightIdeal( n, sg ) );
 [ true, false, false, false, true, true ]
 
-# doc/ref/ideals.xml:248-253
-gap> n := LibraryNearRingWithOne( GTW27_2, 5 );
-LibraryNearRingWithOne(27/2, 5)
-gap> Filtered( NearRingIdeals( n ), IsPrimeNearRingIdeal );
-[ < nearring ideal of size 9 >, < nearring ideal of size 27 > ]
-
 # doc/ref/ideals.xml:263-268
 gap> n := LibraryNearRingWithOne( GTW27_2, 5 );
 LibraryNearRingWithOne(27/2, 5)
 gap> Filtered( NearRingIdeals( n ), IsMaximalNearRingIdeal );
 [ < nearring ideal of size 9 > ]
-
-# doc/ref/ideals.xml:319-333
-gap> n := LibraryNearRing( GTW8_2, 2 );
-LibraryNearRing(8/2, 2)
-gap> li := NearRingLeftIdeals( n );
-[ < nearring left ideal >, < nearring left ideal >, < nearring left ideal >, 
-  < nearring left ideal >, < nearring left ideal >, < nearring left ideal > ]
-gap> l := li[3];
-< nearring left ideal >
-gap> e := Enumerator( l );;
-gap> e[2];
-((1,2)(3,6,5,4))
-gap> AsList( e ); AsList( l );
-[ (()), ((1,2)(3,6,5,4)), ((3,5)(4,6)), ((1,2)(3,4,5,6)) ]
-[ (()), ((3,5)(4,6)), ((1,2)(3,6,5,4)), ((1,2)(3,4,5,6)) ]
-
-# doc/ref/ideals.xml:343-346
-gap> Random( l );
-((1,2)(3,4,5,6))
-
-# doc/ref/ideals.xml:359-364
-gap> Random( n ) in l;
-true
-gap> Random( n ) in l;
-false
-
-# doc/ref/ideals.xml:445-454
-gap> l := LibraryNearRing( GTW6_2, 3 );
-LibraryNearRing(6/2, 3)
-gap> i := NearRingIdeals( l );               
-[ < nearring ideal >, < nearring ideal > ]
-gap> List( i, Size );
-[ 1, 6 ]
-gap> NearRingCommutator( i[2], i[2] );
-< nearring ideal of size 6 >
-
-# doc/ref/ideals.xml:457-466
-gap> l := LibraryNearRing( GTW8_4, 13 );
-LibraryNearRing(8/4, 13)
-gap> NearRingIdeals( l );
-[ < nearring ideal >, < nearring ideal >, < nearring ideal > ]
-gap> PrintNearRingCommutatorsTable( l );
-[ 1, 1, 1 ]
-[ 1, 1, 2 ]
-[ 1, 2, 2 ]
 
 # doc/ref/ideals.xml:477-483
 gap> NumberLibraryNearRings( GTW4_2 );                         

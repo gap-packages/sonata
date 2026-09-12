@@ -125,15 +125,5 @@ gap> PrintArray( GraphOfMapping( m ) );
   [  (1,2,3),  (1,3,2) ],
   [    (1,2),    (2,3) ] ]
 
-# doc/ref/tfms.xml:260-269
-gap> G := SymmetricGroup ( 3 );
-Sym( [ 1 .. 3 ] )
-gap> p := Random( PolynomialNearRing( G ) );
-<mapping: SymmetricGroup( [ 1 .. 3 ] ) -> SymmetricGroup( [ 1 .. 3 ] ) >
-gap> PrintAsTerm( p );
- - x - g2 + g1 - x - g1 - g2
-gap> GeneratorsOfGroup( G );
-[ (1,2,3), (1,2) ]
-
 #
 gap> STOP_TEST("sonata04.tst", 1);

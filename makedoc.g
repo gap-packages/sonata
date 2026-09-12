@@ -11,6 +11,10 @@
 
 LoadPackage("AutoDoc");
 
+# AutoDoc notes that it builds only the first of the two books; makedoc.g
+# builds the second itself, and CI treats any warning as an error.
+SetInfoLevel(InfoAutoDoc, 0);
+
 AutoDoc(rec(
     dir := "doc/ref",
     autodoc := true,

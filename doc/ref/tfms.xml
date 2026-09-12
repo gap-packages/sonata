@@ -257,7 +257,7 @@ gap> PrintArray( GraphOfMapping( m ) );
 <Description>
 If <A>mapping</A> is a polynomial function on its source then <C>PrintAsTerm</C>
 prints a polynomial that induces the mapping <A>mapping</A>.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> G := SymmetricGroup ( 3 );
 Sym( [ 1 .. 3 ] )
 gap> p := Random( PolynomialNearRing( G ) );
@@ -266,7 +266,7 @@ gap> PrintAsTerm( p );
  - x - g2 + g1 - x - g1 - g2
 gap> GeneratorsOfGroup( G );
 [ (1,2,3), (1,2) ]
-]]></Example>
+]]></Log>
 The expressions <C>g1</C> and <C>g2</C> stand for the first and second generator 
 of the group <A>G</A> respectively. The result is not necessarily a 
 polynomial of minimal length.

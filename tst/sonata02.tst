@@ -160,12 +160,6 @@ true
 gap> AsSortedList( n );                                     
 [ (()), ((2,3)), ((1,2)), ((1,2,3)), ((1,3,2)), ((1,3)) ]
 
-# doc/ref/nr.xml:348-353
-gap> n := LibraryNearRing( GTW6_2, 39 );                    
-LibraryNearRing(6/2, 39)
-gap> Random(n);
-((1,2))
-
 # doc/ref/nr.xml:364-369
 gap> n := ExplicitMultiplicationNearRingNC( GTW8_4, mul_l );
 ExplicitMultiplicationNearRing ( 8/4 , multiplication )

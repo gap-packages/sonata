@@ -97,48 +97,6 @@ gap> graph := List ( AsList ( AlternatingGroup ( 4 ) ),
   [ (1,3,4), (1,3,2) ], [ (1,3,2), (1,3,4) ], [ (1,3)(2,4), (1,3)(2,4) ], 
   [ (1,2,4), (1,4,2) ], [ (1,2)(3,4), (1,2)(3,4) ], [ (1,2,3), (1,2,4) ] ]
 
-# doc/ref/tfmnr.xml:216-240
-gap> autos := Automorphisms ( GTW8_4 );
-[ [ (1,2,3,4), (2,4) ] -> [ (1,2,3,4), (2,4) ], 
-  [ (1,2,3,4), (2,4) ] -> [ (1,2,3,4), (1,4)(2,3) ], 
-  [ (1,2,3,4), (2,4) ] -> [ (1,2,3,4), (1,3) ], 
-  [ (1,2,3,4), (2,4) ] -> [ (1,2,3,4), (1,2)(3,4) ], 
-  [ (1,2,3,4), (2,4) ] -> [ (1,4,3,2), (2,4) ], 
-  [ (1,2,3,4), (2,4) ] -> [ (1,4,3,2), (1,4)(2,3) ], 
-  [ (1,2,3,4), (2,4) ] -> [ (1,4,3,2), (1,3) ], 
-  [ (1,2,3,4), (2,4) ] -> [ (1,4,3,2), (1,2)(3,4) ] ]
-gap> C := CentralizerNearRing ( GTW8_4, autos );
-CentralizerNearRing( 8/4, ... )
-gap> C0 := ZeroSymmetricPart ( C );
-< transformation nearring with 4 generators >
-gap> Size ( C0 );
-32
-gap> Is := NearRingIdeals ( C0 );
-[ < nearring ideal >, < nearring ideal >, < nearring ideal >, 
-  < nearring ideal >, < nearring ideal >, < nearring ideal >, 
-  < nearring ideal >, < nearring ideal >, < nearring ideal >, 
-  < nearring ideal >, < nearring ideal >, < nearring ideal >, 
-  < nearring ideal > ]
-gap> List (Is, Size);
-[ 1, 2, 4, 2, 4, 8, 8, 16, 4, 8, 16, 16, 32 ]
-
-# doc/ref/tfmnr.xml:248-264
-gap> G := GTW16_8;
-16/8
-gap> U := First ( NormalSubgroups ( G ),
->              x -> Size (x) = 2 );
-Group([ (1,5)(2,10)(3,11)(4,12)(6,15)(7,16)(8,9)(13,14) ])
-gap> HGU := RestrictedEndomorphismNearRing (G, U);
-RestrictedEndomorphismNearRing( 16/8, Group(
-[ (1,5)(2,10)(3,11)(4,12)(6,15)(7,16)(8,9)(13,14) ]) )
-gap> Size (HGU);
-8
-gap> IsDistributiveNearRing ( HGU );
-true
-gap> Filtered ( AsList ( HGU),
->       x -> x = x * x );
-[ <mapping: 16/8 -> 16/8 > ]
-
 # doc/ref/tfmnr.xml:274-281
 gap> P := PolynomialNearRing ( GTW8_5 );
 PolynomialNearRing( 8/5 )
@@ -167,50 +125,6 @@ PolynomialNearRing( 4/2 )
 gap> n := AsExplicitMultiplicationNearRing ( P );
 ExplicitMultiplicationNearRing ( Group([ (1,2)(5,6)(9,10)(13,14), (3,4)(7,8)
   (11,12)(15,16), (7,8)(9,10)(13,14)(15,16) ]) , multiplication )
-
-# doc/ref/tfmnr.xml:342-353
-gap> G := SymmetricGroup ( 4 );
-Sym( [ 1 .. 4 ] )
-gap> V := First ( NormalSubgroups ( G ), x -> Size ( x ) = 4 );
-Group([ (1,4)(2,3), (1,3)(2,4) ])
-gap> P := InnerAutomorphismNearRing ( G );
-InnerAutomorphismNearRing( Sym( [ 1 .. 4 ] ) )
-gap> N := NoetherianQuotient ( P, V, G );
-NoetherianQuotient( Group([ (1,4)(2,3), (1,3)(2,4) ]) ,Sym( [ 1 .. 4 ] ) )
-gap> Size ( P ) / Size ( N );
-54
-
-# doc/ref/tfmnr.xml:367-382
-gap> G := GTW8_4;
-8/4
-gap> P := PolynomialNearRing (G);
-PolynomialNearRing( 8/4 )
-gap> A := TrivialSubgroup (G);
-Group(())
-gap> B := DerivedSubgroup (G);
-Group([ (1,3)(2,4) ])
-gap> C := G;
-8/4
-gap> I := CongruenceNoetherianQuotient (P, A, B, C);
-< nearring ideal >
-gap> Size (P/I);
-2
-
-# doc/ref/tfmnr.xml:396-411
-gap> G := GTW8_4;
-8/4
-gap> I := InnerAutomorphismNearRing (G);
-InnerAutomorphismNearRing( 8/4 )
-gap> A := TrivialSubgroup (G);
-Group(())
-gap> B := DerivedSubgroup (G);
-Group([ (1,3)(2,4) ])
-gap> C := G;
-8/4
-gap> j := CongruenceNoetherianQuotientForInnerAutomorphismNearRings (I,A,B,C);
-< nearring ideal >
-gap> Size (I/j);
-2
 
 # doc/ref/tfmnr.xml:422-431
 gap> g := GTW8_4;

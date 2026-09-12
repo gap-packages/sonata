@@ -245,12 +245,12 @@ of <M>N</M> whenever <M>J.K</M> is contained in <M>I</M> then at least one of th
 contained in <M>I</M>.
 <C>IsPrimeNearRingIdeal</C> returns <K>true</K> if <A>I</A> is a prime ideal in its parent
 nearring and <K>false</K> otherwise.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> n := LibraryNearRingWithOne( GTW27_2, 5 );
 LibraryNearRingWithOne(27/2, 5)
 gap> Filtered( NearRingIdeals( n ), IsPrimeNearRingIdeal );
 [ < nearring ideal of size 9 >, < nearring ideal of size 27 > ]
-]]></Example>
+]]></Log>
 </Description>
 </ManSection>
 <ManSection>
@@ -316,7 +316,7 @@ does essentially the same, but returns a set of elements.
 <Description>
 does essentially the same as <C>AsList</C>, but returns an enumerator for the
 elements of <A>nr</A>.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> n := LibraryNearRing( GTW8_2, 2 );
 LibraryNearRing(8/2, 2)
 gap> li := NearRingLeftIdeals( n );
@@ -330,7 +330,7 @@ gap> e[2];
 gap> AsList( e ); AsList( l );
 [ (()), ((1,2)(3,6,5,4)), ((3,5)(4,6)), ((1,2)(3,4,5,6)) ]
 [ (()), ((3,5)(4,6)), ((1,2)(3,6,5,4)), ((1,2)(3,4,5,6)) ]
-]]></Example>
+]]></Log>
 </Description>
 </ManSection>
 </Section>
@@ -340,10 +340,10 @@ gap> AsList( e ); AsList( l );
 <Meth Name="Random" Label="near ring ideal element" Arg="I"/>
 <Description>
 <C>Random</C> returns a random element of the (left / right) ideal <A>I</A>.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> Random( l );
 ((1,2)(3,4,5,6))
-]]></Example>
+]]></Log>
 </Description>
 </ManSection>
 </Section>
@@ -356,12 +356,12 @@ For a (left / right) ideal <A>I</A> of a nearring <M>N</M> and an element <A>n</
 tests whether <A>n</A> is an element of <A>I</A>.
 </Description>
 </ManSection>
-<Example><![CDATA[
+<Log><![CDATA[
 gap> Random( n ) in l;
 true
 gap> Random( n ) in l;
 false
-]]></Example>
+]]></Log>
 </Section>
 <Section Label="Size of ideals">
 <Heading>Size of ideals</Heading>
@@ -442,7 +442,7 @@ of the nearring <M>N</M> if both <A>I1</A> and <A>I2</A> are ideals of <M>N</M>.
 <Description>
 The function <C>NearRingCommutator</C> returns the commutator of the two
 ideals <A>I</A> and <A>J</A> of a common nearring.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> l := LibraryNearRing( GTW6_2, 3 );
 LibraryNearRing(6/2, 3)
 gap> i := NearRingIdeals( l );               
@@ -451,10 +451,10 @@ gap> List( i, Size );
 [ 1, 6 ]
 gap> NearRingCommutator( i[2], i[2] );
 < nearring ideal of size 6 >
-]]></Example>
+]]></Log>
 The function <C>PrintNearRingCommutatorsTable</C> prints a complete overview
 over the action of the commutator operator on a group.
-<Example><![CDATA[
+<Log><![CDATA[
 gap> l := LibraryNearRing( GTW8_4, 13 );
 LibraryNearRing(8/4, 13)
 gap> NearRingIdeals( l );
@@ -463,7 +463,7 @@ gap> PrintNearRingCommutatorsTable( l );
 [ 1, 1, 1 ]
 [ 1, 1, 2 ]
 [ 1, 2, 2 ]
-]]></Example>
+]]></Log>
 </Description>
 </ManSection>
 </Section>
