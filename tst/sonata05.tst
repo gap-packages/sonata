@@ -83,21 +83,13 @@ gap> Length(NearRingRightIdeals ( A ));
 gap> Size (A);
 32
 
-# doc/ref/tfmnr.xml:163-176
+# doc/ref/tfmnr.xml:163-168
 gap> I := InnerAutomorphismNearRing ( AlternatingGroup ( 4 ) );
 InnerAutomorphismNearRing( Alt( [ 1 .. 4 ] ) )
 gap> Size ( I );
 3072
-gap> m := Enumerator( I )[1000];
-<mapping: AlternatingGroup( [ 1 .. 4 ] ) -> AlternatingGroup( [ 1 .. 4 ] ) >
-gap> graph := List ( AsList ( AlternatingGroup ( 4 ) ),
-> x -> [x, Image (m, x)] );
-[ [ (), () ], [ (2,4,3), (2,3,4) ], [ (2,3,4), (1,2,3) ], 
-  [ (1,4,3), (2,4,3) ], [ (1,4)(2,3), (1,4)(2,3) ], [ (1,4,2), (1,4,3) ], 
-  [ (1,3,4), (1,3,2) ], [ (1,3,2), (1,3,4) ], [ (1,3)(2,4), (1,3)(2,4) ], 
-  [ (1,2,4), (1,4,2) ], [ (1,2)(3,4), (1,2)(3,4) ], [ (1,2,3), (1,2,4) ] ]
 
-# doc/ref/tfmnr.xml:274-281
+# doc/ref/tfmnr.xml:276-283
 gap> P := PolynomialNearRing ( GTW8_5 );
 PolynomialNearRing( 8/5 )
 gap> L := LocalInterpolationNearRing ( P, 2 );
@@ -105,13 +97,13 @@ LocalInterpolationNearRing( PolynomialNearRing( 8/5 ), 2 )
 gap> Size ( L ) / Size ( P );
 16
 
-# doc/ref/tfmnr.xml:292-297
+# doc/ref/tfmnr.xml:294-299
 gap> Gamma ( PolynomialNearRing ( CyclicGroup ( 25 ) ) );
 <pc group of size 25 with 2 generators>
 gap> IsCyclic (last);
 true
 
-# doc/ref/tfmnr.xml:309-316
+# doc/ref/tfmnr.xml:311-318
 gap> L := LibraryNearRing (GTW8_3, 12);
 LibraryNearRing(8/3, 12)
 gap> Lt := AsTransformationNearRing ( L );
@@ -119,14 +111,14 @@ gap> Lt := AsTransformationNearRing ( L );
 gap> Gamma ( Lt );
 8/3 x C_2
 
-# doc/ref/tfmnr.xml:325-331
+# doc/ref/tfmnr.xml:327-333
 gap> P := PolynomialNearRing ( GTW4_2 );
 PolynomialNearRing( 4/2 )
 gap> n := AsExplicitMultiplicationNearRing ( P );
 ExplicitMultiplicationNearRing ( Group([ (1,2)(5,6)(9,10)(13,14), (3,4)(7,8)
   (11,12)(15,16), (7,8)(9,10)(13,14)(15,16) ]) , multiplication )
 
-# doc/ref/tfmnr.xml:422-431
+# doc/ref/tfmnr.xml:424-433
 gap> g := GTW8_4;
 8/4
 gap> P := PolynomialNearRing ( g );
