@@ -1,0 +1,371 @@
+<Chapter Label="Supportive functions for groups">
+<Heading>Supportive functions for groups</Heading>
+In order to support nearring calculations, a few functions for groups had to 
+be added to the standard &GAP; group library functions.
+<P/>
+The functions described here can be found in the source files
+<C>grpend.g?</C> and <C>grpsupp.g?</C>
+<Section Label="Predefined groups">
+<Heading>Predefined groups</Heading>
+All groups of order <M>2</M> to <M>32</M> are predefined. They can be accessed
+by variables of the kind <C>GTW<A>o</A>_{<A>n</A>}</C> where <A>o</A> defines the order
+of the group and <A>n</A> the number of the group of order <A>o</A> as they
+appear in <Cite Key="thomaswood80:GT"/> . For example, <C>GTW16_6</C> defines the
+group of Thomas -- Wood type <M>16/6</M>, which is actually <M>D_4 \times
+C_2</M>.
+<P/>
+Alternatively, these groups can be accessed via the function
+<ManSection>
+<Oper Name="TWGroup" Arg="o, n"/>
+<Description>
+with <A>o</A> and <A>n</A> as above. In addition, all these groups are stored in the
+list  GroupList.
+<P/>
+Conversely, for any group <A>G</A> of order at most 32,
+</Description>
+</ManSection>
+<ManSection>
+<Func Name="IdTWGroup" Arg="G"/>
+<Description>
+returns a pair <C>[<A>o</A>,<A>n</A>]</C>, meaning that <A>G</A> is isomorphic to the group
+<M>o/n</M>.
+<Example><![CDATA[
+gap> G := GTW6_2;               
+6/2
+gap> H := TWGroup( 4, 2 );
+4/2
+gap> D := DirectProduct( G, H );
+Group([ (1,2), (1,2,3), (4,5), (6,7) ])
+gap> IdTWGroup( D );
+[ 24, 4 ]
+gap> GroupList;
+[ 2/1, 3/1, 4/1, 4/2, 5/1, 6/1, 6/2, 7/1, 8/1, 8/2, 8/3, 8/4, 8/5, 9/1, 9/2, 
+  10/1, 10/2, 11/1, 12/1, 12/2, 12/3, 12/4, 12/5, 13/1, 14/1, 14/2, 15/1, 
+  16/1, 16/2, 16/3, 16/4, 16/5, 16/6, 16/7, 16/8, 16/9, 16/10, 16/11, 16/12, 
+  16/13, 16/14, 17/1, 18/1, 18/2, 18/3, 18/4, 18/5, 19/1, 20/1, 20/2, 20/3, 
+  20/4, 20/5, 21/1, 21/2, 22/1, 22/2, 23/1, 24/1, 24/2, 24/3, 24/4, 24/5, 
+  24/6, 24/7, 24/8, 24/9, 24/10, 24/11, 24/12, 24/13, 24/14, 24/15, 25/1, 
+  25/2, 26/1, 26/2, 27/1, 27/2, 27/3, 27/4, 27/5, 28/1, 28/2, 28/3, 28/4, 
+  29/1, 30/1, 30/2, 30/3, 30/4, 31/1, 32/1, 32/2, 32/3, 32/4, 32/5, 32/6, 
+  32/7, 32/8, 32/9, 32/10, 32/11, 32/12, 32/13, 32/14, 32/15, 32/16, 32/17, 
+  32/18, 32/19, 32/20, 32/21, 32/22, 32/23, 32/24, 32/25, 32/26, 32/27, 
+  32/28, 32/29, 32/30, 32/31, 32/32, 32/33, 32/34, 32/35, 32/36, 32/37, 
+  32/38, 32/39, 32/40, 32/41, 32/42, 32/43, 32/44, 32/45, 32/46, 32/47, 
+  32/48, 32/49, 32/50, 32/51 ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Operation tables for groups">
+<Heading>Operation tables for groups</Heading>
+<ManSection>
+<Func Name="PrintTable" Arg="G"/>
+<Description>
+<C>PrintTable</C> prints the Cayley table of the group <A>G</A>.
+<Example><![CDATA[
+gap> G := GTW4_2;
+4/2
+gap> PrintTable( G );
+Let:
+g0 := ()
+g1 := (3,4)
+g2 := (1,2)
+g3 := (1,2)(3,4)
+
+   *  | g0  g1  g2  g3  
+  --------------------
+  g0  | g0  g1  g2  g3  
+  g1  | g1  g0  g3  g2  
+  g2  | g2  g3  g0  g1  
+  g3  | g3  g2  g1  g0  
+]]></Example>
+Sometimes different symbols for the elements in the would make the table
+look nicer. For the group <M>4/2</M> (<M>&ZZ;_2 \times &ZZ;_2</M>) one could choose
+the canonical form as pairs of zeros and ones.
+<Example><![CDATA[
+gap> G := GTW4_2;
+4/2
+gap> SetSymbols( G, ["(0,0)","(1,0)","(0,1)","(1,1)"] );
+gap> PrintTable( G );
+Let:
+(0,0) := ()
+(1,0) := (3,4)
+(0,1) := (1,2)
+(1,1) := (1,2)(3,4)
+
+      *  | (0,0)  (1,0)  (0,1)  (1,1)  
+  -----------------------------------
+  (0,0)  | (0,0)  (1,0)  (0,1)  (1,1)  
+  (1,0)  | (1,0)  (0,0)  (1,1)  (0,1)  
+  (0,1)  | (0,1)  (1,1)  (0,0)  (1,0)  
+  (1,1)  | (1,1)  (0,1)  (1,0)  (0,0)  
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Group endomorphisms">
+<Heading>Group endomorphisms</Heading>
+<ManSection>
+<Attr Name="Endomorphisms" Arg="G"/>
+<Description>
+<C>Endomorphisms</C> computes all the endomorphisms of the group <A>G</A>. 
+This function is most essential for computing the nearrings on a group.
+The endomorphisms are returned as a list of group homomorphisms. So all
+functions for mappings and homomorphisms are applicable.
+<Log><![CDATA[
+gap> G := TWGroup( 4, 2 );
+4/2
+gap> Endomorphisms( G );
+[ [ (1,2), (3,4) ] -> [ (), () ], [ (1,2), (3,4) ] -> [ (), (3,4) ], 
+  [ (1,2), (3,4) ] -> [ (), (1,2)(3,4) ], [ (1,2), (3,4) ] -> [ (), (1,2) ], 
+  [ (1,2), (3,4) ] -> [ (3,4), () ], [ (1,2), (3,4) ] -> [ (1,2)(3,4), () ], 
+  [ (1,2), (3,4) ] -> [ (1,2), () ], [ (1,2), (3,4) ] -> [ (3,4), (3,4) ], 
+  [ (1,2), (3,4) ] -> [ (1,2)(3,4), (1,2)(3,4) ], 
+  [ (1,2), (3,4) ] -> [ (1,2), (1,2) ], [ (1,2), (3,4) ] -> [ (3,4), (1,2) ], 
+  [ (1,2), (3,4) ] -> [ (1,2)(3,4), (3,4) ], 
+  [ (1,2), (3,4) ] -> [ (1,2), (1,2)(3,4) ], 
+  [ (1,2), (3,4) ] -> [ (3,4), (1,2)(3,4) ], 
+  [ (1,2), (3,4) ] -> [ (1,2)(3,4), (1,2) ], 
+  [ (1,2), (3,4) ] -> [ (1,2), (3,4) ] ]
+]]></Log>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Group automorphisms">
+<Heading>Group automorphisms</Heading>
+<ManSection>
+<Attr Name="Automorphisms" Arg="G"/>
+<Description>
+<C>Automorphisms</C> computes all the automorphisms of the group <A>G</A>. 
+The automorphisms are returned as a list of group homomorphisms. So all
+functions for mappings and homomorphisms are applicable.
+<Log><![CDATA[
+gap> Automorphisms( GTW4_2 );
+[ [ (1,2), (3,4) ] -> [ (1,2), (3,4) ], 
+  [ (1,2), (3,4) ] -> [ (3,4), (1,2)(3,4) ], 
+  [ (1,2), (3,4) ] -> [ (1,2)(3,4), (1,2) ], 
+  [ (1,2), (3,4) ] -> [ (1,2)(3,4), (3,4) ], 
+  [ (1,2), (3,4) ] -> [ (1,2), (1,2)(3,4) ], 
+  [ (1,2), (3,4) ] -> [ (3,4), (1,2) ] ]
+]]></Log>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Inner automorphisms of a group">
+<Heading>Inner automorphisms of a group</Heading>
+<ManSection>
+<Attr Name="InnerAutomorphisms" Arg="G"/>
+<Description>
+<C>InnerAutomorphisms</C> computes all the inner automorphisms of the group 
+<A>G</A>. 
+The inner automorphisms are returned as a list of group homomorphisms. So all
+functions for mappings and homomorphisms are applicable.
+<Example><![CDATA[
+gap> InnerAutomorphisms( AlternatingGroup( 4 ) );
+[ ^(), ^(1,4,3), ^(1,3,4), ^(1,2,4), ^(2,4,3), ^(1,4)(2,3), ^(1,3,2), 
+  ^(1,2)(3,4), ^(2,3,4), ^(1,4,2), ^(1,3)(2,4), ^(1,2,3) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Isomorphic groups">
+<Heading>Isomorphic groups</Heading>
+<ManSection>
+<Oper Name="IsIsomorphicGroup" Arg="G, H"/>
+<Description>
+<C>IsIsomorphicGroup</C> determines if the groups <A>G</A> and <A>H</A> are 
+isomorphic. If they are isomorphic, an isomorphism between these two groups
+can be found with <C>IsomorphismGroups</C>.
+<Example><![CDATA[
+gap> IsIsomorphicGroup( SymmetricGroup( 4 ), GTW24_12 );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Subgroups of a group">
+<Heading>Subgroups of a group</Heading>
+<ManSection>
+<Func Name="Subgroups" Arg="G"/>
+<Description>
+<C>Subgroups</C> returns a list of all subgroups of the group <A>G</A>, if there
+are only finitely many subgroups.
+<Example><![CDATA[
+gap> Subgroups( TWGroup( 8, 4 ) );
+[ Group(()), Group([ (1,3)(2,4) ]), Group([ (2,4) ]), Group([ (1,3) ]), 
+  Group([ (1,2)(3,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,3)(2,4), (2,4) ]), 
+  Group([ (1,3)(2,4), (1,2,3,4) ]), Group([ (1,3)(2,4), (1,2)(3,4) ]), 
+  Group([ (1,3)(2,4), (2,4), (1,2,3,4) ]) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Normal subgroups generated by a single element">
+<Heading>Normal subgroups generated by a single element</Heading>
+<ManSection>
+<Attr Name="OneGeneratedNormalSubgroups" Arg="G"/>
+<Description>
+<C>OneGeneratedSubgroups</C> returns a list of all proper, non-trivial normal
+subgroups of the group <A>G</A> which are generated by one element.
+<C>OneGeneratedSubgroups</C> is a synonym for <C>GeneratorsOfCongruenceLattice</C>.
+<Example><![CDATA[
+gap> OneGeneratedNormalSubgroups( AlternatingGroup(4) );
+[ Group([ (1,2)(3,4), (1,3)(2,4), (1,4)(2,3) ]) ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Invariant subgroups">
+<Heading>Invariant subgroups</Heading>
+<ManSection>
+<Func Name="IsInvariantUnderMaps" Arg="G, U, maps"/>
+<Description>
+For a list of mappings, <A>maps</A> on the group <A>G</A> and
+a subgroup <A>U</A> of <A>G</A>, <C>IsInvariantUnderMaps</C> returns the truth 
+value of <Q><A>U</A> is invariant under all mappings in <A>maps</A></Q>. In the following
+example this function is used to compute all fully invariant subgroups of
+the dihedral group of order 12.
+<Example><![CDATA[
+gap> D12 := DihedralGroup( 12 );                                        
+<pc group of size 12 with 3 generators>
+gap> s := Subgroups( D12 );
+[ Group([  ]), Group([ f1 ]), Group([ f1*f3^2 ]), Group([ f1*f3 ]), 
+  Group([ f2*f3 ]), Group([ f1*f2 ]), Group([ f1*f2*f3^2 ]), 
+  Group([ f1*f2*f3 ]), Group([ f3 ]), Group([ f1, f2*f3 ]), 
+  Group([ f1*f3^2, f2*f3 ]), Group([ f1*f3, f2*f3 ]), Group([ f3, f1 ]), 
+  Group([ f3, f2 ]), Group([ f3, f1*f2 ]), Group([ f3, f1, f2 ]) ]
+gap> e := Endomorphisms( D12 );;                                        
+gap> f := Filtered( s, sg -> IsInvariantUnderMaps( D12, sg, e ) );
+[ Group([  ]), Group([ f3 ]), Group([ f3, f1, f2 ]) ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Meth Name="IsCharacteristicSubgroup" Arg="G, U"/>
+<Description>
+A subgroup <A>U</A> of the group <A>G</A> is <E>characteristic</E> if it is invariant under
+all automorphisms on <A>G</A>. For a subgroup <A>U</A> of the group <A>G</A>,
+<C>IsCharacteristicSubgroup</C> returns the truth value of <Q><A>U</A> is a characteristic
+subgroup of <A>G</A></Q>. If the group <A>U</A> is defined as the subgroup of a group
+<A>G</A> then the function call
+</Description>
+</ManSection>
+<ManSection>
+<Attr Name="IsCharacteristicInParent" Arg="U"/>
+<Description>
+has the same result.
+<Example><![CDATA[
+gap> IsCharacteristicInParent( Centre( GTW16_11 ) );
+true
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="IsFullinvariant" Arg="G, U"/>
+<Description>
+A subgroup <A>U</A> of the group <A>G</A> is <E>fully invariant</E> if it is invariant under
+all endomorphisms on <A>G</A>. 
+For a subgroup <A>U</A> of the group <A>G</A>, <C>IsFullinvariant</C> returns the
+truth value of <Q><A>U</A> is a fully invariant subgroup of <A>G</A></Q>.
+<Example><![CDATA[
+gap> G := GTW6_2;
+6/2
+gap> S := Subgroup( G, [(1,2)] );                                
+Group([ (1,2) ])
+gap> IsFullinvariant( G, S );
+false
+]]></Example>
+If the group <A>U</A> is defined as the subgroup of a group <A>G</A> then the function
+call
+</Description>
+</ManSection>
+<ManSection>
+<Prop Name="IsFullinvariantInParent" Arg="U"/>
+<Description>
+has the same result.
+<Example><![CDATA[
+gap> IsFullinvariantInParent( Centre( GTW16_11 ) );
+true
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Coset representatives">
+<Heading>Coset representatives</Heading>
+<ManSection>
+<Oper Name="RepresentativesModNormalSubgroup" Arg="G, N"/>
+<Description>
+If <A>G</A> is a group and <A>N</A> is a normal subgroup of <A>G</A> then the function
+<C>RepresentativesModNormalSubgroup</C> returns a set of representatives for
+the congruence classes modulo the normal subgroup <A>N</A>, i.e. a set of elements
+of <A>G</A> with exactly one element from each congruence class modulo <A>N</A>.
+<Example><![CDATA[
+gap> G := DihedralGroup( 16 );
+<pc group of size 16 with 4 generators>
+gap> C := Centre( G );
+Group([ f4 ])
+gap> RepresentativesModNormalSubgroup( G, C );
+[ <identity> of ..., f1, f2, f3, f2*f3, f1*f2*f4, f1*f3*f4, f1*f2*f3*f4 ]
+]]></Example>
+</Description>
+</ManSection>
+<ManSection>
+<Oper Name="NontrivialRepresentativesModNormalSubgroup" Arg="G, N"/>
+<Description>
+This function behaves as <C>RepresentativesModNormalSubgroup</C> but it excludes
+the representative for the congruence class which contains the neutral element
+of the group.
+<Example><![CDATA[
+gap> G := DihedralGroup( 16 );
+<pc group of size 16 with 4 generators>
+gap> C := Centre( G );
+Group([ f4 ])
+gap> NontrivialRepresentativesModNormalSubgroup( G, C );
+[ f1, f2, f3, f2*f3, f1*f2*f4, f1*f3*f4, f1*f2*f3*f4 ]
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Scott length">
+<Heading>Scott length</Heading>
+<ManSection>
+<Attr Name="ScottLength" Arg="G"/>
+<Description>
+The function <C>ScottLength</C> returns the Scott-length of the group <A>G</A>.
+For a definition of the Scott-length of a group and an idea for an
+algorithm for the general case see <Cite Key="scott69:TAOPMOAGATSOCPPGI"/>.
+In the case of a class 2 nilpotent finite group <A>G</A> a faster algorithm
+described in <Cite Key="ecker98:OTNOPFONGOC2"/> is used.
+<Example><![CDATA[
+gap> ScottLength( GTW6_2 );    
+2
+gap> ScottLength( GTW16_11 );
+4
+]]></Example>
+</Description>
+</ManSection>
+</Section>
+<Section Label="Other useful functions for groups">
+<Heading>Other useful functions for groups</Heading>
+<ManSection>
+<Oper Name="AsPermGroup" Arg="G"/>
+<Description>
+For a group <A>G</A>, <C>AsPermGroup</C> returns a permutation group that is isomorphic
+to <A>G</A>. In the case of a permutation group this is the group itself.
+<Log><![CDATA[
+gap> D24 := DihedralGroup( 24 );
+<pc group of size 24 with 4 generators>
+gap> D24p := AsPermGroup( D24 );
+Group([ (2,3)(5,7), (1,2,3)(4,5,6,7), (1,3,2)(4,6)(5,7), (1,2,3) ])
+gap> IsomorphismGroups( D24, D24p );
+[ f1, f2, f3, f4 ] -> [ (1,3)(4,6), (1,3,2)(4,7,6,5), (1,2,3)(4,6)(5,7), 
+  (1,3,2) ]
+gap> C12 := CyclicGroup( 12 );  
+<pc group of size 12 with 3 generators>
+gap> AsPermGroup( C12 );
+Group([ (1,2,3), (4,5,6,7) ])
+]]></Log>
+</Description>
+</ManSection>
+</Section>
+</Chapter>

@@ -1,0 +1,192 @@
+<Chapter Label="Nearrings">
+<Heading>Nearrings</Heading>
+A <E>(left) nearring</E> is an algebra <M>(N,+,*)</M>, where
+<M>(N,+)</M> is a (not necessarily abelian) group,
+<M>(N,*)</M> is a semigroup, and 
+the distributive law <M>x*(y+z) = x*y+x*z</M> 
+holds.
+Such nearrings are called <E>left nearrings</E>.
+A typical example is constructed as follows:
+take a group <M>(G,+)</M> (not necessarily abelian), and
+take the set <M>M(G)</M> of all mappings from <M>G</M> to <M>G</M>.
+Then we define <M>+</M> on <M>M(G)</M> as pointwise addition of
+mappings, and <M>*</M> by <M>m * n (\gamma) := n (m (\gamma))</M>.
+The multiplication looks more natural if we write
+functions right of their arguments. Then the definition
+reads <M>(\gamma) m * n = ((\gamma)m)n</M>.
+<P/>
+Textbooks on nearrings are <Cite Key="meldrum85:NATLWG"/>, <Cite Key="Clay:Nearrings"/>,
+<Cite Key="Ferrero:Nearrings"/>. They all use <E>left nearrings</E>.
+The book <Cite Key="Pilz:Nearrings"/> uses <E>right nearrings</E>; these are 
+the algebras that arise if we claim the right distributive law
+ <M>(x + y) * z = x*z + y*z</M> instead of the left distributive law
+given above.
+<P/>
+SONATA uses <E>left</E> nearrings throughout.
+<Section Label="Entering nearrings into the system">
+<Heading>Entering nearrings into the system</Heading>
+<E>The problem:</E> Input the nearring given in the example
+of page 406 of <Cite Key="Pilz:Nearrings"/>
+into SONATA.
+<P/>
+This nearring is given by an explicit multiplication table.
+The function <C>ExplicitMultiplicationNearRing</C> can be 
+used to do the job.
+But first, let's get the additive group, which is
+Klein's four group:
+<Example><![CDATA[
+gap> G := GTW4_2;
+4/2
+]]></Example>
+Now we have to establish a correspondence between
+the elements <C>0</C>, <C>a</C>, <C>b</C>, <C>c</C> of the group in the example
+and GAP's representation of the group elements.
+<Example><![CDATA[
+gap> AsSortedList( G );
+[ (), (3,4), (1,2), (1,2)(3,4) ]
+]]></Example>
+Ok, let's map <C>0</C> to <C>()</C>, <C>a</C> to <C>(3,4)</C>, <C>b</C> to <C>(1,2)</C>
+and <C>c</C> to <C>(1,2)(3,4)</C>
+<Example><![CDATA[
+gap> SetSymbols( G, [ "0", "a", "b", "c" ] );
+gap> PrintTable( G );
+Let:
+0 := ()
+a := (3,4)
+b := (1,2)
+c := (1,2)(3,4)
+
+  +  | 0 a b c     
+  ------------    
+  0  | 0 a b c     
+  a  | a 0 c b     
+  b  | b c 0 a     
+  c  | c b a 0     
+]]></Example>
+Now for entering the nearring multiplication:
+We will use the function <C>NrMultiplicationByOperationTable</C>.
+This function requires as one of its arguments a matrix
+of integers representing the operation table:
+We choose the entries of <C>table</C> according to the
+positions of the elements of <C>G</C> in
+<C>AsSortedList( G )</C>:
+<Example><![CDATA[
+gap> table := [ [ 1, 1, 1, 1 ],                 
+>               [ 1, 1, 2, 2 ],
+>               [ 1, 2, 4, 3 ],
+>               [ 1, 2, 3, 4 ] ];
+[ [ 1, 1, 1, 1 ], [ 1, 1, 2, 2 ], [ 1, 2, 4, 3 ], [ 1, 2, 3, 4 ] ]
+]]></Example>
+Now we are in position to define a nearring multiplication:
+<Example><![CDATA[
+gap> mul:=NearRingMultiplicationByOperationTable(                        
+>             G, table, AsSortedList(G) );
+function( x, y ) ... end
+]]></Example>
+And finally, we can define the nearring:
+<Example><![CDATA[
+gap> N := ExplicitMultiplicationNearRing( G, mul );
+ExplicitMultiplicationNearRing ( 4/2 , multiplication )
+]]></Example>
+We get no error message, which means that we have 
+indeed defined a nearring multiplication on <C>G</C>.
+Now let's take a look at it:
+<Example><![CDATA[
+gap> PrintTable( N );
+Let:
+0 := (())
+a := ((3,4))
+b := ((1,2))
+c := ((1,2)(3,4))
+
+  +  | 0  a  b  c  
+  ---------------
+  0  | 0  a  b  c  
+  a  | a  0  c  b  
+  b  | b  c  0  a  
+  c  | c  b  a  0  
+
+  *  | 0  a  b  c  
+  ---------------
+  0  | 0  0  0  0  
+  a  | 0  0  a  a  
+  b  | 0  a  c  b  
+  c  | 0  a  b  c  
+]]></Example>
+The symbols used for the elements of the group are also used for the
+elements of the nearring. Of course, it is still possible to redefine the 
+symbols.
+</Section>
+<Section Label="Some simple questions about the nearring">
+<Heading>Some simple questions about the nearring</Heading>
+Now, that the nearring is in the system, let's ask
+some questions about it. A nearring is a nearfield if
+it has more than one element and its nonzero elements are
+a group with respect to multiplication. A textbook
+on nearfields is <Cite Key="Waehling:Fastkoerper"/>. They are interesting
+structures, closely connected to sharply <M>2</M>-transitive permutation
+groups and fixed-point-free automorphism groups of groups.
+<Example><![CDATA[
+gap> IsNearField( N );
+false
+gap> IsIntegralNearRing( N );
+false
+gap> IsNilpotentNearRing( N );
+false
+]]></Example>
+<Cite Key="Pilz:Nearrings"/> is correct ... Well at least in this case.<C>;-))</C>
+</Section>
+<Section Label="Entering the nearring with less typing">
+<Heading>Entering the nearring with less typing</Heading>
+Certainly, everybody has immediately seen, that this
+nearring is a transformation nearring on <C>GTW4_2</C>
+which is generated by the transformations
+<C>0</C> to <C>0</C>, <C>a</C> to <C>a</C>, <C>b</C> to <C>c</C>, <C>c</C> to <C>b</C>, and
+the identity transformation, so
+<Example><![CDATA[
+gap> t := GroupGeneralMappingByImages(                    
+>           G, G, AsSortedList(G), AsSortedList(G){[1,2,4,3]} );
+[ (), (3,4), (1,2), (1,2)(3,4) ] -> [ (), (3,4), (1,2)(3,4), (1,2) ]
+gap> id := IdentityMapping( G );
+IdentityMapping( 4/2 )
+gap> T := TransformationNearRingByGenerators( G, [t,id] );
+TransformationNearRingByGenerators(
+[ [ (), (3,4), (1,2), (1,2)(3,4) ] -> [ (), (3,4), (1,2)(3,4), (1,2) ], 
+  IdentityMapping( 4/2 ) ])
+]]></Example>
+Let's see what we've got:
+<Example><![CDATA[
+gap> PrintTable(T);
+Let:
+n0 := <mapping: 4/2 -> 4/2 >
+n1 := <mapping: 4/2 -> 4/2 >
+n2 := <mapping: 4/2 -> 4/2 >
+n3 := <mapping: 4/2 -> 4/2 >
+
+   +  | n0  n1  n2  n3  
+  --------------------
+  n0  | n0  n1  n2  n3  
+  n1  | n1  n0  n3  n2  
+  n2  | n2  n3  n0  n1  
+  n3  | n3  n2  n1  n0  
+
+   *  | n0  n1  n2  n3  
+  --------------------
+  n0  | n0  n0  n0  n0  
+  n1  | n0  n0  n1  n1  
+  n2  | n0  n1  n2  n3  
+  n3  | n0  n1  n3  n2  
+]]></Example>
+Obviously, we've got the correct nearring.
+Let's make for sure:
+<Example><![CDATA[
+gap> IsIsomorphicNearRing( N, T );
+true
+]]></Example>
+However, <C>N</C> and <C>T</C> are certainly not equal:
+<Example><![CDATA[
+gap> N = T;
+false
+]]></Example>
+</Section>
+</Chapter>
