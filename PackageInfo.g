@@ -118,16 +118,16 @@ AbstractHTML :=
 PackageDoc := [
   rec(
   BookName  := "SONATA",
-  ArchiveURLSubset := ["doc/ref","doc/htm/ref"],
-  HTMLStart := "doc/htm/ref/chapters.htm",
+  ArchiveURLSubset := ["doc/ref"],
+  HTMLStart := "doc/ref/chap0_mj.html",
   PDFFile   := "doc/ref/manual.pdf",
   SixFile   := "doc/ref/manual.six",
   LongTitle := "System of nearrings and their applications",
   ),
   rec(
   BookName  := "SONATA Tutorial",
-  ArchiveURLSubset := ["doc/tut","doc/htm/tut"],
-  HTMLStart := "doc/htm/tut/chapters.htm",
+  ArchiveURLSubset := ["doc/tut"],
+  HTMLStart := "doc/tut/chap0_mj.html",
   PDFFile   := "doc/tut/manual.pdf",
   SixFile   := "doc/tut/manual.six",
   LongTitle := "Eight easy pieces for SONATA: a SONATA tutorial",
@@ -136,7 +136,7 @@ PackageDoc := [
 
 
 Dependencies := rec(
-  GAP := ">=4.9",
+  GAP := ">=4.12",
   NeededOtherPackages := [["smallgrp", ">=1.3"]],
   SuggestedOtherPackages := [],
   ExternalConditions := []

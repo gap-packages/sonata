@@ -1,17 +1,34 @@
 /doc/*/*.aux
 /doc/*/*.bbl
 /doc/*/*.blg
+/doc/*/*.brf
+/doc/*/*.css
 /doc/*/*.dvi
 /doc/*/*.idx
 /doc/*/*.ilg
 /doc/*/*.ind
+/doc/*/*.js
 /doc/*/*.lab
 /doc/*/*.log
-/doc/*/*.pdf
+/doc/*/*.out
+/doc/*/*.pnr
 /doc/*/*.six
+/doc/*/*.tex
 /doc/*/*.toc
-/doc/*/*.tst
+/doc/*/_*.xml
+/doc/*/chap*.html
+/doc/*/chap*.txt
+/doc/*/chooser.html
+/doc/*/manual.pdf
 
+# AutoDoc scaffolds the reference book and names what it generates _main.*,
+# which the wildcards above already cover; its title page is generated too.
+# The tutorial's main.xml and title.xml are written by hand -- note that its
+# main.tex is not, hence the wildcard rather than /doc/tut/main.*.
+/doc/ref/title.xml
+
+# Output of the old plain-TeX manuals; kept ignored until the leftover
+# directory is removed for good.
 /doc/htm/
 
 /gh-pages/

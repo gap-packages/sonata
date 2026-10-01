@@ -1,0 +1,30 @@
+<TitlePage>
+  <Title>8 easy pieces for SONATA</Title>
+  <Subtitle>A tutorial for the &GAP; package SONATA
+    (System of Nearrings and Their Applications)</Subtitle>
+  <Author>The SONATA team
+    <Address>
+      Institut für Algebra<Br/>
+      Johannes Kepler Universität Linz<Br/>
+      4040 Linz<Br/>
+      Austria<Br/>
+    </Address>
+  </Author>
+  <Abstract>
+    Erhard Aichinger, Franz Binder, Jürgen Ecker, Peter Mayr and
+    Christof Nöbauer.
+    <P/>
+    The reference manual of the package is the book <URL
+    Text="SONATA"><Link>../ref/chap0_mj.html</Link></URL>.
+  </Abstract>
+  <Copyright>
+    Copyright &copyright; 2006 by Aichinger, E., Binder, F., Ecker, J.,
+    Mayr, P., and Nöbauer, C., 4040 Linz, Austria
+    <P/>
+    SONATA is distributed as a free package for &GAP;; you can redistribute
+    it and/or modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the
+    License, or (at your option) any later version.  For details, see
+    <URL>https://www.gnu.org/licenses/gpl.html</URL>.
+  </Copyright>
+</TitlePage>

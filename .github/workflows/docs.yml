@@ -40,6 +40,10 @@ jobs:
         with:
           name: sonata-manuals-html
           path: |
-            ./doc/htm/ref/*.htm
-            ./doc/htm/tut/*.htm
+            ./doc/ref/*.html
+            ./doc/ref/*.css
+            ./doc/ref/*.js
+            ./doc/tut/*.html
+            ./doc/tut/*.css
+            ./doc/tut/*.js
           if-no-files-found: error
